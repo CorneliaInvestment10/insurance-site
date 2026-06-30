@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Contact — Licensed Independent Insurance Advisor</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Licensed Independent Insurance Advisor</div>
+    <div class="brand-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Insurance Education</a>
+  <a href="quote.html">Get a Quote</a>
+  <a href="contact.html" class="active">Contact</a>
+</div>
+
+<main class="page-top">
+  <div class="phs">
+    <div class="phs-left">
+      <div class="mono">Co.</div>
+      <h1>Contact</h1>
+      <div class="phs-sub">Direct inquiries &nbsp;·&nbsp; Response within 1 business day</div>
+    </div>
+    <div class="phs-right">
+      <p>All inquiries submitted through this page are reviewed directly by a licensed independent insurance advisor. Responses are provided within one business day. For immediate assistance, contact us directly.</p>
+      <p>All information submitted is handled in strict compliance with HIPAA federal privacy regulations and applicable state law.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--white);">
+    <div class="section-inner">
+
+      <!-- LEAD CAPTURE -->
+      <div style="background:var(--ink);padding:3rem;margin-bottom:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+        <div>
+          <div class="sec-ey" style="margin-bottom:1rem;"><div class="sec-ey-line"></div><span style="color:var(--gold);font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;">Get Started</span></div>
+          <h2 style="color:var(--white);font-size:clamp(1.5rem,2.4vw,2.2rem);font-weight:300;line-height:1.2;margin-bottom:0.75rem;">Ready to check your eligibility?</h2>
+          <p style="color:rgba(255,255,255,0.5);font-size:0.88rem;line-height:1.8;font-weight:300;">Leave your name, email, and phone number. We will send you a link to complete your confidential intake questionnaire at your own pace — no commitment required.</p>
+        </div>
+        <div>
+          <div id="captureForm">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+              <div>
+                <label style="display:block;font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.4rem;">First Name</label>
+                <input type="text" id="cap_first" placeholder="First name" style="width:100%;padding:0.72rem 1rem;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);font-family:var(--sans);font-size:0.88rem;color:var(--white);border-radius:var(--r);outline:none;"/>
+              </div>
+              <div>
+                <label style="display:block;font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.4rem;">Last Name</label>
+                <input type="text" id="cap_last" placeholder="Last name" style="width:100%;padding:0.72rem 1rem;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);font-family:var(--sans);font-size:0.88rem;color:var(--white);border-radius:var(--r);outline:none;"/>
+              </div>
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.4rem;">Email Address</label>
+              <input type="email" id="cap_email" placeholder="your@email.com" style="width:100%;padding:0.72rem 1rem;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);font-family:var(--sans);font-size:0.88rem;color:var(--white);border-radius:var(--r);outline:none;"/>
+            </div>
+            <div style="margin-bottom:1.5rem;">
+              <label style="display:block;font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.4rem;">Phone Number</label>
+              <input type="tel" id="cap_phone" placeholder="(555) 000-0000" style="width:100%;padding:0.72rem 1rem;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);font-family:var(--sans);font-size:0.88rem;color:var(--white);border-radius:var(--r);outline:none;"/>
+            </div>
+            <p style="font-size:0.72rem;color:rgba(255,255,255,0.28);line-height:1.65;margin-bottom:1.2rem;font-weight:300;">By submitting, you consent to being contacted by a licensed insurance advisor. Your information is handled in compliance with HIPAA and will not be shared without your authorization.</p>
+            <button onclick="submitCapture()" style="width:100%;background:var(--gold);color:var(--white);border:none;padding:0.9rem;font-family:var(--sans);font-size:0.7rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;border-radius:var(--r);cursor:pointer;">Send Me the Questionnaire Link</button>
+          </div>
+          <div id="captureSuccess" style="display:none;text-align:center;padding:2rem 1rem;">
+            <div style="font-family:var(--serif);font-size:3rem;color:var(--gold);font-style:italic;margin-bottom:0.75rem;">✦</div>
+            <div style="font-family:var(--serif);font-size:1.3rem;color:var(--white);font-weight:300;margin-bottom:0.5rem;">Thank you.</div>
+            <p style="font-size:0.84rem;color:rgba(255,255,255,0.5);line-height:1.75;font-weight:300;">Your information has been received. You will receive an email shortly with a link to complete your confidential intake questionnaire.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-wrap">
+
+        <div class="contact-info">
+          <div style="background:var(--warm);border:1px solid var(--warm3);padding:2rem;margin-bottom:0;">
+            <div style="font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.2rem;">Licensed Independent Insurance Advisor</div>
+            <div style="font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <div style="font-size:0.79rem;color:var(--text);display:flex;gap:0.6rem;font-weight:300;"><span style="color:var(--gold);">✦</span>Licensed — Life, Accident &amp; Sickness</div>
+              <div style="font-size:0.79rem;color:var(--text);display:flex;gap:0.6rem;font-weight:300;"><span style="color:var(--gold);">✦</span>Independent — Multiple carrier contracts</div>
+              
+              <div style="font-size:0.79rem;color:var(--text);display:flex;gap:0.6rem;font-weight:300;"><span style="color:var(--gold);">✦</span>HIPAA-compliant operations</div>
+            </div>
+          </div>
+
+          <div class="cblock">
+            <div class="cblock-label">Phone</div>
+            <p><a href="tel:+1XXXXXXXXXX">[UPDATE WITH YOUR PHONE]</a></p>
+            <small>Monday – Friday &nbsp;·&nbsp; 9:00 AM – 6:00 PM</small>
+          </div>
+          <div class="cblock">
+            <div class="cblock-label">Email</div>
+            <p><a href="mailto:advisor@yourdomain.com">[UPDATE WITH YOUR EMAIL]</a></p>
+            <small>Response within 1 business day</small>
+          </div>
+          <div class="cblock">
+          <div class="cblock">
+            <div class="cblock-label">Intake Questionnaire</div>
+            <p><a href="quote.html">Complete the intake form →</a></p>
+            <small>For eligibility evaluation and carrier matching</small>
+          </div>
+
+          <div style="margin-top:0.5rem;background:var(--warm);border-left:2px solid var(--gold);padding:1.1rem 1.3rem;font-size:0.74rem;color:var(--text);line-height:1.75;font-weight:300;">
+            <strong style="color:var(--ink);font-weight:500;">HIPAA Notice:</strong> Any personal or health information submitted through this contact form or any channel on this site is handled in strict compliance with HIPAA federal privacy regulations and applicable state law. Information will not be shared with any third party without explicit written authorization.
+          </div>
+        </div>
+
+        <div class="cf-panel">
+          <h3>Submit an Inquiry</h3>
+          <p class="csub">Complete the form below. All submissions are reviewed by a licensed advisor and responded to within one business day.</p>
+
+          <div id="cForm">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="field"><label>First Name</label><input type="text" id="cf1" placeholder="First name"/></div>
+              <div class="field"><label>Last Name</label><input type="text" id="cf2" placeholder="Last name"/></div>
+            </div>
+            <div class="field"><label>Email Address</label><input type="email" id="cf3" placeholder="your@email.com"/></div>
+            <div class="field"><label>Phone Number</label><input type="tel" id="cf4" placeholder="(555) 000-0000"/></div>
+
+            <div class="field">
+              <label>Nature of Inquiry</label>
+              <div class="choices">
+                <button class="cbtn" onclick="cPick(this,'Coverage / Eligibility')">Coverage / Eligibility</button>
+                <button class="cbtn" onclick="cPick(this,'Policy Information')">Policy Information</button>
+                <button class="cbtn" onclick="cPick(this,'Health Condition')">Health Condition</button>
+                <button class="cbtn" onclick="cPick(this,'Existing Application')">Existing Application</button>
+                <button class="cbtn" onclick="cPick(this,'General Inquiry')">General Inquiry</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Preferred Contact Method</label>
+              <div class="choices">
+                <button class="cbtn" onclick="cPref(this,'Email')">Email</button>
+                <button class="cbtn" onclick="cPref(this,'Phone Call')">Phone Call</button>
+                <button class="cbtn" onclick="cPref(this,'Text Message')">Text Message</button>
+              </div>
+            </div>
+
+            <div class="field"><label>Message</label><textarea id="cf5" style="min-height:110px;" placeholder="Describe your inquiry in as much detail as you are comfortable sharing at this stage."></textarea></div>
+
+            <div class="legal-box">
+              <strong>Privacy Notice:</strong> Information submitted through this form is used solely to respond to your inquiry and is handled in compliance with HIPAA and applicable state privacy law. By submitting this form, you consent to being contacted by a licensed insurance advisor in connection with your inquiry.
+            </div>
+
+            <button class="btn-ink" onclick="cSubmit()" style="margin-top:1.8rem;width:100%;padding:1rem;font-size:0.7rem;">Submit Inquiry</button>
+          </div>
+
+          <div id="cSuccess" style="display:none;text-align:center;padding:3.5rem 1rem;">
+            <div style="font-family:var(--serif);font-size:3.5rem;color:var(--gold);font-style:italic;margin-bottom:1rem;">✦</div>
+            <h3 style="font-size:1.4rem;font-weight:400;margin-bottom:0.6rem;">Inquiry Received.</h3>
+            <p style="color:var(--text);font-size:0.87rem;font-weight:300;line-height:1.8;max-width:380px;margin:0 auto;">Your inquiry has been submitted and will be reviewed by a licensed advisor. You will receive a response within one business day. For immediate assistance, .</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer"><div class="disclaimer-inner"><strong>Disclosure:</strong> This practice operates as a licensed independent insurance agency. All products are underwritten by the issuing company and subject to individual underwriting approval. Applications may involve MIB and FCRA consumer report inquiries, of which the client will be informed prior to submission.</div></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-main">Eboni Morris</div>
+        <div class="fb-sub">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+        <div class="footer-license">
+          <div class="fl-title">License Verification</div>
+          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+        </div>
+      
+      </div>
+
+      <!-- CARRIER DISCLOSURE — Georgia Rule 120-2-11-.07(4) — spans full width -->
+      <div style="grid-column:1/-1;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:0.5rem;">
+        <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
+        <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE — separated by &nbsp;&middot;&nbsp; — update before publishing]</p>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">HIPAA Notice</a></li><li><a href="#">MIB &amp; FCRA Disclosure</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Licensing Information</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Advisor. All rights reserved.</span>
+      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+    </div>
+  </div>
+</footer>
+
+<script src="_shared.js"></script>
+<script>
+  function submitCapture(){
+    const first = document.getElementById('cap_first').value.trim();
+    const email = document.getElementById('cap_email').value.trim();
+    const phone = document.getElementById('cap_phone').value.trim();
+    if(!first || !email || !phone){
+      alert('Please enter your name, email address, and phone number to continue.');
+      return;
+    }
+    // TODO: Connect to Zapier webhook URL here when platform is selected
+    // fetch('YOUR_ZAPIER_WEBHOOK_URL', { method:'POST', body: JSON.stringify({first, last: document.getElementById('cap_last').value.trim(), email, phone}) });
+    console.log('Lead capture:', { first, last: document.getElementById('cap_last').value.trim(), email, phone });
+    document.getElementById('captureForm').style.display = 'none';
+    document.getElementById('captureSuccess').style.display = 'block';
+  }
+
+  let ctype='', cpref='';
+  function cPick(btn,v){ btn.closest('.choices').querySelectorAll('.cbtn').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); ctype=v; }
+  function cPref(btn,v){ btn.closest('.choices').querySelectorAll('.cbtn').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); cpref=v; }
+  function cSubmit(){
+    const name=document.getElementById('cf1').value.trim();
+    const email=document.getElementById('cf3').value.trim();
+    const msg=document.getElementById('cf5').value.trim();
+    if(!name||!email||!msg){ alert('Please complete your name, email address, and message before submitting.'); return; }
+    console.log('Contact submission:',{name,last:document.getElementById('cf2').value,email,phone:document.getElementById('cf4').value,ctype,cpref,msg});
+    document.getElementById('cForm').style.display='none';
+    document.getElementById('cSuccess').style.display='block';
+  }
+</script>
+</body>
+</html>
