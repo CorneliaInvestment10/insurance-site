@@ -603,3 +603,230 @@ footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
   flex-wrap: wrap;
   gap: 0.15rem 0;
 }
+
+/* ===== CENTERED PAGE HERO (replaces split phs on inner pages) ===== */
+.page-hero-centered {
+  background: var(--ink);
+  padding: 4rem 2rem 3.5rem;
+  text-align: center;
+}
+.phc-inner { max-width: 720px; margin: 0 auto; }
+.phc-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.phc-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+.phc-desc {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 580px;
+  margin: 0 auto 1.6rem;
+}
+.phc-desc a { color: var(--gold); }
+.phc-creds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+.phc-cred {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+}
+.phc-sep { color: var(--gold); font-size: 0.7rem; }
+.phc-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--white);
+  padding: 0.8rem 2rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.phc-btn:hover { background: var(--ink); border: 1px solid var(--gold); }
+
+/* ===== GLOBAL FONT SIZE INCREASE for body/reading text ===== */
+body { font-size: 16px; }
+.sec-lead { font-size: 1.1rem !important; }
+.val-cell p { font-size: 1rem !important; }
+.detail-panel p { font-size: 1.05rem !important; }
+.detail-panel li { font-size: 1.03rem !important; }
+.acc-body p { font-size: 1.03rem !important; }
+.fcard p, .fsub { font-size: 1.02rem !important; }
+.compare-table td { font-size: 1rem !important; }
+.disclaimer-inner { font-size: 0.9rem !important; }
+.fl-body { font-size: 0.88rem !important; }
+.field label { font-size: 0.82rem !important; }
+.disclosure-text { font-size: 0.98rem !important; }
+.rider-card-desc { font-size: 0.98rem !important; }
+.topic-card-label { font-size: 1.1rem !important; }
+.mistake-card-title { font-size: 1.02rem !important; }
+.cond-cell { font-size: 0.97rem !important; }
+.proc-item p { font-size: 1rem !important; }
+.hero-desc { font-size: 1.05rem !important; }
+.phc-desc { font-size: 1.05rem !important; }
+@media(max-width:600px){
+  .page-hero-centered { padding: 2.5rem 1.2rem 2rem; }
+  .phc-title { font-size: 1.8rem; }
+  .phc-creds { flex-direction: column; gap: 0.3rem; }
+  .phc-sep { display: none; }
+}
+
+/* Secondary hero button */
+.btn-outline-light {
+  display: inline-block;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  padding: 0.72rem 1.6rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline-light:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ===== REFERRAL BOX ===== */
+.referral-box {
+  background: var(--white);
+  border: 1px solid var(--warm3);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--r);
+  padding: 2rem;
+  margin-top: 3rem;
+  max-width: 760px;
+}
+@media(max-width:700px){ .referral-box { padding: 1.4rem 1.2rem; } }
+
+/* ===== ACCESSIBILITY TOOLBAR ===== */
+.a11y-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.a11y-btn-main {
+  width: 52px; height: 52px;
+  background: var(--ink);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: background 0.2s;
+  font-family: var(--sans);
+}
+.a11y-btn-main:hover { background: var(--gold); }
+.a11y-panel {
+  display: none;
+  background: var(--white);
+  border: 1px solid var(--warm3);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  min-width: 200px;
+  text-align: left;
+}
+.a11y-panel.open { display: block; }
+.a11y-panel-title {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.a11y-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--warm3);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink);
+  font-weight: 300;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+.a11y-option:last-child { border-bottom: none; }
+.a11y-option-label { flex: 1; }
+.a11y-switch {
+  display: flex; gap: 0.3rem;
+}
+.a11y-sw-btn {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: 3px;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: var(--sans);
+  color: var(--text);
+  transition: all 0.15s;
+}
+.a11y-sw-btn:hover, .a11y-sw-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.a11y-close {
+  width: 100%;
+  margin-top: 0.75rem;
+  background: none;
+  border: 1px solid var(--warm3);
+  border-radius: 3px;
+  padding: 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--light);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.a11y-close:hover { border-color: var(--gold); color: var(--gold); }
+
+/* High contrast mode */
+body.hc-mode { filter: contrast(1.6) saturate(0); }
+/* Large text mode */
+body.lg-text { font-size: 120%; }
+/* Dyslexia font */
+@import url('https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap');
+body.dyslexia-font * { font-family: 'OpenDyslexic', sans-serif !important; }
+/* Reduce motion */
+body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+body.xl-text { font-size: 135%; }

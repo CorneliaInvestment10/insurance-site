@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Myth Busted - Insurance Knowledge Game | Covered With Conditions</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ===== MYTH BUSTED GAME STYLES ===== */
+    .game-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* Score bar */
+    .score-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--ink);
+      padding: 0.9rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .score-item {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+    }
+    .score-item span {
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: var(--serif);
+      margin-left: 0.4rem;
+    }
+    .score-item.correct span { color: #5fba7d; }
+    .score-item.wrong span { color: #e07b7b; }
+
+    /* Progress */
+    .game-progress {
+      height: 5px;
+      background: var(--warm3);
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .game-progress-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    /* Question card */
+    .question-card {
+      background: var(--white);
+      border: 1px solid var(--warm3);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .q-number {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .q-statement {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.45;
+      margin-bottom: 2rem;
+    }
+
+    /* Soccer field */
+    .soccer-field {
+      position: relative;
+      background: linear-gradient(180deg, #2d7a3a 0%, #3a9348 50%, #2d7a3a 100%);
+      border-radius: 12px;
+      padding: 2rem 1rem 1.5rem;
+      margin-bottom: 1.2rem;
+      border: 3px solid #1a5c25;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    /* Field lines */
+    .soccer-field::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-50%);
+    }
+
+    /* Goal */
+    .goal-area {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .goal {
+      width: 140px;
+      height: 70px;
+      border: 3px solid rgba(255,255,255,0.8);
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+      background: rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    /* Goal net pattern */
+    .goal::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 14px 14px;
+    }
+    .goal-keeper {
+      font-size: 2rem;
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      transition: transform 0.3s;
+    }
+
+    /* Ball */
+    .ball-area {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .kick-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .kick-btn:hover { transform: scale(1.08); }
+    .kick-btn:disabled { cursor: default; opacity: 0.6; }
+
+    .ball {
+      width: 54px;
+      height: 54px;
+      background: radial-gradient(circle at 35% 35%, #fff 0%, #ddd 60%, #bbb 100%);
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    .ball-label {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* Ball kick animations */
+    @keyframes kickGoal {
+      0% { transform: scale(1) translateY(0); }
+      30% { transform: scale(0.85) translateY(-20px); }
+      70% { transform: scale(0.6) translateY(-80px) translateX(0); }
+      100% { transform: scale(0.4) translateY(-120px); opacity: 0.3; }
+    }
+    @keyframes kickMiss {
+      0% { transform: scale(1) translateY(0); }
+      20% { transform: scale(0.9) translateY(-10px); }
+      60% { transform: scale(0.85) translateY(-30px) translateX(60px); }
+      100% { transform: scale(0.8) translateY(-10px) translateX(120px); opacity: 0.3; }
+    }
+    .ball.kicked-goal { animation: kickGoal 0.7s ease forwards; }
+    .ball.kicked-miss { animation: kickMiss 0.7s ease forwards; }
+
+    /* Result overlay */
+    .result-overlay {
+      display: none;
+      text-align: center;
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      animation: fadeUp 0.3s ease;
+    }
+    .result-overlay.show { display: block; }
+    .result-overlay.correct { background: rgba(95,186,125,0.12); border: 1px solid rgba(95,186,125,0.3); }
+    .result-overlay.wrong { background: rgba(224,123,123,0.1); border: 1px solid rgba(224,123,123,0.25); }
+    .result-icon { font-size: 2rem; margin-bottom: 0.4rem; }
+    .result-verdict {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .result-verdict.correct { color: #2d7a3a; }
+    .result-verdict.wrong { color: #b03a3a; }
+    .result-explanation {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .next-btn {
+      display: block;
+      width: 100%;
+      margin-top: 1.2rem;
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      padding: 0.9rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .next-btn:hover { background: var(--gold); }
+
+    /* Halftime / Break screen */
+    .break-screen {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--warm3);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .break-screen.show { display: block; }
+    .break-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .break-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+    .break-score {
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .break-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .break-btn-continue {
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      padding: 0.8rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .break-btn-continue:hover { background: var(--gold); }
+    .break-btn-end {
+      background: var(--warm);
+      color: var(--ink);
+      border: 1px solid var(--warm3);
+      padding: 0.8rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .break-btn-end:hover { border-color: var(--gold); }
+
+    /* Final score screen */
+    .final-screen {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--warm3);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .final-screen.show { display: block; }
+    .final-trophy { font-size: 4rem; margin-bottom: 1rem; }
+    .final-title {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .final-score-big {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .final-message {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0.8rem auto 2rem;
+    }
+    .final-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      transition: background 0.2s;
+      display: block;
+      max-width: 280px;
+      margin: 0 auto 0.75rem;
+    }
+    .final-cta:hover { background: var(--ink); }
+    .final-cta-secondary {
+      display: block;
+      max-width: 280px;
+      margin: 0 auto;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .final-cta-secondary:hover { color: var(--gold); }
+
+    /* Rules screen */
+    .rules-screen {
+      background: var(--white);
+      border: 1px solid var(--warm3);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+    }
+    .rules-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .rules-title {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .rules-subtitle {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .rules-list {
+      text-align: left;
+      max-width: 420px;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .rules-item {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+    .rules-num {
+      width: 26px;
+      height: 26px;
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 500;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .start-btn {
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      padding: 1rem 3rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1rem;
+    }
+    .start-btn:hover { background: var(--ink); }
+
+    @media(max-width:600px){
+      .q-statement { font-size: 1.1rem; }
+      .ball-area { gap: 2rem; }
+      .ball { width: 46px; height: 46px; font-size: 1.3rem; }
+      .goal { width: 110px; height: 55px; }
+      .question-card { padding: 1.8rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Covered With Conditions</div>
+    <div class="brand-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="education.html">Insurance Education</a></li>
+    <li><a href="myths.html" class="active">Myth Busted</a></li>
+    <li><a href="quote.html">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Insurance Education</a>
+  <a href="myths.html" class="active">Myth Busted</a>
+  <a href="quote.html">Get a Quote</a>
+</div>
+
+<main class="page-top">
+  <div class="page-hero-centered">
+    <div class="phc-inner">
+      <div class="phc-eyebrow">Interactive Game &nbsp;·&nbsp; 50 Questions &nbsp;·&nbsp; True or False</div>
+      <h1 class="phc-title">Myth Busted</h1>
+      <p class="phc-desc">How much do you really know about life insurance? Step up to the pitch, kick the ball toward Myth or Fact, and find out.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--warm2);">
+    <div class="section-inner" style="max-width:820px;">
+      <div class="game-wrap">
+
+        <!-- RULES SCREEN -->
+        <div class="rules-screen" id="rulesScreen">
+          <div class="rules-icon">⚽</div>
+          <div class="rules-title">Welcome to the Pitch</div>
+          <div class="rules-subtitle">Life Insurance Myth Busted Challenge</div>
+          <div class="rules-list">
+            <div class="rules-item"><div class="rules-num">1</div><div>You will be shown a statement about life insurance. Decide whether it is a <strong>Myth</strong> or a <strong>Fact</strong> and kick the ball toward your answer.</div></div>
+            <div class="rules-item"><div class="rules-num">2</div><div>After each kick, the correct answer is revealed along with a brief explanation to help you understand why.</div></div>
+            <div class="rules-item"><div class="rules-num">3</div><div>There are <strong>50 questions</strong> total. After every 10 questions you can choose to continue or end the game.</div></div>
+            <div class="rules-item"><div class="rules-num">4</div><div>Every correct answer is a <strong>goal</strong>. Wrong answers are saved shots. Track your score on the scoreboard above each question.</div></div>
+            <div class="rules-item"><div class="rules-num">5</div><div>At the end, you will receive a personalized result and an invitation to see what coverage may be available for you.</div></div>
+          </div>
+          <button class="start-btn" onclick="startGame()">Kick Off ⚽</button>
+        </div>
+
+        <!-- GAME AREA (hidden until start) -->
+        <div id="gameArea" style="display:none;">
+
+          <!-- Score bar -->
+          <div class="score-bar">
+            <div class="score-item">Question<span id="qNum">1</span>/50</div>
+            <div class="score-item correct">Goals<span id="scoreCorrect">0</span></div>
+            <div class="score-item wrong">Saved<span id="scoreWrong">0</span></div>
+            <div class="score-item">Streak<span id="streak">0</span>🔥</div>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="game-progress">
+            <div class="game-progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+
+          <!-- Question card -->
+          <div class="question-card" id="questionCard">
+            <div class="q-number" id="qLabel">Question 1 of 50</div>
+            <div class="q-statement" id="qStatement">Loading...</div>
+
+            <!-- Soccer field -->
+            <div class="soccer-field">
+              <div class="goal-area">
+                <div class="goal">
+                  <div class="goal-keeper" id="keeper">🧤</div>
+                </div>
+              </div>
+              <div class="ball-area">
+                <button class="kick-btn" id="mythBtn" onclick="answer('myth')" aria-label="Kick toward Myth">
+                  <div class="ball" id="mythBall">⚽</div>
+                  <div class="ball-label">MYTH</div>
+                </button>
+                <button class="kick-btn" id="factBtn" onclick="answer('fact')" aria-label="Kick toward Fact">
+                  <div class="ball" id="factBall">⚽</div>
+                  <div class="ball-label">FACT</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Result -->
+            <div class="result-overlay" id="resultOverlay">
+              <div class="result-icon" id="resultIcon"></div>
+              <div class="result-verdict" id="resultVerdict"></div>
+              <div class="result-explanation" id="resultExplanation"></div>
+              <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BREAK SCREEN -->
+        <div class="break-screen" id="breakScreen">
+          <div class="break-icon">⏸️</div>
+          <div class="break-title" id="breakTitle">Halftime</div>
+          <div class="break-score" id="breakScore"></div>
+          <div class="break-btns">
+            <button class="break-btn-continue" onclick="continueGame()">Continue Playing ⚽</button>
+            <button class="break-btn-end" onclick="endGame()">End Game & See Results</button>
+          </div>
+        </div>
+
+        <!-- FINAL SCREEN -->
+        <div class="final-screen" id="finalScreen">
+          <div class="final-trophy" id="finalTrophy">🏆</div>
+          <div class="final-title" id="finalTitle">Final Score</div>
+          <div class="final-score-big" id="finalScoreBig">0/0</div>
+          <div class="final-message" id="finalMessage"></div>
+          <a href="quote.html" class="final-cta">Get a Quote Now</a>
+          <a href="myths.html" class="final-cta-secondary" onclick="location.reload();return false;">Play Again</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    <div class="disclaimer-inner">
+      <strong>Educational Notice:</strong> All statements in this game are provided for general educational purposes only. Insurance products, terms, eligibility criteria, and underwriting guidelines vary by carrier and are subject to change. This game does not constitute insurance advice or an offer of coverage. Consult a licensed insurance advisor for guidance specific to your situation.
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-main">Eboni Morris</div>
+        <div class="fb-sub">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+        <div class="footer-license">
+          <div class="fl-title">License Verification</div>
+          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, OH, SC, TX</p>
+          <p class="fl-body" style="margin-top:0.4rem;font-style:italic;">Not located in one of these states? Complete the form anyway. We are actively expanding and work with licensed partners in additional states who may be able to serve you.</p>
+        </div>
+        <div style="grid-column:1/-1;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:0.5rem;">
+          <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
+          <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE - update before publishing per Georgia Rule 120-2-11-.07(4)]</p>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">HIPAA Notice</a></li><li><a href="#">MIB &amp; FCRA Disclosure</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Licensing Information</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Advisor. All rights reserved.</span>
+      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+    </div>
+  </div>
+</footer>
+
+<script src="_shared.js"></script>
+<script>
+const QUESTIONS = [
+  { statement: "Life insurance is only for older people.", answer: "myth", explanation: "Life insurance is actually most affordable when purchased young and healthy. Locking in a low premium early is one of the smartest financial moves a young adult can make." },
+  { statement: "You need to have a medical exam to qualify for life insurance.", answer: "myth", explanation: "Many carriers offer simplified issue and guaranteed issue policies that require no medical exam or blood work, particularly at qualifying face amounts. Exam requirements vary by carrier and product." },
+  { statement: "A decline from one insurance company means you cannot get coverage anywhere.", answer: "myth", explanation: "Different carriers have different underwriting guidelines. A condition that causes a decline at one company may qualify for coverage at another - sometimes the difference is age range, lookback period, or current treatment status." },
+  { statement: "The death benefit from a life insurance policy is generally income tax-free to the beneficiary.", answer: "fact", explanation: "In most cases, life insurance death benefits are received income tax-free by named beneficiaries. Tax treatment depends on specific circumstances, so consulting a tax advisor is recommended." },
+  { statement: "Your employer-provided life insurance is always enough coverage.", answer: "myth", explanation: "Employer-provided coverage is often limited to one or two times your salary, which may not adequately cover your family's long-term needs. It is also not portable - you lose it if you leave the job." },
+  { statement: "Life insurance with a health condition is impossible to obtain.", answer: "myth", explanation: "Many carriers specialize in insuring applicants with health conditions. Coverage may come in the form of graded benefit, simplified issue, or standard policies depending on the condition and carrier guidelines." },
+  { statement: "Term life insurance builds cash value over time.", answer: "myth", explanation: "Term life insurance provides pure death benefit protection for a defined period with no savings component. Whole life insurance is the product type that builds cash value over time." },
+  { statement: "Whole life insurance can last for your entire lifetime.", answer: "fact", explanation: "Whole life insurance is designed to remain in force for the insured's lifetime, provided premiums are maintained. It does not expire after a set number of years the way term insurance does." },
+  { statement: "Life insurance premiums are the same regardless of your age.", answer: "myth", explanation: "Age is one of the primary factors in determining your premium. The younger and healthier you are at the time of application, the lower your premium is likely to be." },
+  { statement: "Smokers typically pay higher life insurance premiums than non-smokers.", answer: "fact", explanation: "Tobacco and nicotine use in any form is a significant underwriting factor that generally results in substantially higher premiums compared to non-tobacco users of the same age and health profile." },
+
+  { statement: "A graded benefit policy pays the full death benefit immediately upon the insured's death.", answer: "myth", explanation: "Graded benefit policies typically pay a limited benefit - often a return of premiums plus interest - during an initial period of one to three years. The full benefit becomes payable after the graded period ends." },
+  { statement: "Women generally pay lower life insurance premiums than men of the same age and health.", answer: "fact", explanation: "Statistically, women have a longer life expectancy, which is reflected in premium calculations. Female applicants often receive more favorable rates than male applicants with the same profile." },
+  { statement: "Living benefits allow you to access part of your death benefit while still alive.", answer: "fact", explanation: "Many modern policies include living benefit riders - also called Accelerated Death Benefit riders - that allow access to a portion of the death benefit upon qualifying events like terminal, chronic, or critical illness." },
+  { statement: "All life insurance policies require blood work.", answer: "myth", explanation: "Many carriers offer products that do not require a blood draw or physical exam, particularly for lower face amounts or for applicants in certain age ranges. Exam requirements vary by carrier, product, and coverage amount." },
+  { statement: "If you have HIV, you cannot qualify for any life insurance policy.", answer: "myth", explanation: "A small but growing number of carriers offer coverage to applicants with HIV who meet specific clinical criteria, such as an undetectable viral load and CD4 count within defined ranges. Guidelines vary by carrier." },
+  { statement: "You can name anyone as your life insurance beneficiary.", answer: "myth", explanation: "An insurable interest must exist between the policy owner and the beneficiary. This generally includes spouses, parents, children, siblings, and business partners. Random third parties typically cannot be named." },
+  { statement: "A term life policy can sometimes be converted to a permanent policy without new medical evidence.", answer: "fact", explanation: "Many term policies include a conversion privilege allowing the policyholder to convert to permanent coverage without a new medical exam or health questions, within the carrier's defined conversion window." },
+  { statement: "Cash value in a whole life policy grows tax-free.", answer: "fact", explanation: "Cash value in a whole life policy accumulates on a tax-deferred basis, meaning you do not pay taxes on the growth while it remains in the policy. Tax implications arise in certain withdrawal or loan scenarios." },
+  { statement: "Guaranteed issue life insurance has no waiting period before the full benefit is payable.", answer: "myth", explanation: "Guaranteed issue policies almost universally include a graded benefit period, typically two to three years. During this time, death from natural causes results in a return of premiums plus interest, not the full face amount." },
+  { statement: "Your life insurance rates increase every year.", answer: "myth", explanation: "For most term and whole life policies, premiums are level - they are locked in at the rate established when the policy is issued and do not increase during the policy period." },
+
+  { statement: "A stay-at-home parent does not need life insurance.", answer: "myth", explanation: "The financial value of childcare, household management, and caregiving is significant. The cost of replacing these services if a stay-at-home parent passed away could be substantial for the surviving family." },
+  { statement: "Life insurance benefits can be used for any purpose by the beneficiary.", answer: "fact", explanation: "Life insurance death benefits are paid directly to the named beneficiary and can be used for any purpose - living expenses, mortgage payments, education, or anything else the beneficiary chooses." },
+  { statement: "You need to be in perfect health to qualify for any life insurance.", answer: "myth", explanation: "Coverage is available across a wide range of health profiles. Standard, simplified issue, graded benefit, and guaranteed issue products exist specifically to accommodate applicants with varying health histories." },
+  { statement: "The face amount you choose affects your premium.", answer: "fact", explanation: "The larger the death benefit requested, the higher the premium. Coverage amount is one of several key factors - along with age, health, and policy type - that determine what you pay." },
+  { statement: "Life insurance purchased at a young age locks in your health rating permanently.", answer: "fact", explanation: "Once a policy is issued, your premium and coverage terms are locked in based on your health at time of application. Future health changes do not affect your rate or the carrier's ability to cancel coverage." },
+  { statement: "A life insurance company can cancel your policy if your health deteriorates after it is issued.", answer: "myth", explanation: "Once a policy is in force and past the contestability period, the carrier cannot cancel your coverage or raise your premiums due to changes in your health, as long as you continue to pay your premiums." },
+  { statement: "Final expense policies are typically whole life policies with lower face amounts.", answer: "fact", explanation: "Final expense coverage is generally provided through whole life or guaranteed issue whole life products with face amounts ranging from a few thousand dollars to $25,000 or $50,000, depending on the carrier." },
+  { statement: "Your beneficiary must file for the death benefit - it is not paid automatically.", answer: "fact", explanation: "Beneficiaries must file a claim with the insurance company following the insured's death. Keeping policy documents accessible and informing beneficiaries that coverage exists is critical for timely claim filing." },
+  { statement: "Business owners cannot use life insurance in their business planning.", answer: "myth", explanation: "Life insurance is commonly used in business contexts for key person coverage, buy-sell agreement funding, business loan collateral, and executive benefit programs." },
+  { statement: "You can borrow against the cash value of a whole life policy.", answer: "fact", explanation: "Policyholders can take loans against the accumulated cash value of a whole life policy for any reason. These loans accrue interest and, if not repaid, may reduce the death benefit payable to beneficiaries." },
+
+  { statement: "Term life insurance is permanent coverage.", answer: "myth", explanation: "Term life provides coverage for a defined period - 10, 15, 20, 25, or 30 years. When the term ends, coverage ceases unless the policy is renewed or converted to permanent coverage." },
+  { statement: "A waiver of premium rider keeps your policy active if you become disabled and cannot work.", answer: "fact", explanation: "A waiver of premium rider waives the premium obligation during a qualifying total disability period, keeping the policy in force without payment. Disability definitions and qualifying criteria vary by carrier." },
+  { statement: "All insurance companies use the same underwriting criteria.", answer: "myth", explanation: "Underwriting guidelines vary significantly among carriers. One company may decline a condition that another company covers, making it important to work with an independent agent who can compare multiple options." },
+  { statement: "Life insurance bought through the internet does not require medical questions.", answer: "myth", explanation: "Many online life insurance products do require health questions and may order prescription or database checks as part of automated underwriting. Guaranteed issue products are the exception, not the rule." },
+  { statement: "A chronic illness rider can help cover long-term care costs.", answer: "fact", explanation: "A chronic illness rider allows early access to the death benefit when the insured cannot perform two or more Activities of Daily Living. This can help offset long-term care or home care expenses." },
+  { statement: "Single people never need life insurance.", answer: "myth", explanation: "Single individuals may still benefit from life insurance to cover outstanding debts, support dependents, lock in favorable rates while young, or leave a legacy to a cause or family member." },
+  { statement: "Life insurance premiums are always tax deductible.", answer: "myth", explanation: "Personal life insurance premiums are generally not tax deductible. Certain business-owned policies used for specific purposes may have different tax treatment. Consult a qualified tax advisor for your situation." },
+  { statement: "The contestability period is typically the first two years after a policy is issued.", answer: "fact", explanation: "During the two-year contestability period, the carrier retains the right to investigate and potentially deny a claim based on material misrepresentation on the application. After two years, the policy is generally incontestable." },
+  { statement: "You can have multiple life insurance policies at the same time.", answer: "fact", explanation: "It is perfectly legal and common to have more than one life insurance policy simultaneously. Carriers evaluate total coverage amounts across all policies during underwriting." },
+  { statement: "Limited pay whole life means you pay premiums for only a set number of years but keep coverage for life.", answer: "fact", explanation: "A limited pay or Smartpay whole life policy allows the policyholder to pay premiums for a defined period - such as 10 or 20 years, or until a specific age - after which no further premiums are owed and coverage continues for life." },
+
+  { statement: "The MIB keeps a record of your past insurance applications.", answer: "fact", explanation: "The Medical Information Bureau is a data exchange used by member insurance companies. If you have previously applied for life or health insurance, the MIB may have coded information that future carriers can review." },
+  { statement: "Prescription drug history has no impact on life insurance underwriting.", answer: "myth", explanation: "Many carriers use prescription history databases to cross-reference medications with reported health conditions during underwriting. Your prescription record can reveal conditions not disclosed on an application." },
+  { statement: "A children's term rider can protect a child's future insurability.", answer: "fact", explanation: "A children's term rider can be converted to a permanent policy when the child reaches adulthood, regardless of health changes that occurred after the rider was issued. This preserves the child's ability to obtain coverage later in life." },
+  { statement: "Life insurance is too expensive for most people to afford.", answer: "myth", explanation: "A healthy person in their 30s can often obtain a meaningful term life policy for a cost comparable to a monthly streaming subscription. Premium varies by age, health, coverage amount, and policy type." },
+  { statement: "Organ transplant recipients can never qualify for life insurance.", answer: "myth", explanation: "Certain carriers do offer coverage to organ transplant recipients, subject to specific criteria including time since transplant, type of organ, current health status, and medications. Availability is limited but exists." },
+  { statement: "An accidental death benefit rider pays extra if you die from an accident.", answer: "fact", explanation: "An accidental death benefit rider provides an additional benefit - sometimes double the base death benefit - if the insured dies as a direct result of a covered accident. It does not apply to illness-related deaths." },
+  { statement: "People with a history of substance use cannot get life insurance.", answer: "myth", explanation: "Coverage may be available to applicants with a history of substance use, depending on the time elapsed since use, whether treatment was completed, and the specific carrier's guidelines. Some carriers specialize in this profile." },
+  { statement: "Your driving record can affect your life insurance application.", answer: "fact", explanation: "Carriers may review your motor vehicle report as part of underwriting. Multiple violations or DUI convictions can result in a higher rate or, in some cases, a decline depending on the severity and recency." },
+  { statement: "Alzheimer's patients can qualify for certain types of life insurance.", answer: "fact", explanation: "Guaranteed issue life insurance, which requires no health questions or medical exam, may be available to applicants with Alzheimer's disease who meet the carrier's age requirements. Standard coverage is typically not available." },
+  { statement: "Getting a quote for life insurance negatively impacts your credit score.", answer: "myth", explanation: "A life insurance application does not result in a hard credit inquiry that affects your credit score. Any credit-related checks conducted as part of underwriting are soft inquiries used for risk assessment purposes only." },
+];
+
+let currentQ = 0;
+let correct = 0;
+let wrong = 0;
+let streak = 0;
+let answered = false;
+let totalAnswered = 0;
+
+function startGame() {
+  document.getElementById('rulesScreen').style.display = 'none';
+  document.getElementById('gameArea').style.display = 'block';
+  loadQuestion();
+}
+
+function loadQuestion() {
+  if (currentQ >= QUESTIONS.length) { showFinal(); return; }
+  const q = QUESTIONS[currentQ];
+  answered = false;
+
+  document.getElementById('qNum').textContent = currentQ + 1;
+  document.getElementById('qLabel').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  document.getElementById('qStatement').textContent = q.statement;
+  document.getElementById('progressFill').style.width = `${((currentQ) / QUESTIONS.length) * 100}%`;
+
+  // Reset balls and buttons
+  const mb = document.getElementById('mythBall');
+  const fb = document.getElementById('factBall');
+  mb.className = 'ball';
+  fb.className = 'ball';
+  document.getElementById('mythBtn').disabled = false;
+  document.getElementById('factBtn').disabled = false;
+
+  // Reset result
+  const overlay = document.getElementById('resultOverlay');
+  overlay.className = 'result-overlay';
+  overlay.innerHTML = '';
+  document.getElementById('keeper').textContent = '🧤';
+}
+
+function answer(choice) {
+  if (answered) return;
+  answered = true;
+  totalAnswered++;
+
+  const q = QUESTIONS[currentQ];
+  const isCorrect = choice === q.answer;
+
+  document.getElementById('mythBtn').disabled = true;
+  document.getElementById('factBtn').disabled = true;
+
+  // Animate ball
+  const chosenBall = document.getElementById(choice === 'myth' ? 'mythBall' : 'factBall');
+  if (isCorrect) {
+    chosenBall.classList.add('kicked-goal');
+    document.getElementById('keeper').textContent = '😮';
+    correct++;
+    streak++;
+  } else {
+    chosenBall.classList.add('kicked-miss');
+    document.getElementById('keeper').textContent = '😤';
+    wrong++;
+    streak = 0;
+  }
+
+  // Update score bar
+  document.getElementById('scoreCorrect').textContent = correct;
+  document.getElementById('scoreWrong').textContent = wrong;
+  document.getElementById('streak').textContent = streak;
+
+  // Show result after animation
+  setTimeout(() => {
+    const overlay = document.getElementById('resultOverlay');
+    overlay.className = `result-overlay show ${isCorrect ? 'correct' : 'wrong'}`;
+    overlay.innerHTML = `
+      <div class="result-icon">${isCorrect ? '⚽ GOAL!' : '🧤 Saved!'}</div>
+      <div class="result-verdict ${isCorrect ? 'correct' : 'wrong'}">${isCorrect ? 'Correct - ' : 'Not quite - '}This statement is a <strong>${q.answer === 'myth' ? 'Myth' : 'Fact'}</strong>.</div>
+      <div class="result-explanation">${q.explanation}</div>
+      <button class="next-btn" onclick="nextQuestion()">${currentQ + 1 < QUESTIONS.length ? 'Next Question &rarr;' : 'See Final Score'}</button>
+    `;
+  }, 750);
+}
+
+function nextQuestion() {
+  currentQ++;
+
+  // Check if it's time for a break (every 10 questions)
+  if (currentQ > 0 && currentQ % 10 === 0 && currentQ < QUESTIONS.length) {
+    showBreak();
+    return;
+  }
+
+  if (currentQ >= QUESTIONS.length) {
+    showFinal();
+  } else {
+    loadQuestion();
+  }
+}
+
+function showBreak() {
+  document.getElementById('gameArea').style.display = 'none';
+  const bs = document.getElementById('breakScreen');
+  bs.className = 'break-screen show';
+  const round = currentQ / 10;
+  const titles = ['', 'Quarter Time', 'Half Time', 'Three Quarter Time', 'Final Stretch', ''];
+  document.getElementById('breakTitle').textContent = titles[round] || 'Break Time';
+  document.getElementById('breakScore').textContent =
+    `You have answered ${currentQ} questions. Goals scored: ${correct}. Shots saved: ${wrong}. ${streak >= 3 ? `You are on a ${streak}-question streak!` : ''} Ready to keep going?`;
+}
+
+function continueGame() {
+  document.getElementById('breakScreen').className = 'break-screen';
+  document.getElementById('gameArea').style.display = 'block';
+  loadQuestion();
+}
+
+function endGame() {
+  document.getElementById('breakScreen').className = 'break-screen';
+  showFinal();
+}
+
+function showFinal() {
+  document.getElementById('gameArea').style.display = 'none';
+  document.getElementById('breakScreen').className = 'break-screen';
+  const fs = document.getElementById('finalScreen');
+  fs.className = 'final-screen show';
+
+  const total = currentQ;
+  const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+  document.getElementById('finalScoreBig').textContent = `${correct}/${total}`;
+
+  let trophy, title, message;
+  if (pct >= 90) {
+    trophy = '🏆'; title = 'Insurance Expert!';
+    message = `Outstanding - you scored ${pct}% and answered ${correct} out of ${total} questions correctly. Your knowledge of life insurance is exceptional. Even experts benefit from speaking with a licensed advisor to explore coverage tailored to their specific situation.`;
+  } else if (pct >= 70) {
+    trophy = '🥇'; title = 'Well Informed!';
+    message = `Impressive - you scored ${pct}% with ${correct} correct answers out of ${total}. You have a solid understanding of life insurance. A quick conversation with a licensed advisor can help you translate that knowledge into the right coverage for your needs.`;
+  } else if (pct >= 50) {
+    trophy = '🥈'; title = 'Getting There!';
+    message = `Good effort - you scored ${pct}% with ${correct} correct out of ${total}. There is always more to learn about life insurance, and that is exactly why we are here. A licensed advisor can answer your questions and help you find coverage that works for your situation.`;
+  } else {
+    trophy = '⚽'; title = 'Keep Learning!';
+    message = `You scored ${pct}% with ${correct} correct out of ${total}. Life insurance can be confusing - that is not your fault, it is why independent advisors exist. Whether you scored high or low today, you deserve coverage that fits your life. Let us help you find it.`;
+  }
+
+  document.getElementById('finalTrophy').textContent = trophy;
+  document.getElementById('finalTitle').textContent = title;
+  document.getElementById('finalMessage').textContent = message;
+}
+</script>
+
+<!-- ACCESSIBILITY TOOLBAR -->
+<div class="a11y-toggle" role="region" aria-label="Accessibility Options">
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings">
+    <div class="a11y-panel-title">Accessibility Options</div>
+    <div class="a11y-option">
+      <span class="a11y-option-label">Text Size</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('text','normal')" id="ts-normal" aria-label="Normal text size">A</button>
+        <button class="a11y-sw-btn" onclick="a11y('text','large')" id="ts-large" aria-label="Large text size">A+</button>
+        <button class="a11y-sw-btn" onclick="a11y('text','xl')" id="ts-xl" aria-label="Extra large text">A++</button>
+      </div>
+    </div>
+    <div class="a11y-option">
+      <span class="a11y-option-label">High Contrast</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('contrast','off')" id="hc-off">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('contrast','on')" id="hc-on">On</button>
+      </div>
+    </div>
+    <div class="a11y-option">
+      <span class="a11y-option-label">Dyslexia Font</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('dyslexia','off')" id="dy-off">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('dyslexia','on')" id="dy-on">On</button>
+      </div>
+    </div>
+    <div class="a11y-option">
+      <span class="a11y-option-label">Reduce Motion</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('motion','off')" id="rm-off">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('motion','on')" id="rm-on">On</button>
+      </div>
+    </div>
+    <button class="a11y-close" onclick="toggleA11y()">Close</button>
+  </div>
+  <button class="a11y-btn-main" onclick="toggleA11y()" aria-label="Accessibility Options" title="Accessibility Options">&#9854;</button>
+</div>
+<script>
+  function toggleA11y(){const p=document.getElementById('a11yPanel');p.classList.toggle('open');}
+  function a11y(type,val){const b=document.body;if(type==='text'){b.classList.remove('lg-text','xl-text');document.querySelectorAll('[id^="ts-"]').forEach(el=>el.classList.remove('active'));if(val==='large'){b.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}else if(val==='xl'){b.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}else{document.getElementById('ts-normal').classList.add('active');}localStorage.setItem('a11y_text',val);}if(type==='contrast'){b.classList.toggle('hc-mode',val==='on');document.getElementById('hc-on').classList.toggle('active',val==='on');document.getElementById('hc-off').classList.toggle('active',val==='off');localStorage.setItem('a11y_contrast',val);}if(type==='dyslexia'){b.classList.toggle('dyslexia-font',val==='on');document.getElementById('dy-on').classList.toggle('active',val==='on');document.getElementById('dy-off').classList.toggle('active',val==='off');localStorage.setItem('a11y_dyslexia',val);}if(type==='motion'){b.classList.toggle('reduce-motion',val==='on');document.getElementById('rm-on').classList.toggle('active',val==='on');document.getElementById('rm-off').classList.toggle('active',val==='off');localStorage.setItem('a11y_motion',val);}}
+  (function(){const t=localStorage.getItem('a11y_text');const c=localStorage.getItem('a11y_contrast');const d=localStorage.getItem('a11y_dyslexia');const m=localStorage.getItem('a11y_motion');if(t)a11y('text',t);else document.getElementById('ts-normal').classList.add('active');if(c)a11y('contrast',c);else document.getElementById('hc-off').classList.add('active');if(d)a11y('dyslexia',d);else document.getElementById('dy-off').classList.add('active');if(m)a11y('motion',m);else document.getElementById('rm-off').classList.add('active');})();
+</script>
+</body>
+</html>

@@ -115,8 +115,8 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="education.html" class="active">Insurance Education</a></li>
-    <li><a href="quote.html">Get a Quote</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li>
+    <li><a href="quote.html">Contact</a></li>
   </ul>
   <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
@@ -124,20 +124,18 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="education.html" class="active">Insurance Education</a>
+  <a href="myths.html">Myth Busted</a>
   <a href="quote.html">Get a Quote</a>
-  <a href="contact.html">Contact</a>
+  <a href="quote.html">Contact</a>
 </div>
 
 <main class="page-top">
-  <div class="phs">
-    <div class="phs-left">
-      <div class="mono">Ed.</div>
-      <h1>Insurance Education</h1>
-      <div class="phs-sub">Select a topic &nbsp;·&nbsp; Read what you need</div>
-    </div>
-    <div class="phs-right">
-      <p>Use the tabs below to navigate by topic. Within each section, select the specific item you want to learn about - only that item expands. Nothing is displayed until you choose it, so you are never overwhelmed with information you did not ask for.</p>
-      <p>When you are ready to proceed, <a href="quote.html">complete the intake questionnaire</a> or <a href="contact.html">contact us directly</a>. All inquiries are reviewed by a licensed advisor.</p>
+  <div class="page-hero-centered">
+    <div class="phc-inner">
+      <div class="phc-eyebrow">Select a topic &nbsp;·&nbsp; Read what you need</div>
+      <h1 class="phc-title">Insurance Education</h1>
+      <p class="phc-desc">Use the tabs below to navigate by topic. Within each section, select the specific item you want to learn about - only that item expands. Nothing is displayed until you choose it. When you are ready to proceed, <a href="quote.html" style="color:var(--gold);">complete the intake questionnaire</a>. All inquiries are reviewed by a licensed advisor.</p>
+      <a href="quote.html" class="phc-btn">Get a Quote</a>
     </div>
   </div>
 
@@ -149,6 +147,7 @@
         <div>
           <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">General Information Notice</div>
           <p style="font-size:0.96rem;color:var(--text);line-height:1.8;font-weight:300;margin:0;">All content on this page is provided for <strong style="color:var(--ink);font-weight:500;">general educational purposes only</strong> and does not constitute insurance advice, a policy illustration, or an offer of coverage. Product definitions, terms, structures, benefit triggers, rider provisions, and eligibility criteria <strong style="color:var(--ink);font-weight:500;">vary among insurance carriers</strong> and are subject to change at any time without notice. Language used by one carrier may differ materially from language used by another carrier for a similar product. All coverage is subject to the actual policy contract and the issuing carrier's underwriting guidelines at the time of application.</p>
+          <p style="font-size:0.9rem;color:var(--text);line-height:1.8;font-weight:300;margin-top:0.6rem;"><strong style="color:var(--ink);font-weight:500;">No medical exam or blood work is required on many products</strong> across multiple carriers at qualifying coverage amounts. Exam requirements vary by carrier, product type, and the amount of coverage applied for - this is not universal and does not apply to all companies or all face amounts.</p>
         </div>
       </div>
 
@@ -823,7 +822,7 @@
           <button class="detail-close" onclick="closeDetail(this)">Close</button>
         </div>
         <div style="background:var(--warm);border:1px solid var(--warm3);border-left:2px solid var(--gold);padding:1.4rem 1.8rem;margin-top:2rem;">
-          <p style="font-size:1rem;color:var(--text);line-height:1.8;font-weight:300;">For questions about any of the topics above or to determine which coverage options may be available to you, <a href="contact.html" style="color:var(--gold);">visit our contact page</a> or <a href="quote.html" style="color:var(--gold);">complete the intake questionnaire</a>. All inquiries are reviewed by a licensed insurance advisor.</p>
+          <p style="font-size:1rem;color:var(--text);line-height:1.8;font-weight:300;">For questions about any of the topics above or to determine which coverage options may be available to you, <a href="quote.html" style="color:var(--gold);">visit our contact page</a> or <a href="quote.html" style="color:var(--gold);">complete the intake questionnaire</a>. All inquiries are reviewed by a licensed insurance advisor.</p>
         </div>
       </div>
 
@@ -834,7 +833,7 @@
     <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="sec-ey-line"></div><span>Proceed</span><div class="sec-ey-line"></div></div>
     <h2 style="font-size:clamp(1.6rem,2.5vw,2.3rem);font-weight:300;margin-bottom:0.9rem;">Ready to determine<br><em>your coverage options?</em></h2>
     <p style="font-size:0.88rem;color:var(--text);max-width:400px;margin:0 auto 2rem;font-weight:300;line-height:1.8;">Complete the intake questionnaire at your own pace. No commitment is required at any stage of this process.</p>
-    <div class="cta-actions"><a href="quote.html" class="btn-ink">Check Availability</a><a href="contact.html" class="btn-outline">Contact Us</a></div>
+    <div class="cta-actions"><a href="quote.html" class="btn-ink">Check Availability</a><a href="quote.html" class="btn-outline">Contact Us</a></div>
   </div>
 
   <div class="disclaimer"><div class="disclaimer-inner"><strong>Educational Disclaimer:</strong> All content on this page is provided for general informational and educational purposes only and does not constitute insurance advice, a policy illustration, or an offer of coverage. Product terms, structures, benefit definitions, rider provisions, and eligibility criteria vary among carriers and are subject to change at any time without notice. All coverage is subject to the actual policy contract and the underwriting guidelines of the issuing carrier at the time of application. Consult a licensed insurance advisor before making any coverage decision.</div></div>
@@ -849,7 +848,8 @@
         <div class="footer-license">
           <div class="fl-title">License Verification</div>
           <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
-          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, OH, FL, TX</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, OH, SC, TX</p>
+          <p class="fl-body" style="margin-top:0.4rem;font-style:italic;">Not located in one of these states? Complete the form anyway. We are actively expanding and work with licensed partners in additional states who may be able to serve you.</p>
         </div>
       
       </div>
@@ -859,7 +859,7 @@
         <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
         <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE - separated by &nbsp;&middot;&nbsp; - update before publishing]</p>
       </div>
-      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="quote.html">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">HIPAA Notice</a></li><li><a href="#">MIB &amp; FCRA Disclosure</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Licensing Information</a></li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -911,5 +911,102 @@
     panel.querySelectorAll('.topic-card, .mistake-card').forEach(c => c.classList.remove('selected'));
   }
 </script>
+<!-- ACCESSIBILITY TOOLBAR -->
+<div class="a11y-toggle" role="region" aria-label="Accessibility Options">
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings">
+    <div class="a11y-panel-title">Accessibility Options</div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">Text Size</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('text','normal')" id="ts-normal" aria-label="Normal text size">A</button>
+        <button class="a11y-sw-btn" onclick="a11y('text','large')" id="ts-large" aria-label="Large text size">A+</button>
+        <button class="a11y-sw-btn" onclick="a11y('text','xl')" id="ts-xl" aria-label="Extra large text size">A++</button>
+      </div>
+    </div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">High Contrast</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('contrast','off')" id="hc-off" aria-label="Contrast off">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('contrast','on')" id="hc-on" aria-label="High contrast on">On</button>
+      </div>
+    </div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">Dyslexia Font</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('dyslexia','off')" id="dy-off" aria-label="Dyslexia font off">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('dyslexia','on')" id="dy-on" aria-label="Dyslexia font on">On</button>
+      </div>
+    </div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">Reduce Motion</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('motion','off')" id="rm-off" aria-label="Animations on">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('motion','on')" id="rm-on" aria-label="Reduce motion on">On</button>
+      </div>
+    </div>
+
+    <button class="a11y-close" onclick="toggleA11y()" aria-label="Close accessibility panel">Close</button>
+  </div>
+
+  <button class="a11y-btn-main" onclick="toggleA11y()" aria-label="Open accessibility options" title="Accessibility Options">
+    &#9854;
+  </button>
+</div>
+
+<script>
+  function toggleA11y() {
+    const panel = document.getElementById('a11yPanel');
+    panel.classList.toggle('open');
+  }
+  function a11y(type, val) {
+    const b = document.body;
+    if (type === 'text') {
+      b.classList.remove('lg-text','xl-text');
+      document.querySelectorAll('[id^="ts-"]').forEach(el => el.classList.remove('active'));
+      if (val === 'large') { b.classList.add('lg-text'); document.getElementById('ts-large').classList.add('active'); }
+      else if (val === 'xl') { b.classList.add('xl-text'); document.getElementById('ts-xl').classList.add('active'); }
+      else { document.getElementById('ts-normal').classList.add('active'); }
+      localStorage.setItem('a11y_text', val);
+    }
+    if (type === 'contrast') {
+      b.classList.toggle('hc-mode', val === 'on');
+      document.getElementById('hc-on').classList.toggle('active', val === 'on');
+      document.getElementById('hc-off').classList.toggle('active', val === 'off');
+      localStorage.setItem('a11y_contrast', val);
+    }
+    if (type === 'dyslexia') {
+      b.classList.toggle('dyslexia-font', val === 'on');
+      document.getElementById('dy-on').classList.toggle('active', val === 'on');
+      document.getElementById('dy-off').classList.toggle('active', val === 'off');
+      localStorage.setItem('a11y_dyslexia', val);
+    }
+    if (type === 'motion') {
+      b.classList.toggle('reduce-motion', val === 'on');
+      document.getElementById('rm-on').classList.toggle('active', val === 'on');
+      document.getElementById('rm-off').classList.toggle('active', val === 'off');
+      localStorage.setItem('a11y_motion', val);
+    }
+  }
+  // Restore saved preferences on load
+  (function(){
+    const t = localStorage.getItem('a11y_text');
+    const c = localStorage.getItem('a11y_contrast');
+    const d = localStorage.getItem('a11y_dyslexia');
+    const m = localStorage.getItem('a11y_motion');
+    if (t) a11y('text', t);
+    else document.getElementById('ts-normal').classList.add('active');
+    if (c) a11y('contrast', c);
+    else document.getElementById('hc-off').classList.add('active');
+    if (d) a11y('dyslexia', d);
+    else document.getElementById('dy-off').classList.add('active');
+    if (m) a11y('motion', m);
+    else document.getElementById('rm-off').classList.add('active');
+  })();
+</script>
+
 </body>
 </html>

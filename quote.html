@@ -13,7 +13,7 @@
     <div class="brand-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
   </div>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="quote.html" class="active">Get a Quote</a></li><li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html" class="active">Get a Quote</a></li><li><a href="quote.html">Contact</a></li>
   </ul>
   <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
@@ -21,20 +21,17 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="education.html">Insurance Education</a>
+  <a href="myths.html">Myth Busted</a>
   <a href="quote.html" class="active">Get a Quote</a>
-  <a href="contact.html">Contact</a>
+  <a href="quote.html">Contact</a>
 </div>
 
 <main class="page-top">
-  <div class="phs">
-    <div class="phs-left">
-      <div class="mono">Q.</div>
-      <h1>Check Availability</h1>
-      <div class="phs-sub">Confidential &nbsp;·&nbsp; HIPAA-Compliant &nbsp;·&nbsp; No Obligation</div>
-    </div>
-    <div class="phs-right">
-      <p>Complete the intake questionnaire below at your own pace. Your responses are submitted securely and reviewed by a licensed advisor. This information is used solely for the purpose of evaluating coverage options on your behalf.</p>
-      <p>You will not receive a copy of this intake form. All information is handled in strict compliance with HIPAA federal privacy regulations. If you prefer to submit your information conversationally, .</p>
+  <div class="page-hero-centered">
+    <div class="phc-inner">
+      <div class="phc-eyebrow">Confidential &nbsp;·&nbsp; HIPAA-Compliant &nbsp;·&nbsp; No Obligation</div>
+      <h1 class="phc-title">Check Availability</h1>
+      <p class="phc-desc">Complete the intake questionnaire below at your own pace. Your responses are submitted securely and reviewed by a licensed advisor. This information is used solely for the purpose of evaluating coverage options on your behalf. You will not receive a copy of this form - all information is handled in strict compliance with HIPAA federal privacy regulations.</p>
     </div>
   </div>
 
@@ -199,14 +196,16 @@
               <p class="fsub">Select the type of coverage you are seeking. If you are uncertain, visit our <a href="education.html" style="color:var(--gold);">Insurance Education</a> page for reference.</p>
 
               <div class="field">
-                <label>Primary Reason for Seeking Life Insurance Coverage</label>
+                <label>Why are you seeking life insurance coverage? <span style="font-weight:300;text-transform:none;letter-spacing:0;">(Select one)</span></label>
                 <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','I already have life insurance but need more')">I already have life insurance but <strong>need more</strong></button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','I have no life insurance and need some')">I have <strong>no life insurance</strong> and need some</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','I want to leave a legacy behind for my kids or grandkids')">I want to leave a <strong>legacy</strong> behind for my kids or grandkids</button>
                   <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Income replacement for dependents')">Income replacement for dependents</button>
                   <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Mortgage or debt protection')">Mortgage or debt protection</button>
                   <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Final expense / burial coverage')">Final expense / burial coverage</button>
                   <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Estate planning')">Estate planning</button>
-                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Business continuity / key person')">Business continuity / key person coverage</button>
-                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Supplemental retirement income')">Supplemental retirement income</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Business continuity / key person coverage')">Business continuity / key person coverage</button>
                   <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Other')">Other</button>
                 </div>
               </div>
@@ -252,6 +251,88 @@
                   <button class="cbtn" onclick="pick(this,'coverage_amt','$250,000–$500,000')">$250K–$500K</button>
                   <button class="cbtn" onclick="pick(this,'coverage_amt','$500,000+')">$500K+</button>
                   <button class="cbtn" onclick="pick(this,'coverage_amt','Undecided')">Undecided</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Preferred Premium Payment Frequency</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'pay_freq','Monthly')">Monthly</button>
+                  <button class="cbtn" onclick="pick(this,'pay_freq','Quarterly')">Quarterly</button>
+                  <button class="cbtn" onclick="pick(this,'pay_freq','Semi-Annually')">Semi-Annually</button>
+                  <button class="cbtn" onclick="pick(this,'pay_freq','Annually')">Annually</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Approximate Premium Budget <span style="font-weight:300;text-transform:none;letter-spacing:0;">(based on your selected payment frequency above)</span></label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'budget','Under $50')">Under $50</button>
+                  <button class="cbtn" onclick="pick(this,'budget','$50 - $100')">$50 - $100</button>
+                  <button class="cbtn" onclick="pick(this,'budget','$100 - $200')">$100 - $200</button>
+                  <button class="cbtn" onclick="pick(this,'budget','$200 - $400')">$200 - $400</button>
+                  <button class="cbtn" onclick="pick(this,'budget','$400+')">$400+</button>
+                  <button class="cbtn" onclick="pick(this,'budget','Flexible / No specific budget')">Flexible</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Intended Beneficiary Relationship <span style="font-weight:300;text-transform:none;letter-spacing:0;">(Who would receive the death benefit?)</span></label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Spouse')">Spouse</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Fiance / Fiancee')">Fiance / Fiancee</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Parent')">Parent</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Child')">Child</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Stepchild')">Stepchild</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Sibling')">Sibling</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Grandchild')">Grandchild</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Aunt / Uncle')">Aunt / Uncle</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Business Partner')">Business Partner</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Estate')">Estate</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Trust')">Trust</button>
+                  <button class="cbtn other-trigger" style="text-align:left;" onclick="pick(this,'beneficiary_rel','Other');toggleOtherField('bene_other_field')">Other</button>
+                </div>
+                <div id="bene_other_field" style="display:none;margin-top:0.8rem;">
+                  <label style="font-size:0.75rem;">Please describe the relationship:</label>
+                  <textarea style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.9rem;color:var(--ink);border-radius:var(--r);outline:none;resize:vertical;min-height:60px;margin-top:0.3rem;" onchange="fd['beneficiary_rel_other']=this.value" placeholder="Describe the relationship..."></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>How soon are you looking to get insured? <span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.8rem;">Priority contact is given to clients selecting immediately.</span></label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'coverage_timing','Immediately - I need coverage as soon as possible')"><strong>Immediately</strong> - I need coverage as soon as possible <span style="color:var(--gold);font-size:0.75rem;margin-left:0.4rem;">Priority</span></button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'coverage_timing','Within the next 30 days')">Within the next 30 days</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'coverage_timing','Within 1 to 3 months')">Within 1 to 3 months</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'coverage_timing','Within 3 to 6 months')">Within 3 to 6 months</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'coverage_timing','Just exploring options')">Just exploring options</button>
+                </div>
+                <div style="margin-top:0.9rem;">
+                  <label style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.4rem;display:block;">Preferred Contact Date <span style="font-weight:300;text-transform:none;font-size:0.8rem;">(optional - helps us schedule your follow-up)</span></label>
+                  <input type="date" id="contact_date" style="padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.9rem;color:var(--ink);border-radius:var(--r);outline:none;width:100%;max-width:280px;" onchange="fd['contact_date']=this.value"/>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Best Time to Reach You <span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.8rem;">Please allow a 1 to 2 hour availability window.</span></label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;gap:0.5rem;">
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'best_time','Morning (8am - 12pm)')">Morning (8am - 12pm)</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'best_time','Afternoon (12pm - 5pm)')">Afternoon (12pm - 5pm)</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'best_time','Evening (5pm - 8pm)')">Evening (5pm - 8pm)</button>
+                  <button class="cbtn other-trigger" style="text-align:left;" onclick="pick(this,'best_time','Specific time');toggleOtherField('custom_time_field')">I have a specific time window</button>
+                </div>
+                <div id="custom_time_field" style="display:none;margin-top:0.75rem;">
+                  <label style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;display:block;">Please specify your preferred time window:</label>
+                  <input type="text" placeholder="Example: Tuesdays between 2pm and 4pm" style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.9rem;color:var(--ink);border-radius:var(--r);outline:none;" onchange="fd['best_time_custom']=this.value"/>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Preferred Contact Method</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'contact_method','Phone Call')">Phone Call</button>
+                  <button class="cbtn" onclick="pick(this,'contact_method','Text Message')">Text Message</button>
+                  <button class="cbtn" onclick="pick(this,'contact_method','Either is fine')">Either is fine</button>
                 </div>
               </div>
 
@@ -623,9 +704,89 @@
           <!-- SUCCESS -->
           <div class="success-block" id="successBlock">
             <div class="success-mark">✦</div>
-            <h2>Intake Received.</h2>
-            <p>Your intake responses have been submitted securely and will be reviewed by a licensed advisor. You will be contacted regarding your eligibility and available options. If you have questions in the interim,  or <a href="contact.html" style="color:var(--gold);">visit the contact page</a>.</p>
+            <h2>Thank You - We Will Be in Touch.</h2>
+            <p style="font-size:1rem;line-height:1.85;color:var(--text);font-weight:300;">Your intake has been received and submitted securely. A licensed advisor will review your responses and reach out to you at the contact information provided. Due to the high volume of inquiries we are currently receiving, response timeframes may vary. Please know that every submission is reviewed personally and you will be contacted as promptly as possible. Priority contact is extended to clients who have indicated they are seeking coverage immediately.</p>
+
+            <div style="margin-top:2rem;padding:1.5rem 1.8rem;background:var(--warm);border:1px solid var(--warm3);border-left:3px solid var(--gold);border-radius:var(--r);text-align:left;">
+              <div style="font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;">What to Have Ready for Your Consultation</div>
+              <p style="font-size:0.93rem;color:var(--text);line-height:1.8;font-weight:300;margin-bottom:0.8rem;">During your consultation, the contracted insurance company may require the following to process your application and draft premiums according to the payment frequency you selected:</p>
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:0.55rem;">
+                <li style="font-size:0.92rem;color:var(--text);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);font-weight:600;">-</span> A valid government-issued photo ID</li>
+                <li style="font-size:0.92rem;color:var(--text);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);font-weight:600;">-</span> Your Social Security Number (required by the issuing carrier for application processing)</li>
+                <li style="font-size:0.92rem;color:var(--text);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);font-weight:600;">-</span> Your banking information for premium drafting - account and routing number (premiums are drafted solely by the contracted life insurance company following application approval, not by this advisory practice)</li>
+                <li style="font-size:0.92rem;color:var(--text);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);font-weight:600;">-</span> A list of your current medications including prescription and over-the-counter supplements</li>
+                <li style="font-size:0.92rem;color:var(--text);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);font-weight:600;">-</span> The full legal name, date of birth, and relationship of your intended beneficiary</li>
+                <li style="font-size:0.92rem;color:var(--text);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);font-weight:600;">-</span> Your physician's name and contact information if applicable</li>
+              </ul>
+            </div>
+
+            <div style="margin-top:1.5rem;padding:1.2rem 1.5rem;background:var(--warm2);border:1px solid var(--warm3);border-radius:var(--r);text-align:left;">
+              <div style="font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);margin-bottom:0.7rem;">Application Disclosures</div>
+              <p style="font-size:0.82rem;color:var(--light);line-height:1.8;font-weight:300;">Depending on the carrier and product selected during your consultation, the following reports <strong style="color:var(--stone);font-weight:500;">may be required</strong> by the issuing insurance company as part of the underwriting process. These are standard industry practices and you will be informed of any inquiry before your application is submitted.</p>
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem;">
+                <li style="font-size:0.81rem;color:var(--light);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);">-</span><strong style="color:var(--stone);font-weight:500;">FCRA - Fair Credit Reporting Act:</strong> A consumer report including credit, character, and lifestyle information may be requested depending on company and product selection.</li>
+                <li style="font-size:0.81rem;color:var(--light);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);">-</span><strong style="color:var(--stone);font-weight:500;">MIB - Medical Information Bureau:</strong> A review of prior insurance application history may be conducted depending on company and product selection.</li>
+                <li style="font-size:0.81rem;color:var(--light);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);">-</span><strong style="color:var(--stone);font-weight:500;">Pharmacy Records (Rx):</strong> A prescription drug history report such as Milliman IntelliScript may be requested depending on company and product selection.</li>
+                <li style="font-size:0.81rem;color:var(--light);padding-left:1.2rem;position:relative;line-height:1.65;font-weight:300;"><span style="position:absolute;left:0;color:var(--gold);">-</span><strong style="color:var(--stone);font-weight:500;">MVR - Motor Vehicle Report:</strong> A review of your driving history may be requested depending on company and product selection.</li>
+              </ul>
+            </div>
+
+            <div style="margin-top:1.5rem;text-align:center;">
+              <a href="index.html" style="display:inline-block;background:var(--ink);color:var(--white);padding:0.8rem 2rem;font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;">Return Home</a>
+            </div>
           </div>
+        </div>
+
+        <!-- REFERRAL BOX -->
+        <div class="referral-box" id="referralBox">
+          <div class="sec-ey" style="margin-bottom:1rem;"><div class="sec-ey-line"></div><span>Refer a Client</span></div>
+          <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--ink);margin-bottom:0.5rem;">Know someone who needs coverage?</h3>
+          <p style="font-size:0.95rem;color:var(--text);font-weight:300;line-height:1.75;margin-bottom:1.4rem;">This form is for referring a client who may not have access to email or prefer to be contacted by phone to complete the intake process. A licensed advisor will reach out to them directly.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+            <div>
+              <label style="display:block;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client First Name</label>
+              <input type="text" id="ref_first" placeholder="First name" style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+            </div>
+            <div>
+              <label style="display:block;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client Last Name</label>
+              <input type="text" id="ref_last" placeholder="Last name" style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+            </div>
+          </div>
+
+          <div style="margin-bottom:0.75rem;">
+            <label style="display:block;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client Phone Number</label>
+            <input type="tel" id="ref_phone" placeholder="(555) 000-0000" style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+          </div>
+
+          <div style="margin-bottom:0.75rem;">
+            <label style="display:block;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client Email Address <span style="font-weight:300;text-transform:none;font-size:0.8rem;">(optional)</span></label>
+            <input type="email" id="ref_email" placeholder="email@example.com" style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+            <div>
+              <label style="display:block;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Estimated Age</label>
+              <input type="number" id="ref_age" placeholder="Age" min="0" max="120" style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+            </div>
+            <div>
+              <label style="display:block;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Best Time to Contact</label>
+              <select id="ref_time" style="width:100%;padding:0.7rem 1rem;border:1px solid var(--warm3);background:var(--warm);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;">
+                <option value="">Select a time</option>
+                <option value="Morning (8am - 12pm)">Morning (8am - 12pm)</option>
+                <option value="Afternoon (12pm - 5pm)">Afternoon (12pm - 5pm)</option>
+                <option value="Evening (5pm - 8pm)">Evening (5pm - 8pm)</option>
+                <option value="Anytime">Anytime</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.2rem;padding:0.9rem 1.1rem;background:var(--warm);border:1px solid var(--warm3);border-radius:var(--r);font-family:var(--sans);font-size:0.85rem;color:var(--light);line-height:1.65;font-weight:300;">
+            By submitting this referral, you confirm that the individual listed is aware they may be contacted by a licensed insurance advisor regarding life insurance coverage options.
+          </div>
+
+          <button type="button" onclick="submitReferral()" style="width:100%;background:var(--ink);color:var(--white);border:none;padding:0.85rem;font-family:var(--sans);font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border-radius:var(--r);cursor:pointer;">Submit Referral</button>
+          <div id="ref_success" style="display:none;margin-top:1rem;padding:1rem;background:var(--warm);border:1px solid var(--gold);border-radius:var(--r);font-family:var(--sans);font-size:0.9rem;color:var(--ink);text-align:center;">Referral submitted. A licensed advisor will follow up with your contact.</div>
         </div>
 
         <!-- SIDEBAR -->
@@ -663,7 +824,8 @@
         <div class="footer-license">
           <div class="fl-title">License Verification</div>
           <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
-          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, OH, FL, TX</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, OH, SC, TX</p>
+          <p class="fl-body" style="margin-top:0.4rem;font-style:italic;">Not located in one of these states? Complete the form anyway. We are actively expanding and work with licensed partners in additional states who may be able to serve you.</p>
         </div>
       
       </div>
@@ -673,7 +835,7 @@
         <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
         <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE - separated by &nbsp;&middot;&nbsp; - update before publishing]</p>
       </div>
-      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="quote.html">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">HIPAA Notice</a></li><li><a href="#">MIB &amp; FCRA Disclosure</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Licensing Information</a></li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -704,6 +866,11 @@
   function multi(btn, key) {
     btn.classList.toggle('sel');
     fd[key] = btn.classList.contains('sel') ? 'Yes' : 'No';
+  }
+
+  function toggleOtherField(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
   }
 
   function toggleRider(btn, key) {
@@ -827,6 +994,123 @@
     document.getElementById('successBlock').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  function submitReferral() {
+    const first = document.getElementById('ref_first').value.trim();
+    const last = document.getElementById('ref_last').value.trim();
+    const phone = document.getElementById('ref_phone').value.trim();
+    const age = document.getElementById('ref_age').value.trim();
+    const time = document.getElementById('ref_time').value;
+    if (!first || !last || !phone) {
+      alert('Please provide the client's first name, last name, and phone number.'); return;
+    }
+    const referralData = {
+      ref_first: first, ref_last: last, ref_phone: phone,
+      ref_email: document.getElementById('ref_email').value.trim(),
+      ref_age: age, ref_best_time: time
+    };
+    console.log('Referral submitted:', JSON.stringify(referralData, null, 2));
+    document.getElementById('ref_success').style.display = 'block';
+    ['ref_first','ref_last','ref_phone','ref_email','ref_age'].forEach(id => { document.getElementById(id).value = ''; });
+    document.getElementById('ref_time').value = '';
+  }
 </script>
+<!-- ACCESSIBILITY TOOLBAR -->
+<div class="a11y-toggle" role="region" aria-label="Accessibility Options">
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings">
+    <div class="a11y-panel-title">Accessibility Options</div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">Text Size</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('text','normal')" id="ts-normal" aria-label="Normal text size">A</button>
+        <button class="a11y-sw-btn" onclick="a11y('text','large')" id="ts-large" aria-label="Large text size">A+</button>
+        <button class="a11y-sw-btn" onclick="a11y('text','xl')" id="ts-xl" aria-label="Extra large text size">A++</button>
+      </div>
+    </div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">High Contrast</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('contrast','off')" id="hc-off" aria-label="Contrast off">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('contrast','on')" id="hc-on" aria-label="High contrast on">On</button>
+      </div>
+    </div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">Dyslexia Font</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('dyslexia','off')" id="dy-off" aria-label="Dyslexia font off">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('dyslexia','on')" id="dy-on" aria-label="Dyslexia font on">On</button>
+      </div>
+    </div>
+
+    <div class="a11y-option">
+      <span class="a11y-option-label">Reduce Motion</span>
+      <div class="a11y-switch">
+        <button class="a11y-sw-btn" onclick="a11y('motion','off')" id="rm-off" aria-label="Animations on">Off</button>
+        <button class="a11y-sw-btn" onclick="a11y('motion','on')" id="rm-on" aria-label="Reduce motion on">On</button>
+      </div>
+    </div>
+
+    <button class="a11y-close" onclick="toggleA11y()" aria-label="Close accessibility panel">Close</button>
+  </div>
+
+  <button class="a11y-btn-main" onclick="toggleA11y()" aria-label="Open accessibility options" title="Accessibility Options">
+    &#9854;
+  </button>
+</div>
+
+<script>
+  function toggleA11y() {
+    const panel = document.getElementById('a11yPanel');
+    panel.classList.toggle('open');
+  }
+  function a11y(type, val) {
+    const b = document.body;
+    if (type === 'text') {
+      b.classList.remove('lg-text','xl-text');
+      document.querySelectorAll('[id^="ts-"]').forEach(el => el.classList.remove('active'));
+      if (val === 'large') { b.classList.add('lg-text'); document.getElementById('ts-large').classList.add('active'); }
+      else if (val === 'xl') { b.classList.add('xl-text'); document.getElementById('ts-xl').classList.add('active'); }
+      else { document.getElementById('ts-normal').classList.add('active'); }
+      localStorage.setItem('a11y_text', val);
+    }
+    if (type === 'contrast') {
+      b.classList.toggle('hc-mode', val === 'on');
+      document.getElementById('hc-on').classList.toggle('active', val === 'on');
+      document.getElementById('hc-off').classList.toggle('active', val === 'off');
+      localStorage.setItem('a11y_contrast', val);
+    }
+    if (type === 'dyslexia') {
+      b.classList.toggle('dyslexia-font', val === 'on');
+      document.getElementById('dy-on').classList.toggle('active', val === 'on');
+      document.getElementById('dy-off').classList.toggle('active', val === 'off');
+      localStorage.setItem('a11y_dyslexia', val);
+    }
+    if (type === 'motion') {
+      b.classList.toggle('reduce-motion', val === 'on');
+      document.getElementById('rm-on').classList.toggle('active', val === 'on');
+      document.getElementById('rm-off').classList.toggle('active', val === 'off');
+      localStorage.setItem('a11y_motion', val);
+    }
+  }
+  // Restore saved preferences on load
+  (function(){
+    const t = localStorage.getItem('a11y_text');
+    const c = localStorage.getItem('a11y_contrast');
+    const d = localStorage.getItem('a11y_dyslexia');
+    const m = localStorage.getItem('a11y_motion');
+    if (t) a11y('text', t);
+    else document.getElementById('ts-normal').classList.add('active');
+    if (c) a11y('contrast', c);
+    else document.getElementById('hc-off').classList.add('active');
+    if (d) a11y('dyslexia', d);
+    else document.getElementById('dy-off').classList.add('active');
+    if (m) a11y('motion', m);
+    else document.getElementById('rm-off').classList.add('active');
+  })();
+</script>
+
 </body>
 </html>
