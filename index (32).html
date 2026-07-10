@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Licensed Independent Insurance Advisor - Life, Accident &amp; Sickness</title>
+  
+<style>
+html { font-size: 14px; }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:    #1A1A18;
+  --ink2:   #2A2A27;
+  --stone:  #4A4845;
+  --warm:   #F5F2EC;
+  --warm2:  #EDE9E0;
+  --warm3:  #DDD9D0;
+  --gold:   #9E8047;
+  --gold2:  #7F6535;
+  --white:  #FFFFFF;
+  --text:   #5C5955;
+  --light:  #9C9894;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Jost', system-ui, sans-serif;
+  --r:      2px;
+  --sh:     0 2px 20px rgba(26,26,24,0.06);
+  --sh2:    0 8px 48px rgba(26,26,24,0.10);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.15; color: var(--ink); }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--sans); cursor: pointer; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--warm3); transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 2px 30px rgba(26,26,24,0.08); }
+.nav-brand { display: flex; flex-direction: column; gap: 2px; }
+.nav-brand .brand-main { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: var(--ink); letter-spacing: 0.01em; }
+.nav-brand .brand-sub { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); transition: color 0.2s; position: relative; padding-bottom: 3px; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta { font-size: 0.68rem !important; font-weight: 500 !important; letter-spacing: 0.14em !important; color: var(--white) !important; background: var(--ink); padding: 0.55rem 1.3rem; border-radius: var(--r); transition: background 0.2s; }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--white) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px,4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
+.mobile-nav { display: none; position: sticky; top: 72px; left: 0; right: 0; background: var(--white); z-index: 999; padding: 1.8rem 6%; flex-direction: column; border-bottom: 1px solid var(--warm3); box-shadow: 0 8px 32px rgba(26,26,24,0.08); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); padding: 0.9rem 0; border-bottom: 1px solid var(--warm3); transition: color 0.2s; }
+.mobile-nav a:hover, .mobile-nav a.active { color: var(--gold); }
+.page-top { padding-top: 0; }
+
+/* ── HERO ── */
+.hero { min-height: 94vh; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.hero-left { background: var(--ink); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(158,128,71,0.10) 0%, transparent 70%); pointer-events: none; }
+.hero-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.hero-ey-line { width: 36px; height: 1px; background: var(--gold); }
+.hero-ey span { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font-size: clamp(2.6rem, 4vw, 4rem); color: var(--white); font-weight: 300; line-height: 1.08; margin-bottom: 1.8rem; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.50); line-height: 1.9; max-width: 400px; margin-bottom: 2.8rem; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); transition: background 0.2s; cursor: pointer; }
+.btn-gold:hover { background: var(--gold2); color: var(--white); }
+.btn-ghost { display: inline-block; background: transparent; color: rgba(255,255,255,0.60); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.18); border-radius: var(--r); transition: all 0.2s; cursor: pointer; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-right { background: var(--warm); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; }
+.hero-cred { border-top: 1px solid var(--warm3); padding: 1.8rem 0; }
+.hero-cred:first-child { border-top: none; padding-top: 0; }
+.cred-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.cred-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+.cred-sub { font-size: 0.97rem; color: var(--text); margin-top: 0.3rem; line-height: 1.65; font-weight: 300; }
+.hero-div { width: 40px; height: 1px; background: var(--gold); margin: 0; opacity: 0.3; }
+
+/* ── PAGE HERO SPLIT ── */
+.phs { display: grid; grid-template-columns: 1fr 1fr; min-height: 52vh; }
+.phs-left { background: var(--warm); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+.phs-left .mono { font-family: var(--serif); font-size: clamp(5rem, 10vw, 9rem); font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1rem; font-style: italic; }
+.phs-left h1 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); font-weight: 400; }
+.phs-left .phs-sub { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; }
+.phs-right { background: var(--ink); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: center; }
+.phs-right p { font-family: var(--serif); font-size: 1.02rem; color: rgba(255,255,255,0.58); line-height: 1.9; font-weight: 300; margin-bottom: 1.4rem; }
+.phs-right a { color: var(--gold); }
+.phs-creds { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0.55rem; }
+.phs-cred { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; color: rgba(255,255,255,0.38); display: flex; align-items: center; gap: 0.7rem; }
+.phs-cred .ck { color: var(--gold); font-size: 0.6rem; }
+
+/* ── SECTIONS ── */
+.section { padding: 6.5rem 6%; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.sec-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
+.sec-ey-line { width: 32px; height: 1px; background: var(--gold); }
+.sec-ey span { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.sec-title { font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 300; margin-bottom: 1rem; }
+.sec-title em { font-style: italic; color: var(--gold); }
+.sec-lead { font-size: 1.08rem; color: var(--text); max-width: 540px; line-height: 1.85; font-weight: 300; margin-bottom: 2.8rem; }
+
+/* ── CONDITIONS ── */
+.cond-mosaic { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--warm3); border: 1px solid var(--warm3); margin-top: 2.5rem; }
+.cond-cell { background: var(--white); padding: 1rem 1.1rem; font-size: 0.95rem; color: var(--stone); display: flex; align-items: center; gap: 0.55rem; transition: background 0.2s, color 0.2s; }
+.cond-cell:hover { background: var(--ink); color: var(--white); }
+.cond-cell:hover .cdot { background: var(--gold); }
+.cdot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; transition: background 0.2s; }
+
+/* ── PROCESS ── */
+.proc-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.proc-item { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); }
+.proc-item:last-child { border-right: none; }
+.proc-num { font-family: var(--serif); font-size: 3.2rem; font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1.1rem; }
+.proc-item h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.proc-item p { font-size: 0.97rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── CTA BAND ── */
+.cta-band { background: var(--warm2); border-top: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); padding: 6rem 6%; text-align: center; }
+.cta-band h2 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); font-weight: 300; margin-bottom: 1rem; }
+.cta-band p { font-size: 1.05rem; color: var(--text); max-width: 420px; margin: 0 auto 2.2rem; font-weight: 300; line-height: 1.85; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-ink { display: inline-block; background: var(--ink); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); cursor: pointer; transition: background 0.2s; }
+.btn-ink:hover { background: var(--gold); color: var(--white); }
+.btn-outline { display: inline-block; background: transparent; color: var(--ink); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--warm3); border-radius: var(--r); cursor: pointer; transition: all 0.2s; }
+.btn-outline:hover { border-color: var(--ink); }
+
+/* ── DISCLAIMER ── */
+.disclaimer { background: var(--warm2); border-top: 1px solid var(--warm3); padding: 1.8rem 6%; font-size: 0.73rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.disclaimer strong { color: var(--ink); font-weight: 500; }
+.disclaimer-inner { max-width: 1160px; margin: 0 auto; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-brand .fb-main { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--white); }
+.footer-brand .fb-sub { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 3px; }
+.footer-brand p { font-size: 0.79rem; color: rgba(255,255,255,0.32); margin-top: 1rem; line-height: 1.8; max-width: 240px; font-weight: 300; }
+.footer-col h4 { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { font-size: 0.8rem; color: rgba(255,255,255,0.32); transition: color 0.2s; font-weight: 300; }
+.footer-col ul a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-top: 2rem; font-size: 0.71rem; color: rgba(255,255,255,0.2); font-weight: 300; }
+.footer-bottom a { color: var(--gold); }
+
+/* ── VALUES / ABOUT ── */
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.val-cell { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); }
+.val-cell:nth-child(3n) { border-right: none; }
+.val-cell:nth-child(n+4) { border-bottom: none; }
+.val-mark { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); margin-bottom: 0.9rem; font-style: italic; }
+.val-cell h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.val-cell p { font-size: 0.98rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── EDUCATION ── */
+.edu-nav { display: flex; border-bottom: 1px solid var(--warm3); margin-bottom: 4rem; overflow-x: auto; }
+.edu-tab { padding: 1rem 1.8rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: var(--sans); }
+.edu-tab:hover { color: var(--ink); }
+.edu-tab.active { color: var(--ink); border-bottom-color: var(--gold); }
+.edu-panel { display: none; }
+.edu-panel.active { display: block; animation: fadeUp 0.35s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.product-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.prod-tile { background: var(--warm); border: 1px solid var(--warm3); }
+.prod-tile-head { padding: 1.8rem 1.6rem 1.4rem; border-bottom: 1px solid var(--warm3); }
+.prod-tile-head .ptag { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.prod-tile-head h3 { font-size: 1.08rem; font-weight: 400; }
+.prod-tile-body { padding: 1.4rem 1.6rem; }
+.prod-tile-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.prod-tile-body li { font-size: 0.97rem; color: var(--text); padding-left: 1.1rem; position: relative; line-height: 1.6; font-weight: 300; }
+.prod-tile-body li::before { content: '-'; position: absolute; left: 0; color: var(--gold); font-size: 0.74rem; }
+.info-panel { background: var(--warm); border: 1px solid var(--warm3); border-left: 2px solid var(--gold); padding: 2rem 2.2rem; margin-top: 2rem; }
+.info-panel h3 { font-size: 1.05rem; font-weight: 400; margin-bottom: 0.7rem; }
+.info-panel p { font-size: 1.01rem; color: var(--text); line-height: 1.8; font-weight: 300; }
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-size: 0.99rem; }
+.compare-table th { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; padding: 1.1rem 1.4rem; text-align: left; background: var(--ink); color: var(--white); }
+.compare-table th:first-child { background: var(--ink2); color: var(--light); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.compare-table td { padding: 0.95rem 1.4rem; border-bottom: 1px solid var(--warm3); color: var(--text); font-weight: 300; line-height: 1.6; }
+.compare-table tr:nth-child(odd) td { background: var(--warm); }
+.compare-table td:first-child { font-weight: 500; color: var(--ink); font-size: 0.78rem; letter-spacing: 0.02em; }
+.glossary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--warm3); margin-top: 2.5rem; }
+.glossary-cell { background: var(--white); padding: 1.8rem; }
+.glossary-cell h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.45rem; }
+.glossary-cell p { font-size: 0.96rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── QUOTE FORM ── */
+.quote-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
+.prog-row { display: flex; align-items: center; margin-bottom: 3rem; overflow-x: auto; padding-bottom: 4px; }
+.pstep { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; min-width: 60px; }
+.pstep .pc { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--warm3); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; color: var(--light); transition: all 0.3s; }
+.pstep.done .pc { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.pstep.active .pc { border-color: var(--ink); color: var(--ink); }
+.pstep .pl { font-size: 0.58rem; color: var(--light); font-weight: 500; letter-spacing: 0.06em; text-align: center; max-width: 54px; line-height: 1.3; text-transform: uppercase; }
+.pstep.active .pl, .pstep.done .pl { color: var(--ink); }
+.pline { flex: 1; height: 1px; background: var(--warm3); min-width: 12px; margin-bottom: 18px; transition: background 0.3s; }
+.pline.done { background: var(--gold); }
+.fstep { display: none; }
+.fstep.active { display: block; animation: fadeUp 0.3s ease; }
+.fcard { background: var(--white); border: 1px solid var(--warm3); padding: 2.8rem; }
+.fcard h2 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.3rem; }
+.fcard .fsub { font-size: 0.99rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.45rem; }
+.field input, .field select, .field textarea { width: 100%; padding: 0.72rem 1rem; border: 1px solid var(--warm3); background: var(--warm); font-family: var(--sans); font-size: 0.88rem; color: var(--ink); outline: none; border-radius: var(--r); transition: border-color 0.2s, background 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: var(--white); }
+.field textarea { resize: vertical; min-height: 88px; }
+.choices { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+
+/* Rider selection cards - replaces broken checkbox layout */
+.rider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.rider-card {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+}
+.rider-card:hover { border-color: var(--gold); background: var(--white); }
+.rider-card.selected { background: var(--ink); border-color: var(--ink); }
+.rider-card.selected .rider-card-title { color: var(--white); }
+.rider-card.selected .rider-card-title::before { content: '✓  '; color: var(--gold); }
+.rider-card.selected .rider-card-desc { color: rgba(255,255,255,0.55); }
+.rider-card-title {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  transition: color 0.2s;
+}
+.rider-card-desc {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.7;
+  transition: color 0.2s;
+}
+@media(max-width:700px){ .rider-grid { grid-template-columns: 1fr; } }
+
+/* Required client disclosures with individual checkboxes */
+.disclosure-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.disclosure-item {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.disclosure-item:has(.disclosure-check:checked) {
+  background: var(--white);
+  border-color: var(--gold);
+}
+.disclosure-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+  width: 100%;
+}
+.disclosure-check {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.disclosure-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.disclosure-text {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* Medication add-list builder */
+.med-input-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.med-input-row input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--warm3);
+  background: var(--warm);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink);
+  outline: none;
+  border-radius: var(--r);
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-input-row input[type="text"]:focus { border-color: var(--gold); background: var(--white); }
+.med-add-btn {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 0.72rem 1.3rem;
+  border-radius: var(--r);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.med-add-btn:hover { background: var(--gold); }
+.med-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.med-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.65rem 1rem;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+.med-pill-name { font-family: var(--serif); font-size: 0.95rem; }
+.med-pill-remove {
+  background: none;
+  border: none;
+  color: var(--light);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.2rem 0.5rem;
+  transition: color 0.2s;
+}
+.med-pill-remove:hover { color: var(--gold); }
+.med-none-btn {
+  margin-top: 0.8rem;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.6rem 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-none-btn:hover { border-color: var(--gold); }
+.med-none-btn.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+
+
+.cbtn { padding: 0.48rem 1.1rem; font-size: 0.78rem; font-weight: 400; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.cbtn:hover { border-color: var(--gold); color: var(--ink); }
+.cbtn.sel { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.pob { border: 1px solid var(--warm3); padding: 1.3rem 1.5rem; margin-bottom: 0.75rem; cursor: pointer; transition: border-color 0.2s; border-radius: var(--r); }
+.pob:hover { border-color: var(--gold); }
+.pob.sel { border-color: var(--ink); }
+.pob-hdr { display: flex; align-items: center; gap: 0.7rem; }
+.pob-radio { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--warm3); flex-shrink: 0; transition: all 0.2s; }
+.pob.sel .pob-radio { border-color: var(--ink); background: var(--ink); }
+.pob-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+.pob-desc { font-size: 0.79rem; color: var(--text); margin-top: 0.3rem; margin-left: 1.55rem; font-weight: 300; }
+.pob-sub { display: none; margin-top: 1.1rem; margin-left: 1.55rem; padding-top: 1.1rem; border-top: 1px solid var(--warm3); }
+.pob.sel .pob-sub { display: block; }
+.owner-exp { background: var(--warm); border: 1px solid var(--warm3); padding: 1.8rem; margin-top: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; border-radius: var(--r); }
+.exp-box { padding: 1.1rem; background: var(--white); border-top: 2px solid var(--gold); }
+.exp-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.exp-box p { font-size: 0.96rem; color: var(--text); line-height: 1.7; font-weight: 300; }
+.exp-note { grid-column: 1/-1; font-size: 0.77rem; color: var(--light); line-height: 1.65; font-weight: 300; }
+.legal-box { background: var(--warm); border-left: 2px solid var(--gold); padding: 1.1rem 1.3rem; font-size: 0.75rem; color: var(--text); line-height: 1.75; margin-top: 1.6rem; font-weight: 300; }
+.legal-box strong { color: var(--ink); font-weight: 500; }
+.form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.8rem; border-top: 1px solid var(--warm3); }
+.btn-prev { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); background: none; border: none; cursor: pointer; transition: color 0.2s; font-family: var(--sans); }
+.btn-prev:hover { color: var(--ink); }
+.btn-next { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-next:hover { background: var(--gold); }
+.btn-submit { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--gold); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-submit:hover { background: var(--gold2); }
+.q-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.q-tile { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.q-tile h4 { font-size: 0.92rem; font-weight: 400; margin-bottom: 0.65rem; }
+.q-tile p { font-size: 0.81rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.q-tile ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; padding: 0; }
+.q-tile li { font-size: 0.81rem; color: var(--text); padding-left: 1rem; position: relative; font-weight: 300; }
+.q-tile li::before { content: '-'; position: absolute; left: 0; color: var(--gold); }
+.success-block { text-align: center; padding: 4rem 2rem; display: none; }
+.success-block.active { display: block; }
+.success-mark { font-family: var(--serif); font-size: 4rem; color: var(--gold); font-style: italic; margin-bottom: 1rem; }
+.success-block h2 { font-size: 1.8rem; font-weight: 300; margin-bottom: 0.75rem; }
+.success-block p { font-size: 0.88rem; color: var(--text); max-width: 400px; margin: 0 auto; font-weight: 300; line-height: 1.8; }
+
+/* ── CHAT ── */
+.chat-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; align-items: start; }
+.chat-side { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.chat-side h3 { font-size: 0.95rem; font-weight: 400; margin-bottom: 1.2rem; }
+.topic-list { list-style: none; display: flex; flex-direction: column; }
+.topic-list li { font-size: 0.8rem; color: var(--text); padding: 0.6rem 0; border-bottom: 1px solid var(--warm3); cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 0.45rem; font-weight: 300; line-height: 1.4; }
+.topic-list li:last-child { border-bottom: none; }
+.topic-list li:hover { color: var(--gold); }
+.topic-list li::before { content: '›'; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+.chat-panel { background: var(--white); border: 1px solid var(--warm3); display: flex; flex-direction: column; height: 600px; }
+.chat-top { background: var(--ink); padding: 1.1rem 1.6rem; display: flex; align-items: center; gap: 0.9rem; }
+.chat-av { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.9rem; color: var(--white); font-style: italic; flex-shrink: 0; }
+.chat-name { font-size: 0.86rem; color: var(--white); font-weight: 400; }
+.chat-status { font-size: 0.66rem; color: var(--gold); display: flex; align-items: center; gap: 0.3rem; margin-top: 2px; }
+.chat-status::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: #86EFAC; }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 1.6rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.cmsg { display: flex; gap: 0.65rem; max-width: 88%; }
+.cmsg.agent { align-self: flex-start; }
+.cmsg.user { align-self: flex-end; flex-direction: row-reverse; }
+.cbubble { padding: 0.78rem 1.1rem; font-size: 0.85rem; line-height: 1.65; font-weight: 300; }
+.cmsg.agent .cbubble { background: var(--warm); color: var(--ink); border-radius: 0 8px 8px 8px; }
+.cmsg.user .cbubble { background: var(--ink); color: var(--white); border-radius: 8px 0 8px 8px; }
+.ctime { font-size: 0.64rem; color: var(--light); margin-top: 0.2rem; }
+.cmsg.user .ctime { text-align: right; }
+.typing-ind { display: none; align-self: flex-start; }
+.typing-ind.on { display: flex; gap: 0.65rem; }
+.typing-bub { background: var(--warm); border-radius: 0 8px 8px 8px; padding: 0.78rem 1rem; display: flex; gap: 4px; align-items: center; }
+.tdot { width: 5px; height: 5px; border-radius: 50%; background: var(--light); animation: td 1.2s infinite; }
+.tdot:nth-child(2){animation-delay:0.2s} .tdot:nth-child(3){animation-delay:0.4s}
+@keyframes td{0%,60%,100%{opacity:0.3;transform:scale(0.8)}30%{opacity:1;transform:scale(1)}}
+.chat-quick { padding: 0.75rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.qbtn { font-size: 0.73rem; padding: 0.28rem 0.85rem; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.qbtn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.chat-bar { padding: 1rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; gap: 0.7rem; align-items: center; }
+.chat-in { flex: 1; border: 1px solid var(--warm3); background: var(--warm); padding: 0.62rem 1rem; font-family: var(--sans); font-size: 0.86rem; outline: none; border-radius: var(--r); transition: border-color 0.2s; }
+.chat-in:focus { border-color: var(--gold); background: var(--white); }
+.chat-go { width: 37px; height: 37px; background: var(--ink); border: none; color: var(--white); border-radius: var(--r); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; transition: background 0.2s; flex-shrink: 0; }
+.chat-go:hover { background: var(--gold); }
+
+/* ── CONTACT ── */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; }
+.cblock { padding: 1.8rem 0; border-bottom: 1px solid var(--warm3); }
+.cblock:first-child { padding-top: 0; }
+.cblock-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.cblock p { font-size: 0.9rem; color: var(--ink); line-height: 1.65; }
+.cblock a { color: var(--gold); }
+.cblock small { font-size: 0.76rem; color: var(--light); font-weight: 300; margin-top: 3px; display: block; }
+.cf-panel { background: var(--warm); border: 1px solid var(--warm3); padding: 3rem; }
+.cf-panel h3 { font-size: 1.35rem; font-weight: 400; margin-bottom: 0.35rem; }
+.cf-panel .csub { font-size: 0.84rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .nav-links{display:none;} .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-right{display:none;}
+  .hero-left{padding:7rem 6% 5rem;min-height:80vh;}
+  .phs{grid-template-columns:1fr;}
+  .phs-right{padding:4rem 6%;}
+  .cond-mosaic{grid-template-columns:repeat(3,1fr);}
+  .proc-grid{grid-template-columns:repeat(2,1fr);}
+  .proc-item{border-bottom:1px solid var(--warm3);}
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+  .values-grid .val-cell:nth-child(3n){border-right:1px solid var(--warm3);}
+  .values-grid .val-cell:nth-child(2n){border-right:none;}
+  .product-row{grid-template-columns:1fr 1fr;}
+  .glossary-grid{grid-template-columns:repeat(2,1fr);}
+  .quote-wrap{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+  .chat-wrap{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+.mistake-cell {
+  background: var(--white);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: background 0.2s;
+}
+.mistake-cell:hover { background: var(--warm); }
+.mistake-num {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+.mistake-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.mistake-body {
+  font-size: 0.81rem;
+  color: var(--text);
+  line-height: 1.72;
+  font-weight: 300;
+}
+@media(max-width:700px){
+  #mistakesGrid { grid-template-columns: 1fr !important; }
+}
+
+/* ── LICENSE FOOTER ── */
+.footer-license {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.fl-body {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.32);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.fl-body strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+.fl-body a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.fl-body em { font-style: italic; color: rgba(255,255,255,0.45); }
+.fl-npn {
+  margin-top: 0.9rem;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.fl-npn strong {
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── CARRIER DISCLOSURE FOOTER ── */
+.footer-carriers {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.footer-carriers .fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.footer-carriers .fl-body {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.footer-carriers .fl-body strong {
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* ── CARRIER NAMES - compact horizontal wrap ── */
+.footer-carriers .fl-body {
+  font-size: 0.65rem !important;
+  color: rgba(255,255,255,0.18) !important;
+  line-height: 1.7 !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+}
+
+#a11yTab {
+  position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+  z-index: 50; background: #1A1A18;
+  border: 1px solid rgba(158,128,71,0.45); border-right: none;
+  border-radius: 6px 0 0 6px; padding: 0.7rem 0.4rem;
+  cursor: pointer; writing-mode: vertical-rl;
+  font-family: system-ui,sans-serif; font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase; color: #9e8047;
+  touch-action: manipulation;
+}
+#a11yPanel {
+  position: fixed; right: 30px; top: 50%; transform: translateY(-50%);
+  z-index: 49; background: #1A1A18;
+  border: 1px solid rgba(158,128,71,0.3); border-radius: 8px 0 0 8px;
+  padding: 1rem 0.9rem; width: 185px; display: none;
+}
+#a11yPanel.open { display: flex; flex-direction: column; gap: 0.75rem; }
+.a11y-side-title { font-family: system-ui,sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #9e8047; }
+.a11y-side-row { display: flex; flex-direction: column; gap: 0.3rem; }
+.a11y-side-label { font-family: system-ui,sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.a11y-side-btns { display: flex; gap: 0.3rem; }
+.a11y-s-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 3px; padding: 0.3rem 0.65rem; font-family: system-ui,sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.5); cursor: pointer; }
+.a11y-s-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+.a11y-side-divider { height: 1px; background: rgba(255,255,255,0.08); }
+.a11y-side-reset { background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; padding: 0.3rem; font-family: system-ui,sans-serif; font-size: 0.65rem; color: rgba(255,255,255,0.3); cursor: pointer; width: 100%; }
+body.lg-text { font-size: 18px; }
+body.xl-text { font-size: 22px; }
+body.hc-mode { filter: contrast(1.7) saturate(0.1); }
+body.dyslexia-font * { font-family: Arial,sans-serif !important; letter-spacing: 0.05em !important; line-height: 1.9 !important; }
+body.reduce-motion * { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.72); z-index: 9000; pointer-events: none; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto; }
+.modal-overlay.open { display: flex; pointer-events: all; }
+.modal-box { background: #fff; border-radius: 8px; max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto; }
+.modal-header { background: #1a1a18; padding: 1.4rem 1.8rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; position: sticky; top: 0; z-index: 2; border-radius: 8px 8px 0 0; }
+.modal-title { font-family: Georgia,serif; font-size: 1.3rem; font-weight: 300; color: #fff; }
+.modal-subtitle { font-family: system-ui,sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9e8047; margin-top: 0.25rem; }
+.modal-close { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,0.6); font-size: 1.2rem; flex-shrink: 0; }
+.modal-body { padding: 1.8rem 2rem; }
+.modal-section { margin-bottom: 1.6rem; }
+.modal-section-title { font-family: system-ui,sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #9e8047; margin-bottom: 0.6rem; }
+.modal-section p { font-family: system-ui,sans-serif; font-size: 1rem; color: #5c5955; font-weight: 300; line-height: 1.8; margin-bottom: 0.6rem; }
+.modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.5rem; }
+.modal-section ul li { font-family: system-ui,sans-serif; font-size: 0.95rem; color: #5c5955; font-weight: 300; line-height: 1.7; padding-left: 1.1rem; position: relative; }
+.modal-section ul li::before { content: '-'; position: absolute; left: 0; color: #9e8047; }
+.modal-notice { background: #f5f2ec; border-left: 3px solid #9e8047; padding: 0.9rem 1.1rem; margin-top: 1.2rem; font-family: system-ui,sans-serif; font-size: 0.9rem; color: #9c9894; font-weight: 300; line-height: 1.7; }
+.modal-divider { height: 1px; background: #ddd9d0; margin: 1.4rem 0; }
+
+
+#a11yTab {
+  position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+  z-index: 9999; background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.5); border-right: none;
+  border-radius: 6px 0 0 6px; padding: 0.8rem 0.42rem;
+  cursor: pointer; writing-mode: vertical-rl;
+  font-family: system-ui,sans-serif; font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: #9e8047;
+  user-select: none; transition: background 0.2s; touch-action: manipulation;
+}
+#a11yTab:hover { background: #252522; }
+#a11yPanel {
+  position: fixed; right: 32px; top: 50%; transform: translateY(-50%);
+  z-index: 9998; background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.3); border-radius: 10px;
+  padding: 1.2rem 1rem; width: 230px;
+  box-shadow: -6px 0 30px rgba(0,0,0,0.45);
+  display: none;
+}
+#a11yPanel.open { display: block; }
+.a11y-panel-heading { font-family: system-ui,sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #9e8047; padding-bottom: 0.7rem; margin-bottom: 0.7rem; border-bottom: 1px solid rgba(158,128,71,0.25); }
+.a11y-group { margin-bottom: 0.85rem; }
+.a11y-group-label { font-family: system-ui,sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.4rem; display: block; }
+.a11y-group-btns { display: flex; flex-direction: row; gap: 0.3rem; flex-wrap: wrap; }
+.a11y-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.35rem 0.75rem; font-family: system-ui,sans-serif; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.45); cursor: pointer; transition: all 0.15s; touch-action: manipulation; }
+.a11y-btn:hover { background: rgba(158,128,71,0.2); border-color: #9e8047; color: #9e8047; }
+.a11y-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+.a11y-sep { height: 1px; background: rgba(255,255,255,0.07); margin: 0.5rem 0; }
+.a11y-reset-btn { width: 100%; margin-top: 0.6rem; background: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.4rem; font-family: system-ui,sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.15s; touch-action: manipulation; }
+.a11y-reset-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+body.lg-text { font-size: 18px; }
+body.xl-text { font-size: 22px; }
+body.hc-mode { filter: contrast(1.7) saturate(0.1); }
+body.dyslexia-font * { font-family: Arial,sans-serif !important; letter-spacing: 0.05em !important; line-height: 1.9 !important; }
+body.reduce-motion * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+@media(max-width:600px){
+  #a11yTab { top: auto; bottom: 16px; transform: none; }
+  #a11yPanel { top: auto; bottom: 64px; transform: none; right: 1rem; width: calc(100vw - 2rem); max-width: 270px; border-radius: 10px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Licensed Independent Insurance Advisor</div>
+    <div class="brand-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="active">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Insurance Education</a>
+  <a href="myths.html">Myth Busted</a>
+  <a href="quote.html">Get a Quote</a>
+</div>
+
+
+<main class="page-top">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-ey"><div class="hero-ey-line"></div><span>Independent Life Insurance Advisory</span></div>
+      <h1>Protection.<br>Precision.<br><em>Independence.</em></h1>
+      <p class="hero-desc">A licensed independent advisory practice contracted with multiple top-rated carriers. Products are offered through multiple insurance carriers, subject to individual underwriting approval.</p>
+      <div class="hero-actions">
+        <a href="quote.html" class="btn-gold">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-cred">
+        <div class="cred-label">Licensure</div>
+        <div class="cred-title">Licensed Life, Accident &amp; Sickness Agent</div>
+        <div class="cred-sub">Products offered through multiple insurance carriers, subject to individual underwriting approval.</div>
+      </div>
+      <div class="hero-div"></div>
+      <div class="hero-cred">
+        <div class="cred-label">Carrier Access</div>
+        <div class="cred-title">Multiple Top-Rated Carriers</div>
+        <div class="cred-sub">Term life, whole life, and living benefit products - evaluated across a full spectrum of health profiles before any application is submitted.</div>
+      </div>
+      <div class="hero-div"></div>
+      <div class="hero-cred">
+        <div class="cred-label">Privacy Standard</div>
+        <div class="cred-title">Full HIPAA Compliance</div>
+        <div class="cred-sub">All personal and health information is handled in strict accordance with federal HIPAA privacy regulations and applicable state law.</div>
+      </div>
+      <div class="hero-div"></div>
+      <div class="hero-cred">
+        <div class="cred-label">Simplified Underwriting</div>
+        <div class="cred-title">No Medical Exam Required on Many Products</div>
+        <div class="cred-sub">Many carriers we work with offer coverage without a medical exam or blood work at qualifying face amounts. Exam requirements vary by carrier, product, and coverage amount.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--white);">
+    <div class="section-inner">
+      <div class="sec-ey"><div class="sec-ey-line"></div><span>Coverage Access</span></div>
+      <h2 class="sec-title">We may have a policy<br><em>for your condition.</em></h2>
+      <p class="sec-lead">We are contracted with multiple recognized insurance carriers whose underwriting guidelines vary widely. Because each carrier evaluates risk differently - based on condition, age, medications, and medical history - coverage that may not be available through one carrier may be available through another. The conditions listed below represent profiles for which coverage options <em>may</em> exist, subject to each carrier's individual underwriting criteria and guidelines at the time of application.</p>
+
+      <div class="cond-mosaic">
+        <!-- Standard health profiles -->
+        <div class="cond-cell"><span class="cdot"></span>Excellent Health</div>
+        <div class="cond-cell"><span class="cdot"></span>No Current Medications</div>
+        <div class="cond-cell"><span class="cdot"></span>Multiple Medications</div>
+        <div class="cond-cell"><span class="cdot"></span>High Blood Pressure</div>
+        <!-- Cardiovascular -->
+        <div class="cond-cell"><span class="cdot"></span>Heart Attack History</div>
+        <div class="cond-cell"><span class="cdot"></span>Congestive Heart Failure</div>
+        <div class="cond-cell"><span class="cdot"></span>Heart Surgery - Bypass / Stent</div>
+        <div class="cond-cell"><span class="cdot"></span>Stroke History</div>
+        <div class="cond-cell"><span class="cdot"></span>TIA - Mini-Stroke</div>
+        <div class="cond-cell"><span class="cdot"></span>Atrial Fibrillation</div>
+        <!-- Metabolic -->
+        <div class="cond-cell"><span class="cdot"></span>Diabetes - Type 1 &amp; 2</div>
+        <div class="cond-cell"><span class="cdot"></span>Obesity</div>
+        <div class="cond-cell"><span class="cdot"></span>Neuropathy</div>
+        <!-- Respiratory -->
+        <div class="cond-cell"><span class="cdot"></span>COPD / Emphysema</div>
+        <div class="cond-cell"><span class="cdot"></span>Chronic / Severe Asthma</div>
+        <!-- Liver & Kidney -->
+        <div class="cond-cell"><span class="cdot"></span>Hepatitis B &amp; C</div>
+        <div class="cond-cell"><span class="cdot"></span>Cirrhosis of the Liver</div>
+        <div class="cond-cell"><span class="cdot"></span>Chronic Kidney Disease</div>
+        <div class="cond-cell"><span class="cdot"></span>End-Stage Renal Disease</div>
+        <!-- Cancer -->
+        <div class="cond-cell"><span class="cdot"></span>Cancer History</div>
+        <div class="cond-cell"><span class="cdot"></span>Active Cancer - Select Carriers</div>
+        <!-- Neurological -->
+        <div class="cond-cell"><span class="cdot"></span>Multiple Sclerosis</div>
+        <div class="cond-cell"><span class="cdot"></span>Neurological Conditions</div>
+        <div class="cond-cell"><span class="cdot"></span>Parkinson's Disease</div>
+        <!-- Mental Health -->
+        <div class="cond-cell"><span class="cdot"></span>Depression / Anxiety</div>
+        <div class="cond-cell"><span class="cdot"></span>Bipolar Disorder</div>
+        <div class="cond-cell"><span class="cdot"></span>Schizophrenia - Select Carriers</div>
+        <div class="cond-cell"><span class="cdot"></span>Mental Illness</div>
+        <!-- Infectious -->
+        <div class="cond-cell"><span class="cdot"></span>HIV Positive - Select Carriers</div>
+        <div class="cond-cell"><span class="cdot"></span>AIDS - Select Carriers</div>
+        <!-- Substance / Legal -->
+        <div class="cond-cell"><span class="cdot"></span>Substance Use History</div>
+        <div class="cond-cell"><span class="cdot"></span>DUI History</div>
+        <!-- Other -->
+        <div class="cond-cell"><span class="cdot"></span>Disability</div>
+        <div class="cond-cell"><span class="cdot"></span>Organ Transplant - Select Carriers</div>
+        <div class="cond-cell"><span class="cdot"></span>Alzheimer's - Select Carriers</div>
+        <div class="cond-cell"><span class="cdot"></span>Dementia - Select Carriers</div>
+        <div class="cond-cell"><span class="cdot"></span>Nursing Home - Select Carriers</div>
+        <div class="cond-cell"><span class="cdot"></span>Hospice - Select Carriers</div>
+        <div class="cond-cell"><span class="cdot"></span>Previously Declined</div>
+      </div>
+
+      <!-- DECLINATION STATEMENT -->
+      <div style="margin-top:2rem;background:var(--warm);border:1px solid var(--warm3);border-left:3px solid var(--gold);padding:1.8rem 2rem;">
+        <p style="font-family:var(--serif);font-size:1.12rem;font-weight:400;color:var(--ink);line-height:1.6;margin-bottom:0.75rem;">A decline from one carrier is not a final answer.</p>
+        <p style="font-size:0.86rem;color:var(--text);line-height:1.85;font-weight:300;">Most applicants who have received a decline from one carrier have not been declined by all carriers. We are contracted with multiple recognized carriers whose underwriting guidelines, lookback periods, and risk tolerances differ from one another. A condition that does not meet one carrier's criteria may qualify under another carrier's guidelines - sometimes based on age range, time since diagnosis, current treatment status, or the specific medications involved. Eligibility is always subject to the underwriting guidelines of the issuing carrier at the time of application and is not guaranteed.</p>
+      </div>
+
+      <!-- GRADED BENEFIT DISCLOSURE - Required under Georgia Rule 120-2-11-.05(7) and .06(3) -->
+      <div style="margin-top:1.5rem;background:var(--warm);border:1px solid var(--warm3);border-left:3px solid var(--gold);padding:1.2rem 1.6rem;">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:0.5rem;">Standard, Graded &amp; Modified Benefit Policies Available</div>
+        <p style="font-size:0.97rem;color:var(--text);line-height:1.8;font-weight:300;margin-bottom:0.6rem;"><strong style="color:var(--ink);font-weight:500;">Standard level benefit policies are available</strong> through most of our carriers for qualifying applicants. Clients in good health may qualify for full immediate coverage from day one with no graded period.</p>
+          <p style="font-size:0.82rem;color:var(--text);line-height:1.8;font-weight:300;">In addition, certain policies available through this practice - including Graded Benefit and Guaranteed Issue whole life policies - contain <strong style="color:var(--ink);font-weight:500;">limited or modified death benefits during an initial period</strong>, commonly the first two to three years following policy issue. During this period, a death resulting from natural causes may result in a return of premiums paid plus interest rather than the full face amount of the policy. The full death benefit is generally payable for accidental death during the graded period and for any cause of death after the graded period ends. The length of the graded period, the benefit schedule during that period, and all other policy terms vary by carrier and must be reviewed in the actual policy contract prior to purchase. Where applicable, issuance of a policy is not guaranteed and may depend upon the answers to health questions contained in the application.</p>
+      </div>
+
+      <p style="margin-top:1rem;font-size:0.74rem;color:var(--light);font-weight:300;line-height:1.65;">Coverage availability for any condition listed above is not guaranteed and is subject to the underwriting guidelines of each individual carrier at the time of application. Conditions marked <em>"Select Carriers"</em> indicate that only certain carriers within our network may consider that profile, and eligibility criteria including age, medical history, current treatment, and other factors will apply. This list is for general informational purposes only and does not constitute a guarantee or offer of coverage.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--warm);">
+    <div class="section-inner">
+      <div class="sec-ey"><div class="sec-ey-line"></div><span>Our Process</span></div>
+      <h2 class="sec-title">From inquiry to coverage -<br><em>four steps.</em></h2>
+      <div class="proc-grid">
+        <div class="proc-item"><div class="proc-num">01</div><h3>Client Intake</h3><p>Secure online questionnaire or conversational intake. All information handled in full HIPAA compliance. No information is shared without explicit written authorization.</p></div>
+        <div class="proc-item"><div class="proc-num">02</div><h3>Carrier Analysis</h3><p>Client profile is evaluated across our full carrier network. Available coverage options are identified based on health profile, age, and coverage objectives.</p></div>
+        <div class="proc-item"><div class="proc-num">03</div><h3>Underwriting Review</h3><p>Each carrier's underwriting guidelines are assessed to estimate approval likelihood prior to formal application - protecting the client's record and preserving their time.</p></div>
+        <div class="proc-item"><div class="proc-num">04</div><h3>Quote Presentation</h3><p>Top options are presented with full transparency. The client decides. The application is submitted only upon their explicit instruction and consent.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET A QUOTE CTA STRIP -->
+  <div style="background:var(--ink);padding:3rem 6%;text-align:center;">
+    <div style="max-width:640px;margin:0 auto;">
+      <p style="font-family:var(--serif);font-size:clamp(1.1rem,3vw,1.4rem);font-weight:300;color:var(--white);margin-bottom:0.6rem;line-height:1.35;">Ready to find out what coverage may be available to you?</p>
+      <p style="font-family:var(--sans);font-size:clamp(0.85rem,2vw,0.97rem);color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:1.6rem;line-height:1.7;">No commitment required at any stage. All inquiries reviewed by a licensed advisor.</p>
+      <a href="quote.html" style="display:inline-block;background:var(--gold);color:var(--white);padding:1rem 2.5rem;font-family:var(--sans);font-size:0.85rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;width:auto;max-width:280px;">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- HOMEPAGE REFERRAL BOX -->
+  <section class="section" style="background:var(--warm2);">
+    <div class="section-inner" style="max-width:860px;">
+      <div class="sec-ey" style="margin-bottom:1rem;"><div class="sec-ey-line"></div><span>Refer a Client</span></div>
+      <h2 class="sec-title" style="margin-bottom:0.6rem;">Know someone who needs coverage?</h2>
+      <p class="sec-lead" style="margin-bottom:0.5rem;">Use this form to refer a senior citizen, a family member, or anyone who may not be comfortable using technology or completing a digital form on their own. A licensed advisor will contact them directly by phone to walk them through the process.</p>
+
+      <div style="background:var(--gold);color:var(--white);border-radius:var(--r);padding:0.9rem 1.3rem;margin-bottom:1.8rem;display:flex;align-items:flex-start;gap:0.8rem;">
+        <span style="font-size:1.1rem;flex-shrink:0;margin-top:1px;">&#9888;</span>
+        <p style="font-family:var(--sans);font-size:0.88rem;font-weight:400;line-height:1.7;"><strong>Is this form for yourself?</strong> If you are looking to get coverage for yourself, please <a href="quote.html" style="color:var(--white);text-decoration:underline;font-weight:600;">complete the full client intake form here</a>. This referral form is only for submitting someone else's information on their behalf.</p>
+      </div>
+
+      <div id="homeReferral">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-bottom:0.85rem;">
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client First Name <span style="color:var(--gold);">*</span></label>
+            <input type="text" id="r_first" placeholder="First name" style="width:100%;padding:0.78rem 1rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+          </div>
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client Last Name <span style="color:var(--gold);">*</span></label>
+            <input type="text" id="r_last" placeholder="Last name" style="width:100%;padding:0.78rem 1rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-bottom:0.85rem;">
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client Phone Number <span style="color:var(--gold);">*</span></label>
+            <input type="tel" id="r_phone" placeholder="(555) 000-0000" style="width:100%;padding:0.78rem 1rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+          </div>
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Estimated Age <span style="color:var(--gold);">*</span></label>
+            <input type="number" id="r_age" placeholder="Age" min="0" max="120" style="width:100%;padding:0.78rem 1rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+          </div>
+        </div>
+
+        <div style="margin-bottom:0.85rem;">
+          <label style="display:block;font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Client Email Address <span style="font-weight:300;text-transform:none;font-size:0.8rem;">(optional)</span></label>
+          <input type="email" id="r_email" placeholder="email@example.com" style="width:100%;padding:0.78rem 1rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;"/>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-bottom:0.85rem;">
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Best Time to Reach Them</label>
+            <select id="r_time" style="width:100%;padding:0.78rem 1rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;">
+              <option value="">Select a time</option>
+              <option value="Morning (8am - 12pm)">Morning (8am - 12pm)</option>
+              <option value="Afternoon (12pm - 5pm)">Afternoon (12pm - 5pm)</option>
+              <option value="Evening (5pm - 8pm)">Evening (5pm - 8pm)</option>
+              <option value="Anytime">Anytime</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">Their Reason for Needing Coverage</label>
+            <select id="r_reason" style="width:100%;padding:0.78rem 1rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:var(--r);outline:none;">
+              <option value="">Select if known</option>
+              <option value="They have no life insurance and need some">They have no life insurance and need some</option>
+              <option value="They need more coverage than they currently have">They need more coverage than they have</option>
+              <option value="They want to leave a legacy for family">They want to leave a legacy for family</option>
+              <option value="Final expense / burial coverage">Final expense or burial coverage</option>
+              <option value="Unsure">Unsure</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="padding:0.9rem 1.1rem;background:var(--warm);border:1px solid var(--warm3);border-radius:var(--r);font-family:var(--sans);font-size:0.83rem;color:var(--light);line-height:1.7;font-weight:300;margin-bottom:1.1rem;">
+          By submitting this form, you confirm that the person listed is aware they may be contacted by a licensed insurance advisor regarding life insurance coverage options. All information is handled in compliance with HIPAA federal privacy regulations.
+        </div>
+
+        <button onclick="submitHomeReferral()" style="width:100%;background:var(--ink);color:var(--white);border:none;padding:1rem;font-family:var(--sans);font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border-radius:var(--r);cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--gold)'" onmouseout="this.style.background='var(--ink)'">Submit Referral</button>
+      </div>
+
+      <div id="homeReferralSuccess" style="display:none;text-align:center;padding:3rem 1rem;">
+        <div style="font-family:var(--serif);font-size:3rem;color:var(--gold);margin-bottom:0.8rem;">✦</div>
+        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin-bottom:0.6rem;">Referral Received.</div>
+        <p style="font-family:var(--sans);font-size:0.95rem;color:var(--text);font-weight:300;line-height:1.75;max-width:420px;margin:0 auto;">A licensed advisor will reach out to your referral at the contact information provided. Thank you for helping someone access the coverage they deserve.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    <div class="disclaimer-inner">
+      <strong>Important Disclosures:</strong> This practice operates as a licensed independent insurance agency. All products are underwritten by the issuing insurance company and are subject to individual carrier underwriting approval. This website does not constitute a binding insurance offer or guarantee of coverage. Your personal and health information is collected in strict compliance with <strong>HIPAA</strong> federal privacy regulations and applicable state law. In connection with any formal insurance application, the issuing carrier may obtain information from the <strong>Medical Information Bureau (MIB)</strong> and may request a consumer report pursuant to the <strong>Fair Credit Reporting Act (FCRA)</strong>. You will be informed of any such inquiry prior to application submission. <strong>Premium Drafting:</strong> <strong>This advisory practice does not collect or draft any premium payments from clients.</strong> All premiums are drafted solely by the contracted life insurance company following application approval.
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-main">Eboni Morris</div>
+        <div class="fb-sub">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+        <div class="footer-license">
+          <div class="fl-title">License Verification</div>
+          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, MI, OH, SC, TX</p>
+          <p class="fl-body" style="margin-top:0.4rem;font-style:italic;">Not located in one of these states? Complete the form anyway. We are actively expanding and work with licensed partners in additional states who may be able to serve you.</p>
+        </div>
+      
+      </div>
+
+      <!-- CARRIER DISCLOSURE - Georgia Rule 120-2-11-.07(4) - spans full width -->
+      <div style="grid-column:1/-1;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:0.5rem;">
+        <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
+        <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE - separated by &nbsp;&middot;&nbsp; - update before publishing]</p>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li><li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li><li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li><li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li><li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li><li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li><li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li><li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Advisor. All rights reserved.</span>
+      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+    </div>
+  </div>
+</footer>
+<script src="_shared.js"></script>
+<script>
+  function submitHomeReferral(){
+    const first = document.getElementById('r_first').value.trim();
+    const last = document.getElementById('r_last').value.trim();
+    const phone = document.getElementById('r_phone').value.trim();
+    const age = document.getElementById('r_age').value.trim();
+    if(!first || !last || !phone || !age){
+      alert('Please provide the client\'s first name, last name, phone number, and estimated age.');
+      return;
+    }
+    const data = {
+      ref_first: first,
+      ref_last: last,
+      ref_phone: phone,
+      ref_age: age,
+      ref_email: document.getElementById('r_email').value.trim(),
+      ref_best_time: document.getElementById('r_time').value,
+      ref_reason: document.getElementById('r_reason').value,
+      source: 'Homepage Referral Form'
+    };
+    // TODO: Connect to Zapier webhook when platform is selected
+    console.log('Homepage referral submission:', JSON.stringify(data, null, 2));
+    document.getElementById('homeReferral').style.display = 'none';
+    document.getElementById('homeReferralSuccess').style.display = 'block';
+  }
+</script>
+
+
+<!-- LEGAL MODALS -->
+
+<!-- Privacy Policy Modal -->
+<div class="modal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" onclick="closeModalOnOverlay(event,'modal-privacy')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-privacy-title">Privacy Policy</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-privacy')" aria-label="Close privacy policy">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What This Policy Covers</div>
+        <p>This privacy policy describes how Eboni Morris, licensed independent insurance agent (NPN: 18509552), collects, uses, and protects information submitted through this website. This policy applies to all information gathered through the intake questionnaire, referral forms, and any other communications submitted through coveredwithconditions.com.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Information We Collect</div>
+        <p>When you submit an intake form or inquiry, we may collect the following types of information:</p>
+        <ul>
+          <li>Personal identifiers such as your name, date of birth, address, phone number, and email address</li>
+          <li>Health and lifestyle information provided voluntarily for the purpose of evaluating coverage options</li>
+          <li>Information about medications, medical history, and functional status as relevant to insurance underwriting</li>
+          <li>Beneficiary relationship information provided in connection with coverage inquiries</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How Your Information Is Used</div>
+        <p>Information you submit is used solely for the purpose of evaluating and presenting life insurance coverage options on your behalf. It is not sold, rented, or shared with any third party except as necessary to process a formal insurance application at your direction, and only with your explicit written authorization prior to any application submission.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your Rights</div>
+        <p>You have the right to request access to the information we hold about you, request corrections to inaccurate information, and request that your information not be used for purposes beyond this advisory engagement. To exercise any of these rights, contact this office directly.</p>
+      </div>
+      <div class="modal-notice">This policy is subject to applicable federal and state insurance privacy regulations. Nothing in this policy limits any rights you may have under HIPAA, applicable state insurance privacy laws, or the Fair Credit Reporting Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HIPAA Notice Modal -->
+<div class="modal-overlay" id="modal-hipaa" role="dialog" aria-modal="true" aria-labelledby="modal-hipaa-title" onclick="closeModalOnOverlay(event,'modal-hipaa')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Federal Privacy Law</div>
+        <div class="modal-title" id="modal-hipaa-title">HIPAA Privacy Notice</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-hipaa')" aria-label="Close HIPAA notice">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What HIPAA Is</div>
+        <p>The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that establishes national standards for the protection of certain health information. HIPAA restricts how health information may be used and shared and gives individuals specific rights regarding their health data.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies Here</div>
+        <p>Any health-related information you provide through this website or during our advisory engagement is handled in strict compliance with applicable HIPAA privacy standards. This includes any medical history, conditions, medications, or other health information submitted as part of an intake questionnaire or consultation.</p>
+        <p>Your health information will not be disclosed to any insurance carrier or third party without your written authorization prior to any formal application submission. You will be informed of what information is being shared, with whom, and for what purpose before any such disclosure occurs.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your HIPAA Rights</div>
+        <ul>
+          <li>The right to receive a notice of privacy practices</li>
+          <li>The right to access and review health information held about you</li>
+          <li>The right to request corrections to inaccurate information</li>
+          <li>The right to request restrictions on certain uses or disclosures</li>
+          <li>The right to receive an accounting of disclosures made on your behalf</li>
+          <li>The right to file a complaint if you believe your privacy rights have been violated</li>
+        </ul>
+      </div>
+      <div class="modal-notice">If you believe your health information privacy rights have been violated, you may file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights. Filing a complaint will not affect your ability to obtain coverage or services through this practice.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Terms of Use Modal -->
+<div class="modal-overlay" id="modal-terms" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title" onclick="closeModalOnOverlay(event,'modal-terms')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-terms-title">Terms of Use</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-terms')" aria-label="Close terms of use">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Use of This Website</div>
+        <p>This website, coveredwithconditions.com, is operated by Eboni Morris, a licensed independent insurance agent (NPN: 18509552). By accessing or using this website, you agree to the following terms. If you do not agree, please do not use this site.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Insurance Offer or Guarantee</div>
+        <p>Nothing on this website constitutes an offer, commitment, or guarantee of insurance coverage. All coverage is subject to formal application, individual carrier underwriting approval, and the terms of the actual policy contract issued by the insurance company. Information on this site is provided for general educational and informational purposes only.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Accuracy of Information</div>
+        <p>While we make reasonable efforts to keep information on this site current and accurate, insurance products, carrier guidelines, licensing requirements, and applicable laws are subject to change. You should not rely solely on information found on this website when making insurance decisions. Consult with a licensed insurance professional for advice specific to your situation.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Attorney-Client or Financial Advisory Relationship</div>
+        <p>Use of this website does not create an attorney-client relationship, a financial advisory relationship, or any other professional engagement beyond that of a licensed insurance producer. Information provided through intake forms is used solely for the purpose of evaluating and presenting life insurance coverage options.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Intellectual Property</div>
+        <p>All content on this website, including text, design, layout, and educational materials, is the property of Eboni Morris and may not be reproduced, distributed, or used without written permission.</p>
+      </div>
+      <div class="modal-notice">These terms are governed by the laws of the State of Georgia. Eboni Morris reserves the right to update these terms at any time. Continued use of this site following any update constitutes acceptance of the revised terms.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Licensing Information Modal -->
+<div class="modal-overlay" id="modal-license" role="dialog" aria-modal="true" aria-labelledby="modal-license-title" onclick="closeModalOnOverlay(event,'modal-license')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Producer Licensing</div>
+        <div class="modal-title" id="modal-license-title">Licensing Information</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-license')" aria-label="Close licensing information">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Licensed Producer</div>
+        <p>This website is operated by Eboni Morris, a licensed independent insurance agent appointed with multiple insurance carriers. Eboni Morris holds life, accident, and sickness licenses and has been licensed since 2017.</p>
+        <ul>
+          <li>National Producer Number (NPN): 18509552</li>
+          <li>License Type: Life, Accident and Sickness</li>
+          <li>Licensed Since: 2017</li>
+          <li>Resident State: Georgia</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">States Where Licensed</div>
+        <p>Eboni Morris is currently licensed to solicit, negotiate, and sell life insurance in the following states:</p>
+        <ul>
+          <li>Georgia (GA) - Resident License</li>
+          <li>Florida (FL) - Nonresident License</li>
+          <li>Michigan (MI) - Nonresident License</li>
+          <li>Ohio (OH) - Nonresident License</li>
+          <li>South Carolina (SC) - Nonresident License</li>
+          <li>Texas (TX) - Nonresident License</li>
+        </ul>
+        <p>Expansion to additional states is ongoing. If you are located in a state not listed above, please complete the intake form and we will advise whether service is currently available in your state or connect you with a licensed partner where applicable.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">License Verification</div>
+        <p>Licensure can be independently verified through the National Insurance Producers Registry (NIPR) by calling 1 (855) 674-6477 and referencing National Producer Number (NPN) 18509552. You may also verify licensing through the insurance department of your individual state.</p>
+      </div>
+      <div class="modal-notice">Insurance products are offered through multiple insurance carriers and are subject to individual carrier underwriting approval. Eboni Morris operates as an independent agent and is not an employee or exclusive representative of any single insurance company.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Focus the close button for keyboard/screen reader users
+    var close = m.querySelector('.modal-close');
+    if (close) setTimeout// Ensure all form buttons are touch-friendly on iOS
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.cbtn, .pob, .kick-btn, .btn-next, .btn-prev, .btn-submit').forEach(function(btn) {
+    btn.style.touchAction = 'manipulation';
+    btn.style.webkitTapHighlightColor = 'rgba(0,0,0,0.1)';
+    btn.style.pointerEvents = 'auto';
+    btn.style.cursor = 'pointer';
+  });
+});
+
+(function(){ close.focus(); }, 50);
+  }
+}
+function closeModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function closeModalOnOverlay(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+</script>
+
+<!-- ACCESSIBILITY PANEL -->
+<div id="a11yPanel" role="dialog" aria-label="Accessibility Options" style="display:none;">
+  <div class="a11y-side-title">Accessibility Options</div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Text Size</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn active" id="ts-normal" onclick="a11y('text','normal')" aria-pressed="true">A</button>
+      <button class="a11y-s-btn" id="ts-large" onclick="a11y('text','large')" aria-pressed="false">A+</button>
+      <button class="a11y-s-btn" id="ts-xl" onclick="a11y('text','xl')" aria-pressed="false">A++</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">High Contrast</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="hc-on" onclick="a11y('contrast','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Dyslexia Font</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="dy-on" onclick="a11y('dyslexia','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Reduce Motion</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="rm-on" onclick="a11y('motion','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Screen Reader Mode</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="sr-on" onclick="a11y('screenreader','toggle')" aria-label="Simplify page layout for screen readers" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <button class="a11y-side-reset" onclick="a11yReset()">Reset All</button>
+</div>
+
+<!-- ACCESSIBILITY TAB -->
+<!-- FCRA Modal -->
+<div class="modal-overlay" id="modal-fcra" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-fcra')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title">Fair Credit Reporting Act (FCRA)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-fcra')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the FCRA Is</div>
+        <p>The Fair Credit Reporting Act is a federal law that regulates how consumer reporting agencies collect, use, and share information about individuals. It gives consumers specific rights when their information is used to make decisions about them, including decisions related to insurance.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies to Your Application</div>
+        <p>In connection with a formal application for life insurance, the issuing insurance company may obtain a consumer report about you. This report can include information about your credit standing, character, general reputation, personal characteristics, or mode of living.</p>
+        <p>If the insurance company takes an adverse action based on information in a consumer report, such as declining your application or charging a higher rate, they are required by law to notify you and provide the name and address of the reporting agency so you can request a copy and dispute any inaccuracies.</p>
+      </div>
+      <div class="modal-notice">No consumer report will be requested on your behalf without your knowledge. You will be informed prior to any application submission.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MIB Modal -->
+<div class="modal-overlay" id="modal-mib" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mib')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title">Medical Information Bureau (MIB)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mib')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the MIB Is</div>
+        <p>The Medical Information Bureau is a member-owned organization that operates as an information exchange among participating life and health insurance companies. Most individually underwritten life and health insurance carriers are MIB members.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Affects Your Application</div>
+        <p>When you apply for individually underwritten life or health insurance, the issuing carrier may request information from the MIB about prior insurance applications or claims you may have submitted with other member companies. You have the right to request a copy of your MIB file directly from MIB at mib.com or by calling 1-866-692-6901.</p>
+      </div>
+      <div class="modal-notice">A formal MIB inquiry will not be initiated without your knowledge and will only occur in connection with a formal application submitted at your direction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pharmacy Records Modal -->
+<div class="modal-overlay" id="modal-rx" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-rx')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Pharmacy Records (Rx History)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-rx')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What a Pharmacy Records Check Is</div>
+        <p>Depending on the insurance carrier and the product applied for, the issuing company may request a report that includes your current and historical prescription drug records from participating pharmacies. This is a standard underwriting tool used by many life insurance carriers.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Prescription drug history is reviewed during underwriting to help the carrier correlate medications on file with health conditions disclosed on the application. You will be informed if such a check is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">Pharmacy record checks may or may not be required depending on the specific carrier and product. Not every carrier uses this report for every application.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MVR Modal -->
+<div class="modal-overlay" id="modal-mvr" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mvr')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Motor Vehicle Report (MVR)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mvr')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What a Motor Vehicle Report Is</div>
+        <p>A Motor Vehicle Report provides a history of your driving record including traffic violations, license suspensions, DUI or DWI convictions, and the current status of your driver's license.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Some life insurance carriers review driving history as part of underwriting because certain driving patterns are considered risk indicators. An MVR may be requested depending on the carrier's guidelines for the specific product applied for. You will be informed if one is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">An MVR may or may not be required depending on the specific carrier and product. You may obtain a copy of your own driving record directly from your state DMV at any time.</div>
+    </div>
+  </div>
+</div>
+
+<button id="a11yTab" onclick="toggleA11y()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
+<div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
+  <div class="a11y-panel-heading">Accessibility Options</div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Text Size</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn active" id="ts-normal" onclick="setA11y('text','normal')">Normal</button>
+      <button class="a11y-btn" id="ts-large" onclick="setA11y('text','large')">Large</button>
+      <button class="a11y-btn" id="ts-xl" onclick="setA11y('text','xl')">X-Large</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">High Contrast</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="hc-btn" onclick="toggleA11yMode('hc-btn','hc-mode','a11y_contrast')">Enable</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Dyslexia Font</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="dy-btn" onclick="toggleA11yMode('dy-btn','dyslexia-font','a11y_dyslexia')">Enable</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Reduce Motion</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="rm-btn" onclick="toggleA11yMode('rm-btn','reduce-motion','a11y_motion')">Enable</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Screen Reader Mode</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="sr-btn" onclick="toggleA11yMode('sr-btn','sr-mode',null)">Enable</button>
+    </div>
+  </div>
+  <button class="a11y-reset-btn" onclick="resetA11y()">Reset All</button>
+</div>
+<script>
+function toggleA11y(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),open=!p.classList.contains('open');p.classList.toggle('open',open);t.setAttribute('aria-expanded',open?'true':'false');}
+function setA11y(type,val){var b=document.body;if(type==='text'){b.classList.remove('lg-text','xl-text');['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});if(val==='large'){b.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}else if(val==='xl'){b.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}else{document.getElementById('ts-normal').classList.add('active');}localStorage.setItem('a11y_text',val);}}
+function toggleA11yMode(btnId,cssClass,storageKey){var b=document.body,on=!b.classList.contains(cssClass);b.classList.toggle(cssClass,on);var btn=document.getElementById(btnId);if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}if(storageKey)localStorage.setItem(storageKey,on?'on':'off');}
+function resetA11y(){document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');document.getElementById('ts-normal').classList.add('active');['ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});['a11y_text','a11y_contrast','a11y_dyslexia','a11y_motion'].forEach(function(k){localStorage.removeItem(k);});}
+function openModal(id){var m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden';var c=m.querySelector('.modal-close');if(c)setTimeout(function(){c.focus();},50);}}
+function closeModal(id){var m=document.getElementById(id);if(m){m.classList.remove('open');document.body.style.overflow='';}}
+function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+(function(){var t=localStorage.getItem('a11y_text');if(t)setA11y('text',t);else{var n=document.getElementById('ts-normal');if(n)n.classList.add('active');}if(localStorage.getItem('a11y_contrast')==='on')toggleA11yMode('hc-btn','hc-mode','a11y_contrast');if(localStorage.getItem('a11y_dyslexia')==='on')toggleA11yMode('dy-btn','dyslexia-font','a11y_dyslexia');if(localStorage.getItem('a11y_motion')==='on')toggleA11yMode('rm-btn','reduce-motion','a11y_motion');})();
+</script>
+</body>
+</html>
