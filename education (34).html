@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"/>
+ <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+ <title>Insurance Education - Licensed Independent Insurance Advisor</title>
+ 
+<style>
+html { font-size: 14px; }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:    #1A1A18;
+  --ink2:   #2A2A27;
+  --stone:  #4A4845;
+  --warm:   #F5F2EC;
+  --warm2:  #EDE9E0;
+  --warm3:  #DDD9D0;
+  --gold:   #9E8047;
+  --gold2:  #7F6535;
+  --white:  #FFFFFF;
+  --text:   #5C5955;
+  --light:  #9C9894;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Jost', system-ui, sans-serif;
+  --r:      2px;
+  --sh:     0 2px 20px rgba(26,26,24,0.06);
+  --sh2:    0 8px 48px rgba(26,26,24,0.10);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.15; color: var(--ink); }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--sans); cursor: pointer; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--warm3); transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 2px 30px rgba(26,26,24,0.08); }
+.nav-brand { display: flex; flex-direction: column; gap: 2px; }
+.nav-brand .brand-main { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: var(--ink); letter-spacing: 0.01em; }
+.nav-brand .brand-sub { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); transition: color 0.2s; position: relative; padding-bottom: 3px; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta { font-size: 0.68rem !important; font-weight: 500 !important; letter-spacing: 0.14em !important; color: var(--white) !important; background: var(--ink); padding: 0.55rem 1.3rem; border-radius: var(--r); transition: background 0.2s; }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--white) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px,4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
+.mobile-nav { display: none; position: sticky; top: 72px; left: 0; right: 0; background: var(--white); z-index: 999; padding: 1.8rem 6%; flex-direction: column; border-bottom: 1px solid var(--warm3); box-shadow: 0 8px 32px rgba(26,26,24,0.08); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); padding: 0.9rem 0; border-bottom: 1px solid var(--warm3); transition: color 0.2s; }
+.mobile-nav a:hover, .mobile-nav a.active { color: var(--gold); }
+.page-top { padding-top: 72px; }
+
+/* ── HERO ── */
+.hero { min-height: 94vh; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.hero-left { background: var(--ink); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(158,128,71,0.10) 0%, transparent 70%); pointer-events: none; }
+.hero-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.hero-ey-line { width: 36px; height: 1px; background: var(--gold); }
+.hero-ey span { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font-size: clamp(2.6rem, 4vw, 4rem); color: var(--white); font-weight: 300; line-height: 1.08; margin-bottom: 1.8rem; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.50); line-height: 1.9; max-width: 400px; margin-bottom: 2.8rem; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); transition: background 0.2s; cursor: pointer; }
+.btn-gold:hover { background: var(--gold2); color: var(--white); }
+.btn-ghost { display: inline-block; background: transparent; color: rgba(255,255,255,0.60); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.18); border-radius: var(--r); transition: all 0.2s; cursor: pointer; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-right { background: var(--warm); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; }
+.hero-cred { border-top: 1px solid var(--warm3); padding: 1.8rem 0; }
+.hero-cred:first-child { border-top: none; padding-top: 0; }
+.cred-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.cred-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+.cred-sub { font-size: 0.97rem; color: var(--text); margin-top: 0.3rem; line-height: 1.65; font-weight: 300; }
+.hero-div { width: 40px; height: 1px; background: var(--gold); margin: 0; opacity: 0.3; }
+
+/* ── PAGE HERO SPLIT ── */
+.phs { display: grid; grid-template-columns: 1fr 1fr; min-height: 52vh; }
+.phs-left { background: var(--ink); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+.phs-left .mono { font-family: var(--serif); font-size: clamp(5rem, 10vw, 9rem); font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1rem; font-style: italic; }
+.phs-left h1 { font-family: var(--serif); font-size: clamp(1.7rem,2.8vw,2.6rem); font-weight: 300; color: var(--white); line-height: 1.15; margin-bottom: 0.5rem; }
+.phs-left .phs-sub { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; }
+.phs-right { background: var(--warm); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: center; }
+.phs-right p { font-family: var(--serif); font-size: 1.02rem; color: var(--stone); line-height: 1.9; font-weight: 300; margin-bottom: 1.4rem; }
+.phs-right a { color: var(--gold); }
+.phs-creds { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0.55rem; }
+.phs-cred { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; color: rgba(255,255,255,0.38); display: flex; align-items: center; gap: 0.7rem; }
+.phs-cred .ck { color: var(--gold); font-size: 0.6rem; }
+
+/* ── SECTIONS ── */
+.section { padding: 6.5rem 6%; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.sec-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
+.sec-ey-line { width: 32px; height: 1px; background: var(--gold); }
+.sec-ey span { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.sec-title { font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 300; margin-bottom: 1rem; }
+.sec-title em { font-style: italic; color: var(--gold); }
+.sec-lead { font-size: 1.08rem; color: var(--text); max-width: 540px; line-height: 1.85; font-weight: 300; margin-bottom: 2.8rem; }
+
+/* ── CONDITIONS ── */
+.cond-mosaic { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--warm3); border: 1px solid var(--warm3); margin-top: 2.5rem; }
+.cond-cell { background: var(--white); padding: 1rem 1.1rem; font-size: 0.95rem; color: var(--stone); display: flex; align-items: center; gap: 0.55rem; transition: background 0.2s, color 0.2s; }
+.cond-cell:hover { background: var(--ink); color: var(--white); }
+.cond-cell:hover .cdot { background: var(--gold); }
+.cdot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; transition: background 0.2s; }
+
+/* ── PROCESS ── */
+.proc-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.proc-item { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); }
+.proc-item:last-child { border-right: none; }
+.proc-num { font-family: var(--serif); font-size: 3.2rem; font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1.1rem; }
+.proc-item h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.proc-item p { font-size: 0.97rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── CTA BAND ── */
+.cta-band { background: var(--warm2); border-top: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); padding: 6rem 6%; text-align: center; }
+.cta-band h2 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); font-weight: 300; margin-bottom: 1rem; }
+.cta-band p { font-size: 1.05rem; color: var(--text); max-width: 420px; margin: 0 auto 2.2rem; font-weight: 300; line-height: 1.85; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-ink { display: inline-block; background: var(--ink); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); cursor: pointer; transition: background 0.2s; }
+.btn-ink:hover { background: var(--gold); color: var(--white); }
+.btn-outline { display: inline-block; background: transparent; color: var(--ink); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--warm3); border-radius: var(--r); cursor: pointer; transition: all 0.2s; }
+.btn-outline:hover { border-color: var(--ink); }
+
+/* ── DISCLAIMER ── */
+.disclaimer { background: var(--warm2); border-top: 1px solid var(--warm3); padding: 1.8rem 6%; font-size: 0.73rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.disclaimer strong { color: var(--ink); font-weight: 500; }
+.disclaimer-inner { max-width: 1160px; margin: 0 auto; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-brand .fb-main { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--white); }
+.footer-brand .fb-sub { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 3px; }
+.footer-brand p { font-size: 0.79rem; color: rgba(255,255,255,0.32); margin-top: 1rem; line-height: 1.8; max-width: 240px; font-weight: 300; }
+.footer-col h4 { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { font-size: 0.8rem; color: rgba(255,255,255,0.32); transition: color 0.2s; font-weight: 300; }
+.footer-col ul a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-top: 2rem; font-size: 0.71rem; color: rgba(255,255,255,0.2); font-weight: 300; }
+.footer-bottom a { color: var(--gold); }
+
+/* ── VALUES / ABOUT ── */
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.val-cell { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); }
+.val-cell:nth-child(3n) { border-right: none; }
+.val-cell:nth-child(n+4) { border-bottom: none; }
+.val-mark { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); margin-bottom: 0.9rem; font-style: italic; }
+.val-cell h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.val-cell p { font-size: 0.98rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── EDUCATION ── */
+.edu-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  border-bottom: none;
+  margin-bottom: 2rem;
+  overflow: visible;
+}
+.edu-tab {
+  padding: 0.75rem 0.6rem;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  font-family: var(--sans);
+  display: block;
+  width: 100%;
+}
+.edu-tab:hover { background: var(--white); border-color: var(--gold); color: var(--ink); }
+.edu-tab.active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+  border-bottom-color: var(--gold);
+}
+.edu-panel { display: none; }
+.edu-panel.active { display: block; animation: fadeUp 0.35s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.product-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.prod-tile { background: var(--warm); border: 1px solid var(--warm3); }
+.prod-tile-head { padding: 1.8rem 1.6rem 1.4rem; border-bottom: 1px solid var(--warm3); }
+.prod-tile-head .ptag { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.prod-tile-head h3 { font-size: 1.08rem; font-weight: 400; }
+.prod-tile-body { padding: 1.4rem 1.6rem; }
+.prod-tile-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.prod-tile-body li { font-size: 0.97rem; color: var(--text); padding-left: 1.1rem; position: relative; line-height: 1.6; font-weight: 300; }
+.prod-tile-body li::before { content: '-'; position: absolute; left: 0; color: var(--gold); font-size: 0.74rem; }
+.info-panel { background: var(--warm); border: 1px solid var(--warm3); border-left: 2px solid var(--gold); padding: 2rem 2.2rem; margin-top: 2rem; }
+.info-panel h3 { font-size: 1.05rem; font-weight: 400; margin-bottom: 0.7rem; }
+.info-panel p { font-size: 1.01rem; color: var(--text); line-height: 1.8; font-weight: 300; }
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-size: 0.99rem; }
+.compare-table th { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; padding: 1.1rem 1.4rem; text-align: left; background: var(--ink); color: var(--white); }
+.compare-table th:first-child { background: var(--ink2); color: var(--light); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.compare-table td { padding: 0.95rem 1.4rem; border-bottom: 1px solid var(--warm3); color: var(--text); font-weight: 300; line-height: 1.6; }
+.compare-table tr:nth-child(odd) td { background: var(--warm); }
+.compare-table td:first-child { font-weight: 500; color: var(--ink); font-size: 0.78rem; letter-spacing: 0.02em; }
+.glossary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--warm3); margin-top: 2.5rem; }
+.glossary-cell { background: var(--white); padding: 1.8rem; }
+.glossary-cell h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.45rem; }
+.glossary-cell p { font-size: 0.96rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── QUOTE FORM ── */
+.quote-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
+.prog-row { display: flex; align-items: center; margin-bottom: 3rem; overflow-x: auto; padding-bottom: 4px; }
+.pstep { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; min-width: 60px; }
+.pstep .pc { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--warm3); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; color: var(--light); transition: all 0.3s; }
+.pstep.done .pc { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.pstep.active .pc { border-color: var(--ink); color: var(--ink); }
+.pstep .pl { font-size: 0.58rem; color: var(--light); font-weight: 500; letter-spacing: 0.06em; text-align: center; max-width: 54px; line-height: 1.3; text-transform: uppercase; }
+.pstep.active .pl, .pstep.done .pl { color: var(--ink); }
+.pline { flex: 1; height: 1px; background: var(--warm3); min-width: 12px; margin-bottom: 18px; transition: background 0.3s; }
+.pline.done { background: var(--gold); }
+.fstep { display: none; }
+.fstep.active { display: block; animation: fadeUp 0.3s ease; }
+.fcard { background: var(--white); border: 1px solid var(--warm3); padding: 2.8rem; }
+.fcard h2 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.3rem; }
+.fcard .fsub { font-size: 0.99rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.45rem; }
+.field input, .field select, .field textarea { width: 100%; padding: 0.72rem 1rem; border: 1px solid var(--warm3); background: var(--warm); font-family: var(--sans); font-size: 0.88rem; color: var(--ink); outline: none; border-radius: var(--r); transition: border-color 0.2s, background 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: var(--white); }
+.field textarea { resize: vertical; min-height: 88px; }
+.choices { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+
+/* Rider selection cards - replaces broken checkbox layout */
+.rider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.rider-card {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+}
+.rider-card:hover { border-color: var(--gold); background: var(--white); }
+.rider-card.selected { background: var(--ink); border-color: var(--ink); }
+.rider-card.selected .rider-card-title { color: var(--white); }
+.rider-card.selected .rider-card-title::before { content: '✓  '; color: var(--gold); }
+.rider-card.selected .rider-card-desc { color: rgba(255,255,255,0.55); }
+.rider-card-title {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  transition: color 0.2s;
+}
+.rider-card-desc {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.7;
+  transition: color 0.2s;
+}
+@media(max-width:700px){ .rider-grid { grid-template-columns: 1fr; } }
+
+/* Required client disclosures with individual checkboxes */
+.disclosure-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.disclosure-item {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.disclosure-item:has(.disclosure-check:checked) {
+  background: var(--white);
+  border-color: var(--gold);
+}
+.disclosure-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+  width: 100%;
+}
+.disclosure-check {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.disclosure-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.disclosure-text {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* Medication add-list builder */
+.med-input-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.med-input-row input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--warm3);
+  background: var(--warm);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink);
+  outline: none;
+  border-radius: var(--r);
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-input-row input[type="text"]:focus { border-color: var(--gold); background: var(--white); }
+.med-add-btn {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 0.72rem 1.3rem;
+  border-radius: var(--r);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.med-add-btn:hover { background: var(--gold); }
+.med-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.med-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.65rem 1rem;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+.med-pill-name { font-family: var(--serif); font-size: 0.95rem; }
+.med-pill-remove {
+  background: none;
+  border: none;
+  color: var(--light);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.2rem 0.5rem;
+  transition: color 0.2s;
+}
+.med-pill-remove:hover { color: var(--gold); }
+.med-none-btn {
+  margin-top: 0.8rem;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.6rem 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-none-btn:hover { border-color: var(--gold); }
+.med-none-btn.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+
+
+.cbtn { padding: 0.48rem 1.1rem; font-size: 0.78rem; font-weight: 400; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.cbtn:hover { border-color: var(--gold); color: var(--ink); }
+.cbtn.sel { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.pob { border: 1px solid var(--warm3); padding: 1.3rem 1.5rem; margin-bottom: 0.75rem; cursor: pointer; transition: border-color 0.2s; border-radius: var(--r); }
+.pob:hover { border-color: var(--gold); }
+.pob.sel { border-color: var(--ink); }
+.pob-hdr { display: flex; align-items: center; gap: 0.7rem; }
+.pob-radio { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--warm3); flex-shrink: 0; transition: all 0.2s; }
+.pob.sel .pob-radio { border-color: var(--ink); background: var(--ink); }
+.pob-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+.pob-desc { font-size: 0.79rem; color: var(--text); margin-top: 0.3rem; margin-left: 1.55rem; font-weight: 300; }
+.pob-sub { display: none; margin-top: 1.1rem; margin-left: 1.55rem; padding-top: 1.1rem; border-top: 1px solid var(--warm3); }
+.pob.sel .pob-sub { display: block; }
+.owner-exp { background: var(--warm); border: 1px solid var(--warm3); padding: 1.8rem; margin-top: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; border-radius: var(--r); }
+.exp-box { padding: 1.1rem; background: var(--white); border-top: 2px solid var(--gold); }
+.exp-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.exp-box p { font-size: 0.96rem; color: var(--text); line-height: 1.7; font-weight: 300; }
+.exp-note { grid-column: 1/-1; font-size: 0.77rem; color: var(--light); line-height: 1.65; font-weight: 300; }
+.legal-box { background: var(--warm); border-left: 2px solid var(--gold); padding: 1.1rem 1.3rem; font-size: 0.75rem; color: var(--text); line-height: 1.75; margin-top: 1.6rem; font-weight: 300; }
+.legal-box strong { color: var(--ink); font-weight: 500; }
+.form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.8rem; border-top: 1px solid var(--warm3); }
+.btn-prev { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); background: none; border: none; cursor: pointer; transition: color 0.2s; font-family: var(--sans); }
+.btn-prev:hover { color: var(--ink); }
+.btn-next { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-next:hover { background: var(--gold); }
+.btn-submit { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--gold); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-submit:hover { background: var(--gold2); }
+.q-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.q-tile { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.q-tile h4 { font-size: 0.92rem; font-weight: 400; margin-bottom: 0.65rem; }
+.q-tile p { font-size: 0.81rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.q-tile ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; padding: 0; }
+.q-tile li { font-size: 0.81rem; color: var(--text); padding-left: 1rem; position: relative; font-weight: 300; }
+.q-tile li::before { content: '-'; position: absolute; left: 0; color: var(--gold); }
+.success-block { text-align: center; padding: 4rem 2rem; display: none; }
+.success-block.active { display: block; }
+.success-mark { font-family: var(--serif); font-size: 4rem; color: var(--gold); font-style: italic; margin-bottom: 1rem; }
+.success-block h2 { font-size: 1.8rem; font-weight: 300; margin-bottom: 0.75rem; }
+.success-block p { font-size: 0.88rem; color: var(--text); max-width: 400px; margin: 0 auto; font-weight: 300; line-height: 1.8; }
+
+/* ── CHAT ── */
+.chat-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; align-items: start; }
+.chat-side { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.chat-side h3 { font-size: 0.95rem; font-weight: 400; margin-bottom: 1.2rem; }
+.topic-list { list-style: none; display: flex; flex-direction: column; }
+.topic-list li { font-size: 0.8rem; color: var(--text); padding: 0.6rem 0; border-bottom: 1px solid var(--warm3); cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 0.45rem; font-weight: 300; line-height: 1.4; }
+.topic-list li:last-child { border-bottom: none; }
+.topic-list li:hover { color: var(--gold); }
+.topic-list li::before { content: '›'; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+.chat-panel { background: var(--white); border: 1px solid var(--warm3); display: flex; flex-direction: column; height: 600px; }
+.chat-top { background: var(--ink); padding: 1.1rem 1.6rem; display: flex; align-items: center; gap: 0.9rem; }
+.chat-av { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.9rem; color: var(--white); font-style: italic; flex-shrink: 0; }
+.chat-name { font-size: 0.86rem; color: var(--white); font-weight: 400; }
+.chat-status { font-size: 0.66rem; color: var(--gold); display: flex; align-items: center; gap: 0.3rem; margin-top: 2px; }
+.chat-status::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: #86EFAC; }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 1.6rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.cmsg { display: flex; gap: 0.65rem; max-width: 88%; }
+.cmsg.agent { align-self: flex-start; }
+.cmsg.user { align-self: flex-end; flex-direction: row-reverse; }
+.cbubble { padding: 0.78rem 1.1rem; font-size: 0.85rem; line-height: 1.65; font-weight: 300; }
+.cmsg.agent .cbubble { background: var(--warm); color: var(--ink); border-radius: 0 8px 8px 8px; }
+.cmsg.user .cbubble { background: var(--ink); color: var(--white); border-radius: 8px 0 8px 8px; }
+.ctime { font-size: 0.64rem; color: var(--light); margin-top: 0.2rem; }
+.cmsg.user .ctime { text-align: right; }
+.typing-ind { display: none; align-self: flex-start; }
+.typing-ind.on { display: flex; gap: 0.65rem; }
+.typing-bub { background: var(--warm); border-radius: 0 8px 8px 8px; padding: 0.78rem 1rem; display: flex; gap: 4px; align-items: center; }
+.tdot { width: 5px; height: 5px; border-radius: 50%; background: var(--light); animation: td 1.2s infinite; }
+.tdot:nth-child(2){animation-delay:0.2s} .tdot:nth-child(3){animation-delay:0.4s}
+@keyframes td{0%,60%,100%{opacity:0.3;transform:scale(0.8)}30%{opacity:1;transform:scale(1)}}
+.chat-quick { padding: 0.75rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.qbtn { font-size: 0.73rem; padding: 0.28rem 0.85rem; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.qbtn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.chat-bar { padding: 1rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; gap: 0.7rem; align-items: center; }
+.chat-in { flex: 1; border: 1px solid var(--warm3); background: var(--warm); padding: 0.62rem 1rem; font-family: var(--sans); font-size: 0.86rem; outline: none; border-radius: var(--r); transition: border-color 0.2s; }
+.chat-in:focus { border-color: var(--gold); background: var(--white); }
+.chat-go { width: 37px; height: 37px; background: var(--ink); border: none; color: var(--white); border-radius: var(--r); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; transition: background 0.2s; flex-shrink: 0; }
+.chat-go:hover { background: var(--gold); }
+
+/* ── CONTACT ── */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; }
+.cblock { padding: 1.8rem 0; border-bottom: 1px solid var(--warm3); }
+.cblock:first-child { padding-top: 0; }
+.cblock-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.cblock p { font-size: 0.9rem; color: var(--ink); line-height: 1.65; }
+.cblock a { color: var(--gold); }
+.cblock small { font-size: 0.76rem; color: var(--light); font-weight: 300; margin-top: 3px; display: block; }
+.cf-panel { background: var(--warm); border: 1px solid var(--warm3); padding: 3rem; }
+.cf-panel h3 { font-size: 1.35rem; font-weight: 400; margin-bottom: 0.35rem; }
+.cf-panel .csub { font-size: 0.84rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .nav-links{display:none;} .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-right{display:none;}
+  .hero-left{padding:7rem 6% 5rem;min-height:80vh;}
+  .phs{grid-template-columns:1fr;}
+  .phs-right{padding:4rem 6%;}
+  .cond-mosaic{grid-template-columns:repeat(3,1fr);}
+  .proc-grid{grid-template-columns:repeat(2,1fr);}
+  .proc-item{border-bottom:1px solid var(--warm3);}
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+  .values-grid .val-cell:nth-child(3n){border-right:1px solid var(--warm3);}
+  .values-grid .val-cell:nth-child(2n){border-right:none;}
+  .product-row{grid-template-columns:1fr 1fr;}
+  .glossary-grid{grid-template-columns:repeat(2,1fr);}
+  .quote-wrap{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+  .chat-wrap{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+.mistake-cell {
+  background: var(--white);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: background 0.2s;
+}
+.mistake-cell:hover { background: var(--warm); }
+.mistake-num {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+.mistake-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.mistake-body {
+  font-size: 0.81rem;
+  color: var(--text);
+  line-height: 1.72;
+  font-weight: 300;
+}
+@media(max-width:700px){
+  #mistakesGrid { grid-template-columns: 1fr !important; }
+}
+
+/* ── LICENSE FOOTER ── */
+.footer-license {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.fl-body {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.32);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.fl-body strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+.fl-body a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.fl-body em { font-style: italic; color: rgba(255,255,255,0.45); }
+.fl-npn {
+  margin-top: 0.9rem;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.fl-npn strong {
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── CARRIER DISCLOSURE FOOTER ── */
+.footer-carriers {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.footer-carriers .fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.footer-carriers .fl-body {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.footer-carriers .fl-body strong {
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* ── CARRIER NAMES - compact horizontal wrap ── */
+.footer-carriers .fl-body {
+  font-size: 0.65rem !important;
+  color: rgba(255,255,255,0.18) !important;
+  line-height: 1.7 !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+}
+
+
+
+
+.a11y-side-title { font-family: system-ui,sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #9e8047; }
+.a11y-side-row { display: flex; flex-direction: column; gap: 0.3rem; }
+.a11y-side-label { font-family: system-ui,sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.a11y-side-btns { display: flex; gap: 0.3rem; }
+.a11y-s-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 3px; padding: 0.3rem 0.65rem; font-family: system-ui,sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.5); cursor: pointer; }
+.a11y-s-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+.a11y-side-divider { height: 1px; background: rgba(255,255,255,0.08); }
+.a11y-side-reset { background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; padding: 0.3rem; font-family: system-ui,sans-serif; font-size: 0.65rem; color: rgba(255,255,255,0.3); cursor: pointer; width: 100%; }
+body.lg-text { font-size: 18px; }
+body.xl-text { font-size: 22px; }
+body.hc-mode { filter: contrast(1.7) saturate(0.1); }
+body.dyslexia-font * { font-family: Arial,sans-serif !important; letter-spacing: 0.05em !important; line-height: 1.9 !important; }
+body.reduce-motion * { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.72); z-index: 9000; pointer-events: none; pointer-events: none; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto; }
+.modal-overlay.open { display: flex; pointer-events: all; }
+.modal-box { background: #fff; border-radius: 8px; max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto; }
+.modal-header { background: #1a1a18; padding: 1.4rem 1.8rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; position: sticky; top: 0; z-index: 2; border-radius: 8px 8px 0 0; }
+.modal-title { font-family: Georgia,serif; font-size: 1.3rem; font-weight: 300; color: #fff; }
+.modal-subtitle { font-family: system-ui,sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9e8047; margin-top: 0.25rem; }
+.modal-close { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,0.6); font-size: 1.2rem; flex-shrink: 0; }
+.modal-body { padding: 1.8rem 2rem; }
+.modal-section { margin-bottom: 1.6rem; }
+.modal-section-title { font-family: system-ui,sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #9e8047; margin-bottom: 0.6rem; }
+.modal-section p { font-family: system-ui,sans-serif; font-size: 1rem; color: #5c5955; font-weight: 300; line-height: 1.8; margin-bottom: 0.6rem; }
+.modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.5rem; }
+.modal-section ul li { font-family: system-ui,sans-serif; font-size: 0.95rem; color: #5c5955; font-weight: 300; line-height: 1.7; padding-left: 1.1rem; position: relative; }
+.modal-section ul li::before { content: '-'; position: absolute; left: 0; color: #9e8047; }
+.modal-notice { background: #f5f2ec; border-left: 3px solid #9e8047; padding: 0.9rem 1.1rem; margin-top: 1.2rem; font-family: system-ui,sans-serif; font-size: 0.9rem; color: #9c9894; font-weight: 300; line-height: 1.7; }
+.modal-divider { height: 1px; background: #ddd9d0; margin: 1.4rem 0; }
+
+
+
+
+#a11yTab:hover { background: #252522; }
+
+
+.a11y-panel-heading { font-family: system-ui,sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #9e8047; padding-bottom: 0.7rem; margin-bottom: 0.7rem; border-bottom: 1px solid rgba(158,128,71,0.25); }
+.a11y-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.8rem;
+  width: 100%;
+}
+.a11y-group-label { font-family: system-ui,sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.4rem; display: block; }
+.a11y-group-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.a11y-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.35rem 0.75rem; font-family: system-ui,sans-serif; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.45); cursor: pointer; transition: all 0.15s; touch-action: manipulation; }
+.a11y-btn:hover { background: rgba(158,128,71,0.2); border-color: #9e8047; color: #9e8047; }
+.a11y-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+.a11y-sep { height: 1px; background: rgba(255,255,255,0.07); margin: 0.5rem 0; }
+.a11y-reset-btn { width: 100%; margin-top: 0.6rem; background: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.4rem; font-family: system-ui,sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.15s; touch-action: manipulation; }
+.a11y-reset-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+body.lg-text { font-size: 18px; }
+body.xl-text { font-size: 22px; }
+body.hc-mode { filter: contrast(1.7) saturate(0.1); }
+body.dyslexia-font * { font-family: Arial,sans-serif !important; letter-spacing: 0.05em !important; line-height: 1.9 !important; }
+body.reduce-motion * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+@media(max-width:600px){
+  
+  
+}
+
+
+/* PAGE HERO CENTERED */
+.page-hero-centered { background: var(--ink); padding: 4rem 2rem 3.5rem; text-align: center; }
+.phc-inner { max-width: 720px; margin: 0 auto; }
+.phc-eyebrow { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.phc-title { font-family: var(--serif); font-size: clamp(2rem,4vw,3rem); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 1.2rem; }
+.phc-desc { font-family: var(--sans); font-size: 1.05rem; color: rgba(255,255,255,0.55); line-height: 1.8; font-weight: 300; max-width: 580px; margin: 0 auto 1.6rem; }
+.phc-creds { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1rem; }
+.phc-cred { font-family: var(--sans); font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300; }
+.phc-sep { color: var(--gold); }
+
+
+@media(max-width:700px){
+  .edu-nav { grid-template-columns: repeat(2, 1fr) !important; }
+  .edu-tab { font-size: 0.6rem !important; padding: 0.65rem 0.4rem !important; }
+}
+
+
+/* FACTOR CARDS */
+.factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 0.5rem; margin-top: 1rem; }
+.factor-card { border: 1px solid var(--warm3); border-radius: 4px; padding: 0.9rem 1rem; cursor: pointer; transition: all 0.2s; background: var(--warm); text-align: left; width: 100%; font-family: var(--sans); }
+.factor-card:hover { border-color: var(--gold); background: var(--white); }
+.factor-card.active { background: var(--ink); border-color: var(--ink); }
+.factor-card.active .factor-label { color: var(--white); }
+.factor-label { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; color: var(--stone); }
+.factor-detail { margin-top: 1rem; background: var(--white); border: 1px solid var(--warm3); border-left: 3px solid var(--gold); padding: 1.2rem 1.4rem; border-radius: 0 4px 4px 0; }
+.factor-detail h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--ink); margin-bottom: 0.6rem; }
+.factor-detail p { font-family: var(--sans); font-size: 0.88rem; color: var(--text); font-weight: 300; line-height: 1.8; }
+.factor-close { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); background: none; padding: 0.3rem 0.8rem; cursor: pointer; border-radius: 3px; margin-top: 0.8rem; }
+
+
+/* ===== ACCESSIBILITY - COMPLETE DEFINITION ===== */
+#a11yTab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.5);
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  padding: 0.8rem 0.42rem;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  font-family: system-ui,sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9e8047;
+  user-select: none;
+  transition: background 0.2s;
+  touch-action: manipulation;
+}
+#a11yTab:hover { background: #252522; }
+
+#a11yPanel {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.3);
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  width: 230px;
+  box-shadow: -6px 0 30px rgba(0,0,0,0.45);
+  display: none;
+  pointer-events: none;
+}
+#a11yPanel.open {
+  display: block;
+  pointer-events: all;
+}
+@media(max-width:600px){
+  
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+ <div class="nav-brand">
+  <div class="brand-main">Licensed Independent Insurance Advisor</div>
+  <div class="brand-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+ </div>
+ <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html" class="active">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li></ul>
+ <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+ <a href="index.html">Home</a>
+ <a href="about.html">About</a>
+ <a href="education.html" class="active">Insurance Education</a>
+ <a href="myths.html">Myth Busted</a>
+ <a href="quote.html">Get a Quote</a>
+</div>
+
+<main class="page-top">
+ <div class="phs">
+  <div class="phs-left">
+   <h1>Insurance Education</h1>
+   <div class="phs-sub">Select a topic &nbsp;·&nbsp; Read what you need</div>
+  </div>
+  <div class="phs-right">
+   <p>Use the tabs below to navigate by topic. Within each section, select the specific item you want to learn about - only that item expands. Nothing is displayed until you choose it, so you are never overwhelmed with information you did not ask for.</p>
+   <p>When you are ready to proceed, <a href="quote.html">complete the intake questionnaire</a>. All inquiries are reviewed by a licensed advisor.</p>
+  </div>
+ </div>
+
+ <section class="section" style="background:var(--white);">
+  <div class="section-inner">
+
+   <div style="background:var(--warm);border:1px solid var(--warm3);border-left:3px solid var(--gold);padding:1.3rem 1.7rem;margin-bottom:2.5rem;display:flex;gap:1.1rem;align-items:flex-start;">
+    <div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold);line-height:1;flex-shrink:0;font-style:italic;">i</div>
+    <div>
+     <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:0.35rem;">General Information Notice</div>
+     <p style="font-size:0.96rem;color:var(--text);line-height:1.8;font-weight:300;margin:0;">All content on this page is provided for <strong style="color:var(--ink);font-weight:500;">general educational purposes only</strong> and does not constitute insurance advice, a policy illustration, or an offer of coverage. Product definitions, terms, structures, benefit triggers, rider provisions, and eligibility criteria <strong style="color:var(--ink);font-weight:500;">vary among insurance carriers</strong> and are subject to change at any time without notice. Language used by one carrier may differ materially from language used by another carrier for a similar product. All coverage is subject to the actual policy contract and the issuing carrier's underwriting guidelines at the time of application.</p>
+    </div>
+   </div>
+
+   <!-- TAB INSTRUCTION -->
+   <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.8rem;">
+    <div style="width:32px;height:1px;background:var(--gold);flex-shrink:0;"></div>
+    <p style="font-size:0.8rem;color:var(--light);font-weight:300;letter-spacing:0.04em;font-style:italic;font-family:var(--serif);">Select a box below to explore that topic. Click any box to display the information. Only the section you choose will be shown.</p>
+   </div>
+
+   <div class="edu-nav">
+    <button class="edu-tab active" onclick="showTab('purpose',this)">What Is Life Insurance For?</button>
+    <button class="edu-tab" onclick="showTab('pricing',this)">How It Is Priced</button>
+    <button class="edu-tab" onclick="showTab('insurable',this)">Who Can Be Insured</button>
+    <button class="edu-tab" onclick="showTab('term',this)">Term Life</button>
+    <button class="edu-tab" onclick="showTab('whole',this)">Whole Life</button>
+    <button class="edu-tab" onclick="showTab('riders',this)">Riders</button>
+    <button class="edu-tab" onclick="showTab('compare',this)">Term vs. Whole Life</button>
+    <button class="edu-tab" onclick="showTab('mistakes',this)">Common Mistakes</button>
+   </div>
+
+   <!-- WHAT IS LIFE INSURANCE FOR -->
+   <div class="edu-panel active" id="panel-purpose">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>The Purpose of Life Insurance</span></div>
+    <h2 class="sec-title">What is life insurance for?<br><em>Understanding the foundation.</em></h2>
+    <p class="sec-lead">Life insurance is a financial tool designed to protect the people and things you care about most. The following explains what it does, how it works, and why people choose it.</p>
+
+    <div class="detail-panel open">
+     <p>Life insurance is a financial tool designed to protect the people and things you care about most. At its core, it is a contract that provides financial security for those who depend on you, offering a cash payment to your loved ones when they need it most. This protection provides peace of mind, knowing that your family or business will be shielded from financial burdens, such as funeral costs, unpaid medical bills, or outstanding loans, in the event of your death.</p>
+
+     <p>Most life insurance falls into two main categories: term and permanent. Term Life Insurance provides temporary protection for a specific period, such as 10, 20, or 30 years. It is often the most budget-friendly option and is ideal for covering immediate needs like income replacement, mortgage protection, or the years while children are growing up.</p>
+
+     <p>Permanent Life Insurance options, such as Whole Life or Universal Life, are designed for lifelong protection. These policies not only provide a death benefit but also build cash value over time, which can be accessed while you are alive.</p>
+
+     <p>The death benefit is the core of the policy - a generally income tax-free cash payment made directly to your chosen beneficiaries. This money can be used for anything, from maintaining a family's lifestyle to funding a child's education. Many modern policies include living benefits, also known as Accelerated Death Benefit riders, at no additional premium cost. These allow you to access a portion of your death benefit while you are still alive if you are diagnosed with a qualifying terminal, chronic, or critical illness.</p>
+
+     <p>Permanent policies feature a guaranteed cash value component that grows on a tax-deferred basis. You can borrow against this value for any reason, such as supplemental retirement income, education funding, or business emergencies. Many term policies include a conversion privilege, which is a no-cost feature that allows you to convert your term coverage into a permanent policy in the future without having to provide new medical evidence of insurability.</p>
+
+     <p>Life insurance ensures that your household and those within it are protected. By paying a predictable premium, you transfer the financial risk of the unknown to the insurance company, helping ensure your wishes are carried out your way. Whether you are looking to lock in your insurability as a young professional or seeking a vehicle for wealth transfer and estate planning, life insurance is a customizable solution that adapts to your life's changes.</p>
+
+     <div class="detail-notice"><strong>Notice:</strong> The features described above - including living benefits, conversion privileges, and cash value growth - vary by carrier and policy form, and may not be included on every policy. Tax treatment of death benefits and policy loans depends on individual circumstances; consult a qualified tax advisor.</div>
+    </div>
+   </div>
+
+   <!-- HOW LIFE INSURANCE IS PRICED -->
+   <div class="edu-panel" id="panel-pricing">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>Pricing &amp; Premiums</span></div>
+    <h2 class="sec-title">How is life insurance priced?<br><em>Select a factor to learn more.</em></h2>
+    <p class="sec-lead">Premiums are calculated using several factors that, together, determine the risk a carrier is taking on. Select any factor below to understand how it affects your rate.</p>
+
+    <div class="topic-grid" id="pricing-grid">
+     <button class="topic-card" onclick="selectTopic(this,'pricing-age')"><span class="topic-card-tag">Factor</span><span class="topic-card-label">Age</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'pricing-health')"><span class="topic-card-tag">Factor</span><span class="topic-card-label">Health &amp; Medical History</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'pricing-gender')"><span class="topic-card-tag">Factor</span><span class="topic-card-label">Gender</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'pricing-tobacco')"><span class="topic-card-tag">Factor</span><span class="topic-card-label">Tobacco &amp; Nicotine Use</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'pricing-lifestyle')"><span class="topic-card-tag">Factor</span><span class="topic-card-label">Lifestyle &amp; Occupation</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'pricing-state')"><span class="topic-card-tag">Factor</span><span class="topic-card-label">State of Residence</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'pricing-coverage')"><span class="topic-card-tag">Factor</span><span class="topic-card-label">Coverage Amount &amp; Policy Type</span></button>
+    </div>
+
+    <div class="detail-panel" data-topic="pricing-age">
+     <h3>Age</h3>
+     <p>Age is one of the most significant factors in determining a premium. Younger applicants generally receive lower premiums because statistically they present a lower mortality risk to the carrier over the life of the policy. As age increases, premiums increase as well, since the likelihood of a claim being paid rises with age. This is why locking in coverage earlier in life is often more cost-effective over time.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="pricing-health">
+     <h3>Health &amp; Medical History</h3>
+     <p>Carriers evaluate an applicant's current health status and medical history, including diagnosed conditions, current medications, family medical history, height and weight, and in many cases lab results or a paramedical exam. Applicants in excellent health typically qualify for the most favorable rate classifications, while applicants with certain health conditions may be offered coverage at a higher premium, with modified benefits, or may need to apply with a carrier that specializes in their specific condition.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="pricing-gender">
+     <h3>Gender</h3>
+     <p>Statistically, women have a longer average life expectancy than men, which is reflected in premium calculations. As a result, all else being equal, female applicants often receive somewhat lower premiums than male applicants of the same age and health classification.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="pricing-tobacco">
+     <h3>Tobacco &amp; Nicotine Use</h3>
+     <p>Use of tobacco or nicotine products in any form, including cigarettes, cigars, vaping, chewing tobacco, or nicotine patches and gum, generally results in a significantly higher premium due to the associated health risks. Carriers typically look back a defined period, often 12 months, to determine tobacco use status. Some carriers offer more favorable rates to occasional cigar smokers or those using nicotine cessation products, depending on specific underwriting guidelines.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="pricing-lifestyle">
+     <h3>Lifestyle &amp; Occupation</h3>
+     <p>Hazardous hobbies such as scuba diving, aviation, or motor racing, as well as high-risk occupations, can affect premium pricing or may require an additional rating or exclusion rider. Driving history, including DUI convictions or multiple violations, and certain criminal history may also be considered during underwriting.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="pricing-state">
+     <h3>State of Residence</h3>
+     <p>Insurance is regulated at the state level, and premium rates, available products, and underwriting guidelines can vary by state. Some carriers are not licensed to offer certain products in every state, which can affect which options are available to you depending on where you live.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="pricing-coverage">
+     <h3>Coverage Amount &amp; Policy Type</h3>
+     <p>The face amount of coverage requested directly affects the premium - higher coverage amounts cost more. The type of policy selected also matters significantly: term life is generally less expensive than permanent life insurance because permanent policies are designed to last a lifetime and include a cash value component. Riders added to a policy, such as living benefits or waiver of premium, may also affect the total premium.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+
+    <div class="panel-notice"><strong>Notice:</strong> Pricing factors and their relative weight vary significantly by carrier. The information above is general in nature and does not represent a quote or guarantee of any specific premium.</div>
+   </div>
+
+   <!-- WHO CAN BE INSURED -->
+   <div class="edu-panel" id="panel-insurable">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>Insurable Interest</span></div>
+    <h2 class="sec-title">Who can be insured?<br><em>Understanding insurable interest.</em></h2>
+    <p class="sec-lead">In order for a life insurance policy to be issued on someone's life, an insurable interest must exist between the policy owner and the person being insured. This is a legal requirement designed to ensure that a policy is purchased for legitimate protection purposes rather than speculation.</p>
+
+    <div class="detail-panel open">
+     <p>An insurable interest generally means the policy owner would suffer a genuine financial or emotional loss if the insured person were to pass away. Most commonly, insurable interest exists between immediate family members, but it can also extend to certain other relationships and business relationships recognized by carriers.</p>
+     <p>Relationships that typically satisfy the insurable interest requirement include:</p>
+     <ul>
+      <li>Spouse</li>
+      <li>Parent and child</li>
+      <li>Stepchild</li>
+      <li>Sibling</li>
+      <li>Grandparent and grandchild</li>
+      <li>Aunt or uncle and niece or nephew</li>
+      <li>Fiance or fiancee, in many cases with documentation of the upcoming marriage</li>
+      <li>Business partners or key employees, in the context of business-related coverage</li>
+     </ul>
+     <p>The closer and more direct the relationship, the more straightforward it generally is to establish insurable interest. For more distant relationships or business relationships, a carrier may request additional documentation to confirm that a legitimate financial or familial interest exists.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Insurable interest requirements, accepted relationships, and documentation standards vary by carrier and by state. This information is general in nature and does not guarantee eligibility for any specific policy.</div>
+    </div>
+   </div>
+
+   <!-- TERM LIFE -->
+   <div class="edu-panel" id="panel-term">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>Term Life Insurance</span></div>
+    <h2 class="sec-title">Temporary coverage.<br><em>Select a term length to learn more.</em></h2>
+    <p class="sec-lead">Term life provides a death benefit for a defined period. Select a term length below to understand what it covers, who it may be appropriate for, and what happens when the term ends.</p>
+
+    <div class="topic-grid" id="term-grid">
+     <button class="topic-card" onclick="selectTopic(this,'term-10')"><span class="topic-card-tag">10 Years</span><span class="topic-card-label">10-Year Term</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'term-15')"><span class="topic-card-tag">15 Years</span><span class="topic-card-label">15-Year Term</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'term-20')"><span class="topic-card-tag">20 Years</span><span class="topic-card-label">20-Year Term</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'term-25')"><span class="topic-card-tag">25 Years</span><span class="topic-card-label">25-Year Term</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'term-30')"><span class="topic-card-tag">30 Years</span><span class="topic-card-label">30-Year Term</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'term-common')"><span class="topic-card-tag">Important</span><span class="topic-card-label">What all term policies have in common</span></button>
+    </div>
+
+    <div class="detail-panel" data-topic="term-10">
+     <h3>10-Year Term</h3>
+     <p><strong>What it is:</strong> Coverage for exactly 10 years from the policy issue date, provided premiums are paid.</p>
+     <p><strong>Who it may suit:</strong> Clients with a short-term financial obligation - such as a personal loan, a business debt, or a period of dependent care ending within a decade. Also suitable for applicants nearing retirement who need limited-duration coverage.</p>
+     <p><strong>Premium:</strong> Typically the lowest of all term lengths because the coverage period is the shortest. Premiums remain level for the full 10 years.</p>
+     <p><strong>At expiration:</strong> Coverage ends. The policyholder may renew - usually at a significantly higher premium - or, where available, convert to permanent coverage without new evidence of insurability.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Renewal options and conversion privileges vary by carrier and policy form.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="term-15">
+     <h3>15-Year Term</h3>
+     <p><strong>What it is:</strong> Coverage for 15 years from the policy issue date.</p>
+     <p><strong>Who it may suit:</strong> Clients needing coverage beyond a 10-year horizon while keeping premiums lower than a 20-year term. Common for mid-range mortgage balances or income replacement during a child's formative years.</p>
+     <p><strong>Premium:</strong> Level for 15 years. Higher than 10-year term but lower than 20-year term for equivalent coverage.</p>
+     <p><strong>At expiration:</strong> Coverage ends unless renewed or converted per the policy's terms.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Product terms and conversion options vary by carrier.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="term-20">
+     <h3>20-Year Term</h3>
+     <p><strong>What it is:</strong> Coverage for 20 years - one of the most frequently selected term lengths available.</p>
+     <p><strong>Who it may suit:</strong> Families with young children, clients with 15 to 20 years remaining on a mortgage, or applicants who need income replacement protection through a defined working period. Balances cost and duration effectively for most clients in their 30s and early 40s.</p>
+     <p><strong>Premium:</strong> Level for the full 20 years. Higher than shorter terms but proportionally cost-effective for the duration provided.</p>
+     <p><strong>At expiration:</strong> Coverage ends. Conversion and renewal options are governed by the policy terms.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Product availability and terms vary by carrier, state, and applicant profile.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="term-25">
+     <h3>25-Year Term</h3>
+     <p><strong>What it is:</strong> Coverage for 25 years. Offered by select carriers - less common than 20-year or 30-year terms.</p>
+     <p><strong>Who it may suit:</strong> Clients who want coverage extending beyond a 20-year horizon without committing to a 30-year term. May be appropriate for clients in their late 30s to early 40s wanting protection into their early-to-mid 60s.</p>
+     <p><strong>Availability:</strong> Not all carriers offer 25-year terms. Availability depends on the carrier and the applicant's age and health classification.</p>
+     <div class="detail-notice"><strong>Notice:</strong> 25-year term availability is carrier-specific and subject to underwriting eligibility.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="term-30">
+     <h3>30-Year Term</h3>
+     <p><strong>What it is:</strong> Coverage for 30 years - the longest term commonly available among standard carriers.</p>
+     <p><strong>Who it may suit:</strong> Young families, clients in their late 20s to mid-30s wanting long-horizon income protection, or applicants with a 30-year mortgage to cover in full. Locking in a premium rate at a younger, healthier age is a primary benefit.</p>
+     <p><strong>Premium:</strong> Higher than shorter terms, but provides the longest level-premium period available. Premiums remain fixed for the full 30 years.</p>
+     <p><strong>At expiration:</strong> Coverage ends at year 30. Conversion and renewal options, where available, are governed by the policy terms and carrier guidelines.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Some carriers offer terms beyond 30 years. Availability is subject to underwriting and carrier guidelines.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="term-common">
+     <h3>What all term policies have in common</h3>
+     <ul>
+      <li>Term life provides <strong>pure protection</strong> - there is no cash value accumulation</li>
+      <li>Premiums are level for the selected term and do not increase during that period</li>
+      <li>Coverage terminates at the end of the term unless renewed or converted</li>
+      <li>Renewal, if available, is typically at a significantly higher premium based on attained age</li>
+      <li>Many carriers include a <strong>conversion privilege</strong> allowing conversion to permanent coverage without new evidence of insurability - this privilege has an expiration date and must be exercised within the carrier's window</li>
+      <li>Term policies do not pay a benefit if the insured outlives the term</li>
+      <li>Age, gender, health classification, tobacco use, and lifestyle factors all affect the premium at the time of application</li>
+     </ul>
+     <div class="detail-notice"><strong>Notice:</strong> All characteristics listed are general in nature and may vary by carrier, policy form, and state of issue.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+   </div>
+
+   <!-- WHOLE LIFE -->
+   <div class="edu-panel" id="panel-whole">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>Whole Life Insurance</span></div>
+    <h2 class="sec-title">Permanent coverage.<br><em>Select a structure to learn more.</em></h2>
+    <p class="sec-lead">Whole life insurance is designed to provide coverage that does not expire after a set period. Select a policy structure below to understand how each type works, how long it lasts, and how premiums are handled.</p>
+
+    <div class="topic-grid" id="whole-grid">
+     <button class="topic-card" onclick="selectTopic(this,'whole-standard')"><span class="topic-card-tag">Standard</span><span class="topic-card-label">Standard Whole Life - Level Pay</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'whole-graded')"><span class="topic-card-tag">Graded</span><span class="topic-card-label">Graded Benefit Whole Life</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'whole-guaranteed')"><span class="topic-card-tag">Guaranteed</span><span class="topic-card-label">Guaranteed Issue Whole Life</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'whole-limited')"><span class="topic-card-tag">Limited Pay</span><span class="topic-card-label">Limited Pay / Smartpay Whole Life</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'whole-maturity')"><span class="topic-card-tag">Maturity</span><span class="topic-card-label">Policy Maturity - What happens at a specific age</span></button>
+    </div>
+
+    <div class="detail-panel" data-topic="whole-standard">
+     <h3>Standard Whole Life - Level Pay</h3>
+     <p><strong>What it is:</strong> The traditional whole life policy. The insured pays a fixed premium throughout the life of the policy. Coverage remains active until the insured's death or the policy's maturity age.</p>
+     <p><strong>How long does it last:</strong> Depending on the carrier and policy form, the policy remains in force until age 100 or age 121. Some carriers define a maturity age at which the cash value equals the face amount and is distributed to the policyholder. The term "whole life" may mean different things across different companies - always review the actual policy contract.</p>
+     <p><strong>Cash value:</strong> Accumulates tax-deferred over time at a rate defined in the policy. May be accessed via policy loan or surrender, subject to the policy's terms. Accessing cash value may reduce the death benefit.</p>
+     <p><strong>Premiums:</strong> Fixed for the life of the policy. Do not increase with age or health changes after issue.</p>
+     <ul>
+      <li>Death benefit does not decrease while premiums are paid</li>
+      <li>Coverage cannot be cancelled by the carrier due to health changes after issue</li>
+      <li>Premiums continue until the insured's death or policy maturity</li>
+     </ul>
+     <div class="detail-notice"><strong>Notice:</strong> Maturity age, cash value growth rates, and policy terms vary significantly among carriers.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="whole-graded">
+     <h3>Graded Benefit Whole Life</h3>
+     <p><strong>What it is:</strong> A whole life policy in which the full death benefit is not immediately payable. The benefit increases incrementally over a specified period - typically the first two to three years.</p>
+     <p><strong>How grading works:</strong> If the insured dies from natural causes during the graded period, the beneficiary may receive a return of premiums paid plus interest rather than the full face amount. If death results from an accident, the full benefit may be payable immediately - depending on the carrier's terms. After the graded period, the full death benefit is payable for any cause of death.</p>
+     <p><strong>Who it may suit:</strong> Applicants who do not qualify for standard or simplified issue policies due to health history. Graded benefit policies typically have less stringent underwriting requirements.</p>
+     <ul>
+      <li>Graded period length varies by carrier - commonly 2 or 3 years</li>
+      <li>Premiums are typically higher relative to the face amount than standard policies</li>
+      <li>Face amounts are often lower than standard whole life policies</li>
+      <li>After the graded period, the policy functions as standard whole life</li>
+     </ul>
+     <div class="detail-notice"><strong>Notice:</strong> Graded benefit structures, waiting periods, and benefit schedules vary significantly among carriers and must be reviewed in the actual policy contract.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="whole-guaranteed">
+     <h3>Guaranteed Issue Whole Life</h3>
+     <p><strong>What it is:</strong> A whole life policy requiring no medical exam and no health questions. Acceptance is guaranteed for applicants who meet the carrier's age requirements - typically between ages 45 and 85, though this varies by carrier.</p>
+     <p><strong>Who it may suit:</strong> Applicants who have been declined for coverage, have significant health conditions preventing qualification for standard or graded policies, or who prefer to avoid the underwriting process entirely. Commonly used for final expense coverage.</p>
+     <p><strong>Important limitation:</strong> Guaranteed issue policies almost universally include a graded death benefit during the first two to three years. If the insured dies of natural causes during this period, the beneficiary typically receives a return of premiums paid plus interest - not the full face amount. The full benefit is generally payable for accidental death during the graded period, and for any cause of death after the graded period ends.</p>
+     <ul>
+      <li>No medical exam and no health questions required</li>
+      <li>Face amounts typically limited - commonly up to $25,000 or $50,000 depending on the carrier</li>
+      <li>Premiums are higher relative to the face amount due to the increased risk the carrier accepts</li>
+      <li>Age eligibility requirements vary by carrier</li>
+      <li>Graded benefit period applies in most cases</li>
+     </ul>
+     <div class="detail-notice"><strong>Notice:</strong> Guaranteed issue terms, graded benefit periods, face amount limits, and age eligibility vary by carrier.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="whole-limited">
+     <h3>Limited Pay / Smartpay Whole Life</h3>
+     <p><strong>What it is:</strong> A whole life policy in which the insured pays premiums for a defined, limited period - after which no further premiums are required, but coverage continues for life.</p>
+     <p><strong>How it works:</strong> The policyholder selects a premium payment period at the time of application. Common structures include paying until a specific age (such as 65 or 70) or for a defined number of years (such as 10, 20, or 30 years). Once the payment period ends, the policy is fully paid-up - no further premiums are owed and coverage continues for the insured's lifetime.</p>
+     <p><strong>Who it may suit:</strong> Clients who want permanent coverage but prefer to eliminate premium obligations before or during retirement. Paying premiums during higher-earning years and being premium-free later is a common objective.</p>
+     <ul>
+      <li>Premiums during the pay period are higher than a standard level-pay whole life policy for the same face amount</li>
+      <li>Once the pay period ends, no further premiums are owed</li>
+      <li>Cash value continues to accumulate after the pay period ends</li>
+      <li>The specific pay period is defined in the policy at issue</li>
+      <li>Not all carriers offer all pay period structures</li>
+     </ul>
+     <div class="detail-notice"><strong>Notice:</strong> Pay period structures, premium amounts, and cash value accumulation rates vary by carrier and policy form.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="whole-maturity">
+     <h3>Policy Maturity - What happens at a specific age</h3>
+     <p><strong>What policy maturity means:</strong> Most whole life policies include a maturity age - the age at which the policy is fully matured. At maturity, the accumulated cash value equals the face amount. The carrier then pays out the maturity value to the policyholder, and the policy ends.</p>
+     <p><strong>Common maturity ages:</strong> Age 100 and age 121 are most commonly used, though this varies by carrier and policy form. Some policies mature at age 95 or 105. The maturity age is defined in the policy contract and does not change after issue.</p>
+     <p><strong>Practical meaning:</strong> If the insured reaches the maturity age while the policy is in force, they receive the cash value - which equals the death benefit - while still living. This is a policy maturity distribution, not a death benefit payout. Tax implications may apply.</p>
+     <p><strong>Limited pay and self-funding structures:</strong> Some limited pay policies include provisions under which once total premiums paid reach the face amount, the policy may become self-funding or terminate per its specific terms. These structures must be reviewed in the actual policy contract.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Maturity ages, benefit structures, and tax treatment vary by carrier and policy form. Consult a qualified advisor before making decisions based on maturity provisions.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+   </div>
+
+   <!-- RIDERS -->
+
+   <!-- RIDERS -->
+   <div class="edu-panel" id="panel-riders">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>Riders</span></div>
+    <h2 class="sec-title">Optional coverage<br><em>beyond the death benefit.</em></h2>
+    <p class="sec-lead">Riders are optional provisions that may be added to a base policy. Select a rider below to learn what it does and what varies among carriers.</p>
+
+    <div class="topic-grid" id="riders-grid">
+     <button class="topic-card" onclick="selectTopic(this,'rider-terminal')"><span class="topic-card-tag">Living Benefit</span><span class="topic-card-label">Terminal Illness Rider</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'rider-chronic')"><span class="topic-card-tag">Living Benefit</span><span class="topic-card-label">Chronic Illness Rider</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'rider-critical')"><span class="topic-card-tag">Living Benefit</span><span class="topic-card-label">Critical Illness Rider</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'rider-waiver')"><span class="topic-card-tag">Disability Protection</span><span class="topic-card-label">Waiver of Premium</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'rider-adb')"><span class="topic-card-tag">Additional Coverage</span><span class="topic-card-label">Accidental Death Benefit (ADB)</span></button>
+     <button class="topic-card" onclick="selectTopic(this,'rider-term')"><span class="topic-card-tag">Additional Coverage</span><span class="topic-card-label">Term Rider / Children's Term Rider</span></button>
+    </div>
+
+    <div class="detail-panel" data-topic="rider-terminal">
+     <h3>Terminal Illness Rider</h3>
+     <p>Allows early access to a portion of the death benefit upon diagnosis of a terminal illness. Most carriers require physician certification of a life expectancy of 12 to 24 months or less - though the specific threshold varies by carrier. Funds may generally be used for any purpose. Any amount accelerated reduces the death benefit remaining at death. Included at no additional premium on many policies, though not universally.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Trigger criteria, acceleration amounts, and benefit terms vary by carrier and policy form.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="rider-chronic">
+     <h3>Chronic Illness Rider</h3>
+     <p>Triggers when the insured is certified as unable to perform two or more Activities of Daily Living (ADLs) without substantial assistance. ADLs generally include bathing, dressing, eating, transferring, toileting, and continence - though the specific ADLs considered and the number required vary by carrier. Can help offset long-term care costs. Any amount accelerated reduces the remaining death benefit.</p>
+     <div class="detail-notice"><strong>Notice:</strong> ADL definitions, qualifying thresholds, acceleration limits, and benefit structures vary significantly by carrier.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="rider-critical">
+     <h3>Critical Illness Rider</h3>
+     <p>Provides access to a portion of the death benefit upon diagnosis of a covered critical illness. Covered conditions commonly include heart attack, stroke, cancer, end-stage renal failure, and major organ transplant - but the specific list varies by carrier. Benefits may be paid as a lump sum or as a percentage of the death benefit. Any amount advanced reduces the remaining death benefit.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Covered conditions, benefit amounts, and trigger definitions vary substantially among carriers.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="rider-waiver">
+     <h3>Waiver of Premium</h3>
+     <p>Waives the premium obligation if the insured becomes totally disabled and unable to work. The policy remains in force during the qualifying disability period without payment. The definition of total disability and how long the disability must persist before the waiver activates vary by carrier. Some carriers require a waiting period of three to six months. Premiums paid during the waiting period may or may not be refunded depending on the carrier's terms.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Disability definitions, waiting periods, and waiver terms vary by carrier. Typically comes at an additional premium.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="rider-adb">
+     <h3>Accidental Death Benefit (ADB)</h3>
+     <p>Pays an additional death benefit if the insured dies as a direct result of a covered accident. In some policy forms the total benefit paid may equal double the base death benefit - though this varies by carrier. Does not pay an additional benefit for deaths resulting from illness or natural causes. Covered accidents, exclusions, time limits from accident to death, and benefit amounts all vary by carrier and policy form.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Covered accidents, exclusions, and benefit structures vary by carrier. Does not apply to illness-related death.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="rider-term">
+     <h3>Term Rider / Children's Term Rider</h3>
+     <p>A term rider adds a term life component to a base permanent policy. A children's term rider extends coverage to eligible dependent children under a single rider on the parent's policy. Children's term riders are often convertible to permanent coverage when the child reaches adulthood - without new evidence of insurability - preserving future insurability regardless of health conditions developing after issue. Convertibility terms, eligible ages, and available face amounts vary by carrier.</p>
+     <div class="detail-notice"><strong>Notice:</strong> Rider availability, conversion options, eligible ages, and coverage amounts vary by carrier and policy form.</div>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+   </div>
+
+   <!-- COMPARE -->
+
+   <!-- COMPARE -->
+   <div class="edu-panel" id="panel-compare">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>Side-by-Side Comparison</span></div>
+    <h2 class="sec-title">Term vs. Whole Life -<br><em>a direct comparison.</em></h2>
+    <p class="sec-lead">This comparison is provided for general reference only and does not constitute a recommendation. The appropriate policy type depends on the applicant's age, health profile, financial objectives, and budget.</p>
+    <table class="compare-table">
+     <thead><tr><th>Feature</th><th>Term Life</th><th>Whole Life</th></tr></thead>
+     <tbody>
+      <tr><td>Coverage Duration</td><td>Fixed term - 10, 15, 20, 25, or 30 years</td><td>Lifetime - until death or policy maturity age</td></tr>
+      <tr><td>Premium Cost</td><td>Lower - pure protection, no savings component</td><td>Higher - includes cash value accumulation</td></tr>
+      <tr><td>Cash Value</td><td>None</td><td>Accumulates tax-deferred over time</td></tr>
+      <tr><td>Death Benefit</td><td>Paid only if death occurs within the term</td><td>Payable upon death regardless of when it occurs, provided policy is in force</td></tr>
+      <tr><td>Premium Stability</td><td>Level during the term; increases significantly upon renewal</td><td>Fixed for life (standard); ends at specified age or year (limited pay)</td></tr>
+      <tr><td>Policy Types</td><td>Standard term only</td><td>Standard, Graded Benefit, Guaranteed Issue, Limited Pay / Smartpay</td></tr>
+      <tr><td>Conversion Option</td><td>Many carriers permit conversion to permanent without new underwriting - subject to carrier terms and time limits</td><td>Not applicable - already permanent</td></tr>
+      <tr><td>Maturity Provision</td><td>None - coverage simply ends at expiration</td><td>Policy matures at a specified age (commonly 100 or 121) - terms vary by carrier</td></tr>
+      <tr><td>Primary Uses</td><td>Income replacement, mortgage protection, short-to-mid-term family needs</td><td>Lifelong protection, final expense, estate planning, cash value accumulation</td></tr>
+     </tbody>
+    </table>
+    <div class="panel-notice"><strong>Notice:</strong> The comparison above is general in nature. Product terms, available structures, and carrier-specific features vary and are subject to change. All coverage is governed by the actual policy contract at time of application.</div>
+   </div>
+
+   <!-- GLOSSARY -->
+   
+
+   <!-- COMMON MISTAKES -->
+
+   <!-- COMMON MISTAKES -->
+   <div class="edu-panel" id="panel-mistakes">
+    <div class="sec-ey"><div class="sec-ey-line"></div><span>Common Mistakes</span></div>
+    <h2 class="sec-title">50 life insurance mistakes<br><em>and what to know instead.</em></h2>
+    <p class="sec-lead">Select any item to read about the mistake and what you should know instead.</p>
+
+    <div class="mistake-grid" id="mistakes-grid">
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-01')"><span class="mistake-card-num">01</span><span class="mistake-card-title">Waiting until you are older</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-02')"><span class="mistake-card-num">02</span><span class="mistake-card-title">Assuming employer coverage is sufficient</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-03')"><span class="mistake-card-num">03</span><span class="mistake-card-title">Not comparing available options</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-04')"><span class="mistake-card-num">04</span><span class="mistake-card-title">Purchasing insufficient coverage</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-05')"><span class="mistake-card-num">05</span><span class="mistake-card-title">Failing to name a beneficiary</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-06')"><span class="mistake-card-num">06</span><span class="mistake-card-title">Not updating beneficiary designations</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-07')"><span class="mistake-card-num">07</span><span class="mistake-card-title">Allowing coverage to lapse</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-08')"><span class="mistake-card-num">08</span><span class="mistake-card-title">Providing inaccurate health information</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-09')"><span class="mistake-card-num">09</span><span class="mistake-card-title">Assuming a health condition makes you uninsurable</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-10')"><span class="mistake-card-num">10</span><span class="mistake-card-title">Overlooking coverage for children</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-11')"><span class="mistake-card-num">11</span><span class="mistake-card-title">Not insuring stay-at-home parents</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-12')"><span class="mistake-card-num">12</span><span class="mistake-card-title">Waiting until after a diagnosis</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-13')"><span class="mistake-card-num">13</span><span class="mistake-card-title">Not reviewing coverage annually</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-14')"><span class="mistake-card-num">14</span><span class="mistake-card-title">Selecting coverage based on price alone</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-15')"><span class="mistake-card-num">15</span><span class="mistake-card-title">Overlooking riders</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-16')"><span class="mistake-card-num">16</span><span class="mistake-card-title">Not asking about conversion options</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-17')"><span class="mistake-card-num">17</span><span class="mistake-card-title">Assuming single individuals do not need coverage</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-18')"><span class="mistake-card-num">18</span><span class="mistake-card-title">Underestimating final expense costs</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-19')"><span class="mistake-card-num">19</span><span class="mistake-card-title">Overlooking business-related obligations</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-20')"><span class="mistake-card-num">20</span><span class="mistake-card-title">Not accounting for inflation</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-21')"><span class="mistake-card-num">21</span><span class="mistake-card-title">Not planning for income replacement</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-22')"><span class="mistake-card-num">22</span><span class="mistake-card-title">Delaying estate planning integration</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-23')"><span class="mistake-card-num">23</span><span class="mistake-card-title">Not accounting for mortgage obligations</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-24')"><span class="mistake-card-num">24</span><span class="mistake-card-title">Skipping or understating medical history</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-25')"><span class="mistake-card-num">25</span><span class="mistake-card-title">Not understanding how term insurance works</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-26')"><span class="mistake-card-num">26</span><span class="mistake-card-title">Not understanding permanent insurance</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-27')"><span class="mistake-card-num">27</span><span class="mistake-card-title">Not asking about living benefits</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-28')"><span class="mistake-card-num">28</span><span class="mistake-card-title">Not considering tax implications</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-29')"><span class="mistake-card-num">29</span><span class="mistake-card-title">Relying on crowdfunding as a plan</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-30')"><span class="mistake-card-num">30</span><span class="mistake-card-title">Not insuring a spouse</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-31')"><span class="mistake-card-num">31</span><span class="mistake-card-title">Not addressing final expense needs</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-32')"><span class="mistake-card-num">32</span><span class="mistake-card-title">Missing premium payments</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-33')"><span class="mistake-card-num">33</span><span class="mistake-card-title">Not updating coverage after major life events</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-34')"><span class="mistake-card-num">34</span><span class="mistake-card-title">Not considering the financial impact of disability</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-35')"><span class="mistake-card-num">35</span><span class="mistake-card-title">Not organizing policy documentation</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-36')"><span class="mistake-card-num">36</span><span class="mistake-card-title">Not asking questions before purchasing</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-37')"><span class="mistake-card-num">37</span><span class="mistake-card-title">Relying on unverified online information</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-38')"><span class="mistake-card-num">38</span><span class="mistake-card-title">Waiting for the right time to apply</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-39')"><span class="mistake-card-num">39</span><span class="mistake-card-title">Not reviewing policy exclusions</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-40')"><span class="mistake-card-num">40</span><span class="mistake-card-title">Not reviewing coverage after a job change</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-41')"><span class="mistake-card-num">41</span><span class="mistake-card-title">Incorrect policy ownership structure</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-42')"><span class="mistake-card-num">42</span><span class="mistake-card-title">Not naming contingent beneficiaries</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-43')"><span class="mistake-card-num">43</span><span class="mistake-card-title">Not planning for business succession</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-44')"><span class="mistake-card-num">44</span><span class="mistake-card-title">Not preserving a child's future insurability</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-45')"><span class="mistake-card-num">45</span><span class="mistake-card-title">Not keeping policies accessible</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-46')"><span class="mistake-card-num">46</span><span class="mistake-card-title">Not informing beneficiaries that coverage exists</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-47')"><span class="mistake-card-num">47</span><span class="mistake-card-title">Not updating policies following divorce</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-48')"><span class="mistake-card-num">48</span><span class="mistake-card-title">Not reviewing coverage after a new child</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-49')"><span class="mistake-card-num">49</span><span class="mistake-card-title">Not consulting a licensed professional</span></button>
+     <button class="mistake-card" onclick="selectTopic(this,'mistake-50')"><span class="mistake-card-num">50</span><span class="mistake-card-title">Viewing life insurance only as a death benefit</span></button>
+    </div>
+
+    <div class="detail-panel" data-topic="mistake-01">
+     <h3>01. Waiting until you are older</h3>
+     <p>The younger and healthier you are, the lower your premiums are likely to be. Locking in coverage early can result in more favorable long-term rates.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-02">
+     <h3>02. Assuming employer coverage is sufficient</h3>
+     <p>Employer-provided coverage is often limited in amount and typically not portable. A personal policy remains in force regardless of employment status.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-03">
+     <h3>03. Not comparing available options</h3>
+     <p>Products and carriers vary significantly in cost, structure, and underwriting. Reviewing available options helps identify coverage appropriate to your situation.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-04">
+     <h3>04. Purchasing insufficient coverage</h3>
+     <p>Consider income replacement, outstanding debts, future education costs, and ongoing family needs - not funeral expenses alone.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-05">
+     <h3>05. Failing to name a beneficiary</h3>
+     <p>Without a named beneficiary, death benefits may be delayed or distributed through the estate rather than directly to intended recipients.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-06">
+     <h3>06. Not updating beneficiary designations</h3>
+     <p>Review beneficiary designations following marriage, divorce, the birth of a child, or other significant life events.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-07">
+     <h3>07. Allowing coverage to lapse</h3>
+     <p>Missed premium payments can result in policy termination. Automatic payment arrangements help prevent unintended lapses.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-08">
+     <h3>08. Providing inaccurate health information</h3>
+     <p>Applications must be completed truthfully. Material misrepresentation can result in claim denial or rescission, particularly during the contestability period.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-09">
+     <h3>09. Assuming a health condition makes you uninsurable</h3>
+     <p>Many medical conditions still qualify for coverage through carriers that specialize in higher-risk profiles. Inquire before assuming ineligibility.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-10">
+     <h3>10. Overlooking coverage for children</h3>
+     <p>Some policies include provisions allowing children to obtain future coverage regardless of health changes that occur after the policy is issued.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-11">
+     <h3>11. Not insuring stay-at-home parents</h3>
+     <p>The cost of replacing childcare and household services can be substantial. Coverage for non-earning spouses is worth consideration.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-12">
+     <h3>12. Waiting until after a diagnosis</h3>
+     <p>Coverage is generally more accessible and more affordable prior to the onset of significant health conditions.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-13">
+     <h3>13. Not reviewing coverage annually</h3>
+     <p>Financial circumstances change over time. An annual review helps ensure coverage remains aligned with current needs.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-14">
+     <h3>14. Selecting coverage based on price alone</h3>
+     <p>Premium cost is one factor among several. Policy features, available riders, carrier financial strength, and product structure all warrant consideration.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-15">
+     <h3>15. Overlooking riders</h3>
+     <p>Optional riders can expand coverage in meaningful ways. Understanding available riders and their costs helps determine whether they are appropriate for your situation.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-16">
+     <h3>16. Not asking about conversion options</h3>
+     <p>Some term policies include a conversion privilege permitting conversion to permanent coverage without new evidence of insurability. This privilege expires - inquire before it is no longer available.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-17">
+     <h3>17. Assuming single individuals do not need coverage</h3>
+     <p>Life insurance may still serve a purpose - covering outstanding debts, supporting dependents, or locking in favorable rates while young and healthy.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-18">
+     <h3>18. Underestimating final expense costs</h3>
+     <p>Funeral and burial costs can be significant. Even modest coverage can help prevent these expenses from becoming a financial burden on survivors.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-19">
+     <h3>19. Overlooking business-related obligations</h3>
+     <p>Business owners should consider how life insurance can address business debts, partnership obligations, or continuity planning.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-20">
+     <h3>20. Not accounting for inflation</h3>
+     <p>The purchasing power of a fixed death benefit decreases over time. Coverage needs should be evaluated with long-term inflation in mind.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-21">
+     <h3>21. Not planning for income replacement</h3>
+     <p>Consider how long survivors would need financial support and what income level would be required to maintain their standard of living.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-22">
+     <h3>22. Delaying estate planning integration</h3>
+     <p>Life insurance can play a meaningful role in broader estate planning. Consulting with qualified legal and financial advisors early is advisable.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-23">
+     <h3>23. Not accounting for mortgage obligations</h3>
+     <p>A death benefit covering the outstanding mortgage balance can help surviving family members remain in the home.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-24">
+     <h3>24. Skipping or understating medical history</h3>
+     <p>Applications must be completed in full and with accuracy. Incomplete or inaccurate responses can create complications at the time of a claim.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-25">
+     <h3>25. Not understanding how term insurance works</h3>
+     <p>Term provides coverage for a defined period. If the insured outlives the term, coverage ends unless renewed or converted.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-26">
+     <h3>26. Not understanding permanent insurance</h3>
+     <p>Permanent policies are designed to remain in force for the insured's lifetime, provided premiums are maintained, and may accumulate cash value over time.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-27">
+     <h3>27. Not asking about living benefits</h3>
+     <p>Some policies include provisions allowing early access to a portion of the death benefit upon qualifying illness or event. These features vary by carrier and policy form.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-28">
+     <h3>28. Not considering tax implications</h3>
+     <p>Life insurance proceeds and cash value may have tax considerations. Consult a qualified tax advisor regarding your specific circumstances.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-29">
+     <h3>29. Relying on crowdfunding as a plan</h3>
+     <p>Crowdfunding outcomes are unpredictable and cannot be relied upon as a substitute for structured financial protection.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-30">
+     <h3>30. Not insuring a spouse</h3>
+     <p>Both earned income and household contributions have financial value. Coverage for both spouses is worth evaluating.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-31">
+     <h3>31. Not addressing final expense needs</h3>
+     <p>Even a modest policy designated for final expenses can relieve immediate financial pressure on surviving family members.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-32">
+     <h3>32. Missing premium payments</h3>
+     <p>Establishing automatic payments reduces the risk of unintentional lapse due to a missed payment.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-33">
+     <h3>33. Not updating coverage after major life events</h3>
+     <p>Marriage, divorce, a new child, a home purchase, or a significant income change may each affect coverage needs.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-34">
+     <h3>34. Not considering the financial impact of disability</h3>
+     <p>A disability preventing you from working can have as significant a financial impact as death. Consider how your financial plan addresses this scenario.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-35">
+     <h3>35. Not organizing policy documentation</h3>
+     <p>Keep policy documents accessible and ensure trusted individuals know where to find them and who to contact to file a claim.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-36">
+     <h3>36. Not asking questions before purchasing</h3>
+     <p>Understand what you are purchasing before signing. Ask about coverage terms, exclusions, riders, and long-term costs.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-37">
+     <h3>37. Relying on unverified online information</h3>
+     <p>Insurance information circulated online is frequently inaccurate or oversimplified. Consult a licensed professional for guidance specific to your situation.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-38">
+     <h3>38. Waiting for the right time to apply</h3>
+     <p>Postponing increases the likelihood of health changes that may affect eligibility or premium rates. Age and health at time of application determine pricing.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-39">
+     <h3>39. Not reviewing policy exclusions</h3>
+     <p>Policies may contain exclusions that limit coverage under certain circumstances. Understand what is and is not covered before purchasing.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-40">
+     <h3>40. Not reviewing coverage after a job change</h3>
+     <p>Employer-sponsored coverage may not transfer when employment ends. Review personal coverage needs whenever your employment situation changes.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-41">
+     <h3>41. Incorrect policy ownership structure</h3>
+     <p>Policy ownership affects control, tax treatment, and estate planning outcomes. Consult a qualified advisor when determining the appropriate ownership structure.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-42">
+     <h3>42. Not naming contingent beneficiaries</h3>
+     <p>A contingent beneficiary receives benefits if the primary cannot. Naming one helps ensure benefits are distributed as intended.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-43">
+     <h3>43. Not planning for business succession</h3>
+     <p>Business owners should evaluate how life insurance can support continuity planning and ownership transitions.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-44">
+     <h3>44. Not preserving a child's future insurability</h3>
+     <p>Certain riders can secure a child's ability to obtain coverage later regardless of health conditions that develop after issuance.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-45">
+     <h3>45. Not keeping policies accessible</h3>
+     <p>Store policy documents securely. Ensure beneficiaries know where to find them and who to contact to file a claim.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-46">
+     <h3>46. Not informing beneficiaries that coverage exists</h3>
+     <p>Beneficiaries unaware a policy exists may not file a claim. Inform trusted individuals that coverage is in place.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-47">
+     <h3>47. Not updating policies following divorce</h3>
+     <p>Beneficiary designations and ownership arrangements should be reviewed and updated following legal separation or divorce.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-48">
+     <h3>48. Not reviewing coverage after a new child</h3>
+     <p>The addition of a dependent typically increases protection needs. Review coverage following the birth or adoption of a child.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-49">
+     <h3>49. Not consulting a licensed professional</h3>
+     <p>A licensed advisor can evaluate your needs, explain available options, and identify coverage appropriate to your specific situation.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div class="detail-panel" data-topic="mistake-50">
+     <h3>50. Viewing life insurance only as a death benefit</h3>
+     <p>Depending on the product, life insurance can serve multiple roles - income replacement, estate planning, and financial planning through cash value accumulation.</p>
+     <button class="detail-close" onclick="closeDetail(this)">Close</button>
+    </div>
+    <div style="background:var(--warm);border:1px solid var(--warm3);border-left:2px solid var(--gold);padding:1.4rem 1.8rem;margin-top:2rem;">
+     <p style="font-size:1rem;color:var(--text);line-height:1.8;font-weight:300;">To determine which coverage options may be available to you, <a href="quote.html" style="color:var(--gold);">complete the intake questionnaire</a>. All inquiries are reviewed by a licensed insurance advisor.</p>
+    </div>
+   </div>
+
+  </div>
+ </section>
+
+ <div class="cta-band" style="text-align:center;">
+  <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="sec-ey-line"></div><span>Proceed</span><div class="sec-ey-line"></div></div>
+  <h2 style="font-size:clamp(1.6rem,2.5vw,2.3rem);font-weight:300;margin-bottom:0.9rem;">Ready to determine<br><em>your coverage options?</em></h2>
+  <p style="font-size:0.88rem;color:var(--text);max-width:400px;margin:0 auto 2rem;font-weight:300;line-height:1.8;">Complete the intake questionnaire at your own pace. No commitment is required at any stage of this process.</p>
+  <div class="cta-actions"><a href="quote.html" class="btn-ink">Check Availability</a></div>
+ </div>
+
+ <div class="disclaimer"><div class="disclaimer-inner"><strong>Educational Disclaimer:</strong> All content on this page is provided for general informational and educational purposes only and does not constitute insurance advice, a policy illustration, or an offer of coverage. Product terms, structures, benefit definitions, rider provisions, and eligibility criteria vary among carriers and are subject to change at any time without notice. All coverage is subject to the actual policy contract and the underwriting guidelines of the issuing carrier at the time of application. Consult a licensed insurance advisor before making any coverage decision.</div></div>
+</main>
+
+<footer>
+ <div class="footer-inner">
+  <div class="footer-top">
+   <div class="footer-brand">
+    <div class="fb-main">Eboni Morris</div>
+    <div class="fb-sub">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+    <div class="footer-license">
+     <div class="fl-title">License Verification</div>
+     <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+     <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL*, MI, OH, SC, TX</p>
+    </div>
+   
+   </div>
+
+   <!-- CARRIER DISCLOSURE - Georgia Rule 120-2-11-.07(4) - spans full width -->
+   <div style="grid-column:1/-1;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:0.5rem;">
+    <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
+    <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE - separated by &nbsp;&middot;&nbsp; - update before publishing]</p>
+   </div>
+   <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
+   <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">HIPAA Notice</a></li><li><a href="#">MIB &amp; FCRA Disclosure</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Licensing Information</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+   <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Advisor. All rights reserved.</span>
+   <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+  </div>
+ </div>
+</footer>
+
+<script src="_shared.js"></script>
+<script>
+ function showTab(id, btn) {
+  document.querySelectorAll('.edu-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.edu-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('panel-' + id);
+  panel.classList.add('active');
+  btn.classList.add('active');
+  // Close any open detail panels and deselect cards when switching tabs
+  panel.querySelectorAll('.detail-panel').forEach(d => d.classList.remove('open'));
+  panel.querySelectorAll('.topic-card, .mistake-card').forEach(c => c.classList.remove('selected'));
+  window.scrollTo({ top: panel.offsetTop - 100, behavior: 'smooth' });
+ }
+
+ function selectTopic(btn, key) {
+  const panel = btn.closest('.edu-panel');
+  const isSelected = btn.classList.contains('selected');
+
+  // Deselect all cards and close all detail panels within this edu-panel
+  panel.querySelectorAll('.topic-card, .mistake-card').forEach(c => c.classList.remove('selected'));
+  panel.querySelectorAll('.detail-panel').forEach(d => d.classList.remove('open'));
+
+  if (!isSelected) {
+   btn.classList.add('selected');
+   const detail = panel.querySelector('.detail-panel[data-topic="' + key + '"]');
+   if (detail) {
+    detail.classList.add('open');
+    // Scroll the detail panel into view smoothly, accounting for sticky nav
+    setTimeout(() => {
+     detail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
+   }
+  }
+ }
+
+ function closeDetail(btn) {
+  const detail = btn.closest('.detail-panel');
+  const panel = detail.closest('.edu-panel');
+  detail.classList.remove('open');
+  panel.querySelectorAll('.topic-card, .mistake-card').forEach(c => c.classList.remove('selected'));
+ }
+</script>
+<script>
+function toggleA11ySide(){
+  var p=document.getElementById('a11yPanel');
+  var t=document.getElementById('a11yTab');
+  var open=p.style.display==='none'||p.style.display==='';
+  p.style.display=open?'flex':'none';
+  t.setAttribute('aria-expanded',open?'true':'false');
+}
+function a11y(type,val){
+  var b=document.body;
+  if(type==='text'){
+    b.classList.remove('lg-text','xl-text');
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');el.textContent=el.id==='ts-normal'?'Normal':el.id==='ts-large'?'Large':'X-Large';}
+    });
+    if(val==='large'){b.classList.add('lg-text');var el=document.getElementById('ts-large');el.classList.add('active');el.setAttribute('aria-pressed','true');}
+    else if(val==='xl'){b.classList.add('xl-text');var el=document.getElementById('ts-xl');el.classList.add('active');el.setAttribute('aria-pressed','true');}
+    else{var el=document.getElementById('ts-normal');el.classList.add('active');el.setAttribute('aria-pressed','true');}
+    localStorage.setItem('a11y_text',val);
+  }
+  if(type==='contrast'){
+    var on=!b.classList.contains('hc-mode');
+    b.classList.toggle('hc-mode',on);
+    var btn=document.getElementById('hc-on');
+    if(btn){btn.classList.toggle('active',on);btn.textContent=on?'On':'Off';btn.setAttribute('aria-pressed',on?'true':'false');}
+    localStorage.setItem('a11y_contrast',on?'on':'off');
+  }
+  if(type==='dyslexia'){
+    var on=!b.classList.contains('dyslexia-font');
+    b.classList.toggle('dyslexia-font',on);
+    var btn=document.getElementById('dy-on');
+    if(btn){btn.classList.toggle('active',on);btn.textContent=on?'On':'Off';btn.setAttribute('aria-pressed',on?'true':'false');}
+    localStorage.setItem('a11y_dyslexia',on?'on':'off');
+  }
+  if(type==='motion'){
+    var on=!b.classList.contains('reduce-motion');
+    b.classList.toggle('reduce-motion',on);
+    var btn=document.getElementById('rm-on');
+    if(btn){btn.classList.toggle('active',on);btn.textContent=on?'On':'Off';btn.setAttribute('aria-pressed',on?'true':'false');}
+    localStorage.setItem('a11y_motion',on?'on':'off');
+  }
+  if(type==='screenreader'){
+    var on=!b.classList.contains('sr-mode');
+    b.classList.toggle('sr-mode',on);
+    var btn=document.getElementById('sr-on');
+    if(btn){btn.classList.toggle('active',on);btn.textContent=on?'On':'Off';btn.setAttribute('aria-pressed',on?'true':'false');}
+  }
+}
+function a11yReset(){
+  document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
+  ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');}});
+  ['hc-on','dy-on','rm-on','sr-on'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Off';el.setAttribute('aria-pressed','false');}});
+  var n=document.getElementById('ts-normal');if(n){n.classList.add('active');n.setAttribute('aria-pressed','true');}
+  ['a11y_text','a11y_contrast','a11y_dyslexia','a11y_motion'].forEach(function(k){localStorage.removeItem(k);});
+}
+(function(){
+  var t=localStorage.getItem('a11y_text');
+  if(t)a11y('text',t);else{var n=document.getElementById('ts-normal');if(n){n.classList.add('active');n.setAttribute('aria-pressed','true');}}
+  if(localStorage.getItem('a11y_contrast')==='on')a11y('contrast','on');
+  if(localStorage.getItem('a11y_dyslexia')==='on')a11y('dyslexia','on');
+  if(localStorage.getItem('a11y_motion')==='on')a11y('motion','on');
+})();
+</script>
+<script>
+function openModal(id){var m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden';var c=m.querySelector('.modal-close');if(c)setTimeout(function(){c.focus();},50);}}
+function closeModal(id){var m=document.getElementById(id);if(m){m.classList.remove('open');document.body.style.overflow='';}}
+function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+</script>
+<!-- FCRA Modal -->
+<div class="modal-overlay" id="modal-fcra" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-fcra')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title">Fair Credit Reporting Act (FCRA)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-fcra')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the FCRA Is</div>
+        <p>The Fair Credit Reporting Act is a federal law that regulates how consumer reporting agencies collect, use, and share information about individuals. It gives consumers specific rights when their information is used to make decisions about them, including decisions related to insurance.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies to Your Application</div>
+        <p>In connection with a formal application for life insurance, the issuing insurance company may obtain a consumer report about you. This report can include information about your credit standing, character, general reputation, personal characteristics, or mode of living.</p>
+        <p>If the insurance company takes an adverse action based on information in a consumer report, such as declining your application or charging a higher rate, they are required by law to notify you and provide the name and address of the reporting agency so you can request a copy and dispute any inaccuracies.</p>
+      </div>
+      <div class="modal-notice">No consumer report will be requested on your behalf without your knowledge. You will be informed prior to any application submission.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MIB Modal -->
+<div class="modal-overlay" id="modal-mib" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mib')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title">Medical Information Bureau (MIB)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mib')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the MIB Is</div>
+        <p>The Medical Information Bureau is a member-owned organization that operates as an information exchange among participating life and health insurance companies. Most individually underwritten life and health insurance carriers are MIB members.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Affects Your Application</div>
+        <p>When you apply for individually underwritten life or health insurance, the issuing carrier may request information from the MIB about prior insurance applications or claims you may have submitted with other member companies. You have the right to request a copy of your MIB file directly from MIB at mib.com or by calling 1-866-692-6901.</p>
+      </div>
+      <div class="modal-notice">A formal MIB inquiry will not be initiated without your knowledge and will only occur in connection with a formal application submitted at your direction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pharmacy Records Modal -->
+<div class="modal-overlay" id="modal-rx" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-rx')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Pharmacy Records (Rx History)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-rx')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What a Pharmacy Records Check Is</div>
+        <p>Depending on the insurance carrier and the product applied for, the issuing company may request a report that includes your current and historical prescription drug records from participating pharmacies. This is a standard underwriting tool used by many life insurance carriers.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Prescription drug history is reviewed during underwriting to help the carrier correlate medications on file with health conditions disclosed on the application. You will be informed if such a check is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">Pharmacy record checks may or may not be required depending on the specific carrier and product. Not every carrier uses this report for every application.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MVR Modal -->
+<div class="modal-overlay" id="modal-mvr" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mvr')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Motor Vehicle Report (MVR)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mvr')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What a Motor Vehicle Report Is</div>
+        <p>A Motor Vehicle Report provides a history of your driving record including traffic violations, license suspensions, DUI or DWI convictions, and the current status of your driver's license.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Some life insurance carriers review driving history as part of underwriting because certain driving patterns are considered risk indicators. An MVR may be requested depending on the carrier's guidelines for the specific product applied for. You will be informed if one is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">An MVR may or may not be required depending on the specific carrier and product. You may obtain a copy of your own driving record directly from your state DMV at any time.</div>
+    </div>
+  </div>
+</div>
+
+<button id="a11yTab" onclick="toggleA11y()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
+<div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
+  <div class="a11y-panel-heading">Accessibility Options</div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Text Size</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn active" id="ts-normal" onclick="setA11y('text','normal')">Normal</button>
+      <button class="a11y-btn" id="ts-large" onclick="setA11y('text','large')">Large</button>
+      <button class="a11y-btn" id="ts-xl" onclick="setA11y('text','xl')">X-Large</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">High Contrast</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="hc-btn" onclick="toggleA11yMode('hc-btn','hc-mode','a11y_contrast')">Enable</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Dyslexia Font</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="dy-btn" onclick="toggleA11yMode('dy-btn','dyslexia-font','a11y_dyslexia')">Enable</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Reduce Motion</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="rm-btn" onclick="toggleA11yMode('rm-btn','reduce-motion','a11y_motion')">Enable</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-group">
+    <span class="a11y-group-label">Screen Reader Mode</span>
+    <div class="a11y-group-btns">
+      <button class="a11y-btn" id="sr-btn" onclick="toggleA11yMode('sr-btn','sr-mode',null)">Enable</button>
+    </div>
+  </div>
+  <button class="a11y-reset-btn" onclick="resetA11y()">Reset All</button>
+</div>
+<script>
+function toggleA11y(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),open=!p.classList.contains('open');p.classList.toggle('open',open);t.setAttribute('aria-expanded',open?'true':'false');}
+function setA11y(type,val){var b=document.body;if(type==='text'){b.classList.remove('lg-text','xl-text');['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});if(val==='large'){b.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}else if(val==='xl'){b.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}else{document.getElementById('ts-normal').classList.add('active');}localStorage.setItem('a11y_text',val);}}
+function toggleA11yMode(btnId,cssClass,storageKey){var b=document.body,on=!b.classList.contains(cssClass);b.classList.toggle(cssClass,on);var btn=document.getElementById(btnId);if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}if(storageKey)localStorage.setItem(storageKey,on?'on':'off');}
+function resetA11y(){document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');document.getElementById('ts-normal').classList.add('active');['ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});['a11y_text','a11y_contrast','a11y_dyslexia','a11y_motion'].forEach(function(k){localStorage.removeItem(k);});}
+function openModal(id){var m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden';var c=m.querySelector('.modal-close');if(c)setTimeout(function(){c.focus();},50);}}
+function closeModal(id){var m=document.getElementById(id);if(m){m.classList.remove('open');document.body.style.overflow='';}}
+function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+(function(){var t=localStorage.getItem('a11y_text');if(t)setA11y('text',t);else{var n=document.getElementById('ts-normal');if(n)n.classList.add('active');}if(localStorage.getItem('a11y_contrast')==='on')toggleA11yMode('hc-btn','hc-mode','a11y_contrast');if(localStorage.getItem('a11y_dyslexia')==='on')toggleA11yMode('dy-btn','dyslexia-font','a11y_dyslexia');if(localStorage.getItem('a11y_motion')==='on')toggleA11yMode('rm-btn','reduce-motion','a11y_motion');})();
+</script>
+</body>
+</html>
