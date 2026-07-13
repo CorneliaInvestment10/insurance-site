@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Message Your Advisor - Covered With Conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1A1A18;--gold:#9E8047;--warm:#F5F2EC;--warm2:#EDE9E0;
+  --warm3:#DDD9D0;--stone:#4A4845;--text:#5C5955;--light:#9C9894;
+  --white:#FFFFFF;--serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;--green:#2E7D52;--red:#8B2323;
+}
+html{font-size:15px;font-family:var(--sans);background:var(--warm);color:var(--ink);}
+body{min-height:100vh;display:flex;flex-direction:column;}
+
+/* NAV */
+.nav{background:rgba(255,255,255,0.97);border-bottom:1px solid var(--warm3);padding:0 5%;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-brand{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--ink);text-decoration:none;}
+.nav-sub{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
+.nav-back{font-size:0.72rem;color:var(--light);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+.nav-back:hover{color:var(--gold);}
+
+/* LAYOUT */
+main{flex:1;display:flex;align-items:stretch;max-width:1000px;margin:0 auto;width:100%;padding:2rem 5%;}
+.layout{display:grid;grid-template-columns:1fr 340px;gap:2rem;width:100%;align-items:start;}
+
+/* LEFT PANEL */
+.left-panel{}
+.panel-eyebrow{font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.panel-title{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:0.8rem;}
+.panel-desc{font-size:0.88rem;color:var(--text);font-weight:300;line-height:1.8;margin-bottom:1.5rem;}
+.privacy-notice{background:var(--white);border:1px solid var(--warm3);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:0.8rem 1rem;font-size:0.78rem;color:var(--text);line-height:1.7;margin-bottom:1.5rem;}
+.privacy-notice strong{color:var(--ink);font-weight:500;}
+.how-it-works{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:1.5rem;}
+.step{display:flex;align-items:flex-start;gap:0.8rem;}
+.step-num{width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;color:var(--gold);flex-shrink:0;margin-top:2px;}
+.step-text{font-size:0.82rem;color:var(--text);font-weight:300;line-height:1.65;}
+.step-text strong{color:var(--ink);font-weight:500;}
+
+.availability{background:var(--white);border:1px solid var(--warm3);border-radius:4px;padding:1rem 1.1rem;}
+.avail-title{font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-bottom:0.6rem;}
+.avail-row{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--text);font-weight:300;padding:0.25rem 0;border-bottom:1px solid var(--warm3);}
+.avail-row:last-child{border-bottom:none;}
+.avail-status{font-weight:500;color:var(--green);}
+.avail-status.away{color:var(--light);}
+
+/* CHAT PANEL */
+.chat-panel{background:var(--white);border:1px solid var(--warm3);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;height:580px;}
+.chat-header{background:var(--ink);padding:0.9rem 1.1rem;display:flex;align-items:center;gap:0.75rem;flex-shrink:0;}
+.chat-header-dot{width:8px;height:8px;border-radius:50%;background:#4caf50;flex-shrink:0;}
+.chat-header-dot.away{background:var(--light);}
+.chat-header-info{}
+.chat-header-name{font-family:var(--serif);font-size:0.95rem;font-weight:300;color:var(--white);}
+.chat-header-status{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);}
+.chat-header-lock{margin-left:auto;font-size:0.6rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;}
+
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.65rem;}
+.chat-msg{display:flex;flex-direction:column;max-width:82%;}
+.chat-msg.client{align-self:flex-end;}
+.chat-msg.advisor{align-self:flex-start;}
+.chat-bubble{padding:0.6rem 0.85rem;font-size:0.85rem;line-height:1.65;}
+.chat-msg.client .chat-bubble{background:var(--ink);color:var(--white);border-radius:10px 10px 2px 10px;}
+.chat-msg.advisor .chat-bubble{background:var(--warm);border:1px solid var(--warm3);border-radius:10px 10px 10px 2px;color:var(--ink);}
+.chat-meta{font-size:0.62rem;color:var(--light);margin-top:0.2rem;padding:0 0.2rem;}
+.chat-msg.client .chat-meta{text-align:right;}
+.system-note{align-self:center;font-size:0.68rem;color:var(--light);background:var(--warm);border:1px solid var(--warm3);border-radius:20px;padding:0.3rem 0.9rem;text-align:center;}
+
+.typing-row{align-self:flex-start;display:none;}
+.typing-row.show{display:flex;}
+.typing-bubble{background:var(--warm);border:1px solid var(--warm3);border-radius:10px 10px 10px 2px;padding:0.6rem 1rem;display:flex;gap:4px;align-items:center;}
+.t-dot{width:6px;height:6px;border-radius:50%;background:var(--light);animation:tdot 1.2s infinite;}
+.t-dot:nth-child(2){animation-delay:0.2s;}
+.t-dot:nth-child(3){animation-delay:0.4s;}
+@keyframes tdot{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+
+/* TOPIC SELECTOR */
+.topic-row{padding:0.8rem 1rem;background:var(--warm);border-top:1px solid var(--warm3);flex-shrink:0;}
+.topic-label{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.5rem;}
+.topic-btns{display:flex;flex-wrap:wrap;gap:0.35rem;}
+.topic-btn{background:var(--white);border:1px solid var(--warm3);border-radius:20px;padding:0.3rem 0.75rem;font-family:var(--sans);font-size:0.72rem;color:var(--stone);cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.topic-btn:hover,.topic-btn.sel{background:var(--ink);border-color:var(--ink);color:var(--white);}
+
+/* CHAT INPUT */
+.chat-footer{padding:0.75rem 1rem;border-top:1px solid var(--warm3);background:var(--warm2);display:flex;gap:0.5rem;align-items:flex-end;flex-shrink:0;}
+.chat-input-wrap{flex:1;display:flex;flex-direction:column;gap:0.4rem;}
+.anon-notice{font-size:0.65rem;color:var(--light);}
+.chat-textarea{width:100%;padding:0.6rem 0.85rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.85rem;color:var(--ink);border-radius:4px;outline:none;resize:none;min-height:42px;max-height:110px;line-height:1.5;transition:border-color 0.2s;}
+.chat-textarea:focus{border-color:var(--gold);}
+.send-btn{background:var(--ink);border:none;border-radius:4px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background 0.2s;}
+.send-btn:hover{background:var(--gold);}
+.send-btn svg{width:17px;height:17px;fill:none;stroke:var(--white);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* AWAY STATE */
+.away-card{background:var(--warm);border:1px solid var(--warm3);border-radius:4px;padding:1rem;margin:0.5rem 0;}
+.away-title{font-size:0.78rem;font-weight:500;color:var(--stone);margin-bottom:0.4rem;}
+.away-desc{font-size:0.78rem;color:var(--text);font-weight:300;line-height:1.7;}
+.callback-form{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem;}
+.callback-input{padding:0.55rem 0.8rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.82rem;color:var(--ink);border-radius:4px;outline:none;}
+.callback-input:focus{border-color:var(--gold);}
+.callback-btn{background:var(--ink);color:var(--white);border:none;padding:0.6rem;font-family:var(--sans);font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:background 0.2s;}
+.callback-btn:hover{background:var(--gold);}
+.callback-success{font-size:0.78rem;color:var(--green);text-align:center;padding:0.5rem;display:none;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:1rem 5%;text-align:center;margin-top:auto;}
+footer p{font-size:0.62rem;color:rgba(255,255,255,0.22);line-height:1.8;}
+
+/* MOBILE */
+@media(max-width:700px){
+  main{padding:1.2rem 4%;}
+  .layout{grid-template-columns:1fr;}
+  .left-panel{display:none;}
+  .chat-panel{height:calc(100vh - 140px);}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <div>Covered With Conditions</div>
+    <div class="nav-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+  </a>
+  <a href="index.html" class="nav-back">Back to site</a>
+</nav>
+
+<main>
+  <div class="layout">
+
+    <!-- LEFT: INFO -->
+    <div class="left-panel">
+      <div class="panel-eyebrow">Ask a Question</div>
+      <h1 class="panel-title">Speak directly with a licensed advisor.</h1>
+      <p class="panel-desc">Have a question about your condition, coverage options, or the application process? Ask it here privately. No account, no email address, and no personal information required to start a conversation.</p>
+
+      <div class="privacy-notice">
+        <strong>Your privacy is protected.</strong> Messages are anonymous by default. You are never identified by name in this system. No health information you share here is disclosed to any third party.
+      </div>
+
+      <div class="how-it-works">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Select a topic or type your question freely in the message box.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Your advisor receives your message privately and responds personally. <strong>This is not an automated chatbot.</strong></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">When you are ready to move forward, your advisor will send you a private interview link to complete the process.</div></div>
+      </div>
+
+      <div class="availability">
+        <div class="avail-title">Advisor Availability</div>
+        <div class="avail-row"><span>Monday - Friday</span><span class="avail-status">9am - 6pm ET</span></div>
+        <div class="avail-row"><span>Saturday</span><span class="avail-status">10am - 2pm ET</span></div>
+        <div class="avail-row"><span>Sunday</span><span class="avail-status away">Unavailable</span></div>
+        <div class="avail-row"><span>Response time</span><span class="avail-status">Within a few hours</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: CHAT -->
+    <div class="chat-panel">
+      <div class="chat-header">
+        <div class="chat-header-dot" id="statusDot"></div>
+        <div class="chat-header-info">
+          <div class="chat-header-name">Eboni Morris</div>
+          <div class="chat-header-status" id="statusText">Licensed Independent Insurance Advisor</div>
+        </div>
+        <div class="chat-header-lock">HIPAA-Compliant</div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="system-note">Conversation is private and anonymous</div>
+      </div>
+
+      <div class="topic-row" id="topicRow">
+        <div class="topic-label">Select a topic</div>
+        <div class="topic-btns">
+          <button class="topic-btn" onclick="selectTopic(this,'I have a health condition')">Health condition</button>
+          <button class="topic-btn" onclick="selectTopic(this,'I was previously declined')">Prior decline</button>
+          <button class="topic-btn" onclick="selectTopic(this,'Term vs whole life')">Term vs whole life</button>
+          <button class="topic-btn" onclick="selectTopic(this,'Coverage for a family member')">Family member</button>
+          <button class="topic-btn" onclick="selectTopic(this,'How much coverage do I need')">Coverage amount</button>
+          <button class="topic-btn" onclick="selectTopic(this,'The application process')">Application process</button>
+          <button class="topic-btn" onclick="selectTopic(this,'Premium and cost questions')">Premiums and cost</button>
+          <button class="topic-btn" onclick="selectTopic(this,'Something else')">Something else</button>
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <div class="chat-input-wrap">
+          <span class="anon-notice">Anonymous - no personal information required</span>
+          <textarea class="chat-textarea" id="chatInput" placeholder="Type your question here..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        </div>
+        <button class="send-btn" onclick="sendMsg()" aria-label="Send">
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Eboni Morris &nbsp;·&nbsp; NPN: 18509552 &nbsp;·&nbsp; Licensed Independent Insurance Agent<br>
+  GA, FL*, MI, OH, SC, TX &nbsp;·&nbsp; All conversations are private and HIPAA-compliant &nbsp;·&nbsp; &copy; 2026</p>
+</footer>
+
+<script>
+var sessionKey = 'cwc_chat_' + Date.now();
+var msgCount = 0;
+var selectedTopic = null;
+
+function now(){
+  return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+}
+
+function autoResize(el){
+  el.style.height='auto';
+  el.style.height=Math.min(el.scrollHeight,110)+'px';
+}
+
+function handleKey(e){
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}
+}
+
+function selectTopic(btn, topic){
+  document.querySelectorAll('.topic-btn').forEach(function(b){b.classList.remove('sel');});
+  btn.classList.add('sel');
+  selectedTopic = topic;
+  document.getElementById('chatInput').placeholder = 'Ask about: ' + topic;
+  document.getElementById('chatInput').focus();
+}
+
+function addMsg(role, text){
+  var area = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  div.innerHTML = '<div class="chat-bubble">' + escapeHtml(text) + '</div>'
+    + '<div class="chat-meta">' + (role==='advisor'?'Advisor':'You') + ' &nbsp;&middot;&nbsp; ' + now() + '</div>';
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+
+function addSystem(text){
+  var area = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'system-note';
+  div.textContent = text;
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+
+function showTyping(){
+  var area = document.getElementById('chatMessages');
+  var t = document.getElementById('typingRow');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'typingRow';
+    t.className = 'typing-row';
+    t.innerHTML = '<div class="typing-bubble"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div>';
+    area.appendChild(t);
+  }
+  t.classList.add('show');
+  area.scrollTop = area.scrollHeight;
+}
+
+function hideTyping(){
+  var t = document.getElementById('typingRow');
+  if(t) t.classList.remove('show');
+}
+
+function sendMsg(){
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if(!text) return;
+
+  // Hide topic row after first message
+  if(msgCount === 0){
+    document.getElementById('topicRow').style.display = 'none';
+    // First message gets acknowledgement
+    var prefix = selectedTopic ? '[Topic: ' + selectedTopic + '] ' : '';
+    addMsg('client', text);
+    input.value = '';
+    autoResize(input);
+    msgCount++;
+
+    showTyping();
+    setTimeout(function(){
+      hideTyping();
+      addMsg('advisor', 'Thank you for reaching out. I have received your message and will respond personally within a few hours during business hours. Your conversation is completely private and anonymous. Feel free to share as much or as little as you are comfortable with.');
+    }, 1800);
+    return;
+  }
+
+  addMsg('client', text);
+  input.value = '';
+  autoResize(input);
+  msgCount++;
+
+  // Leave a message receipt after a few more exchanges
+  if(msgCount >= 3){
+    showTyping();
+    setTimeout(function(){
+      hideTyping();
+      addMsg('advisor', 'I have noted everything you have shared. Once I review your situation I will follow up here. If you are ready to move forward at any point, I can send you a private interview link to complete the process.');
+    }, 2000);
+  }
+}
+
+function escapeHtml(t){
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Opening greeting after short delay
+setTimeout(function(){
+  addMsg('advisor', 'Hello. I am Eboni Morris, your licensed insurance advisor. Ask me anything about life insurance coverage - there is no obligation and no personal information required to start. Everything you share here is private.');
+}, 900);
+</script>
+
+</body>
+</html>
