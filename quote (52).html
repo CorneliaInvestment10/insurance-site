@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Get a Quote - Licensed Independent Insurance Advisor</title>
+  <style>
+html { font-size: 15px; }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:    #1A1A18;
+  --ink2:   #2A2A27;
+  --stone:  #4A4845;
+  --warm:   #F5F2EC;
+  --warm2:  #EDE9E0;
+  --warm3:  #DDD9D0;
+  --gold:   #9E8047;
+  --gold2:  #7F6535;
+  --white:  #FFFFFF;
+  --text:   #5C5955;
+  --light:  #9C9894;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Jost', system-ui, sans-serif;
+  --r:      2px;
+  --sh:     0 2px 20px rgba(26,26,24,0.06);
+  --sh2:    0 8px 48px rgba(26,26,24,0.10);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.15; color: var(--ink); }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--sans); cursor: pointer; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky; top: 0; z-index: 1000;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--warm3); transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 2px 30px rgba(26,26,24,0.08); }
+.nav-brand { display: flex; flex-direction: column; gap: 2px; }
+.nav-brand .brand-main { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: var(--ink); letter-spacing: 0.01em; }
+.nav-brand .brand-sub { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); transition: color 0.2s; position: relative; padding-bottom: 3px; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta { font-size: 0.68rem !important; font-weight: 500 !important; letter-spacing: 0.14em !important; color: var(--white) !important; background: var(--ink); padding: 0.55rem 1.3rem; border-radius: var(--r); transition: background 0.2s; }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--white) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px,4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
+.mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); z-index: 999; padding: 1.8rem 6%; flex-direction: column; border-bottom: 1px solid var(--warm3); box-shadow: 0 8px 32px rgba(26,26,24,0.08); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); padding: 0.9rem 0; border-bottom: 1px solid var(--warm3); transition: color 0.2s; }
+.mobile-nav a:hover, .mobile-nav a.active { color: var(--gold); }
+.page-top { padding-top: 0; }
+
+/* ── HERO ── */
+.hero { min-height: 94vh; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.hero-left { background: var(--ink); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(158,128,71,0.10) 0%, transparent 70%); pointer-events: none; }
+.hero-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.hero-ey-line { width: 36px; height: 1px; background: var(--gold); }
+.hero-ey span { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font-size: clamp(2.6rem, 4vw, 4rem); color: var(--white); font-weight: 300; line-height: 1.08; margin-bottom: 1.8rem; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.50); line-height: 1.9; max-width: 400px; margin-bottom: 2.8rem; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); transition: background 0.2s; cursor: pointer; }
+.btn-gold:hover { background: var(--gold2); color: var(--white); }
+.btn-ghost { display: inline-block; background: transparent; color: rgba(255,255,255,0.60); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.18); border-radius: var(--r); transition: all 0.2s; cursor: pointer; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-right { background: var(--warm); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; }
+.hero-cred { border-top: 1px solid var(--warm3); padding: 1.8rem 0; }
+.hero-cred:first-child { border-top: none; padding-top: 0; }
+.cred-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.cred-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+.cred-sub { font-size: 0.97rem; color: var(--text); margin-top: 0.3rem; line-height: 1.65; font-weight: 300; }
+.hero-div { width: 40px; height: 1px; background: var(--gold); margin: 0; opacity: 0.3; }
+
+/* ── PAGE HERO SPLIT ── */
+.phs { display: grid; grid-template-columns: 1fr 1fr; min-height: 52vh; }
+.phs-left { background: var(--warm); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+.phs-left .mono { font-family: var(--serif); font-size: clamp(5rem, 10vw, 9rem); font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1rem; font-style: italic; }
+.phs-left h1 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); font-weight: 400; }
+.phs-left .phs-sub { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; }
+.phs-right { background: var(--ink); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: center; }
+.phs-right p { font-family: var(--serif); font-size: 1.02rem; color: rgba(255,255,255,0.58); line-height: 1.9; font-weight: 300; margin-bottom: 1.4rem; }
+.phs-right a { color: var(--gold); }
+.phs-creds { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0.55rem; }
+.phs-cred { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; color: rgba(255,255,255,0.38); display: flex; align-items: center; gap: 0.7rem; }
+.phs-cred .ck { color: var(--gold); font-size: 0.6rem; }
+
+/* ── SECTIONS ── */
+.section { padding: 6.5rem 6%; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.sec-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
+.sec-ey-line { width: 32px; height: 1px; background: var(--gold); }
+.sec-ey span { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.sec-title { font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 300; margin-bottom: 1rem; }
+.sec-title em { font-style: italic; color: var(--gold); }
+.sec-lead { font-size: 1.08rem; color: var(--text); max-width: 540px; line-height: 1.85; font-weight: 300; margin-bottom: 2.8rem; }
+
+/* ── CONDITIONS ── */
+.cond-mosaic { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--warm3); border: 1px solid var(--warm3); margin-top: 2.5rem; }
+.cond-cell { background: var(--white); padding: 1rem 1.1rem; font-size: 0.95rem; color: var(--stone); display: flex; align-items: center; gap: 0.55rem; transition: background 0.2s, color 0.2s; }
+.cond-cell:hover { background: var(--ink); color: var(--white); }
+.cond-cell:hover .cdot { background: var(--gold); }
+.cdot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; transition: background 0.2s; }
+
+/* ── PROCESS ── */
+.proc-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.proc-item { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); }
+.proc-item:last-child { border-right: none; }
+.proc-num { font-family: var(--serif); font-size: 3.2rem; font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1.1rem; }
+.proc-item h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.proc-item p { font-size: 0.97rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── CTA BAND ── */
+.cta-band { background: var(--warm2); border-top: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); padding: 6rem 6%; text-align: center; }
+.cta-band h2 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); font-weight: 300; margin-bottom: 1rem; }
+.cta-band p { font-size: 1.05rem; color: var(--text); max-width: 420px; margin: 0 auto 2.2rem; font-weight: 300; line-height: 1.85; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-ink { display: inline-block; background: var(--ink); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); cursor: pointer; transition: background 0.2s; }
+.btn-ink:hover { background: var(--gold); color: var(--white); }
+.btn-outline { display: inline-block; background: transparent; color: var(--ink); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--warm3); border-radius: var(--r); cursor: pointer; transition: all 0.2s; }
+.btn-outline:hover { border-color: var(--ink); }
+
+/* ── DISCLAIMER ── */
+.disclaimer { background: var(--warm2); border-top: 1px solid var(--warm3); padding: 1.8rem 6%; font-size: 0.73rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.disclaimer strong { color: var(--ink); font-weight: 500; }
+.disclaimer-inner { max-width: 1160px; margin: 0 auto; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-brand .fb-main { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--white); }
+.footer-brand .fb-sub { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 3px; }
+.footer-brand p { font-size: 0.79rem; color: rgba(255,255,255,0.32); margin-top: 1rem; line-height: 1.8; max-width: 240px; font-weight: 300; }
+.footer-col h4 { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { font-size: 0.8rem; color: rgba(255,255,255,0.32); transition: color 0.2s; font-weight: 300; }
+.footer-col ul a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-top: 2rem; font-size: 0.71rem; color: rgba(255,255,255,0.2); font-weight: 300; }
+.footer-bottom a { color: var(--gold); }
+
+/* ── VALUES / ABOUT ── */
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.val-cell { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); }
+.val-cell:nth-child(3n) { border-right: none; }
+.val-cell:nth-child(n+4) { border-bottom: none; }
+.val-mark { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); margin-bottom: 0.9rem; font-style: italic; }
+.val-cell h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.val-cell p { font-size: 0.98rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── EDUCATION ── */
+.edu-nav { display: flex; border-bottom: 1px solid var(--warm3); margin-bottom: 4rem; overflow-x: auto; }
+.edu-tab { padding: 1rem 1.8rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: var(--sans); }
+.edu-tab:hover { color: var(--ink); }
+.edu-tab.active { color: var(--ink); border-bottom-color: var(--gold); }
+.edu-panel { display: none; }
+.edu-panel.active { display: block; animation: fadeUp 0.35s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.product-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.prod-tile { background: var(--warm); border: 1px solid var(--warm3); }
+.prod-tile-head { padding: 1.8rem 1.6rem 1.4rem; border-bottom: 1px solid var(--warm3); }
+.prod-tile-head .ptag { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.prod-tile-head h3 { font-size: 1.08rem; font-weight: 400; }
+.prod-tile-body { padding: 1.4rem 1.6rem; }
+.prod-tile-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.prod-tile-body li { font-size: 0.97rem; color: var(--text); padding-left: 1.1rem; position: relative; line-height: 1.6; font-weight: 300; }
+.prod-tile-body li::before { content: '-'; position: absolute; left: 0; color: var(--gold); font-size: 0.74rem; }
+.info-panel { background: var(--warm); border: 1px solid var(--warm3); border-left: 2px solid var(--gold); padding: 2rem 2.2rem; margin-top: 2rem; }
+.info-panel h3 { font-size: 1.05rem; font-weight: 400; margin-bottom: 0.7rem; }
+.info-panel p { font-size: 1.01rem; color: var(--text); line-height: 1.8; font-weight: 300; }
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-size: 0.99rem; }
+.compare-table th { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; padding: 1.1rem 1.4rem; text-align: left; background: var(--ink); color: var(--white); }
+.compare-table th:first-child { background: var(--ink2); color: var(--light); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.compare-table td { padding: 0.95rem 1.4rem; border-bottom: 1px solid var(--warm3); color: var(--text); font-weight: 300; line-height: 1.6; }
+.compare-table tr:nth-child(odd) td { background: var(--warm); }
+.compare-table td:first-child { font-weight: 500; color: var(--ink); font-size: 0.78rem; letter-spacing: 0.02em; }
+.glossary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--warm3); margin-top: 2.5rem; }
+.glossary-cell { background: var(--white); padding: 1.8rem; }
+.glossary-cell h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.45rem; }
+.glossary-cell p { font-size: 0.96rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── QUOTE FORM ── */
+.quote-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
+.prog-row { display: flex; align-items: center; margin-bottom: 3rem; overflow-x: auto; padding-bottom: 4px; }
+.pstep { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; min-width: 60px; }
+.pstep .pc { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--warm3); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; color: var(--light); transition: all 0.3s; }
+.pstep.done .pc { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.pstep.active .pc { border-color: var(--ink); color: var(--ink); }
+.pstep .pl { font-size: 0.58rem; color: var(--light); font-weight: 500; letter-spacing: 0.06em; text-align: center; max-width: 54px; line-height: 1.3; text-transform: uppercase; }
+.pstep.active .pl, .pstep.done .pl { color: var(--ink); }
+.pline { flex: 1; height: 1px; background: var(--warm3); min-width: 12px; margin-bottom: 18px; transition: background 0.3s; }
+.pline.done { background: var(--gold); }
+.fstep { display: none; }
+.fstep.active { display: block; animation: fadeUp 0.3s ease; }
+.fcard { background: var(--white); border: 1px solid var(--warm3); padding: 2.8rem; }
+.fcard h2 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.3rem; }
+.fcard .fsub { font-size: 0.99rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.45rem; }
+.field input, .field select, .field textarea { width: 100%; padding: 0.72rem 1rem; border: 1px solid var(--warm3); background: var(--warm); font-family: var(--sans); font-size: 0.88rem; color: var(--ink); outline: none; border-radius: var(--r); transition: border-color 0.2s, background 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: var(--white); }
+.field textarea { resize: vertical; min-height: 88px; }
+.choices { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+
+/* Rider selection cards - replaces broken checkbox layout */
+.rider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.rider-card {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+}
+.rider-card:hover { border-color: var(--gold); background: var(--white); }
+.rider-card.selected { background: var(--ink); border-color: var(--ink); }
+.rider-card.selected .rider-card-title { color: var(--white); }
+.rider-card.selected .rider-card-title::before { content: '✓  '; color: var(--gold); }
+.rider-card.selected .rider-card-desc { color: rgba(255,255,255,0.55); }
+.rider-card-title {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  transition: color 0.2s;
+}
+.rider-card-desc {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.7;
+  transition: color 0.2s;
+}
+@media(max-width:700px){ .rider-grid { grid-template-columns: 1fr; } }
+
+/* Required client disclosures with individual checkboxes */
+.disclosure-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.disclosure-item {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.disclosure-item:has(.disclosure-check:checked) {
+  background: var(--white);
+  border-color: var(--gold);
+}
+.disclosure-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+  width: 100%;
+}
+.disclosure-check {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.disclosure-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.disclosure-text {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* Medication add-list builder */
+.med-input-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.med-input-row input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--warm3);
+  background: var(--warm);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink);
+  outline: none;
+  border-radius: var(--r);
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-input-row input[type="text"]:focus { border-color: var(--gold); background: var(--white); }
+.med-add-btn {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 0.72rem 1.3rem;
+  border-radius: var(--r);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.med-add-btn:hover { background: var(--gold); }
+.med-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.med-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.65rem 1rem;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+.med-pill-name { font-family: var(--serif); font-size: 0.95rem; }
+.med-pill-remove {
+  background: none;
+  border: none;
+  color: var(--light);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.2rem 0.5rem;
+  transition: color 0.2s;
+}
+.med-pill-remove:hover { color: var(--gold); }
+.med-none-btn {
+  margin-top: 0.8rem;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.6rem 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-none-btn:hover { border-color: var(--gold); }
+.med-none-btn.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+
+
+.cbtn { padding: 0.48rem 1.1rem; font-size: 0.9rem; font-weight: 400; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.cbtn:hover { border-color: var(--gold); color: var(--ink); }
+.cbtn.sel { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.pob { border: 1px solid var(--warm3); padding: 1.3rem 1.5rem; margin-bottom: 0.75rem; cursor: pointer; transition: border-color 0.2s; border-radius: var(--r); }
+.pob:hover { border-color: var(--gold); }
+.pob.sel { border-color: var(--ink); }
+.pob-hdr { display: flex; align-items: center; gap: 0.7rem; }
+.pob-radio { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--warm3); flex-shrink: 0; transition: all 0.2s; }
+.pob.sel .pob-radio { border-color: var(--ink); background: var(--ink); }
+.pob-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+.pob-desc { font-size: 0.79rem; color: var(--text); margin-top: 0.3rem; margin-left: 1.55rem; font-weight: 300; }
+.pob-sub { display: none; margin-top: 1.1rem; margin-left: 1.55rem; padding-top: 1.1rem; border-top: 1px solid var(--warm3); }
+.pob.sel .pob-sub { display: block; }
+.owner-exp { background: var(--warm); border: 1px solid var(--warm3); padding: 1.8rem; margin-top: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; border-radius: var(--r); }
+.exp-box { padding: 1.1rem; background: var(--white); border-top: 2px solid var(--gold); }
+.exp-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.exp-box p { font-size: 0.96rem; color: var(--text); line-height: 1.7; font-weight: 300; }
+.exp-note { grid-column: 1/-1; font-size: 0.77rem; color: var(--light); line-height: 1.65; font-weight: 300; }
+.legal-box { background: var(--warm); border-left: 2px solid var(--gold); padding: 1.1rem 1.3rem; font-size: 0.75rem; color: var(--text); line-height: 1.75; margin-top: 1.6rem; font-weight: 300; }
+.legal-box strong { color: var(--ink); font-weight: 500; }
+.form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.8rem; border-top: 1px solid var(--warm3); }
+.btn-prev { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); background: none; border: none; cursor: pointer; transition: color 0.2s; font-family: var(--sans); }
+.btn-prev:hover { color: var(--ink); }
+.btn-next { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-next:hover { background: var(--gold); }
+.btn-submit { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--gold); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-submit:hover { background: var(--gold2); }
+.q-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.q-tile { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.q-tile h4 { font-size: 0.92rem; font-weight: 400; margin-bottom: 0.65rem; }
+.q-tile p { font-size: 0.81rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.q-tile ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; padding: 0; }
+.q-tile li { font-size: 0.81rem; color: var(--text); padding-left: 1rem; position: relative; font-weight: 300; }
+.q-tile li::before { content: '-'; position: absolute; left: 0; color: var(--gold); }
+.success-block { text-align: center; padding: 4rem 2rem; display: none; }
+.success-block.active { display: block; }
+.success-mark { font-family: var(--serif); font-size: 4rem; color: var(--gold); font-style: italic; margin-bottom: 1rem; }
+.success-block h2 { font-size: 1.8rem; font-weight: 300; margin-bottom: 0.75rem; }
+.success-block p { font-size: 0.88rem; color: var(--text); max-width: 400px; margin: 0 auto; font-weight: 300; line-height: 1.8; }
+
+/* ── CHAT ── */
+.chat-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; align-items: start; }
+.chat-side { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.chat-side h3 { font-size: 0.95rem; font-weight: 400; margin-bottom: 1.2rem; }
+.topic-list { list-style: none; display: flex; flex-direction: column; }
+.topic-list li { font-size: 0.8rem; color: var(--text); padding: 0.6rem 0; border-bottom: 1px solid var(--warm3); cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 0.45rem; font-weight: 300; line-height: 1.4; }
+.topic-list li:last-child { border-bottom: none; }
+.topic-list li:hover { color: var(--gold); }
+.topic-list li::before { content: '›'; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+.chat-panel { background: var(--white); border: 1px solid var(--warm3); display: flex; flex-direction: column; height: 600px; }
+.chat-top { background: var(--ink); padding: 1.1rem 1.6rem; display: flex; align-items: center; gap: 0.9rem; }
+.chat-av { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.9rem; color: var(--white); font-style: italic; flex-shrink: 0; }
+.chat-name { font-size: 0.86rem; color: var(--white); font-weight: 400; }
+.chat-status { font-size: 0.66rem; color: var(--gold); display: flex; align-items: center; gap: 0.3rem; margin-top: 2px; }
+.chat-status::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: #86EFAC; }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 1.6rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.cmsg { display: flex; gap: 0.65rem; max-width: 88%; }
+.cmsg.agent { align-self: flex-start; }
+.cmsg.user { align-self: flex-end; flex-direction: row-reverse; }
+.cbubble { padding: 0.78rem 1.1rem; font-size: 0.85rem; line-height: 1.65; font-weight: 300; }
+.cmsg.agent .cbubble { background: var(--warm); color: var(--ink); border-radius: 0 8px 8px 8px; }
+.cmsg.user .cbubble { background: var(--ink); color: var(--white); border-radius: 8px 0 8px 8px; }
+.ctime { font-size: 0.64rem; color: var(--light); margin-top: 0.2rem; }
+.cmsg.user .ctime { text-align: right; }
+.typing-ind { display: none; align-self: flex-start; }
+.typing-ind.on { display: flex; gap: 0.65rem; }
+.typing-bub { background: var(--warm); border-radius: 0 8px 8px 8px; padding: 0.78rem 1rem; display: flex; gap: 4px; align-items: center; }
+.tdot { width: 5px; height: 5px; border-radius: 50%; background: var(--light); animation: td 1.2s infinite; }
+.tdot:nth-child(2){animation-delay:0.2s} .tdot:nth-child(3){animation-delay:0.4s}
+@keyframes td{0%,60%,100%{opacity:0.3;transform:scale(0.8)}30%{opacity:1;transform:scale(1)}}
+.chat-quick { padding: 0.75rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.qbtn { font-size: 0.73rem; padding: 0.28rem 0.85rem; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.qbtn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.chat-bar { padding: 1rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; gap: 0.7rem; align-items: center; }
+.chat-in { flex: 1; border: 1px solid var(--warm3); background: var(--warm); padding: 0.62rem 1rem; font-family: var(--sans); font-size: 0.86rem; outline: none; border-radius: var(--r); transition: border-color 0.2s; }
+.chat-in:focus { border-color: var(--gold); background: var(--white); }
+.chat-go { width: 37px; height: 37px; background: var(--ink); border: none; color: var(--white); border-radius: var(--r); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; transition: background 0.2s; flex-shrink: 0; }
+.chat-go:hover { background: var(--gold); }
+
+/* ── CONTACT ── */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; }
+.cblock { padding: 1.8rem 0; border-bottom: 1px solid var(--warm3); }
+.cblock:first-child { padding-top: 0; }
+.cblock-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.cblock p { font-size: 0.9rem; color: var(--ink); line-height: 1.65; }
+.cblock a { color: var(--gold); }
+.cblock small { font-size: 0.76rem; color: var(--light); font-weight: 300; margin-top: 3px; display: block; }
+.cf-panel { background: var(--warm); border: 1px solid var(--warm3); padding: 3rem; }
+.cf-panel h3 { font-size: 1.35rem; font-weight: 400; margin-bottom: 0.35rem; }
+.cf-panel .csub { font-size: 0.84rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .nav-links{display:none;} .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-right{display:none;}
+  .hero-left{padding:7rem 6% 5rem;min-height:80vh;}
+  .phs{grid-template-columns:1fr;}
+  .phs-right{padding:4rem 6%;}
+  .cond-mosaic{grid-template-columns:repeat(3,1fr);}
+  .proc-grid{grid-template-columns:repeat(2,1fr);}
+  .proc-item{border-bottom:1px solid var(--warm3);}
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+  .values-grid .val-cell:nth-child(3n){border-right:1px solid var(--warm3);}
+  .values-grid .val-cell:nth-child(2n){border-right:none;}
+  .product-row{grid-template-columns:1fr 1fr;}
+  .glossary-grid{grid-template-columns:repeat(2,1fr);}
+  .quote-wrap{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+  .chat-wrap{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+.mistake-cell {
+  background: var(--white);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: background 0.2s;
+}
+.mistake-cell:hover { background: var(--warm); }
+.mistake-num {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+.mistake-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.mistake-body {
+  font-size: 0.81rem;
+  color: var(--text);
+  line-height: 1.72;
+  font-weight: 300;
+}
+@media(max-width:700px){
+  #mistakesGrid { grid-template-columns: 1fr !important; }
+}
+
+/* ── LICENSE FOOTER ── */
+.footer-license {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.fl-body {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.32);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.fl-body strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+.fl-body a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.fl-body em { font-style: italic; color: rgba(255,255,255,0.45); }
+.fl-npn {
+  margin-top: 0.9rem;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.fl-npn strong {
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── CARRIER DISCLOSURE FOOTER ── */
+.footer-carriers {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.footer-carriers .fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.footer-carriers .fl-body {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.footer-carriers .fl-body strong {
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* ── CARRIER NAMES - compact horizontal wrap ── */
+.footer-carriers .fl-body {
+  font-size: 0.65rem !important;
+  color: rgba(255,255,255,0.18) !important;
+  line-height: 1.7 !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+}
+
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.72); z-index: 9000; pointer-events: none; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto; }
+.modal-overlay.open { display: flex; pointer-events: all; }
+.modal-box { background: #fff; border-radius: 8px; max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto; }
+.modal-header { background: #1a1a18; padding: 1.4rem 1.8rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; position: sticky; top: 0; z-index: 2; border-radius: 8px 8px 0 0; }
+.modal-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 300; color: #fff; }
+.modal-subtitle { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 0.25rem; }
+.modal-close { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,0.6); font-size: 1.2rem; flex-shrink: 0; }
+.modal-body { padding: 1.8rem 2rem; }
+.modal-section { margin-bottom: 1.6rem; }
+.modal-section-title { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.modal-section p { font-family: var(--sans); font-size: 0.95rem; color: var(--text); font-weight: 300; line-height: 1.8; margin-bottom: 0.6rem; }
+.modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.5rem; }
+.modal-section ul li { font-family: var(--sans); font-size: 0.9rem; color: var(--text); font-weight: 300; line-height: 1.7; padding-left: 1.1rem; position: relative; }
+.modal-section ul li::before { content: '-'; position: absolute; left: 0; color: var(--gold); }
+.modal-notice { background: var(--warm); border-left: 3px solid var(--gold); padding: 0.9rem 1.1rem; margin-top: 1.2rem; font-family: var(--sans); font-size: 0.88rem; color: var(--light); font-weight: 300; line-height: 1.7; }
+.modal-divider { height: 1px; background: var(--warm3); margin: 1.4rem 0; }
+/* Accessibility - ONLY the tab button, nothing else fixed */
+
+
+
+
+
+
+
+
+.a11y-btn:hover { background: rgba(158,128,71,0.2); border-color: var(--gold); color: var(--gold); }
+.a11y-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+
+/* Mobile */
+@media(max-width:600px){ .quote-wrap { grid-template-columns: 1fr; } .q-sidebar { display: none; } .fcard { padding: 1.2rem 1rem; }   }
+
+
+/* Detail panels for education subsections */
+.detail-panel { display: none; margin-top: 1rem; background: var(--white); border: 1px solid var(--warm3); border-left: 3px solid var(--gold); padding: 1.4rem 1.6rem; border-radius: 0 4px 4px 0; }
+.detail-panel.open { display: block; animation: fadeUp 0.25s ease; }
+.detail-panel h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--ink); margin-bottom: 0.8rem; }
+.detail-panel h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; margin-top: 1rem; }
+.detail-panel p { font-family: var(--sans); font-size: 0.9rem; color: var(--text); font-weight: 300; line-height: 1.8; margin-bottom: 0.6rem; }
+.detail-panel ul, .detail-panel ol { padding-left: 1.4rem; margin-bottom: 0.8rem; }
+.detail-panel li { font-family: var(--sans); font-size: 0.88rem; color: var(--text); font-weight: 300; line-height: 1.75; margin-bottom: 0.3rem; }
+.detail-panel .detail-close { display: inline-block; margin-top: 0.8rem; font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); background: none; padding: 0.3rem 0.8rem; cursor: pointer; border-radius: 3px; }
+
+
+/* ── NAVBAR ── */
+  .navbar { height: auto; min-height: 56px; padding: 0.5rem 4%; flex-wrap: nowrap; gap: 0.5rem; }
+  .nav-brand { max-width: calc(100vw - 70px); overflow: hidden; }
+  .brand-main { font-size: 0.72rem !important; white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; }
+  .brand-sub { font-size: 0.5rem !important; white-space: nowrap !important; letter-spacing: 0.1em !important; }
+  .page-top { padding-top: 0 !important; }
+
+  /* ── HERO ── */
+  .hero { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .hero-left { padding: 3.5rem 5% 2.5rem !important; }
+  .hero-right { display: none !important; }
+  .hero h1 { font-size: 2rem !important; }
+  .hero-desc { font-size: 0.9rem !important; }
+  .phs { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .phs-left { padding: 3rem 5% 2rem !important; }
+  .phs-right { padding: 2rem 5% !important; }
+  .page-hero-centered { padding: 2.5rem 5% 2rem !important; }
+  .phc-title { font-size: 1.7rem !important; }
+
+  /* ── GRIDS ── */
+  .values-grid { grid-template-columns: 1fr !important; }
+  .proc-grid { grid-template-columns: 1fr !important; }
+  .cond-mosaic { grid-template-columns: 1fr 1fr !important; gap: 0.4rem !important; }
+  .topic-grid { grid-template-columns: 1fr 1fr !important; }
+  .factor-grid { grid-template-columns: 1fr 1fr !important; }
+  .mistake-grid { grid-template-columns: 1fr !important; }
+  .rider-grid { grid-template-columns: 1fr !important; }
+  .footer-top { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+  .compare-table { font-size: 0.78rem !important; }
+
+  /* ── EDUCATION TABS ── */
+  .edu-nav { grid-template-columns: 1fr 1fr !important; gap: 0.4rem !important; margin-bottom: 1.2rem !important; }
+  .edu-tab { font-size: 0.6rem !important; padding: 0.65rem 0.4rem !important; }
+
+  /* ── QUOTE FORM ── */
+  .quote-wrap { grid-template-columns: 1fr !important; }
+  .q-sidebar { display: none !important; }
+  .fcard { padding: 1.2rem 1rem !important; border-radius: 4px !important; }
+  .choices { flex-wrap: wrap !important; }
+  .cbtn { font-size: 0.9rem; padding: 0.55rem 0.9rem !important; }
+  .prog-row { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pstep .pl { display: none !important; }
+  .pstep { min-width: 32px !important; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 3rem 5% !important; }
+  .section-inner { max-width: 100% !important; }
+
+  /* ── BOXES & CARDS ── */
+  .val-cell { border-right: none !important; border-bottom: 1px solid var(--warm3) !important; padding: 1.2rem !important; }
+  .topic-card { padding: 0.7rem 0.6rem !important; }
+  .topic-card-label { font-size: 0.75rem !important; }
+  .detail-panel { padding: 1rem !important; }
+
+  /* ── OVERFLOW ── */
+  html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+  * { box-sizing: border-box; }
+  img, video, iframe, table { max-width: 100% !important; }
+
+  /* ── FOOTER ── */
+  .footer-inner { padding: 2rem 5% 1.5rem !important; }
+  .footer-col { margin-bottom: 1rem; }
+
+  /* ── MYTH GAME ── */
+  .stadium-scoreboard { padding: 0.5rem 0.8rem !important; }
+  .sb-score { font-size: 1.8rem !important; }
+}
+
+
+/* ===== ACCESSIBILITY ===== */
+#a11yTab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+  background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.5);
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  padding: 0.8rem 0.42rem;
+  cursor: pointer !important;
+  writing-mode: vertical-rl;
+  font-family: system-ui,sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9e8047;
+  user-select: none;
+  transition: background 0.2s;
+  touch-action: manipulation;
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: rgba(158,128,71,0.3);
+}
+#a11yTab:hover { background: #252522; }
+
+#a11yPanel {
+  position: fixed;
+  right: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 499;
+  background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.3);
+  border-radius: 10px 0 0 10px;
+  padding: 1.2rem 1rem;
+  width: 210px;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  pointer-events: auto;
+}
+#a11yPanel.open { display: flex; }
+
+.a11y-heading { font-family: system-ui,sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #9e8047 !important; padding-bottom: 0.7rem; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(158,128,71,0.4); opacity: 1 !important; }
+.a11y-row { margin-bottom: 0.8rem; }
+.a11y-row-label { font-family: system-ui,sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #ffffff !important; display: block; margin-bottom: 0.4rem; opacity: 1 !important; }
+.a11y-row-btns { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.a11y-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.3rem 0.65rem; font-family: system-ui,sans-serif; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.45); cursor: pointer; transition: all 0.15s; touch-action: manipulation; }
+.a11y-btn:hover { background: rgba(158,128,71,0.2); border-color: #9e8047; color: #9e8047; }
+.a11y-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+.a11y-sep { height: 1px; background: rgba(255,255,255,0.07); margin: 0.5rem 0; }
+.a11y-reset { width: 100%; margin-top: 0.6rem; background: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.4rem; font-family: system-ui,sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); cursor: pointer; touch-action: manipulation; }
+.a11y-reset:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+body.lg-text { font-size: 18px; }
+body.xl-text { font-size: 22px; }
+body.hc-mode { filter: contrast(1.7) saturate(0.1); }
+body.dyslexia-font * { font-family: Arial,sans-serif !important; letter-spacing: 0.05em !important; line-height: 1.9 !important; }
+body.reduce-motion * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+@media(max-width:600px){
+  
+  #a11yPanel { top: auto; bottom: 60px; transform: none; right: 0; width: 240px; border-radius: 10px; }
+}
+
+
+/* A11Y LABEL COLOR FIXES - targeting actual class names */
+.a11y-side-title { color: #9e8047 !important; }
+.a11y-side-label { color: #ffffff !important; opacity: 1 !important; }
+
+.field label { font-size: 0.95rem !important; }
+.cbtn { font-size: 0.88rem !important; }
+
+.field-error-msg { font-size: 0.82rem; color: #8B2323; background: #fff8f8; border: 1px solid rgba(139,35,35,0.2); border-radius: 4px; padding: 0.5rem 0.75rem; margin-top: 0.4rem; display: none; }
+.field-error-msg.show { display: block; }
+.cbtn.required-error { border-color: #8B2323 !important; }
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Licensed Independent Insurance Advisor</div>
+    <div class="brand-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+  </div>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html" class="active">Get a Quote</a></li><li><a href="chat.html">Ask a Question</a></li></ul>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav"><a href="index.html">Home</a><a href="about.html">About</a><a href="education.html">Insurance Education</a><a href="myths.html">Myth Busted</a><a href="quote.html" class="active">Get a Quote</a><a href="chat.html">Ask a Question</a></div>
+
+<main class="page-top">
+  <div class="phs">
+    <div class="phs-left">
+      <h1>Check Availability</h1>
+      <div class="phs-sub">Confidential &nbsp;·&nbsp; HIPAA-Compliant &nbsp;·&nbsp; No Obligation</div>
+    </div>
+    <div class="phs-right">
+      <p>Complete the intake questionnaire below at your own pace. Your responses are submitted securely and reviewed by a licensed advisor. This information is used solely for the purpose of evaluating coverage options on your behalf.</p>
+      <p>You will not receive a copy of this intake form. All information is handled in strict compliance with HIPAA federal privacy regulations. </p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--white);">
+    <div class="section-inner">
+      <div class="quote-wrap">
+
+        <!-- FORM -->
+        <div>
+          <!-- PROGRESS BAR -->
+          <div class="prog-row" id="progRow">
+            <div class="pstep active" id="ps0"><div class="pc">1</div><div class="pl">Policy Role</div></div>
+            <div class="pline" id="pl0"></div>
+            <div class="pstep" id="ps1"><div class="pc">2</div><div class="pl">Personal</div></div>
+            <div class="pline" id="pl1"></div>
+            <div class="pstep" id="ps2"><div class="pc">3</div><div class="pl">Citizenship</div></div>
+            <div class="pline" id="pl2"></div>
+            <div class="pstep" id="ps3"><div class="pc">4</div><div class="pl">Coverage</div></div>
+            <div class="pline" id="pl3"></div>
+            <div class="pstep" id="ps4"><div class="pc">5</div><div class="pl">Lifestyle</div></div>
+            <div class="pline" id="pl4"></div>
+            <div class="pstep" id="ps5"><div class="pc">6</div><div class="pl">Health</div></div>
+            <div class="pline" id="pl5"></div>
+            <div class="pstep" id="ps6"><div class="pc">7</div><div class="pl">Medical</div></div>
+            <div class="pline" id="pl6"></div>
+            <div class="pstep" id="ps7"><div class="pc">8</div><div class="pl">Riders</div></div>
+          </div>
+
+          <!-- STEP 0: POLICY ROLE -->
+          <div class="fstep active" id="fs0">
+            <div class="fcard">
+              <h2>Before We Begin</h2>
+              <p class="fsub">One foundational question that determines how the application is structured.</p>
+
+              <div class="field">
+                <label>Who is this policy for?</label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn" onclick="pick(this,'policy_for','Self')">Self</button>
+                  <button class="cbtn" onclick="pick(this,'policy_for','Spouse / Partner')">Spouse / Partner</button>
+                  <button class="cbtn" onclick="pick(this,'policy_for','Child')">Child</button>
+                  <button class="cbtn" onclick="pick(this,'policy_for','Parent')">Parent</button>
+                  <button class="cbtn" onclick="pick(this,'policy_for','Sibling')">Sibling</button>
+                  <button class="cbtn" onclick="pick(this,'policy_for','Business Partner / Key Person')">Business Partner / Key Person</button>
+                  <button class="cbtn" onclick="pick(this,'policy_for','Other')">Other</button>
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:1.5rem;">
+                <label>Will you be both the Owner and the Insured of this policy?</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'owner_insured','Yes - I am both owner and insured')">Yes - I am both</button>
+                  <button class="cbtn" onclick="pick(this,'owner_insured','No - different individuals')">No - different individuals</button>
+                  <button class="cbtn" onclick="pick(this,'owner_insured','Unsure')">Unsure</button>
+                </div>
+              </div>
+
+              <div class="owner-exp">
+                <div class="exp-box">
+                  <div class="exp-label">The Insured</div>
+                  <p>The <strong>insured</strong> is the individual whose life is covered under the policy. The death benefit is payable upon the death of the insured. Their age, gender, and health classification determine the applicable premium rate.</p>
+                </div>
+                <div class="exp-box">
+                  <div class="exp-label">The Owner</div>
+                  <p>The <strong>owner</strong> is the party who holds and controls the policy - responsible for premium payments and entitled to designate or modify beneficiaries. The owner and the insured may be the same individual or separate parties (e.g., a spouse insuring a partner, or a parent insuring a child).</p>
+                </div>
+                <div class="exp-note"><strong>Most common scenario:</strong> The applicant is insuring their own life and will pay their own premiums. In that case, the owner and insured are the same individual - select <em>Yes</em>. If you are applying to insure another person's life, select <em>No</em>.</div>
+              </div>
+
+              <div id="insuredExtra" style="display:none;margin-top:1.5rem;">
+                <div class="field"><label>Insured Person's Full Legal Name</label><input type="text" id="insured_name" placeholder="Full legal name of the person being insured"/></div>
+                <div class="field"><label>Your Relationship to the Insured</label>
+                  <div class="choices">
+                    <button class="cbtn" onclick="pick(this,'owner_rel','Spouse / Partner')">Spouse / Partner</button>
+                    <button class="cbtn" onclick="pick(this,'owner_rel','Child')">Child</button>
+                    <button class="cbtn" onclick="pick(this,'owner_rel','Parent')">Parent</button>
+                    <button class="cbtn" onclick="pick(this,'owner_rel','Business Partner')">Business Partner</button>
+                    <button class="cbtn" onclick="pick(this,'owner_rel','Other')">Other</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-nav"><span></span><button class="btn-next" onclick="go(0)">Continue</button></div>
+            </div>
+          </div>
+
+          <!-- STEP 1: PERSONAL INFORMATION -->
+          <div class="fstep" id="fs1">
+            <div class="fcard">
+              <h2>Section 1 - Personal Information</h2>
+              <p class="fsub">Basic identifying information for the individual to be insured.</p>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="field"><label>First Name</label><input type="text" id="fname" placeholder="First name"/></div>
+                <div class="field"><label>Last Name</label><input type="text" id="lname" placeholder="Last name"/></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="field"><label>Date of Birth</label><input type="date" id="dob"/></div>
+                <div class="field"><label>Gender</label>
+                  <div class="choices">
+                    <button class="cbtn" onclick="pick(this,'gender','Male')">Male</button>
+                    <button class="cbtn" onclick="pick(this,'gender','Female')">Female</button>
+                  </div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="field"><label>Current Height</label><input type="text" id="height" placeholder='e.g. 5&apos;8"'/></div>
+                <div class="field"><label>Current Weight (lbs)</label><input type="number" id="weight" placeholder="e.g. 175"/></div>
+              </div>
+              <div class="field"><label>Street Address</label><input type="text" id="addr" placeholder="Street address"/></div>
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;">
+                <div class="field"><label>City</label><input type="text" id="city" placeholder="City"/></div>
+                <div class="field"><label>State</label><input type="text" id="state" placeholder="State"/></div>
+                <div class="field"><label>ZIP Code</label><input type="text" id="zip" placeholder="ZIP"/></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="field"><label>Phone Number</label><input type="tel" id="phone" placeholder="(555) 000-0000"/></div>
+                <div class="field"><label>Email Address</label><input type="email" id="email" placeholder="your@email.com"/></div>
+              </div>
+
+              <div class="form-nav"><button class="btn-prev" onclick="back(1)">← Back</button><button class="btn-next" onclick="go(1)">Continue</button></div>
+            </div>
+          </div>
+
+          <!-- STEP 2: CITIZENSHIP & RESIDENCY -->
+          <div class="fstep" id="fs2">
+            <div class="fcard">
+              <h2>Section 2 - Citizenship &amp; Residency</h2>
+              <p class="fsub">Citizenship and residency status affects eligibility across carriers and product types.</p>
+
+              <div class="field">
+                <label>Current Citizenship / Residency Status</label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn" onclick="pick(this,'citizenship','U.S. Citizen')">U.S. Citizen</button>
+                  <button class="cbtn" onclick="pick(this,'citizenship','Permanent Resident - Green Card Holder')">Permanent Resident (Green Card Holder)</button>
+                  <button class="cbtn" onclick="pick(this,'citizenship','Foreign National - Visa Holder')">Foreign National (Visa Holder)</button>
+                </div>
+              </div>
+
+              <div id="visaDetails" style="display:none;">
+                <div class="field"><label>Visa Type</label><input type="text" id="visa_type" placeholder="e.g. H-1B, L-1, O-1"/></div>
+                <div class="field"><label>Country of Origin</label><input type="text" id="country" placeholder="Country of origin"/></div>
+              </div>
+
+              <div class="field" style="margin-top:1rem;">
+                <label>Length of U.S. Residency</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'us_residency','Less than 2 years')">Less than 2 years</button>
+                  <button class="cbtn" onclick="pick(this,'us_residency','2–5 years')">2–5 years</button>
+                  <button class="cbtn" onclick="pick(this,'us_residency','5+ years')">5+ years</button>
+                  <button class="cbtn" onclick="pick(this,'us_residency','Lifelong / Born here')">Lifelong / Born here</button>
+                </div>
+              </div>
+
+              <div class="form-nav"><button class="btn-prev" onclick="back(2)">← Back</button><button class="btn-next" onclick="go(2)">Continue</button></div>
+            </div>
+          </div>
+
+          <!-- STEP 3: COVERAGE SELECTION -->
+          <div class="fstep" id="fs3">
+            <div class="fcard">
+              <h2>Section 3 - Coverage Selection</h2>
+              <p class="fsub">Select the type of coverage you are seeking. If you are uncertain, visit our <a href="education.html" style="color:var(--gold);">Insurance Education</a> page for reference.</p>
+
+              <div class="field">
+                <label>Primary Reason for Seeking Life Insurance Coverage</label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Income replacement for dependents')">Income replacement for dependents</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Mortgage or debt protection')">Mortgage or debt protection</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Final expense / burial coverage')">Final expense / burial coverage</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Estate planning')">Estate planning</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Business continuity / key person')">Business continuity / key person coverage</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Supplemental retirement income')">Supplemental retirement income</button>
+                  <button class="cbtn" style="text-align:left;" onclick="pick(this,'reason','Other')">Other</button>
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:1.5rem;">
+                <label>Policy Type</label>
+                <div class="pob" id="pob-term" onclick="pickPolicy('term')">
+                  <div class="pob-hdr"><div class="pob-radio" id="pr-term"></div><div class="pob-title">Term Life Insurance</div></div>
+                  <div class="pob-desc">Temporary coverage for a defined period. Pure death benefit protection - no cash value accumulation.</div>
+                  <div class="pob-sub">
+                    <div style="font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.6rem;">Preferred Term Length</div>
+                    <div class="choices">
+                      <button class="cbtn" onclick="event.stopPropagation();pick(this,'term_len','10 Years')">10 Years</button>
+                      <button class="cbtn" onclick="event.stopPropagation();pick(this,'term_len','15 Years')">15 Years</button>
+                      <button class="cbtn" onclick="event.stopPropagation();pick(this,'term_len','20 Years')">20 Years</button>
+                      <button class="cbtn" onclick="event.stopPropagation();pick(this,'term_len','25 Years')">25 Years</button>
+                      <button class="cbtn" onclick="event.stopPropagation();pick(this,'term_len','30 Years')">30 Years</button>
+                      <button class="cbtn" onclick="event.stopPropagation();pick(this,'term_len','40 Years')">40 Years</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="pob" id="pob-whole" onclick="pickPolicy('whole')">
+                  <div class="pob-hdr"><div class="pob-radio" id="pr-whole"></div><div class="pob-title">Whole Life Insurance</div></div>
+                  <div class="pob-desc">Permanent lifetime coverage with cash value accumulation and guaranteed death benefit.</div>
+                  <div class="pob-sub">
+                    <div style="font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.6rem;">Preferred Structure</div>
+                    <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                      <button class="cbtn" style="text-align:left;" onclick="event.stopPropagation();pick(this,'whole_type','Traditional - Level premiums for life')">Traditional - Level premiums for the life of the policy</button>
+                      <button class="cbtn" style="text-align:left;" onclick="event.stopPropagation();pick(this,'whole_type','Limited Pay / Smartpay - Premiums paid for a set period; coverage continues for life')">Limited Pay / Smartpay - Premiums paid for a defined period; coverage continues for life</button>
+                      <button class="cbtn" style="text-align:left;" onclick="event.stopPropagation();pick(this,'whole_type','Return of Premium - Structured to return premiums under specified conditions')">Return of Premium - Structured to return premiums under specified conditions (terms vary by carrier)</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Desired Coverage Amount (Approximate)</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'coverage_amt','Under $25,000')">Under $25K</button>
+                  <button class="cbtn" onclick="pick(this,'coverage_amt','$25,000–$50,000')">$25K–$50K</button>
+                  <button class="cbtn" onclick="pick(this,'coverage_amt','$50,000–$100,000')">$50K–$100K</button>
+                  <button class="cbtn" onclick="pick(this,'coverage_amt','$100,000–$250,000')">$100K–$250K</button>
+                  <button class="cbtn" onclick="pick(this,'coverage_amt','$250,000–$500,000')">$250K–$500K</button>
+                  <button class="cbtn" onclick="pick(this,'coverage_amt','$500,000+')">$500K+</button>
+                  <button class="cbtn" onclick="pick(this,'coverage_amt','Undecided')">Undecided</button>
+                </div>
+              </div>
+
+              <div class="form-nav"><button class="btn-prev" onclick="back(3)">← Back</button><button class="btn-next" onclick="go(3)">Continue</button></div>
+            </div>
+          </div>
+
+          <!-- STEP 4: LIFESTYLE & BACKGROUND -->
+          <div class="fstep" id="fs4">
+            <div class="fcard">
+              <h2>Section 4 - Lifestyle &amp; Background</h2>
+              <p class="fsub">These questions are used to identify the most appropriate carriers for your profile. All responses are confidential.</p>
+
+              <div class="field">
+                <label>Current Employment Status</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'employment','Employed - Full Time')">Employed - Full Time</button>
+                  <button class="cbtn" onclick="pick(this,'employment','Employed - Part Time')">Employed - Part Time</button>
+                  <button class="cbtn" onclick="pick(this,'employment','Self-Employed')">Self-Employed</button>
+                  <button class="cbtn" onclick="pick(this,'employment','College Student')">College Student</button>
+                  <button class="cbtn" onclick="pick(this,'employment','Retired')">Retired</button>
+                  <button class="cbtn" onclick="pick(this,'employment','Unemployed')">Unemployed</button>
+                  <button class="cbtn" onclick="pick(this,'employment','Disabled')">Disabled</button>
+                </div>
+              </div>
+
+              <div class="field" id="incomeField">
+                <label>Gross Annual Income <span style="font-weight:300;text-transform:none;letter-spacing:0;">(if not a student)</span></label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'income','Under $25,000')">Under $25K</button>
+                  <button class="cbtn" onclick="pick(this,'income','$25,000–$50,000')">$25K–$50K</button>
+                  <button class="cbtn" onclick="pick(this,'income','$50,000–$75,000')">$50K–$75K</button>
+                  <button class="cbtn" onclick="pick(this,'income','$75,000–$100,000')">$75K–$100K</button>
+                  <button class="cbtn" onclick="pick(this,'income','$100,000–$150,000')">$100K–$150K</button>
+                  <button class="cbtn" onclick="pick(this,'income','$150,000+')">$150K+</button>
+                  <button class="cbtn" onclick="pick(this,'income','Prefer not to say')">Prefer not to say</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Tobacco / Nicotine Use - Have you used nicotine in any form in the last 12 months?<br><span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.75rem;">(Includes: cigarettes, e-cigarettes, vapor products, pipe, snuff, chew, nicotine gum, patches)</span></label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'tobacco','Yes')">Yes</button>
+                  <button class="cbtn" onclick="pick(this,'tobacco','No')">No</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>High-Risk Activities - Do you participate in any of the following?<br><span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.75rem;">(Active-duty military aircraft pilots or crew, parachuting, scuba diving, handling explosives, or similar hazardous activities)</span></label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'high_risk','Yes')">Yes</button>
+                  <button class="cbtn" onclick="pick(this,'high_risk','No')">No</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Driving Record - Have you had a DUI, reckless driving conviction, or license suspension or revocation in the past 5 years?</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'driving','Yes')">Yes</button>
+                  <button class="cbtn" onclick="pick(this,'driving','No')">No</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Criminal History - Do you have any felony convictions, pending criminal charges, or are you currently under legal supervision (probation or parole)?</label>
+                <div class="choices">
+                  <button class="cbtn" onclick="pick(this,'criminal','Yes')">Yes</button>
+                  <button class="cbtn" onclick="pick(this,'criminal','No')">No</button>
+                </div>
+              </div>
+
+              
+              <div class="field"><label>How soon are you looking to get covered?</label><div class="choices" style="flex-direction:column;align-items:flex-start;"><button class="cbtn" onclick="pick(this,'coverage_timing','As soon as possible')">As soon as possible</button><button class="cbtn" onclick="pick(this,'coverage_timing','Within the next 30 days')">Within the next 30 days</button><button class="cbtn" onclick="pick(this,'coverage_timing','Within the next 3 months')">Within the next 3 months</button><button class="cbtn" onclick="pick(this,'coverage_timing','I am still researching')">I am still researching</button></div></div>
+              <div class="field"><label>Do you need your premium payments to align with your Social Security benefit dates?</label><div class="choices" style="flex-direction:column;align-items:flex-start;"><button class="cbtn" onclick="pick(this,'ss_alignment','Yes - align with my Social Security payment date')">Yes - align with my Social Security date</button><button class="cbtn" onclick="pick(this,'ss_alignment','No - standard monthly billing is fine')">No - standard monthly billing</button><button class="cbtn" onclick="pick(this,'ss_alignment','I do not receive Social Security benefits')">I do not receive Social Security</button></div></div>
+              <div class="field"><label>What is your preferred method of contact?</label><div class="choices" style="flex-direction:column;align-items:flex-start;"><button class="cbtn" onclick="pick(this,'contact_method','Phone call')">Phone call</button><button class="cbtn" onclick="pick(this,'contact_method','Text message')">Text message</button><button class="cbtn" onclick="pick(this,'contact_method','Email')">Email</button><button class="cbtn" onclick="pick(this,'contact_method','Phone call or text message')">Phone call or text message</button></div></div>
+<div class="form-nav"><button class="btn-prev" onclick="back(4)">← Back</button><button class="btn-next" onclick="go(4)">Continue</button></div>
+            </div>
+          </div>
+
+          <!-- STEP 5: HEALTH SCREENING -->
+          <div class="fstep" id="fs5">
+            <div class="fcard">
+              <h2>Section 5 - Health Screening</h2>
+              <p class="fsub">Please answer each question as accurately as possible. All responses are reviewed by a licensed advisor and handled in full HIPAA compliance.</p>
+
+              <div class="field">
+                <label>Have you been diagnosed with or treated for Alzheimer's disease, dementia, or significant memory loss?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'alzheimers','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'alzheimers','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Are you currently in hospice care, residing in a nursing home or skilled nursing facility, or receiving home healthcare services?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'hospice','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'hospice','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Have you had a heart attack or stroke within the last 6 to 12 months?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'heart_stroke','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'heart_stroke','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Have you had a suicide attempt within the last 2 to 5 years?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'suicide_attempt','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'suicide_attempt','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>HIV / AIDS - Have you ever been diagnosed with or tested positive for HIV, AIDS, or ARC (AIDS-Related Complex)?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'hiv','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'hiv','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Respiratory Disease - Have you been diagnosed with COPD, emphysema, or chronic or severe asthma?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'respiratory','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'respiratory','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Liver or Kidney Disease - Have you been diagnosed with cirrhosis of the liver, active hepatitis, or chronic kidney disease (including dialysis)?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'liver_kidney','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'liver_kidney','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Heart Conditions - Have you been diagnosed with congestive heart failure, or had heart surgery including bypass or stent placement?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'heart_other','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'heart_other','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Neurological Conditions - Have you been diagnosed with a TIA (mini-stroke) or Multiple Sclerosis?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'neuro','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'neuro','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Active Cancer - Have you been diagnosed with or received treatment for any cancer within the last 12 months? (Excluding basal cell and squamous cell skin carcinomas)</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'cancer','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'cancer','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Diabetes - Have you been diagnosed with Type 1 or Type 2 diabetes?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'diabetes','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'diabetes','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Mental Health - Have you been diagnosed with or received treatment for a mental health condition (including depression, bipolar disorder, schizophrenia, or anxiety disorders)?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'mental_health','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'mental_health','No')">No</button></div>
+              </div>
+              <div class="field">
+                <label>Substance Use - Have you ever received treatment for alcohol or drug dependency or abuse?</label>
+                <div class="choices"><button class="cbtn" onclick="pick(this,'substance','Yes')">Yes</button><button class="cbtn" onclick="pick(this,'substance','No')">No</button></div>
+              </div>
+
+              <div class="form-nav"><button class="btn-prev" onclick="back(5)">← Back</button><button class="btn-next" onclick="go(5)">Continue</button></div>
+            </div>
+          </div>
+
+          <!-- STEP 6: MEDICAL DETAILS & ADLs -->
+          <div class="fstep" id="fs6">
+            <div class="fcard">
+              <h2>Section 6 - Medical Details &amp; Functional Status</h2>
+              <p class="fsub">Please list all current medications and indicate your level of independence with daily activities.</p>
+
+              <div class="field">
+                <label>Current Medications<br><span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.75rem;">Please list all medications you are currently taking, including prescription and over-the-counter supplements. Start typing a name and select it from the suggestions, or type your own and click Add.</span></label>
+
+                <div class="med-input-row">
+                  <input type="text" id="med_input" list="med_suggestions" placeholder="Start typing a medication name..." autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();addMedication();}"/>
+                  <datalist id="med_suggestions">
+                    <option value="Lisinopril"></option>
+                    <option value="Atorvastatin"></option>
+                    <option value="Metformin"></option>
+                    <option value="Levothyroxine"></option>
+                    <option value="Amlodipine"></option>
+                    <option value="Metoprolol"></option>
+                    <option value="Omeprazole"></option>
+                    <option value="Albuterol"></option>
+                    <option value="Gabapentin"></option>
+                    <option value="Hydrochlorothiazide"></option>
+                    <option value="Sertraline"></option>
+                    <option value="Simvastatin"></option>
+                    <option value="Losartan"></option>
+                    <option value="Furosemide"></option>
+                    <option value="Pantoprazole"></option>
+                    <option value="Escitalopram"></option>
+                    <option value="Trazodone"></option>
+                    <option value="Bupropion"></option>
+                    <option value="Fluoxetine"></option>
+                    <option value="Citalopram"></option>
+                    <option value="Duloxetine"></option>
+                    <option value="Venlafaxine"></option>
+                    <option value="Alprazolam"></option>
+                    <option value="Clonazepam"></option>
+                    <option value="Lorazepam"></option>
+                    <option value="Insulin Glargine"></option>
+                    <option value="Insulin Lispro"></option>
+                    <option value="Glipizide"></option>
+                    <option value="Januvia (Sitagliptin)"></option>
+                    <option value="Jardiance (Empagliflozin)"></option>
+                    <option value="Ozempic (Semaglutide)"></option>
+                    <option value="Warfarin"></option>
+                    <option value="Eliquis (Apixaban)"></option>
+                    <option value="Xarelto (Rivaroxaban)"></option>
+                    <option value="Clopidogrel"></option>
+                    <option value="Aspirin"></option>
+                    <option value="Prednisone"></option>
+                    <option value="Montelukast"></option>
+                    <option value="Fluticasone"></option>
+                    <option value="Tamsulosin"></option>
+                    <option value="Finasteride"></option>
+                    <option value="Sildenafil"></option>
+                    <option value="Allopurinol"></option>
+                    <option value="Carvedilol"></option>
+                    <option value="Digoxin"></option>
+                    <option value="Spironolactone"></option>
+                    <option value="Rosuvastatin"></option>
+                    <option value="Pravastatin"></option>
+                    <option value="Methotrexate"></option>
+                    <option value="Hydroxychloroquine"></option>
+                    <option value="Adalimumab (Humira)"></option>
+                    <option value="Levetiracetam"></option>
+                    <option value="Lamotrigine"></option>
+                    <option value="Quetiapine"></option>
+                    <option value="Risperidone"></option>
+                    <option value="Aripiprazole"></option>
+                    <option value="Lithium"></option>
+                    <option value="Buspirone"></option>
+                    <option value="Tamoxifen"></option>
+                    <option value="Letrozole"></option>
+                    <option value="Vitamin D3 (Supplement)"></option>
+                    <option value="Vitamin B12 (Supplement)"></option>
+                    <option value="Fish Oil / Omega-3 (Supplement)"></option>
+                    <option value="Multivitamin (Supplement)"></option>
+                    <option value="Calcium (Supplement)"></option>
+                    <option value="Magnesium (Supplement)"></option>
+                    <option value="Probiotic (Supplement)"></option>
+                    <option value="Melatonin (Supplement)"></option>
+                    <option value="Turmeric / Curcumin (Supplement)"></option>
+                    <option value="CoQ10 (Supplement)"></option>
+                  </datalist>
+                  <button type="button" class="med-add-btn" onclick="addMedication()">+ Add Medication</button>
+                </div>
+
+                <div id="med_list" class="med-list"></div>
+
+                <button type="button" class="med-none-btn" id="med_none_btn" onclick="toggleNoMeds()">I am not currently taking any medications</button>
+              </div>
+
+              <div class="field">
+                <label>Known Health Conditions Not Previously Listed<br><span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.75rem;">Include any diagnosed conditions, surgeries, or hospitalizations in the past 5 years.</span></label>
+                <textarea id="conditions" placeholder="List any additional diagnosed conditions, surgeries, or hospitalizations..."></textarea>
+              </div>
+
+              <div class="field" style="margin-top:0.5rem;">
+                <label>Activities of Daily Living (ADLs) - Independence Status<br><span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.75rem;">Select any ADLs for which you require assistance.</span></label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn multi" onclick="multi(this,'adl_hygiene')">Hygiene / Bathing</button>
+                  <button class="cbtn multi" onclick="multi(this,'adl_continence')">Continence Management</button>
+                  <button class="cbtn multi" onclick="multi(this,'adl_dressing')">Dressing</button>
+                  <button class="cbtn multi" onclick="multi(this,'adl_eating')">Eating</button>
+                  <button class="cbtn multi" onclick="multi(this,'adl_toileting')">Toileting</button>
+                  <button class="cbtn multi" onclick="multi(this,'adl_transferring')">Transferring (moving from bed/chair)</button>
+                  <button class="cbtn" onclick="pick(this,'adls_none','Fully independent - no assistance required')">Fully independent - no assistance required</button>
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:0.5rem;">
+                <label>Instrumental Activities of Daily Living (IADLs) - Independence Status<br><span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:0.75rem;">Select any IADLs for which you require assistance.</span></label>
+                <div class="choices" style="flex-direction:column;align-items:flex-start;">
+                  <button class="cbtn multi" onclick="multi(this,'iadl_phone')">Telephone / Device Use</button>
+                  <button class="cbtn multi" onclick="multi(this,'iadl_travel')">Travel / Driving</button>
+                  <button class="cbtn multi" onclick="multi(this,'iadl_meals')">Meal Preparation</button>
+                  <button class="cbtn multi" onclick="multi(this,'iadl_shopping')">Shopping</button>
+                  <button class="cbtn multi" onclick="multi(this,'iadl_housework')">Housework</button>
+                  <button class="cbtn multi" onclick="multi(this,'iadl_meds')">Medication Management</button>
+                  <button class="cbtn" onclick="pick(this,'iadls_none','Fully independent - no assistance required')">Fully independent - no assistance required</button>
+                </div>
+              </div>
+
+              <div class="form-nav"><button class="btn-prev" onclick="back(6)">← Back</button><button class="btn-next" onclick="go(6)">Continue</button></div>
+            </div>
+          </div>
+
+          <!-- STEP 7: RIDERS -->
+          <div class="fstep" id="fs7">
+            <div class="fcard">
+              <h2>Section 7 - Optional Riders</h2>
+              <p class="fsub">Riders are optional provisions added to a base policy that expand or modify coverage. Select any you would like to be considered. Rider availability, terms, and cost vary by carrier and are subject to underwriting guidelines.</p>
+
+              <div class="field">
+                <label>Riders of Interest <span style="font-weight:300;text-transform:none;letter-spacing:0;">(Select all that apply)</span></label>
+
+                <div class="rider-grid">
+
+                  <button type="button" class="rider-card" id="r_wop" onclick="toggleRider(this,'rider_wop')">
+                    <div class="rider-card-title">Waiver of Premium</div>
+                    <div class="rider-card-desc">A rider that waives the premium obligation if the insured becomes totally disabled and unable to maintain employment. The policy remains in force during the qualifying disability period without premium payment. Definitions of total disability and qualifying criteria vary among carriers.</div>
+                  </button>
+
+                  <button type="button" class="rider-card" id="r_adb" onclick="toggleRider(this,'rider_adb')">
+                    <div class="rider-card-title">Accidental Death Benefit (ADB)</div>
+                    <div class="rider-card-desc">A rider that provides an additional death benefit in the event the insured dies as a direct result of a covered accident. Does not apply to death resulting from illness or disease. Covered accidents, exclusions, and benefit amounts vary by carrier and policy form.</div>
+                  </button>
+
+                  <button type="button" class="rider-card" id="r_lb" onclick="toggleRider(this,'rider_living_benefits')">
+                    <div class="rider-card-title">Living Benefits</div>
+                    <div class="rider-card-desc">A category of riders that allow the insured to access a portion of the death benefit while living upon the occurrence of a qualifying event - which may include terminal illness, chronic illness, or critical illness diagnosis. Qualifying conditions, acceleration amounts, and benefit structures differ among carriers. Any amount advanced reduces the remaining death benefit. Guidelines and trigger criteria are subject to change by the issuing carrier.</div>
+                  </button>
+
+                  
+
+                </div>
+              </div>
+
+              <!-- REQUIRED CLIENT DISCLOSURES -->
+              <div class="field" style="margin-top:1.5rem;">
+                <label>Required Disclosures <span style="font-weight:300;text-transform:none;letter-spacing:0;">(Please read and confirm each before submitting)</span></label>
+
+                <div class="disclosure-list">
+
+                  <div class="disclosure-item">
+                    <label class="disclosure-label">
+                      <input type="checkbox" id="disc_fcra" class="disclosure-check"/>
+                      <div>
+                        <div class="disclosure-title">FCRA - Fair Credit Reporting Act</div>
+                        <div class="disclosure-text">As part of underwriting your application, the insurance company may order an investigative consumer report about you. This report can include things like your credit standing, character, general reputation, and lifestyle, and may draw on sources such as your prescription history, driving record, past medical billing, or lab results. If the company denies you coverage or charges you a higher rate because of something in this report, they must tell you and give you the name and address of the agency that prepared it, so you can request a copy, dispute anything inaccurate, and add your own statement.</div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="disclosure-item">
+                    <label class="disclosure-label">
+                      <input type="checkbox" id="disc_mib" class="disclosure-check"/>
+                      <div>
+                        <div class="disclosure-title">MIB - Medical Information Bureau</div>
+                        <div class="disclosure-text">Most insurance companies check the MIB before approving an application. The MIB is a shared database that member insurance companies use to flag information from your past applications or claims for life or health coverage. This helps companies catch fraud and keeps premiums fair for everyone by preventing people from hiding relevant health history. You have the right to request a copy of your MIB file directly from MIB if you would like to see what is on it.</div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="disclosure-item">
+                    <label class="disclosure-label">
+                      <input type="checkbox" id="disc_privacy" class="disclosure-check"/>
+                      <div>
+                        <div class="disclosure-title">State Privacy Practices Notice</div>
+                        <div class="disclosure-text">Insurance companies are required in most states to give you a written explanation of how they collect and share your information. This means you have the right to see what information the company has on file about you, and the law limits who they are allowed to share it with, only well-defined parties directly involved in handling your policy, such as a company helping process your application.</div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="disclosure-item">
+                    <label class="disclosure-label">
+                      <input type="checkbox" id="disc_hipaa" class="disclosure-check"/>
+                      <div>
+                        <div class="disclosure-title">HIPAA - Health Insurance Portability and Accountability Act</div>
+                        <div class="disclosure-text">HIPAA is a federal law that protects the privacy of your health information. It means your medical history, conditions, and records cannot be shared without your written authorization, except in limited situations directly related to evaluating or servicing your application. Any health information you provide on this intake form is handled under these same protections.</div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="disclosure-item">
+                    <label class="disclosure-label">
+                      <input type="checkbox" id="disc_receipt" class="disclosure-check"/>
+                      <div>
+                        <div class="disclosure-title">Conditional Receipt</div>
+                        <div class="disclosure-text">If you pay a premium at the time you submit a formal application, you will be given a Conditional Receipt. This document explains the specific terms under which you may have limited coverage while your application is still being reviewed and underwritten, and it is important that you read it carefully when it is provided.</div>
+                      </div>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:1.5rem;">
+                <label style="display:flex;gap:0.65rem;cursor:pointer;font-weight:300;font-size:0.83rem;text-transform:none;letter-spacing:0;line-height:1.6;">
+                  <input type="checkbox" id="consent" style="width:auto;flex-shrink:0;margin-top:3px;accent-color:var(--gold);"/>
+                  I understand that information submitted on this form will be used by this licensed independent insurance advisory solely for advisor review and carrier eligibility evaluation. This form does not constitute an insurance application and does not guarantee coverage. I consent to being contacted by a licensed advisor regarding this inquiry.
+                </label>
+              </div>
+
+              <div class="form-nav"><button class="btn-prev" onclick="back(7)">← Back</button><button class="btn-submit" onclick="submitForm()">Submit Intake</button></div>
+            </div>
+          </div>
+
+          <!-- SUCCESS -->
+          <div class="success-block" id="successBlock">
+            <div class="success-mark">✦</div>
+            <h2>Intake Received.</h2>
+            <p>Your intake responses have been submitted securely and will be reviewed by a licensed advisor. You will be contacted regarding your eligibility and available options. If you have questions in the interim, <a href="chat.html" style="color:var(--gold);">ask your advisor a question</a>.</p>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="q-sidebar">
+          <div class="q-tile">
+            <h4>Your Information Is Protected</h4>
+            <ul>
+              <li>HIPAA-compliant collection and handling</li>
+              <li>Not shared without explicit written authorization</li>
+              <li>Used solely for advisor review</li>
+              <li>You will not receive a copy of this form</li>
+            </ul>
+          </div>
+          <div class="q-tile">
+            <h4>What Happens After Submission</h4>
+            <p>A licensed advisor will review your intake responses and evaluate your eligibility across our carrier network. You will be contacted with available options. No application is submitted without your explicit instruction.</p>
+          </div>
+          <div class="q-tile">
+          <div class="q-tile" style="border-left:2px solid var(--gold);">
+            <h4>MIB &amp; FCRA Notice</h4>
+            <p>Any formal application submitted to a carrier on your behalf may involve a Medical Information Bureau (MIB) inquiry and/or a consumer report under the Fair Credit Reporting Act (FCRA). You will be informed prior to any such inquiry being initiated.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-main">Eboni Morris</div>
+        <div class="fb-sub">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+        <div class="footer-license">
+          <div class="fl-title">License Verification</div>
+          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL*, MI, OH, SC, TX</p>
+          <p class="fl-body" style="margin-top:0.4rem;font-style:italic;">*FL appointment in progress - coming soon!</p>
+        </div>
+      </div>
+      <div style="grid-column:1/-1;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:0.5rem;">
+        <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
+        <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE - separated by &nbsp;&middot;&nbsp; - update before publishing]</p>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Insurance Education</a></li>
+        <li><a href="myths.html">Myth Busted</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
+        <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
+        <li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li>
+        <li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li>
+        <li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Advisor. All rights reserved.</span>
+      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- FCRA Modal -->
+<div class="modal-overlay" id="modal-fcra" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-fcra')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title">Fair Credit Reporting Act (FCRA)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-fcra')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the FCRA Is</div>
+        <p>The Fair Credit Reporting Act is a federal law that regulates how consumer reporting agencies collect, use, and share information about individuals, including for insurance underwriting purposes.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies</div>
+        <p>In connection with a formal application for life insurance, the issuing carrier may obtain a consumer report about you. If any adverse action is taken based on that report, the carrier must notify you and provide the name of the reporting agency so you can request a copy and dispute inaccuracies.</p>
+      </div>
+      <div class="modal-notice">No consumer report will be requested without your knowledge. You will be informed prior to any application submission.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MIB Modal -->
+<div class="modal-overlay" id="modal-mib" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mib')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title">Medical Information Bureau (MIB)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mib')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the MIB Is</div>
+        <p>The Medical Information Bureau (MIB) is a member-owned organization that operates as an information exchange among participating life and health insurance companies.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Affects Your Application</div>
+        <p>When you apply for individually underwritten life or health insurance, the issuing carrier may request coded information from the MIB regarding prior insurance applications. You have the right to request a copy of your MIB file at mib.com or by calling 1-866-692-6901.</p>
+      </div>
+      <div class="modal-notice">A formal MIB inquiry will only occur in connection with a formal application submitted at your direction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pharmacy Records Modal -->
+<div class="modal-overlay" id="modal-rx" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-rx')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Pharmacy Records (Rx History)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-rx')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What This Is</div>
+        <p>Depending on the carrier and product applied for, the issuing company may request a report that includes your current and historical prescription drug records from participating pharmacies. This is a standard underwriting tool used by many life insurance carriers.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Prescription drug history is reviewed to correlate medications on file with health conditions disclosed on the application. You will be informed if such a check is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">Pharmacy record checks may or may not be required depending on the specific carrier and product selected.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MVR Modal -->
+<div class="modal-overlay" id="modal-mvr" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mvr')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Motor Vehicle Report (MVR)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mvr')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What an MVR Is</div>
+        <p>A Motor Vehicle Report provides a history of your driving record including traffic violations, license suspensions, DUI or DWI convictions, and the current status of your driver's license.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Some life insurance carriers review driving history as part of underwriting. An MVR may be requested depending on the carrier's guidelines for the product applied for. You will be informed if one is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">An MVR may or may not be required depending on the specific carrier and product. You may obtain your own driving record directly from your state DMV at any time.</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" onclick="closeModalOnOverlay(event,'modal-privacy')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-privacy-title">Privacy Policy</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-privacy')" aria-label="Close privacy policy">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What This Policy Covers</div>
+        <p>This privacy policy describes how Eboni Morris, licensed independent insurance agent (NPN: 18509552), collects, uses, and protects information submitted through this website. This policy applies to all information gathered through the intake questionnaire, referral forms, and any other communications submitted through coveredwithconditions.com.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Information We Collect</div>
+        <p>When you submit an intake form or inquiry, we may collect the following types of information:</p>
+        <ul>
+          <li>Personal identifiers such as your name, date of birth, address, phone number, and email address</li>
+          <li>Health and lifestyle information provided voluntarily for the purpose of evaluating coverage options</li>
+          <li>Information about medications, medical history, and functional status as relevant to insurance underwriting</li>
+          <li>Beneficiary relationship information provided in connection with coverage inquiries</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How Your Information Is Used</div>
+        <p>Information you submit is used solely for the purpose of evaluating and presenting life insurance coverage options on your behalf. It is not sold, rented, or shared with any third party except as necessary to process a formal insurance application at your direction, and only with your explicit written authorization prior to any application submission.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your Rights</div>
+        <p>You have the right to request access to the information we hold about you, request corrections to inaccurate information, and request that your information not be used for purposes beyond this advisory engagement. To exercise any of these rights, contact this office directly.</p>
+      </div>
+      <div class="modal-notice">This policy is subject to applicable federal and state insurance privacy regulations. Nothing in this policy limits any rights you may have under HIPAA, applicable state insurance privacy laws, or the Fair Credit Reporting Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HIPAA Notice Modal -->
+<div class="modal-overlay" id="modal-hipaa" role="dialog" aria-modal="true" aria-labelledby="modal-hipaa-title" onclick="closeModalOnOverlay(event,'modal-hipaa')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Federal Privacy Law</div>
+        <div class="modal-title" id="modal-hipaa-title">HIPAA Privacy Notice</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-hipaa')" aria-label="Close HIPAA notice">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What HIPAA Is</div>
+        <p>The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that establishes national standards for the protection of certain health information. HIPAA restricts how health information may be used and shared and gives individuals specific rights regarding their health data.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies Here</div>
+        <p>Any health-related information you provide through this website or during our advisory engagement is handled in strict compliance with applicable HIPAA privacy standards. This includes any medical history, conditions, medications, or other health information submitted as part of an intake questionnaire or consultation.</p>
+        <p>Your health information will not be disclosed to any insurance carrier or third party without your written authorization prior to any formal application submission. You will be informed of what information is being shared, with whom, and for what purpose before any such disclosure occurs.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your HIPAA Rights</div>
+        <ul>
+          <li>The right to receive a notice of privacy practices</li>
+          <li>The right to access and review health information held about you</li>
+          <li>The right to request corrections to inaccurate information</li>
+          <li>The right to request restrictions on certain uses or disclosures</li>
+          <li>The right to receive an accounting of disclosures made on your behalf</li>
+          <li>The right to file a complaint if you believe your privacy rights have been violated</li>
+        </ul>
+      </div>
+      <div class="modal-notice">If you believe your health information privacy rights have been violated, you may file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights. Filing a complaint will not affect your ability to obtain coverage or services through this practice.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Terms of Use Modal -->
+<div class="modal-overlay" id="modal-terms" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title" onclick="closeModalOnOverlay(event,'modal-terms')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-terms-title">Terms of Use</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-terms')" aria-label="Close terms of use">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Use of This Website</div>
+        <p>This website, coveredwithconditions.com, is operated by Eboni Morris, a licensed independent insurance agent (NPN: 18509552). By accessing or using this website, you agree to the following terms. If you do not agree, please do not use this site.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Insurance Offer or Guarantee</div>
+        <p>Nothing on this website constitutes an offer, commitment, or guarantee of insurance coverage. All coverage is subject to formal application, individual carrier underwriting approval, and the terms of the actual policy contract issued by the insurance company. Information on this site is provided for general educational and informational purposes only.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Accuracy of Information</div>
+        <p>While we make reasonable efforts to keep information on this site current and accurate, insurance products, carrier guidelines, licensing requirements, and applicable laws are subject to change. You should not rely solely on information found on this website when making insurance decisions. Consult with a licensed insurance professional for advice specific to your situation.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Attorney-Client or Financial Advisory Relationship</div>
+        <p>Use of this website does not create an attorney-client relationship, a financial advisory relationship, or any other professional engagement beyond that of a licensed insurance producer. Information provided through intake forms is used solely for the purpose of evaluating and presenting life insurance coverage options.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Intellectual Property</div>
+        <p>All content on this website, including text, design, layout, and educational materials, is the property of Eboni Morris and may not be reproduced, distributed, or used without written permission.</p>
+      </div>
+      <div class="modal-notice">These terms are governed by the laws of the State of Georgia. Eboni Morris reserves the right to update these terms at any time. Continued use of this site following any update constitutes acceptance of the revised terms.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Licensing Information Modal -->
+<div class="modal-overlay" id="modal-license" role="dialog" aria-modal="true" aria-labelledby="modal-license-title" onclick="closeModalOnOverlay(event,'modal-license')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Producer Licensing</div>
+        <div class="modal-title" id="modal-license-title">Licensing Information</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-license')" aria-label="Close licensing information">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Licensed Producer</div>
+        <p>This website is operated by Eboni Morris, a licensed independent insurance agent appointed with multiple insurance carriers. Eboni Morris holds life, accident, and sickness licenses and has been licensed since 2017.</p>
+        <ul>
+          <li>National Producer Number (NPN): 18509552</li>
+          <li>License Type: Life, Accident and Sickness</li>
+          <li>Licensed Since: 2017</li>
+          <li>Resident State: Georgia</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">States Where Licensed</div>
+        <p>Eboni Morris is currently licensed to solicit, negotiate, and sell life insurance in the following states:</p>
+        <ul>
+          <li>Georgia (GA) - Resident License</li>
+          <li>Florida (FL) - Nonresident License</li>
+          <li>Michigan (MI) - Nonresident License</li>
+          <li>Ohio (OH) - Nonresident License</li>
+          <li>South Carolina (SC) - Nonresident License</li>
+          <li>Texas (TX) - Nonresident License</li>
+        </ul>
+        <p>Expansion to additional states is ongoing. If you are located in a state not listed above, please complete the intake form and we will advise whether service is currently available in your state or connect you with a licensed partner where applicable.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">License Verification</div>
+        <p>Licensure can be independently verified through the National Insurance Producers Registry (NIPR) by calling 1 (855) 674-6477 and referencing National Producer Number (NPN) 18509552. You may also verify licensing through the insurance department of your individual state.</p>
+      </div>
+      <div class="modal-notice">Insurance products are offered through multiple insurance carriers and are subject to individual carrier underwriting approval. Eboni Morris operates as an independent agent and is not an employee or exclusive representative of any single insurance company.</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ACCESSIBILITY PANEL -->
+<div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
+  <div class="a11y-side-title">Accessibility Options</div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Text Size</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn active" id="ts-normal" onclick="a11y('text','normal')" aria-pressed="true">A</button>
+      <button class="a11y-s-btn" id="ts-large" onclick="a11y('text','large')" aria-pressed="false">A+</button>
+      <button class="a11y-s-btn" id="ts-xl" onclick="a11y('text','xl')" aria-pressed="false">A++</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">High Contrast</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="hc-on" onclick="a11y('contrast','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Dyslexia Font</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="dy-on" onclick="a11y('dyslexia','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Reduce Motion</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="rm-on" onclick="a11y('motion','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Screen Reader Mode</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="sr-on" onclick="a11y('screenreader','toggle')" aria-label="Simplify page layout for screen readers" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <button class="a11y-side-reset" onclick="a11yReset()">Reset All</button>
+</div>
+
+<!-- ACCESSIBILITY TAB -->
+<button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false" aria-controls="a11yPanel">
+  Accessibility
+</button>
+
+<!-- Screen reader announcements -->
+<div id="a11y-live" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"></div>
+
+<script>
+
+  let cur = 0;
+  const fd = {};
+
+  function pick(btn, key, val) {
+    const g = btn.closest('.choices');
+    g.querySelectorAll('.cbtn:not(.multi)').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    fd[key] = val;
+    if (key === 'owner_insured') {
+      document.getElementById('insuredExtra').style.display = val === 'No - different individuals' ? 'block' : 'none';
+    }
+    if (key === 'citizenship') {
+      document.getElementById('visaDetails').style.display = val === 'Foreign National - Visa Holder' ? 'block' : 'none';
+    }
+  }
+
+  function multi(btn, key) {
+    btn.classList.toggle('sel');
+    fd[key] = btn.classList.contains('sel') ? 'Yes' : 'No';
+  }
+
+  function toggleRider(btn, key) {
+    btn.classList.toggle('selected');
+    fd[key] = btn.classList.contains('selected') ? 'Yes' : 'No';
+  }
+
+  let medList = [];
+
+  function addMedication() {
+    const input = document.getElementById('med_input');
+    const name = input.value.trim();
+    if (!name) return;
+    if (medList.includes(name)) { input.value = ''; return; }
+    medList.push(name);
+    renderMedList();
+    input.value = '';
+    input.focus();
+    // If they were in "no medications" mode, switch off
+    const noneBtn = document.getElementById('med_none_btn');
+    noneBtn.classList.remove('active');
+  }
+
+  function removeMedication(name) {
+    medList = medList.filter(m => m !== name);
+    renderMedList();
+  }
+
+  function renderMedList() {
+    const container = document.getElementById('med_list');
+    container.innerHTML = '';
+    medList.forEach(name => {
+      const pill = document.createElement('div');
+      pill.className = 'med-pill';
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'med-pill-name';
+      nameSpan.textContent = name;
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'med-pill-remove';
+      removeBtn.innerHTML = '&times;';
+      removeBtn.onclick = () => removeMedication(name);
+      pill.appendChild(nameSpan);
+      pill.appendChild(removeBtn);
+      container.appendChild(pill);
+    });
+    fd['medications'] = medList.length ? medList.join(', ') : 'None';
+  }
+
+  function toggleNoMeds() {
+    const noneBtn = document.getElementById('med_none_btn');
+    const isActive = noneBtn.classList.contains('active');
+    if (!isActive) {
+      medList = [];
+      renderMedList();
+      noneBtn.classList.add('active');
+      fd['medications'] = 'None';
+    } else {
+      noneBtn.classList.remove('active');
+    }
+  }
+
+  function pickPolicy(type) {
+    ['term','whole'].forEach(t => {
+      document.getElementById('pob-'+t).classList.remove('sel');
+      document.getElementById('pr-'+t).style.background = 'transparent';
+      document.getElementById('pr-'+t).style.borderColor = 'var(--warm3)';
+    });
+    document.getElementById('pob-'+type).classList.add('sel');
+    document.getElementById('pr-'+type).style.background = 'var(--ink)';
+    document.getElementById('pr-'+type).style.borderColor = 'var(--ink)';
+    fd['policy_type'] = type;
+  }
+
+  function updateProg(step) {
+    for (let i = 0; i < 8; i++) {
+      const ps = document.getElementById('ps'+i);
+      if (!ps) continue;
+      ps.classList.remove('active','done');
+      if (i < step) ps.classList.add('done');
+      else if (i === step) ps.classList.add('active');
+      if (i < 7) {
+        const pl = document.getElementById('pl'+i);
+        if (pl) pl.classList.toggle('done', i < step);
+      }
+    }
+  }
+
+  function go(step) {
+    document.getElementById('fs'+step).classList.remove('active');
+    cur = step + 1;
+    document.getElementById('fs'+cur).classList.add('active');
+    updateProg(cur);
+    window.scrollTo({ top: document.querySelector('.quote-wrap').offsetTop - 90, behavior: 'smooth' });
+  }
+
+  function back(step) {
+    document.getElementById('fs'+step).classList.remove('active');
+    cur = step - 1;
+    document.getElementById('fs'+cur).classList.add('active');
+    updateProg(cur);
+    window.scrollTo({ top: document.querySelector('.quote-wrap').offsetTop - 90, behavior: 'smooth' });
+  }
+
+  function submitForm() {
+    const requiredDisclosures = ['disc_fcra','disc_mib','disc_privacy','disc_hipaa','disc_receipt'];
+    const missing = requiredDisclosures.some(id => !document.getElementById(id).checked);
+    if (missing) {
+      alert('Please review and confirm each required disclosure above before submitting.'); return;
+    }
+    if (!document.getElementById('consent').checked) {
+      alert('Please confirm your consent before submitting.'); return;
+    }
+    const fields = ['fname','lname','dob','height','weight','addr','city','state','zip','phone','email','conditions','visa_type','country'];
+    fields.forEach(id => { const el = document.getElementById(id); if (el) fd[id] = el.value; });
+    const ins = document.getElementById('insured_name'); if (ins) fd['insured_name'] = ins.value;
+    requiredDisclosures.forEach(id => { fd[id] = 'Acknowledged'; });
+    console.log('Intake submission:', JSON.stringify(fd, null, 2));
+    document.querySelectorAll('.fstep').forEach(s => s.classList.remove('active'));
+    document.getElementById('progRow').style.display = 'none';
+    document.getElementById('successBlock').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
+function openModal(id){var m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden';var c=m.querySelector('.modal-close');if(c)setTimeout(function(){c.focus();},50);}}
+function closeModal(id){var m=document.getElementById(id);if(m){m.classList.remove('open');document.body.style.overflow='';}}
+function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+
+
+function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),isOpen=p.style.display==='flex';p.style.display=isOpen?'none':'flex';t.setAttribute('aria-expanded',isOpen?'false':'true');}
+function a11yText(val){
+  document.body.classList.remove('lg-text','xl-text');
+  ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});
+  if(val==='large'){document.body.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}
+  else if(val==='xl'){document.body.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}
+  else{document.getElementById('ts-normal').classList.add('active');}
+  localStorage.setItem('a11y_text',val);
+}
+function a11yToggle(btnId,cssClass,storageKey){
+  var on=!document.body.classList.contains(cssClass);
+  document.body.classList.toggle(cssClass,on);
+  var btn=document.getElementById(btnId);
+  if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}
+  if(storageKey)localStorage.setItem(storageKey,on?'1':'0');
+}
+function a11yReset(){
+  document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
+  ['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});
+  ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});
+  var n=document.getElementById('ts-normal');if(n)n.classList.add('active');
+  ['a11y_text','a11y_hc','a11y_dy','a11y_rm'].forEach(function(k){localStorage.removeItem(k);});
+}
+(function(){
+  var t=localStorage.getItem('a11y_text');
+  if(t)a11yText(t);
+  if(localStorage.getItem('a11y_hc')==='1')a11yToggle('hc-btn','hc-mode','a11y_hc');
+  if(localStorage.getItem('a11y_dy')==='1')a11yToggle('dy-btn','dyslexia-font','a11y_dy');
+  if(localStorage.getItem('a11y_rm')==='1')a11yToggle('rm-btn','reduce-motion','a11y_rm');
+})();
+
+
+
+function closeModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function closeModalOnOverlay(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
+
+
+function a11y(type,val){
+  var b=document.body;
+  var live=document.getElementById('a11y-live');
+  if(type==='text'){
+    b.classList.remove('lg-text','xl-text');
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');}});
+    if(val==='large'){b.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');document.getElementById('ts-large').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to large.';}
+    else if(val==='xl'){b.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');document.getElementById('ts-xl').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to extra large.';}
+    else{document.getElementById('ts-normal').classList.add('active');document.getElementById('ts-normal').setAttribute('aria-pressed','true');if(live)live.textContent='Text size normal.';}
+    localStorage.setItem('a11y_text',val);
+  }
+  if(type==='contrast'){var on=val==='toggle'?!b.classList.contains('hc-mode'):val==='on';b.classList.toggle('hc-mode',on);var btn=document.getElementById('hc-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'High contrast on.':'High contrast off.';localStorage.setItem('a11y_contrast',on?'on':'off');}
+  if(type==='dyslexia'){var on=val==='toggle'?!b.classList.contains('dyslexia-font'):val==='on';b.classList.toggle('dyslexia-font',on);var btn=document.getElementById('dy-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Dyslexia font on.':'Dyslexia font off.';localStorage.setItem('a11y_dyslexia',on?'on':'off');}
+  if(type==='motion'){var on=val==='toggle'?!b.classList.contains('reduce-motion'):val==='on';b.classList.toggle('reduce-motion',on);var btn=document.getElementById('rm-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Motion reduced.':'Motion on.';localStorage.setItem('a11y_motion',on?'on':'off');}
+  if(type==='screenreader'){var on=val==='toggle'?!b.classList.contains('sr-mode'):val==='on';b.classList.toggle('sr-mode',on);var btn=document.getElementById('sr-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Screen reader mode on. Layout simplified.':'Screen reader mode off.';localStorage.setItem('a11y_sr',on?'on':'off');}
+}
+function a11yReset(){
+  var b=document.body;
+  b.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
+  ['ts-normal','ts-large','ts-xl','hc-on','dy-on','rm-on','sr-on'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');}});
+  var n=document.getElementById('ts-normal');if(n){n.classList.add('active');n.setAttribute('aria-pressed','true');}
+  ['a11y_text','a11y_contrast','a11y_dyslexia','a11y_motion','a11y_sr'].forEach(function(k){localStorage.removeItem(k);});
+  var live=document.getElementById('a11y-live');if(live)live.textContent='Settings reset.';
+}
+(function(){
+  var t=localStorage.getItem('a11y_text');
+  if(t)a11y('text',t);else{var n=document.getElementById('ts-normal');if(n){n.classList.add('active');n.setAttribute('aria-pressed','true');}}
+  if(localStorage.getItem('a11y_contrast')==='on')a11y('contrast','on');
+  if(localStorage.getItem('a11y_dyslexia')==='on')a11y('dyslexia','on');
+  if(localStorage.getItem('a11y_motion')==='on')a11y('motion','on');
+  if(localStorage.getItem('a11y_sr')==='on')a11y('screenreader','on');
+})();
+
+</script>
+
+<!-- CHAT BUBBLE -->
+<div id="chatBubble" style="position:fixed;bottom:24px;left:24px;z-index:9990;">
+  <a href="chat.html" style="display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-radius:30px;padding:0.65rem 1.1rem 0.65rem 0.85rem;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.25);transition:background 0.2s;" onmouseover="this.style.background='#9e8047'" onmouseout="this.style.background='#1a1a18'">
+    <div style="width:36px;height:36px;background:rgba(158,128,71,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9e8047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <div>
+      <div style="font-family:system-ui,sans-serif;font-size:0.72rem;font-weight:600;color:#fff;letter-spacing:0.05em;">Ask a Question</div>
+      <div style="font-family:system-ui,sans-serif;font-size:0.6rem;color:rgba(255,255,255,0.45);margin-top:1px;">Private &amp; Anonymous</div>
+    </div>
+  </a>
+</div>
+
+</body>
+</html>
