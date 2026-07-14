@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About - Licensed Independent Insurance Advisor</title>
+  
+<style>
+html { font-size: 14px; }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:    #1A1A18;
+  --ink2:   #2A2A27;
+  --stone:  #4A4845;
+  --warm:   #F5F2EC;
+  --warm2:  #EDE9E0;
+  --warm3:  #DDD9D0;
+  --gold:   #9E8047;
+  --gold2:  #7F6535;
+  --white:  #FFFFFF;
+  --text:   #5C5955;
+  --light:  #9C9894;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Jost', system-ui, sans-serif;
+  --r:      2px;
+  --sh:     0 2px 20px rgba(26,26,24,0.06);
+  --sh2:    0 8px 48px rgba(26,26,24,0.10);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.15; color: var(--ink); }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--sans); cursor: pointer; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--warm3); transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 2px 30px rgba(26,26,24,0.08); }
+.nav-brand { display: flex; flex-direction: column; gap: 2px; }
+.nav-brand .brand-main { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: var(--ink); letter-spacing: 0.01em; }
+.nav-brand .brand-sub { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); transition: color 0.2s; position: relative; padding-bottom: 3px; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta { font-size: 0.68rem !important; font-weight: 500 !important; letter-spacing: 0.14em !important; color: var(--white) !important; background: var(--ink); padding: 0.55rem 1.3rem; border-radius: var(--r); transition: background 0.2s; }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--white) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px,4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
+.mobile-nav { display: none; position: sticky; top: 72px; left: 0; right: 0; background: var(--white); z-index: 999; padding: 1.8rem 6%; flex-direction: column; border-bottom: 1px solid var(--warm3); box-shadow: 0 8px 32px rgba(26,26,24,0.08); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); padding: 0.9rem 0; border-bottom: 1px solid var(--warm3); transition: color 0.2s; }
+.mobile-nav a:hover, .mobile-nav a.active { color: var(--gold); }
+.page-top { padding-top: 72px; }
+
+/* ── HERO ── */
+.hero { min-height: 94vh; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.hero-left { background: var(--ink); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(158,128,71,0.10) 0%, transparent 70%); pointer-events: none; }
+.hero-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.hero-ey-line { width: 36px; height: 1px; background: var(--gold); }
+.hero-ey span { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font-size: clamp(2.6rem, 4vw, 4rem); color: var(--white); font-weight: 300; line-height: 1.08; margin-bottom: 1.8rem; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.50); line-height: 1.9; max-width: 400px; margin-bottom: 2.8rem; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); transition: background 0.2s; cursor: pointer; }
+.btn-gold:hover { background: var(--gold2); color: var(--white); }
+.btn-ghost { display: inline-block; background: transparent; color: rgba(255,255,255,0.60); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.18); border-radius: var(--r); transition: all 0.2s; cursor: pointer; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-right { background: var(--warm); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; }
+.hero-cred { border-top: 1px solid var(--warm3); padding: 1.8rem 0; }
+.hero-cred:first-child { border-top: none; padding-top: 0; }
+.cred-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.cred-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+.cred-sub { font-size: 0.97rem; color: var(--text); margin-top: 0.3rem; line-height: 1.65; font-weight: 300; }
+.hero-div { width: 40px; height: 1px; background: var(--gold); margin: 0; opacity: 0.3; }
+
+/* ── PAGE HERO SPLIT ── */
+.phs { display: grid; grid-template-columns: 1fr 1fr; min-height: 52vh; }
+.phs-left { background: var(--ink); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+.phs-left .mono { font-family: var(--serif); font-size: clamp(5rem, 10vw, 9rem); font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1rem; font-style: italic; }
+.phs-left h1 { font-family: var(--serif); font-size: clamp(1.7rem,2.8vw,2.6rem); font-weight: 300; color: var(--white); line-height: 1.15; margin-bottom: 0.5rem; }
+.phs-left .phs-sub { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; }
+.phs-right { background: var(--warm); padding: 8rem 6% 5rem; display: flex; flex-direction: column; justify-content: center; }
+.phs-right p { font-family: var(--serif); font-size: 1.02rem; color: var(--stone); line-height: 1.9; font-weight: 300; margin-bottom: 1.4rem; }
+.phs-right a { color: var(--gold); }
+.phs-creds { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0.55rem; }
+.phs-cred { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; color: rgba(255,255,255,0.38); display: flex; align-items: center; gap: 0.7rem; }
+.phs-cred .ck { color: var(--gold); font-size: 0.6rem; }
+
+/* ── SECTIONS ── */
+.section { padding: 6.5rem 6%; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.sec-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
+.sec-ey-line { width: 32px; height: 1px; background: var(--gold); }
+.sec-ey span { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.sec-title { font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 300; margin-bottom: 1rem; }
+.sec-title em { font-style: italic; color: var(--gold); }
+.sec-lead { font-size: 1.08rem; color: var(--text); max-width: 540px; line-height: 1.85; font-weight: 300; margin-bottom: 2.8rem; }
+
+/* ── CONDITIONS ── */
+.cond-mosaic { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--warm3); border: 1px solid var(--warm3); margin-top: 2.5rem; }
+.cond-cell { background: var(--white); padding: 1rem 1.1rem; font-size: 0.95rem; color: var(--stone); display: flex; align-items: center; gap: 0.55rem; transition: background 0.2s, color 0.2s; }
+.cond-cell:hover { background: var(--ink); color: var(--white); }
+.cond-cell:hover .cdot { background: var(--gold); }
+.cdot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; transition: background 0.2s; }
+
+/* ── PROCESS ── */
+.proc-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.proc-item { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); }
+.proc-item:last-child { border-right: none; }
+.proc-num { font-family: var(--serif); font-size: 3.2rem; font-weight: 300; color: var(--warm3); line-height: 1; margin-bottom: 1.1rem; }
+.proc-item h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.proc-item p { font-size: 0.97rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── CTA BAND ── */
+.cta-band { background: var(--warm2); border-top: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); padding: 6rem 6%; text-align: center; }
+.cta-band h2 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); font-weight: 300; margin-bottom: 1rem; }
+.cta-band p { font-size: 1.05rem; color: var(--text); max-width: 420px; margin: 0 auto 2.2rem; font-weight: 300; line-height: 1.85; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-ink { display: inline-block; background: var(--ink); color: var(--white); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: none; border-radius: var(--r); cursor: pointer; transition: background 0.2s; }
+.btn-ink:hover { background: var(--gold); color: var(--white); }
+.btn-outline { display: inline-block; background: transparent; color: var(--ink); padding: 0.88rem 2.2rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--warm3); border-radius: var(--r); cursor: pointer; transition: all 0.2s; }
+.btn-outline:hover { border-color: var(--ink); }
+
+/* ── DISCLAIMER ── */
+.disclaimer { background: var(--warm2); border-top: 1px solid var(--warm3); padding: 1.8rem 6%; font-size: 0.73rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.disclaimer strong { color: var(--ink); font-weight: 500; }
+.disclaimer-inner { max-width: 1160px; margin: 0 auto; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-brand .fb-main { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--white); }
+.footer-brand .fb-sub { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 3px; }
+.footer-brand p { font-size: 0.79rem; color: rgba(255,255,255,0.32); margin-top: 1rem; line-height: 1.8; max-width: 240px; font-weight: 300; }
+.footer-col h4 { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { font-size: 0.8rem; color: rgba(255,255,255,0.32); transition: color 0.2s; font-weight: 300; }
+.footer-col ul a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-top: 2rem; font-size: 0.71rem; color: rgba(255,255,255,0.2); font-weight: 300; }
+.footer-bottom a { color: var(--gold); }
+
+/* ── VALUES / ABOUT ── */
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--warm3); margin-top: 3.5rem; }
+.val-cell { padding: 2.5rem 2rem; border-right: 1px solid var(--warm3); border-bottom: 1px solid var(--warm3); }
+.val-cell:nth-child(3n) { border-right: none; }
+.val-cell:nth-child(n+4) { border-bottom: none; }
+.val-mark { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); margin-bottom: 0.9rem; font-style: italic; }
+.val-cell h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+.val-cell p { font-size: 0.98rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── EDUCATION ── */
+.edu-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  border-bottom: none;
+  margin-bottom: 2rem;
+  overflow: visible;
+}
+.edu-tab {
+  padding: 0.75rem 0.6rem;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  font-family: var(--sans);
+  display: block;
+  width: 100%;
+}
+.edu-tab:hover { background: var(--white); border-color: var(--gold); color: var(--ink); }
+.edu-tab.active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+  border-bottom-color: var(--gold);
+}
+.edu-panel { display: none; }
+.edu-panel.active { display: block; animation: fadeUp 0.35s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.product-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.prod-tile { background: var(--warm); border: 1px solid var(--warm3); }
+.prod-tile-head { padding: 1.8rem 1.6rem 1.4rem; border-bottom: 1px solid var(--warm3); }
+.prod-tile-head .ptag { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.prod-tile-head h3 { font-size: 1.08rem; font-weight: 400; }
+.prod-tile-body { padding: 1.4rem 1.6rem; }
+.prod-tile-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.prod-tile-body li { font-size: 0.97rem; color: var(--text); padding-left: 1.1rem; position: relative; line-height: 1.6; font-weight: 300; }
+.prod-tile-body li::before { content: '-'; position: absolute; left: 0; color: var(--gold); font-size: 0.74rem; }
+.info-panel { background: var(--warm); border: 1px solid var(--warm3); border-left: 2px solid var(--gold); padding: 2rem 2.2rem; margin-top: 2rem; }
+.info-panel h3 { font-size: 1.05rem; font-weight: 400; margin-bottom: 0.7rem; }
+.info-panel p { font-size: 1.01rem; color: var(--text); line-height: 1.8; font-weight: 300; }
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-size: 0.99rem; }
+.compare-table th { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; padding: 1.1rem 1.4rem; text-align: left; background: var(--ink); color: var(--white); }
+.compare-table th:first-child { background: var(--ink2); color: var(--light); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.compare-table td { padding: 0.95rem 1.4rem; border-bottom: 1px solid var(--warm3); color: var(--text); font-weight: 300; line-height: 1.6; }
+.compare-table tr:nth-child(odd) td { background: var(--warm); }
+.compare-table td:first-child { font-weight: 500; color: var(--ink); font-size: 0.78rem; letter-spacing: 0.02em; }
+.glossary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--warm3); margin-top: 2.5rem; }
+.glossary-cell { background: var(--white); padding: 1.8rem; }
+.glossary-cell h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.45rem; }
+.glossary-cell p { font-size: 0.96rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+
+/* ── QUOTE FORM ── */
+.quote-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
+.prog-row { display: flex; align-items: center; margin-bottom: 3rem; overflow-x: auto; padding-bottom: 4px; }
+.pstep { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; min-width: 60px; }
+.pstep .pc { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--warm3); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; color: var(--light); transition: all 0.3s; }
+.pstep.done .pc { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.pstep.active .pc { border-color: var(--ink); color: var(--ink); }
+.pstep .pl { font-size: 0.58rem; color: var(--light); font-weight: 500; letter-spacing: 0.06em; text-align: center; max-width: 54px; line-height: 1.3; text-transform: uppercase; }
+.pstep.active .pl, .pstep.done .pl { color: var(--ink); }
+.pline { flex: 1; height: 1px; background: var(--warm3); min-width: 12px; margin-bottom: 18px; transition: background 0.3s; }
+.pline.done { background: var(--gold); }
+.fstep { display: none; }
+.fstep.active { display: block; animation: fadeUp 0.3s ease; }
+.fcard { background: var(--white); border: 1px solid var(--warm3); padding: 2.8rem; }
+.fcard h2 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.3rem; }
+.fcard .fsub { font-size: 0.99rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.45rem; }
+.field input, .field select, .field textarea { width: 100%; padding: 0.72rem 1rem; border: 1px solid var(--warm3); background: var(--warm); font-family: var(--sans); font-size: 0.88rem; color: var(--ink); outline: none; border-radius: var(--r); transition: border-color 0.2s, background 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: var(--white); }
+.field textarea { resize: vertical; min-height: 88px; }
+.choices { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+
+/* Rider selection cards - replaces broken checkbox layout */
+.rider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.rider-card {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+}
+.rider-card:hover { border-color: var(--gold); background: var(--white); }
+.rider-card.selected { background: var(--ink); border-color: var(--ink); }
+.rider-card.selected .rider-card-title { color: var(--white); }
+.rider-card.selected .rider-card-title::before { content: '✓  '; color: var(--gold); }
+.rider-card.selected .rider-card-desc { color: rgba(255,255,255,0.55); }
+.rider-card-title {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  transition: color 0.2s;
+}
+.rider-card-desc {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.7;
+  transition: color 0.2s;
+}
+@media(max-width:700px){ .rider-grid { grid-template-columns: 1fr; } }
+
+/* Required client disclosures with individual checkboxes */
+.disclosure-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.disclosure-item {
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.disclosure-item:has(.disclosure-check:checked) {
+  background: var(--white);
+  border-color: var(--gold);
+}
+.disclosure-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+  width: 100%;
+}
+.disclosure-check {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.disclosure-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.disclosure-text {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* Medication add-list builder */
+.med-input-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.med-input-row input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--warm3);
+  background: var(--warm);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink);
+  outline: none;
+  border-radius: var(--r);
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-input-row input[type="text"]:focus { border-color: var(--gold); background: var(--white); }
+.med-add-btn {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 0.72rem 1.3rem;
+  border-radius: var(--r);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.med-add-btn:hover { background: var(--gold); }
+.med-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.med-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.65rem 1rem;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+.med-pill-name { font-family: var(--serif); font-size: 0.95rem; }
+.med-pill-remove {
+  background: none;
+  border: none;
+  color: var(--light);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.2rem 0.5rem;
+  transition: color 0.2s;
+}
+.med-pill-remove:hover { color: var(--gold); }
+.med-none-btn {
+  margin-top: 0.8rem;
+  background: var(--warm);
+  border: 1px solid var(--warm3);
+  border-radius: var(--r);
+  padding: 0.6rem 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.med-none-btn:hover { border-color: var(--gold); }
+.med-none-btn.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+
+
+.cbtn { padding: 0.48rem 1.1rem; font-size: 0.78rem; font-weight: 400; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.cbtn:hover { border-color: var(--gold); color: var(--ink); }
+.cbtn.sel { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.pob { border: 1px solid var(--warm3); padding: 1.3rem 1.5rem; margin-bottom: 0.75rem; cursor: pointer; transition: border-color 0.2s; border-radius: var(--r); }
+.pob:hover { border-color: var(--gold); }
+.pob.sel { border-color: var(--ink); }
+.pob-hdr { display: flex; align-items: center; gap: 0.7rem; }
+.pob-radio { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--warm3); flex-shrink: 0; transition: all 0.2s; }
+.pob.sel .pob-radio { border-color: var(--ink); background: var(--ink); }
+.pob-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+.pob-desc { font-size: 0.79rem; color: var(--text); margin-top: 0.3rem; margin-left: 1.55rem; font-weight: 300; }
+.pob-sub { display: none; margin-top: 1.1rem; margin-left: 1.55rem; padding-top: 1.1rem; border-top: 1px solid var(--warm3); }
+.pob.sel .pob-sub { display: block; }
+.owner-exp { background: var(--warm); border: 1px solid var(--warm3); padding: 1.8rem; margin-top: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; border-radius: var(--r); }
+.exp-box { padding: 1.1rem; background: var(--white); border-top: 2px solid var(--gold); }
+.exp-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.exp-box p { font-size: 0.96rem; color: var(--text); line-height: 1.7; font-weight: 300; }
+.exp-note { grid-column: 1/-1; font-size: 0.77rem; color: var(--light); line-height: 1.65; font-weight: 300; }
+.legal-box { background: var(--warm); border-left: 2px solid var(--gold); padding: 1.1rem 1.3rem; font-size: 0.75rem; color: var(--text); line-height: 1.75; margin-top: 1.6rem; font-weight: 300; }
+.legal-box strong { color: var(--ink); font-weight: 500; }
+.form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.8rem; border-top: 1px solid var(--warm3); }
+.btn-prev { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); background: none; border: none; cursor: pointer; transition: color 0.2s; font-family: var(--sans); }
+.btn-prev:hover { color: var(--ink); }
+.btn-next { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-next:hover { background: var(--gold); }
+.btn-submit { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--gold); color: var(--white); border: none; padding: 0.88rem 2.2rem; border-radius: var(--r); cursor: pointer; transition: background 0.2s; font-family: var(--sans); }
+.btn-submit:hover { background: var(--gold2); }
+.q-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.q-tile { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.q-tile h4 { font-size: 0.92rem; font-weight: 400; margin-bottom: 0.65rem; }
+.q-tile p { font-size: 0.81rem; color: var(--text); line-height: 1.75; font-weight: 300; }
+.q-tile ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; padding: 0; }
+.q-tile li { font-size: 0.81rem; color: var(--text); padding-left: 1rem; position: relative; font-weight: 300; }
+.q-tile li::before { content: '-'; position: absolute; left: 0; color: var(--gold); }
+.success-block { text-align: center; padding: 4rem 2rem; display: none; }
+.success-block.active { display: block; }
+.success-mark { font-family: var(--serif); font-size: 4rem; color: var(--gold); font-style: italic; margin-bottom: 1rem; }
+.success-block h2 { font-size: 1.8rem; font-weight: 300; margin-bottom: 0.75rem; }
+.success-block p { font-size: 0.88rem; color: var(--text); max-width: 400px; margin: 0 auto; font-weight: 300; line-height: 1.8; }
+
+/* ── CHAT ── */
+.chat-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; align-items: start; }
+.chat-side { background: var(--warm); border: 1px solid var(--warm3); padding: 1.7rem; }
+.chat-side h3 { font-size: 0.95rem; font-weight: 400; margin-bottom: 1.2rem; }
+.topic-list { list-style: none; display: flex; flex-direction: column; }
+.topic-list li { font-size: 0.8rem; color: var(--text); padding: 0.6rem 0; border-bottom: 1px solid var(--warm3); cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 0.45rem; font-weight: 300; line-height: 1.4; }
+.topic-list li:last-child { border-bottom: none; }
+.topic-list li:hover { color: var(--gold); }
+.topic-list li::before { content: '›'; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+.chat-panel { background: var(--white); border: 1px solid var(--warm3); display: flex; flex-direction: column; height: 600px; }
+.chat-top { background: var(--ink); padding: 1.1rem 1.6rem; display: flex; align-items: center; gap: 0.9rem; }
+.chat-av { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.9rem; color: var(--white); font-style: italic; flex-shrink: 0; }
+.chat-name { font-size: 0.86rem; color: var(--white); font-weight: 400; }
+.chat-status { font-size: 0.66rem; color: var(--gold); display: flex; align-items: center; gap: 0.3rem; margin-top: 2px; }
+.chat-status::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: #86EFAC; }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 1.6rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.cmsg { display: flex; gap: 0.65rem; max-width: 88%; }
+.cmsg.agent { align-self: flex-start; }
+.cmsg.user { align-self: flex-end; flex-direction: row-reverse; }
+.cbubble { padding: 0.78rem 1.1rem; font-size: 0.85rem; line-height: 1.65; font-weight: 300; }
+.cmsg.agent .cbubble { background: var(--warm); color: var(--ink); border-radius: 0 8px 8px 8px; }
+.cmsg.user .cbubble { background: var(--ink); color: var(--white); border-radius: 8px 0 8px 8px; }
+.ctime { font-size: 0.64rem; color: var(--light); margin-top: 0.2rem; }
+.cmsg.user .ctime { text-align: right; }
+.typing-ind { display: none; align-self: flex-start; }
+.typing-ind.on { display: flex; gap: 0.65rem; }
+.typing-bub { background: var(--warm); border-radius: 0 8px 8px 8px; padding: 0.78rem 1rem; display: flex; gap: 4px; align-items: center; }
+.tdot { width: 5px; height: 5px; border-radius: 50%; background: var(--light); animation: td 1.2s infinite; }
+.tdot:nth-child(2){animation-delay:0.2s} .tdot:nth-child(3){animation-delay:0.4s}
+@keyframes td{0%,60%,100%{opacity:0.3;transform:scale(0.8)}30%{opacity:1;transform:scale(1)}}
+.chat-quick { padding: 0.75rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.qbtn { font-size: 0.73rem; padding: 0.28rem 0.85rem; background: var(--warm); border: 1px solid var(--warm3); color: var(--stone); border-radius: var(--r); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+.qbtn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.chat-bar { padding: 1rem 1.6rem; border-top: 1px solid var(--warm3); display: flex; gap: 0.7rem; align-items: center; }
+.chat-in { flex: 1; border: 1px solid var(--warm3); background: var(--warm); padding: 0.62rem 1rem; font-family: var(--sans); font-size: 0.86rem; outline: none; border-radius: var(--r); transition: border-color 0.2s; }
+.chat-in:focus { border-color: var(--gold); background: var(--white); }
+.chat-go { width: 37px; height: 37px; background: var(--ink); border: none; color: var(--white); border-radius: var(--r); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; transition: background 0.2s; flex-shrink: 0; }
+.chat-go:hover { background: var(--gold); }
+
+/* ── CONTACT ── */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+.contact-info { display: flex; flex-direction: column; }
+.cblock { padding: 1.8rem 0; border-bottom: 1px solid var(--warm3); }
+.cblock:first-child { padding-top: 0; }
+.cblock-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
+.cblock p { font-size: 0.9rem; color: var(--ink); line-height: 1.65; }
+.cblock a { color: var(--gold); }
+.cblock small { font-size: 0.76rem; color: var(--light); font-weight: 300; margin-top: 3px; display: block; }
+.cf-panel { background: var(--warm); border: 1px solid var(--warm3); padding: 3rem; }
+.cf-panel h3 { font-size: 1.35rem; font-weight: 400; margin-bottom: 0.35rem; }
+.cf-panel .csub { font-size: 0.84rem; color: var(--text); margin-bottom: 2.2rem; font-weight: 300; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .nav-links{display:none;} .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-right{display:none;}
+  .hero-left{padding:7rem 6% 5rem;min-height:80vh;}
+  .phs{grid-template-columns:1fr;}
+  .phs-right{padding:4rem 6%;}
+  .cond-mosaic{grid-template-columns:repeat(3,1fr);}
+  .proc-grid{grid-template-columns:repeat(2,1fr);}
+  .proc-item{border-bottom:1px solid var(--warm3);}
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+  .values-grid .val-cell:nth-child(3n){border-right:1px solid var(--warm3);}
+  .values-grid .val-cell:nth-child(2n){border-right:none;}
+  .product-row{grid-template-columns:1fr 1fr;}
+  .glossary-grid{grid-template-columns:repeat(2,1fr);}
+  .quote-wrap{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+  .chat-wrap{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+.mistake-cell {
+  background: var(--white);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: background 0.2s;
+}
+.mistake-cell:hover { background: var(--warm); }
+.mistake-num {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+.mistake-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.mistake-body {
+  font-size: 0.81rem;
+  color: var(--text);
+  line-height: 1.72;
+  font-weight: 300;
+}
+@media(max-width:700px){
+  #mistakesGrid { grid-template-columns: 1fr !important; }
+}
+
+/* ── LICENSE FOOTER ── */
+.footer-license {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.fl-body {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.32);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.fl-body strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+.fl-body a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.fl-body em { font-style: italic; color: rgba(255,255,255,0.45); }
+.fl-npn {
+  margin-top: 0.9rem;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.fl-npn strong {
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── CARRIER DISCLOSURE FOOTER ── */
+.footer-carriers {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.footer-carriers .fl-title {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.footer-carriers .fl-body {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 340px;
+}
+.footer-carriers .fl-body strong {
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* ── CARRIER NAMES - compact horizontal wrap ── */
+.footer-carriers .fl-body {
+  font-size: 0.65rem !important;
+  color: rgba(255,255,255,0.18) !important;
+  line-height: 1.7 !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+}
+
+
+
+
+
+
+
+
+
+.a11y-s-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+
+
+
+
+
+
+
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.72); z-index: 9000; pointer-events: none; pointer-events: none; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto; }
+.modal-overlay.open { display: flex; pointer-events: all; }
+.modal-box { background: #fff; border-radius: 8px; max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto; }
+.modal-header { background: #1a1a18; padding: 1.4rem 1.8rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; position: sticky; top: 0; z-index: 2; border-radius: 8px 8px 0 0; }
+.modal-title { font-family: Georgia,serif; font-size: 1.3rem; font-weight: 300; color: #fff; }
+.modal-subtitle { font-family: system-ui,sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9e8047; margin-top: 0.25rem; }
+.modal-close { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,0.6); font-size: 1.2rem; flex-shrink: 0; }
+.modal-body { padding: 1.8rem 2rem; }
+.modal-section { margin-bottom: 1.6rem; }
+.modal-section-title { font-family: system-ui,sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #9e8047; margin-bottom: 0.6rem; }
+.modal-section p { font-family: system-ui,sans-serif; font-size: 1rem; color: #5c5955; font-weight: 300; line-height: 1.8; margin-bottom: 0.6rem; }
+.modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.5rem; }
+.modal-section ul li { font-family: system-ui,sans-serif; font-size: 0.95rem; color: #5c5955; font-weight: 300; line-height: 1.7; padding-left: 1.1rem; position: relative; }
+.modal-section ul li::before { content: '-'; position: absolute; left: 0; color: #9e8047; }
+.modal-notice { background: #f5f2ec; border-left: 3px solid #9e8047; padding: 0.9rem 1.1rem; margin-top: 1.2rem; font-family: system-ui,sans-serif; font-size: 0.9rem; color: #9c9894; font-weight: 300; line-height: 1.7; }
+.modal-divider { height: 1px; background: #ddd9d0; margin: 1.4rem 0; }
+
+
+
+
+
+
+
+
+
+
+
+
+.a11y-btn:hover { background: rgba(158,128,71,0.2); border-color: #9e8047; color: #9e8047; }
+.a11y-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+
+
+.a11y-reset-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+
+
+
+
+
+
+
+/* PAGE HERO CENTERED */
+.page-hero-centered { background: var(--ink); padding: 4rem 2rem 3.5rem; text-align: center; }
+.phc-inner { max-width: 720px; margin: 0 auto; }
+.phc-eyebrow { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.phc-title { font-family: var(--serif); font-size: clamp(2rem,4vw,3rem); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 1.2rem; }
+.phc-desc { font-family: var(--sans); font-size: 1.05rem; color: rgba(255,255,255,0.55); line-height: 1.8; font-weight: 300; max-width: 580px; margin: 0 auto 1.6rem; }
+.phc-creds { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1rem; }
+.phc-cred { font-family: var(--sans); font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300; }
+.phc-sep { color: var(--gold); }
+
+
+@media(max-width:700px){
+  .edu-nav { grid-template-columns: repeat(2, 1fr) !important; }
+  .edu-tab { font-size: 0.6rem !important; padding: 0.65rem 0.4rem !important; }
+}
+
+
+/* FACTOR CARDS */
+.factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 0.5rem; margin-top: 1rem; }
+.factor-card { border: 1px solid var(--warm3); border-radius: 4px; padding: 0.9rem 1rem; cursor: pointer; transition: all 0.2s; background: var(--warm); text-align: left; width: 100%; font-family: var(--sans); }
+.factor-card:hover { border-color: var(--gold); background: var(--white); }
+.factor-card.active { background: var(--ink); border-color: var(--ink); }
+.factor-card.active .factor-label { color: var(--white); }
+.factor-label { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; color: var(--stone); }
+.factor-detail { margin-top: 1rem; background: var(--white); border: 1px solid var(--warm3); border-left: 3px solid var(--gold); padding: 1.2rem 1.4rem; border-radius: 0 4px 4px 0; }
+.factor-detail h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--ink); margin-bottom: 0.6rem; }
+.factor-detail p { font-family: var(--sans); font-size: 0.88rem; color: var(--text); font-weight: 300; line-height: 1.8; }
+.factor-close { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); background: none; padding: 0.3rem 0.8rem; cursor: pointer; border-radius: 3px; margin-top: 0.8rem; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.a11y-btn:hover { background: rgba(158,128,71,0.2); border-color: #9e8047; color: #9e8047; }
+.a11y-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+
+
+.a11y-reset:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+
+
+
+
+
+@media(max-width:600px){   }
+
+
+@media(max-width:600px){
+
+  /* ── NAVBAR ── */
+  .navbar { height: auto; min-height: 56px; padding: 0.5rem 4%; flex-wrap: nowrap; gap: 0.5rem; }
+  .nav-brand { max-width: calc(100vw - 70px); overflow: hidden; }
+  .brand-main { font-size: 0.72rem !important; white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; }
+  .brand-sub { font-size: 0.5rem !important; white-space: nowrap !important; letter-spacing: 0.1em !important; }
+  .page-top { padding-top: 0 !important; }
+
+  /* ── HERO ── */
+  .hero { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .hero-left { padding: 3.5rem 5% 2.5rem !important; }
+  .hero-right { display: none !important; }
+  .hero h1 { font-size: 2rem !important; }
+  .hero-desc { font-size: 0.9rem !important; }
+  .phs { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .phs-left { padding: 3rem 5% 2rem !important; }
+  .phs-right { padding: 2rem 5% !important; }
+  .page-hero-centered { padding: 2.5rem 5% 2rem !important; }
+  .phc-title { font-size: 1.7rem !important; }
+
+  /* ── GRIDS ── */
+  .values-grid { grid-template-columns: 1fr !important; }
+  .proc-grid { grid-template-columns: 1fr !important; }
+  .cond-mosaic { grid-template-columns: 1fr 1fr !important; gap: 0.4rem !important; }
+  .topic-grid { grid-template-columns: 1fr 1fr !important; }
+  .factor-grid { grid-template-columns: 1fr 1fr !important; }
+  .mistake-grid { grid-template-columns: 1fr !important; }
+  .rider-grid { grid-template-columns: 1fr !important; }
+  .footer-top { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+  .compare-table { font-size: 0.78rem !important; }
+
+  /* ── EDUCATION TABS ── */
+  .edu-nav { grid-template-columns: 1fr 1fr !important; gap: 0.4rem !important; margin-bottom: 1.2rem !important; }
+  .edu-tab { font-size: 0.6rem !important; padding: 0.65rem 0.4rem !important; }
+
+  /* ── QUOTE FORM ── */
+  .quote-wrap { grid-template-columns: 1fr !important; }
+  .q-sidebar { display: none !important; }
+  .fcard { padding: 1.2rem 1rem !important; border-radius: 4px !important; }
+  .choices { flex-wrap: wrap !important; }
+  .cbtn { font-size: 0.85rem !important; padding: 0.55rem 0.9rem !important; }
+  .prog-row { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pstep .pl { display: none !important; }
+  .pstep { min-width: 32px !important; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 3rem 5% !important; }
+  .section-inner { max-width: 100% !important; }
+
+  /* ── BOXES & CARDS ── */
+  .val-cell { border-right: none !important; border-bottom: 1px solid var(--warm3) !important; padding: 1.2rem !important; }
+  .topic-card { padding: 0.7rem 0.6rem !important; }
+  .topic-card-label { font-size: 0.75rem !important; }
+  .detail-panel { padding: 1rem !important; }
+
+  /* ── OVERFLOW ── */
+  html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+  * { box-sizing: border-box; }
+  img, video, iframe, table { max-width: 100% !important; }
+
+  /* ── FOOTER ── */
+  .footer-inner { padding: 2rem 5% 1.5rem !important; }
+  .footer-col { margin-bottom: 1rem; }
+
+  /* ── MYTH GAME ── */
+  .stadium-scoreboard { padding: 0.5rem 0.8rem !important; }
+  .sb-score { font-size: 1.8rem !important; }
+}
+
+
+/* ===== ACCESSIBILITY ===== */
+#a11yTab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+  background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.5);
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  padding: 0.8rem 0.42rem;
+  cursor: pointer !important;
+  writing-mode: vertical-rl;
+  font-family: system-ui,sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9e8047;
+  user-select: none;
+  transition: background 0.2s;
+  touch-action: manipulation;
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: rgba(158,128,71,0.3);
+}
+#a11yTab:hover { background: #252522; }
+
+#a11yPanel {
+  position: fixed;
+  right: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 499;
+  background: #1a1a18;
+  border: 1px solid rgba(158,128,71,0.3);
+  border-radius: 10px 0 0 10px;
+  padding: 1.2rem 1rem;
+  width: 210px;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  pointer-events: auto;
+}
+#a11yPanel.open { display: flex; }
+
+.a11y-heading { font-family: system-ui,sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #9e8047 !important; padding-bottom: 0.7rem; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(158,128,71,0.4); opacity: 1 !important; }
+.a11y-row { margin-bottom: 0.8rem; }
+.a11y-row-label { font-family: system-ui,sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #ffffff !important; display: block; margin-bottom: 0.4rem; opacity: 1 !important; }
+.a11y-row-btns { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.a11y-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.3rem 0.65rem; font-family: system-ui,sans-serif; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.45); cursor: pointer; transition: all 0.15s; touch-action: manipulation; }
+.a11y-btn:hover { background: rgba(158,128,71,0.2); border-color: #9e8047; color: #9e8047; }
+.a11y-btn.active { background: #9e8047; border-color: #9e8047; color: #fff; }
+.a11y-sep { height: 1px; background: rgba(255,255,255,0.07); margin: 0.5rem 0; }
+.a11y-reset { width: 100%; margin-top: 0.6rem; background: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.4rem; font-family: system-ui,sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); cursor: pointer; touch-action: manipulation; }
+.a11y-reset:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+body.lg-text { font-size: 18px; }
+body.xl-text { font-size: 22px; }
+body.hc-mode { filter: contrast(1.7) saturate(0.1); }
+body.dyslexia-font * { font-family: Arial,sans-serif !important; letter-spacing: 0.05em !important; line-height: 1.9 !important; }
+body.reduce-motion * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+@media(max-width:600px){
+  
+  #a11yPanel { top: auto; bottom: 60px; transform: none; right: 0; width: 240px; border-radius: 10px; }
+}
+
+
+/* A11Y LABEL COLOR FIXES - targeting actual class names */
+.a11y-side-title { color: #9e8047 !important; }
+.a11y-side-label { color: #ffffff !important; opacity: 1 !important; }
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Licensed Independent Insurance Advisor</div>
+    <div class="brand-sub">Life &nbsp;·&nbsp; Accident &nbsp;·&nbsp; Sickness</div>
+  </div>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html" class="active">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="chat.html">Ask a Question</a></li></ul>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav"><a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="education.html">Insurance Education</a><a href="myths.html">Myth Busted</a><a href="quote.html">Get a Quote</a><a href="chat.html">Ask a Question</a></div>
+
+
+<main class="page-top">
+  <div class="page-hero-centered">
+    <div class="phc-inner">
+      <div class="phc-eyebrow">Licensed Independent Agent &nbsp;·&nbsp; Since 2017 &nbsp;·&nbsp; Client-First</div>
+      <h1 class="phc-title">About This Practice</h1>
+      <p class="phc-desc">Eboni Morris is a licensed independent insurance agent appointed with multiple recognized insurance carriers. Licensed since 2017 in Life, Accident, and Sickness - appointed in Georgia, Michigan, Ohio, South Carolina, and Texas (Florida appointment coming soon) - she works with individuals across a broad spectrum of health profiles - from those in excellent health to those managing serious or complex medical conditions - to identify coverage options that may fit their situation, subject to individual carrier underwriting guidelines and approval.</p>
+      <div class="phc-creds">
+        <span class="phc-cred">Licensed - Life, Accident &amp; Sickness</span>
+        <span class="phc-sep">·</span>
+        <span class="phc-cred">Independent Agent</span>
+        <span class="phc-sep">·</span>
+        <span class="phc-cred">Multiple Top-Rated Carriers</span>
+        <span class="phc-sep">·</span>
+        <span class="phc-cred">HIPAA-Compliant</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--white);">
+    <div class="section-inner">
+      <div class="sec-ey"><div class="sec-ey-line"></div><span>Our Standards</span></div>
+      <h2 class="sec-title">The commitments that<br><em>govern every engagement.</em></h2>
+      <div class="values-grid">
+        <div class="val-cell"><div class="val-mark">I.</div><h3>Carrier Evaluation</h3><p>Available products are evaluated across appointed carriers based on each client's individual profile and coverage objectives.</p></div>
+        <div class="val-cell"><div class="val-mark">II.</div><h3>HIPAA-Compliant Privacy</h3><p>All personal and health information is handled in strict compliance with federal HIPAA privacy law. No information is shared with any third party without the client's explicit written authorization.</p></div>
+        <div class="val-cell"><div class="val-mark">III.</div><h3>Pre-Application Underwriting</h3><p>We assess each carrier's underwriting guidelines against the client's profile before any formal application is submitted - preserving the client's medical record and mitigating unnecessary declinations.</p></div>
+        <div class="val-cell"><div class="val-mark">IV.</div><h3>No-Pressure Advisory</h3><p>This practice operates as an advisor - not a sales organization. Clients are presented with options and make their own decisions. No application is submitted without explicit instruction and consent.</p></div>
+        <div class="val-cell"><div class="val-mark">V.</div><h3>Broad Condition Coverage</h3><p>Our carrier relationships include companies that underwrite coverage for clients with complex medical histories, multiple medications, and high-risk conditions not accepted by standard carriers.</p></div>
+        <div class="val-cell"><div class="val-mark">VI.</div><h3>Informed Decision-Making</h3><p>Clients are provided with a complete explanation of all recommended products - structure, cost, duration, and long-term obligations - prior to any application being initiated.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--warm2);">
+    <div class="section-inner">
+      <div class="sec-ey"><div class="sec-ey-line"></div><span>Credentials &amp; Background</span></div>
+      <h2 class="sec-title">Education, experience,<br><em>and what that means for you.</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;">
+        <div style="background:var(--white);border:1px solid var(--warm3);border-left:3px solid var(--gold);padding:1.6rem 1.8rem;border-radius:var(--r);">
+          <div style="font-family:var(--sans);font-size:0.65rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">Licensure</div>
+          <div style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;">Licensed Since 2017</div>
+          <p style="font-family:var(--sans);font-size:0.93rem;color:var(--text);font-weight:300;line-height:1.75;">Life, Accident, and Sickness agent licensed in Georgia, Michigan, Ohio, South Carolina, and Texas (Florida appointment coming soon), with active expansion to additional states. NPN: 18509552.</p>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--warm3);border-left:3px solid var(--gold);padding:1.6rem 1.8rem;border-radius:var(--r);">
+          <div style="font-family:var(--sans);font-size:0.65rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">Academic Background</div>
+          <div style="font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;">MBA Graduate</div>
+          <p style="font-family:var(--sans);font-size:0.93rem;color:var(--text);font-weight:300;line-height:1.75;">Master of Business Administration graduate and Doctor of Business Administration coursework completed. This academic foundation informs a disciplined, informed approach to every client engagement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--white);">
+    <div class="section-inner">
+      <div class="sec-ey"><div class="sec-ey-line"></div><span>Who We Serve</span></div>
+      <h2 class="sec-title">From excellent health<br><em>to complex conditions.</em></h2>
+      <p class="sec-lead">Every individual deserves access to information about their coverage options. This practice works with clients across the full health spectrum - not exclusively those in perfect health. The carriers we are appointed with include companies that evaluate a wide range of health profiles, and coverage options are explored based on each client's individual circumstances at the time of application.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--warm3);border:1px solid var(--warm3);margin-top:2rem;">
+        <div style="background:var(--white);padding:1.5rem 1.4rem;">
+          <div style="font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;">Excellent Health</div>
+          <p style="font-family:var(--sans);font-size:0.9rem;color:var(--text);font-weight:300;line-height:1.7;">Clients in good to excellent health may qualify for standard rate classifications and full immediate benefit coverage across a broad range of carriers and face amounts.</p>
+        </div>
+        <div style="background:var(--white);padding:1.5rem 1.4rem;">
+          <div style="font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;">Managed Conditions</div>
+          <p style="font-family:var(--sans);font-size:0.9rem;color:var(--text);font-weight:300;line-height:1.7;">Clients managing conditions such as diabetes, high blood pressure, or depression may qualify for standard or modified coverage depending on current treatment status, medications, and carrier guidelines.</p>
+        </div>
+        <div style="background:var(--white);padding:1.5rem 1.4rem;">
+          <div style="font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;">Complex or High-Risk Profiles</div>
+          <p style="font-family:var(--sans);font-size:0.9rem;color:var(--text);font-weight:300;line-height:1.7;">Clients with significant health histories, prior declines, or conditions such as cancer history, heart disease, HIV, or organ transplant may find coverage options through carriers that specialize in higher-risk underwriting, subject to their individual guidelines.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--sans);font-size:0.82rem;color:var(--light);line-height:1.7;font-weight:300;margin-top:1rem;">Coverage availability is not guaranteed and is subject to individual carrier underwriting guidelines at the time of application. Nothing on this page constitutes a guarantee or offer of coverage.</p>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="sec-ey" style="justify-content:center;"><div class="sec-ey-line"></div><span>Engage</span><div class="sec-ey-line"></div></div>
+    <h2>Determine your eligibility<br><em>at no obligation.</em></h2>
+    <p>Complete the intake questionnaire at your own pace,</p>
+    <div class="cta-actions"><a href="quote.html" class="btn-ink">Check Availability</a></div>
+  </div>
+
+  <div class="disclaimer"><div class="disclaimer-inner"><strong>Disclosure:</strong> Eboni Morris is a licensed independent insurance agent. All products are underwritten by the issuing company and subject to individual underwriting approval. Applications may involve MIB and FCRA consumer report inquiries, of which the client will be informed prior to submission.</div></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-main">Eboni Morris</div>
+        <div class="fb-sub">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+        <div class="footer-license">
+          <div class="fl-title">License Verification</div>
+          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL*, MI, OH, SC, TX</p>
+          <p class="fl-body" style="margin-top:0.4rem;font-style:italic;">*FL appointment in progress - coming soon!</p>
+        </div>
+      </div>
+      <div style="grid-column:1/-1;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:0.5rem;">
+        <div style="font-family:var(--sans);font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Appointed Carriers</div>
+        <p style="font-family:var(--sans);font-size:0.65rem;color:rgba(255,255,255,0.18);line-height:1.75;font-weight:300;">[INSERT ALL CARRIER NAMES HERE - separated by &nbsp;&middot;&nbsp; - update before publishing]</p>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Insurance Education</a></li>
+        <li><a href="myths.html">Myth Busted</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
+        <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
+        <li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li>
+        <li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li>
+        <li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Advisor. All rights reserved.</span>
+      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- FCRA Modal -->
+<div class="modal-overlay" id="modal-fcra" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-fcra')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title">Fair Credit Reporting Act (FCRA)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-fcra')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the FCRA Is</div>
+        <p>The Fair Credit Reporting Act is a federal law that regulates how consumer reporting agencies collect, use, and share information about individuals, including for insurance underwriting purposes.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies</div>
+        <p>In connection with a formal application for life insurance, the issuing carrier may obtain a consumer report about you. If any adverse action is taken based on that report, the carrier must notify you and provide the name of the reporting agency so you can request a copy and dispute inaccuracies.</p>
+      </div>
+      <div class="modal-notice">No consumer report will be requested without your knowledge. You will be informed prior to any application submission.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MIB Modal -->
+<div class="modal-overlay" id="modal-mib" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mib')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title">Medical Information Bureau (MIB)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mib')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the MIB Is</div>
+        <p>The Medical Information Bureau (MIB) is a member-owned organization that operates as an information exchange among participating life and health insurance companies.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Affects Your Application</div>
+        <p>When you apply for individually underwritten life or health insurance, the issuing carrier may request coded information from the MIB regarding prior insurance applications. You have the right to request a copy of your MIB file at mib.com or by calling 1-866-692-6901.</p>
+      </div>
+      <div class="modal-notice">A formal MIB inquiry will only occur in connection with a formal application submitted at your direction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pharmacy Records Modal -->
+<div class="modal-overlay" id="modal-rx" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-rx')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Pharmacy Records (Rx History)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-rx')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What This Is</div>
+        <p>Depending on the carrier and product applied for, the issuing company may request a report that includes your current and historical prescription drug records from participating pharmacies. This is a standard underwriting tool used by many life insurance carriers.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Prescription drug history is reviewed to correlate medications on file with health conditions disclosed on the application. You will be informed if such a check is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">Pharmacy record checks may or may not be required depending on the specific carrier and product selected.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MVR Modal -->
+<div class="modal-overlay" id="modal-mvr" role="dialog" aria-modal="true" onclick="closeModalOnOverlay(event,'modal-mvr')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title">Motor Vehicle Report (MVR)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mvr')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What an MVR Is</div>
+        <p>A Motor Vehicle Report provides a history of your driving record including traffic violations, license suspensions, DUI or DWI convictions, and the current status of your driver's license.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Some life insurance carriers review driving history as part of underwriting. An MVR may be requested depending on the carrier's guidelines for the product applied for. You will be informed if one is required before your application is submitted.</p>
+      </div>
+      <div class="modal-notice">An MVR may or may not be required depending on the specific carrier and product. You may obtain your own driving record directly from your state DMV at any time.</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" onclick="closeModalOnOverlay(event,'modal-privacy')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-privacy-title">Privacy Policy</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-privacy')" aria-label="Close privacy policy">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What This Policy Covers</div>
+        <p>This privacy policy describes how Eboni Morris, licensed independent insurance agent (NPN: 18509552), collects, uses, and protects information submitted through this website. This policy applies to all information gathered through the intake questionnaire, referral forms, and any other communications submitted through coveredwithconditions.com.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Information We Collect</div>
+        <p>When you submit an intake form or inquiry, we may collect the following types of information:</p>
+        <ul>
+          <li>Personal identifiers such as your name, date of birth, address, phone number, and email address</li>
+          <li>Health and lifestyle information provided voluntarily for the purpose of evaluating coverage options</li>
+          <li>Information about medications, medical history, and functional status as relevant to insurance underwriting</li>
+          <li>Beneficiary relationship information provided in connection with coverage inquiries</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How Your Information Is Used</div>
+        <p>Information you submit is used solely for the purpose of evaluating and presenting life insurance coverage options on your behalf. It is not sold, rented, or shared with any third party except as necessary to process a formal insurance application at your direction, and only with your explicit written authorization prior to any application submission.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your Rights</div>
+        <p>You have the right to request access to the information we hold about you, request corrections to inaccurate information, and request that your information not be used for purposes beyond this advisory engagement. To exercise any of these rights, contact this office directly.</p>
+      </div>
+      <div class="modal-notice">This policy is subject to applicable federal and state insurance privacy regulations. Nothing in this policy limits any rights you may have under HIPAA, applicable state insurance privacy laws, or the Fair Credit Reporting Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HIPAA Notice Modal -->
+<div class="modal-overlay" id="modal-hipaa" role="dialog" aria-modal="true" aria-labelledby="modal-hipaa-title" onclick="closeModalOnOverlay(event,'modal-hipaa')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Federal Privacy Law</div>
+        <div class="modal-title" id="modal-hipaa-title">HIPAA Privacy Notice</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-hipaa')" aria-label="Close HIPAA notice">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What HIPAA Is</div>
+        <p>The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that establishes national standards for the protection of certain health information. HIPAA restricts how health information may be used and shared and gives individuals specific rights regarding their health data.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies Here</div>
+        <p>Any health-related information you provide through this website or during our advisory engagement is handled in strict compliance with applicable HIPAA privacy standards. This includes any medical history, conditions, medications, or other health information submitted as part of an intake questionnaire or consultation.</p>
+        <p>Your health information will not be disclosed to any insurance carrier or third party without your written authorization prior to any formal application submission. You will be informed of what information is being shared, with whom, and for what purpose before any such disclosure occurs.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your HIPAA Rights</div>
+        <ul>
+          <li>The right to receive a notice of privacy practices</li>
+          <li>The right to access and review health information held about you</li>
+          <li>The right to request corrections to inaccurate information</li>
+          <li>The right to request restrictions on certain uses or disclosures</li>
+          <li>The right to receive an accounting of disclosures made on your behalf</li>
+          <li>The right to file a complaint if you believe your privacy rights have been violated</li>
+        </ul>
+      </div>
+      <div class="modal-notice">If you believe your health information privacy rights have been violated, you may file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights. Filing a complaint will not affect your ability to obtain coverage or services through this practice.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Terms of Use Modal -->
+<div class="modal-overlay" id="modal-terms" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title" onclick="closeModalOnOverlay(event,'modal-terms')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-terms-title">Terms of Use</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-terms')" aria-label="Close terms of use">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Use of This Website</div>
+        <p>This website, coveredwithconditions.com, is operated by Eboni Morris, a licensed independent insurance agent (NPN: 18509552). By accessing or using this website, you agree to the following terms. If you do not agree, please do not use this site.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Insurance Offer or Guarantee</div>
+        <p>Nothing on this website constitutes an offer, commitment, or guarantee of insurance coverage. All coverage is subject to formal application, individual carrier underwriting approval, and the terms of the actual policy contract issued by the insurance company. Information on this site is provided for general educational and informational purposes only.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Accuracy of Information</div>
+        <p>While we make reasonable efforts to keep information on this site current and accurate, insurance products, carrier guidelines, licensing requirements, and applicable laws are subject to change. You should not rely solely on information found on this website when making insurance decisions. Consult with a licensed insurance professional for advice specific to your situation.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Attorney-Client or Financial Advisory Relationship</div>
+        <p>Use of this website does not create an attorney-client relationship, a financial advisory relationship, or any other professional engagement beyond that of a licensed insurance producer. Information provided through intake forms is used solely for the purpose of evaluating and presenting life insurance coverage options.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Intellectual Property</div>
+        <p>All content on this website, including text, design, layout, and educational materials, is the property of Eboni Morris and may not be reproduced, distributed, or used without written permission.</p>
+      </div>
+      <div class="modal-notice">These terms are governed by the laws of the State of Georgia. Eboni Morris reserves the right to update these terms at any time. Continued use of this site following any update constitutes acceptance of the revised terms.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Licensing Information Modal -->
+<div class="modal-overlay" id="modal-license" role="dialog" aria-modal="true" aria-labelledby="modal-license-title" onclick="closeModalOnOverlay(event,'modal-license')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Producer Licensing</div>
+        <div class="modal-title" id="modal-license-title">Licensing Information</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-license')" aria-label="Close licensing information">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Licensed Producer</div>
+        <p>This website is operated by Eboni Morris, a licensed independent insurance agent appointed with multiple insurance carriers. Eboni Morris holds life, accident, and sickness licenses and has been licensed since 2017.</p>
+        <ul>
+          <li>National Producer Number (NPN): 18509552</li>
+          <li>License Type: Life, Accident and Sickness</li>
+          <li>Licensed Since: 2017</li>
+          <li>Resident State: Georgia</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">States Where Licensed</div>
+        <p>Eboni Morris is currently licensed to solicit, negotiate, and sell life insurance in the following states:</p>
+        <ul>
+          <li>Georgia (GA) - Resident License</li>
+          <li>Florida (FL) - Nonresident License</li>
+          <li>Michigan (MI) - Nonresident License</li>
+          <li>Ohio (OH) - Nonresident License</li>
+          <li>South Carolina (SC) - Nonresident License</li>
+          <li>Texas (TX) - Nonresident License</li>
+        </ul>
+        <p>Expansion to additional states is ongoing. If you are located in a state not listed above, please complete the intake form and we will advise whether service is currently available in your state or connect you with a licensed partner where applicable.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">License Verification</div>
+        <p>Licensure can be independently verified through the National Insurance Producers Registry (NIPR) by calling 1 (855) 674-6477 and referencing National Producer Number (NPN) 18509552. You may also verify licensing through the insurance department of your individual state.</p>
+      </div>
+      <div class="modal-notice">Insurance products are offered through multiple insurance carriers and are subject to individual carrier underwriting approval. Eboni Morris operates as an independent agent and is not an employee or exclusive representative of any single insurance company.</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ACCESSIBILITY PANEL -->
+<div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
+  <div class="a11y-side-title">Accessibility Options</div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Text Size</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn active" id="ts-normal" onclick="a11y('text','normal')" aria-pressed="true">A</button>
+      <button class="a11y-s-btn" id="ts-large" onclick="a11y('text','large')" aria-pressed="false">A+</button>
+      <button class="a11y-s-btn" id="ts-xl" onclick="a11y('text','xl')" aria-pressed="false">A++</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">High Contrast</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="hc-on" onclick="a11y('contrast','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Dyslexia Font</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="dy-on" onclick="a11y('dyslexia','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Reduce Motion</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="rm-on" onclick="a11y('motion','toggle')" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <div class="a11y-side-divider"></div>
+
+  <div class="a11y-side-row">
+    <span class="a11y-side-label">Screen Reader Mode</span>
+    <div class="a11y-side-btns">
+      <button class="a11y-s-btn" id="sr-on" onclick="a11y('screenreader','toggle')" aria-label="Simplify page layout for screen readers" aria-pressed="false">Toggle</button>
+    </div>
+  </div>
+
+  <button class="a11y-side-reset" onclick="a11yReset()">Reset All</button>
+</div>
+
+<!-- ACCESSIBILITY TAB -->
+<button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false" aria-controls="a11yPanel">
+  Accessibility
+</button>
+
+<!-- Screen reader announcements -->
+<div id="a11y-live" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"></div>
+
+<script>
+
+function openModal(id){var m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden';var c=m.querySelector('.modal-close');if(c)setTimeout(function(){c.focus();},50);}}
+function closeModal(id){var m=document.getElementById(id);if(m){m.classList.remove('open');document.body.style.overflow='';}}
+function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+
+
+function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),isOpen=p.style.display==='flex';p.style.display=isOpen?'none':'flex';t.setAttribute('aria-expanded',isOpen?'false':'true');}
+function a11yText(val){
+  document.body.classList.remove('lg-text','xl-text');
+  ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});
+  if(val==='large'){document.body.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}
+  else if(val==='xl'){document.body.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}
+  else{document.getElementById('ts-normal').classList.add('active');}
+  localStorage.setItem('a11y_text',val);
+}
+function a11yToggle(btnId,cssClass,storageKey){
+  var on=!document.body.classList.contains(cssClass);
+  document.body.classList.toggle(cssClass,on);
+  var btn=document.getElementById(btnId);
+  if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}
+  if(storageKey)localStorage.setItem(storageKey,on?'1':'0');
+}
+function a11yReset(){
+  document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
+  ['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});
+  ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});
+  var n=document.getElementById('ts-normal');if(n)n.classList.add('active');
+  ['a11y_text','a11y_hc','a11y_dy','a11y_rm'].forEach(function(k){localStorage.removeItem(k);});
+}
+(function(){
+  var t=localStorage.getItem('a11y_text');
+  if(t)a11yText(t);
+  if(localStorage.getItem('a11y_hc')==='1')a11yToggle('hc-btn','hc-mode','a11y_hc');
+  if(localStorage.getItem('a11y_dy')==='1')a11yToggle('dy-btn','dyslexia-font','a11y_dy');
+  if(localStorage.getItem('a11y_rm')==='1')a11yToggle('rm-btn','reduce-motion','a11y_rm');
+})();
+
+
+
+function closeModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function closeModalOnOverlay(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
+
+
+function a11y(type,val){
+  var b=document.body;
+  var live=document.getElementById('a11y-live');
+  if(type==='text'){
+    b.classList.remove('lg-text','xl-text');
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');}});
+    if(val==='large'){b.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');document.getElementById('ts-large').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to large.';}
+    else if(val==='xl'){b.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');document.getElementById('ts-xl').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to extra large.';}
+    else{document.getElementById('ts-normal').classList.add('active');document.getElementById('ts-normal').setAttribute('aria-pressed','true');if(live)live.textContent='Text size normal.';}
+    localStorage.setItem('a11y_text',val);
+  }
+  if(type==='contrast'){var on=val==='toggle'?!b.classList.contains('hc-mode'):val==='on';b.classList.toggle('hc-mode',on);var btn=document.getElementById('hc-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'High contrast on.':'High contrast off.';localStorage.setItem('a11y_contrast',on?'on':'off');}
+  if(type==='dyslexia'){var on=val==='toggle'?!b.classList.contains('dyslexia-font'):val==='on';b.classList.toggle('dyslexia-font',on);var btn=document.getElementById('dy-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Dyslexia font on.':'Dyslexia font off.';localStorage.setItem('a11y_dyslexia',on?'on':'off');}
+  if(type==='motion'){var on=val==='toggle'?!b.classList.contains('reduce-motion'):val==='on';b.classList.toggle('reduce-motion',on);var btn=document.getElementById('rm-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Motion reduced.':'Motion on.';localStorage.setItem('a11y_motion',on?'on':'off');}
+  if(type==='screenreader'){var on=val==='toggle'?!b.classList.contains('sr-mode'):val==='on';b.classList.toggle('sr-mode',on);var btn=document.getElementById('sr-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Screen reader mode on. Layout simplified.':'Screen reader mode off.';localStorage.setItem('a11y_sr',on?'on':'off');}
+}
+function a11yReset(){
+  var b=document.body;
+  b.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
+  ['ts-normal','ts-large','ts-xl','hc-on','dy-on','rm-on','sr-on'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');}});
+  var n=document.getElementById('ts-normal');if(n){n.classList.add('active');n.setAttribute('aria-pressed','true');}
+  ['a11y_text','a11y_contrast','a11y_dyslexia','a11y_motion','a11y_sr'].forEach(function(k){localStorage.removeItem(k);});
+  var live=document.getElementById('a11y-live');if(live)live.textContent='Settings reset.';
+}
+(function(){
+  var t=localStorage.getItem('a11y_text');
+  if(t)a11y('text',t);else{var n=document.getElementById('ts-normal');if(n){n.classList.add('active');n.setAttribute('aria-pressed','true');}}
+  if(localStorage.getItem('a11y_contrast')==='on')a11y('contrast','on');
+  if(localStorage.getItem('a11y_dyslexia')==='on')a11y('dyslexia','on');
+  if(localStorage.getItem('a11y_motion')==='on')a11y('motion','on');
+  if(localStorage.getItem('a11y_sr')==='on')a11y('screenreader','on');
+})();
+
+</script>
+
+<!-- CHAT BUBBLE -->
+<div id="chatBubble" style="position:fixed;bottom:24px;left:24px;z-index:9990;">
+  <a href="chat.html" style="display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-radius:30px;padding:0.65rem 1.1rem 0.65rem 0.85rem;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.25);transition:background 0.2s;" onmouseover="this.style.background='#9e8047'" onmouseout="this.style.background='#1a1a18'">
+    <div style="width:36px;height:36px;background:rgba(158,128,71,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9e8047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <div>
+      <div style="font-family:system-ui,sans-serif;font-size:0.72rem;font-weight:600;color:#fff;letter-spacing:0.05em;">Ask a Question</div>
+      <div style="font-family:system-ui,sans-serif;font-size:0.6rem;color:rgba(255,255,255,0.45);margin-top:1px;">Private &amp; Anonymous</div>
+    </div>
+  </a>
+</div>
+
+</body>
+</html>
