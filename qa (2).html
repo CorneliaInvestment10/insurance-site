@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Insurance Q&A - Covered With Conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#1A1A18;--gold:#9E8047;--warm:#F5F2EC;--warm2:#EDE9E0;--warm3:#DDD9D0;--stone:#4A4845;--text:#5C5955;--light:#9C9894;--white:#FFFFFF;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;}
+html{font-size:15px;font-family:var(--sans);background:var(--warm);color:var(--ink);}
+body{min-height:100vh;display:flex;flex-direction:column;}
+
+.navbar{background:var(--white);border-bottom:1px solid var(--warm3);padding:0 5%;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-brand{display:flex;flex-direction:column;gap:2px;}
+.brand-main{font-family:var(--serif);font-size:1.1rem;color:var(--ink);}
+.brand-sub{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
+.nav-back{font-size:0.72rem;color:var(--light);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;}
+.nav-back:hover{color:var(--gold);}
+
+.page-hero{background:var(--ink);padding:4rem 5% 3rem;}
+.hero-inner{max-width:900px;margin:0 auto;}
+.hero-eyebrow{font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.hero-title{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--white);line-height:1.15;margin-bottom:0.8rem;}
+.hero-desc{font-size:0.92rem;color:rgba(255,255,255,0.5);font-weight:300;line-height:1.85;}
+
+.main-content{flex:1;padding:3rem 5%;max-width:900px;margin:0 auto;width:100%;}
+
+.qa-section{margin-bottom:2.5rem;}
+.qa-section-title{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--ink);margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--warm3);}
+
+.qa-list{display:flex;flex-direction:column;gap:0.4rem;}
+.qa-item{border:1px solid var(--warm3);border-radius:4px;overflow:hidden;}
+.qa-item.open{border-color:rgba(158,128,71,0.4);}
+.qa-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.9rem 1.1rem;background:var(--white);cursor:pointer;text-align:left;font-family:var(--sans);font-size:0.92rem;font-weight:400;color:var(--ink);border:none;transition:background 0.15s;}
+.qa-question:hover{background:var(--warm);}
+.qa-item.open .qa-question{background:var(--warm2);color:var(--ink);}
+.qa-q-text{flex:1;line-height:1.5;}
+.qa-arrow{font-size:0.65rem;color:var(--gold);flex-shrink:0;transition:transform 0.2s;}
+.qa-item.open .qa-arrow{transform:rotate(180deg);}
+.qa-answer{display:none;padding:1rem 1.1rem 1.2rem;background:var(--warm);border-top:1px solid var(--warm3);}
+.qa-answer p{font-family:var(--sans);font-size:0.9rem;color:var(--text);font-weight:300;line-height:1.8;}
+.qa-item.open .qa-answer{display:block;}
+
+footer{background:var(--ink);padding:1.2rem 5%;text-align:center;}
+footer p{font-size:0.65rem;color:rgba(255,255,255,0.25);line-height:1.8;}
+
+@media(max-width:600px){
+  .hero-title{font-size:1.8rem;}
+  .page-hero{padding:2.5rem 5% 2rem;}
+  .main-content{padding:2rem 4%;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Covered With Conditions</div>
+    <div class="brand-sub">Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+  </div>
+  <a href="chat.html" class="nav-back">Back to Ask a Question</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">General Information Resource</div>
+    <h1 class="hero-title">Common Life Insurance Questions</h1>
+    <p class="hero-desc">Browse answers to the most common questions about life insurance. These answers are prepared and reviewed by a licensed advisor and reflect general industry knowledge. They are not personalized advice. For guidance specific to your situation, use the chat feature to speak directly with the advisor.</p>
+  </div>
+</div>
+
+<div class="main-content">
+  <div style="background:#f5f2ec;border:1px solid #ddd9d0;border-left:3px solid #9e8047;border-radius:0 4px 4px 0;padding:1rem 1.2rem;margin-bottom:2rem;">
+  <p style="font-family:system-ui,sans-serif;font-size:0.82rem;color:#5c5955;font-weight:300;line-height:1.75;margin:0;"><strong style="font-weight:500;color:#1a1a18;">Important Notice:</strong> The answers on this page are general educational information only, prepared and reviewed by a licensed insurance advisor. They are <strong style="font-weight:500;color:#1a1a18;">not</strong> specific to any insurance company, product, or individual situation. Policy terms, grace periods, underwriting requirements, premium rates, and all other guidelines vary significantly from company to company and are subject to change without notice. Nothing here constitutes personalized insurance advice, a coverage recommendation, a guarantee of eligibility, or a binding representation of any carrier's policies. Individual results are determined solely by the issuing company based on your specific application and their underwriting guidelines at the time of submission. Please speak directly with a licensed advisor before making any coverage decision.</p>
+</div>
+  
+    <div class="qa-section">
+      <h2 class="qa-section-title">Life Insurance Basics</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q1">
+        <button class="qa-question" onclick="toggleQA('q1')" aria-expanded="false">
+          <span class="qa-q-text">What is life insurance and how does it work?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Life insurance is a contract where you pay a premium in exchange for a cash payment, known as a death benefit, paid to your loved ones upon your passing. It is designed to provide financial security for those who depend on you, helping cover expenses like funerals, debts, or daily living costs. This tool offers peace of mind by transferring financial risk from your family to the insurance company.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q2">
+        <button class="qa-question" onclick="toggleQA('q2')" aria-expanded="false">
+          <span class="qa-q-text">What is the difference between term and whole life insurance?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Term life insurance provides temporary protection for a set number of years, making it an affordable choice for specific needs like mortgage protection. Whole life is permanent coverage that lasts for your entire life as long as premiums are paid. Unlike term, whole life policies also build cash value over time that you can access while living.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q3">
+        <button class="qa-question" onclick="toggleQA('q3')" aria-expanded="false">
+          <span class="qa-q-text">What is an IUL and how is it different from whole life?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>An Indexed Universal Life (IUL) policy is a type of permanent insurance that offers flexible premiums and death benefits. While whole life has fixed growth, an IUL's cash value growth is linked to the performance of a stock market index. It provides more flexibility in payments than whole life but carries different potential for growth and risk.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q4">
+        <button class="qa-question" onclick="toggleQA('q4')" aria-expanded="false">
+          <span class="qa-q-text">What does a life insurance death benefit pay out?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A life insurance death benefit typically pays out a lump sum of cash directly to your chosen beneficiaries after your passing. This payment is generally income tax-free and can be used for any purpose, such as funeral costs, tuition, or replacing lost income. Some policies also offer options to receive the benefit in fixed installments rather than a single lump sum.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q5">
+        <button class="qa-question" onclick="toggleQA('q5')" aria-expanded="false">
+          <span class="qa-q-text">Can I have more than one life insurance policy at the same time?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, you can own multiple life insurance policies simultaneously across different insurance providers. However, the total amount of coverage you can have is generally limited by your age, income, and overall financial need. Insurance companies will review your existing coverage during the application process to ensure the total amount is justifiable.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q6">
+        <button class="qa-question" onclick="toggleQA('q6')" aria-expanded="false">
+          <span class="qa-q-text">At what age should I get life insurance?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>You can secure life insurance at almost any stage, from just 15 days old up to age 90. Generally, getting coverage when you are younger and healthier results in lower premiums and easier qualification. Many people choose to buy life insurance when they take on new responsibilities, such as having children or starting a business.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q7">
+        <button class="qa-question" onclick="toggleQA('q7')" aria-expanded="false">
+          <span class="qa-q-text">How long does a life insurance policy last?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Term policies last for a specific period, typically between 10 and 40 years. Permanent policies, such as whole life or universal life, are designed to last for your entire lifetime, often maturing at age 121. Coverage remains in effect as long as the required premiums are paid.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">Coverage and Amounts</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q8">
+        <button class="qa-question" onclick="toggleQA('q8')" aria-expanded="false">
+          <span class="qa-q-text">How do I know how much life insurance coverage I need?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Your coverage need is often determined by a multiplier of your annual income, ranging from 3 to 40 times your earnings depending on your age. You should also consider your total debts, future expenses like college for children, and the income your family would need to maintain their lifestyle. An advisor can help you calculate a specific coverage amount based on these individual financial goals.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q9">
+        <button class="qa-question" onclick="toggleQA('q9')" aria-expanded="false">
+          <span class="qa-q-text">What factors affect how much coverage I can qualify for?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Qualification is primarily based on your age, gross annual income, and the specific purpose of the insurance. Companies use formulas to ensure the coverage amount correlates with the potential financial loss your death would cause. Other factors include your current health, net worth, and any hazardous hobbies or activities you participate in.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q10">
+        <button class="qa-question" onclick="toggleQA('q10')" aria-expanded="false">
+          <span class="qa-q-text">What is final expense insurance and who is it for?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Final expense insurance is a small whole life policy designed specifically to cover end-of-life costs like funeral services and burial. It is typically intended for older applicants who want to ensure their family is not burdened with these immediate expenses. These policies often have easier qualification requirements and do not require a medical exam.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q11">
+        <button class="qa-question" onclick="toggleQA('q11')" aria-expanded="false">
+          <span class="qa-q-text">What is a face amount and how is it determined?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>The face amount is the total dollar amount of the death benefit your beneficiaries will receive upon your death. It is determined based on your financial needs, such as debt repayment and income replacement for your family. Carriers may also set minimum and maximum face amounts based on their underwriting rules.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q12">
+        <button class="qa-question" onclick="toggleQA('q12')" aria-expanded="false">
+          <span class="qa-q-text">Can coverage amounts be changed after a policy is issued?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>In many universal life policies, you can request to increase or decrease your coverage after the policy has been in force for a period of time. For whole life policies, coverage is usually fixed, but you may add riders at purchase that allow for future increases without additional medical exams. Any request to increase coverage typically requires confirming you are still in good health.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">Premiums and Cost</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q13">
+        <button class="qa-question" onclick="toggleQA('q13')" aria-expanded="false">
+          <span class="qa-q-text">What determines the cost of a life insurance premium?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Premiums are determined by several risk factors, including your current age, gender, and whether or not you use tobacco. Your overall medical history and specific health conditions also play a major role in setting the rate. The type of policy you choose and the total amount of coverage you apply for will also influence the final cost.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q14">
+        <button class="qa-question" onclick="toggleQA('q14')" aria-expanded="false">
+          <span class="qa-q-text">Why do younger applicants generally pay lower premiums?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Younger applicants generally pay less because insurance companies view them as having a lower immediate risk of passing away. Because a younger person has a longer life expectancy, they are expected to pay premiums into the policy for a longer period. Locking in a policy early also allows you to secure a lower rate before potential health issues develop.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q15">
+        <button class="qa-question" onclick="toggleQA('q15')" aria-expanded="false">
+          <span class="qa-q-text">Does my health affect my premium rate?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, your health is a primary factor in determining your risk class, which sets your premium rate. Applicants in excellent health may qualify for preferred rates, which are significantly lower than standard rates. If you have significant health conditions, you may be issued a rated policy with a higher premium to account for the increased risk.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q16">
+        <button class="qa-question" onclick="toggleQA('q16')" aria-expanded="false">
+          <span class="qa-q-text">What happens if I miss a premium payment?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Most policies provide a 31-day grace period to make up a missed payment, though Universal Life and Indexed Universal Life products often allow a longer 61-day window. During this period, your coverage remains in full force and your beneficiaries remain protected. If you have a permanent policy with accumulated cash value, the insurance company may automatically use a loan from that value to pay the premium and prevent lapsing. Please note that grace period lengths vary by company and product - the timeframes above are general guidelines only and may differ from the specific policy you are issued.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q17">
+        <button class="qa-question" onclick="toggleQA('q17')" aria-expanded="false">
+          <span class="qa-q-text">Can my premium increase after my policy is issued?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>For whole life policies, premiums are generally guaranteed and will never increase for as long as you own the policy. In term life policies, premiums remain level for the initial period but will increase annually once that initial term expires. Flexible premium policies like universal life may also have premium changes based on the policy's cash value performance.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q18">
+        <button class="qa-question" onclick="toggleQA('q18')" aria-expanded="false">
+          <span class="qa-q-text">What is a graded death benefit and how does it work?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A graded death benefit means that if you pass away within the first two or three years from natural causes, your beneficiaries may only receive a refund of premiums paid plus interest rather than the full face amount. After this initial waiting period, the full death benefit of the policy becomes payable. These policies are typically available to individuals who may not qualify for standard coverage.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">Health Conditions and Eligibility</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q19">
+        <button class="qa-question" onclick="toggleQA('q19')" aria-expanded="false">
+          <span class="qa-q-text">Can I get life insurance if I have a pre-existing health condition?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, many carriers offer coverage for individuals with pre-existing conditions like high blood pressure, diabetes, or heart history. Your eligibility and the cost of the policy will depend on the severity of the condition and how well it is managed. For very severe conditions, guaranteed issue policies are available that do not ask any health questions.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q20">
+        <button class="qa-question" onclick="toggleQA('q20')" aria-expanded="false">
+          <span class="qa-q-text">What does it mean to be declined for life insurance?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Being declined means that after reviewing your application, the insurance company determined that the financial risk of insuring you was too high based on their guidelines. This is often due to severe health issues, certain lifestyle risks, or prior insurance history. A decline from one carrier is not necessarily permanent, as different companies have different underwriting standards.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q21">
+        <button class="qa-question" onclick="toggleQA('q21')" aria-expanded="false">
+          <span class="qa-q-text">Can I apply again after being declined?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, you can reapply with a different insurance company that may have more flexible underwriting for your specific situation. Some people choose to wait a period of time to show that their health condition has stabilized before reapplying. Alternatively, you can apply for a guaranteed issue policy that does not consider your prior medical history.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q22">
+        <button class="qa-question" onclick="toggleQA('q22')" aria-expanded="false">
+          <span class="qa-q-text">What is a rated policy?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A rated policy, also called a substandard policy, is one issued to an individual who has a higher risk profile, usually due to health or lifestyle factors. These policies include an extra charge, often expressed as a table rating, which increases the premium above the standard rate. This allows individuals with medical impairments to still secure coverage rather than being declined entirely.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q23">
+        <button class="qa-question" onclick="toggleQA('q23')" aria-expanded="false">
+          <span class="qa-q-text">Are there life insurance options that do not require a medical exam?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, several options allow you to skip the traditional medical exam, including accelerated underwriting, simplified issue, and guaranteed issue policies. These paths use digital data sources like your prescription history and motor vehicle reports to determine eligibility quickly. While these often have lower coverage limits, they provide a much faster and less invasive application experience.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q24">
+        <button class="qa-question" onclick="toggleQA('q24')" aria-expanded="false">
+          <span class="qa-q-text">What health conditions typically make it harder to qualify?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Severe conditions such as congestive heart failure, active cancer, and cirrhosis of the liver generally make it harder to qualify for standard policies. Neurological disorders and recent major health events like strokes also require more intensive underwriting review. In many of these cases, you may still be eligible for specialized graded or guaranteed issue products.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q25">
+        <button class="qa-question" onclick="toggleQA('q25')" aria-expanded="false">
+          <span class="qa-q-text">Does tobacco or nicotine use affect my eligibility?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, tobacco or nicotine use significantly increases your premiums, often doubling or tripling the cost compared to non-users. While qualifying for standard non-tobacco rates generally requires 12 months of being nicotine-free, securing the lowest preferred or elite rate classifications typically requires 24 to 60 months without any nicotine use. This applies to all delivery systems including cigarettes, vaping, patches, and gum. These timeframes are general guidelines - the exact requirements vary by company, and no single standard applies across all carriers.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">Application and Underwriting</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q26">
+        <button class="qa-question" onclick="toggleQA('q26')" aria-expanded="false">
+          <span class="qa-q-text">What is the underwriting process?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Underwriting is the process insurance companies use to evaluate your application and determine the risk of insuring you. During this process, underwriters review your medical history, financial information, and lifestyle habits to set your final premium rate. They use various data sources, including your application answers and third-party reports, to make an informed decision.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q27">
+        <button class="qa-question" onclick="toggleQA('q27')" aria-expanded="false">
+          <span class="qa-q-text">How long does it take to get approved for life insurance?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Approval times vary. Some digital applications can provide a decision in as fast as 15 minutes. If a policy requires a manual review of your medical records, it typically takes between two and four weeks. Many streamlined cases can be approved in five days or less without any medical requirements.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q28">
+        <button class="qa-question" onclick="toggleQA('q28')" aria-expanded="false">
+          <span class="qa-q-text">What information is collected during the application?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>The application collects your physical measurements such as height and weight, along with a detailed health history including current medications. It also reviews lifestyle factors such as your driving record, occupation, and any hazardous hobbies. Insurance companies may also access third-party data to verify your responses.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q29">
+        <button class="qa-question" onclick="toggleQA('q29')" aria-expanded="false">
+          <span class="qa-q-text">What is the MIB and how does it affect my application?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>The Medical Information Bureau (MIB) is an information exchange that allows insurance companies to share limited coded data from prior applications. When you apply, the carrier checks the MIB to identify any inconsistencies between your current application and past ones. This helps the industry detect fraud and ensure that premiums remain accurate for all policyholders.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q30">
+        <button class="qa-question" onclick="toggleQA('q30')" aria-expanded="false">
+          <span class="qa-q-text">What is a paramedical exam and when is it required?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A paramedical exam is a brief medical evaluation conducted by a healthcare professional that includes taking your vitals, blood, and urine samples. It is typically required for higher coverage amounts or if digital data alone is not sufficient for underwriting. Many modern policies allow healthy individuals to skip this exam entirely through fluidless underwriting paths.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q31">
+        <button class="qa-question" onclick="toggleQA('q31')" aria-expanded="false">
+          <span class="qa-q-text">What does it mean if a policy is issued with exclusions?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>If a policy is issued with exclusions, it means there are specific circumstances under which the death benefit will not be paid. Common exclusions include death by suicide within the first two years of the policy. Some policies may also exclude coverage for high-risk activities like private aviation.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">Policy Features and Riders</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q32">
+        <button class="qa-question" onclick="toggleQA('q32')" aria-expanded="false">
+          <span class="qa-q-text">What is a beneficiary and how do I choose one?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A beneficiary is the person or entity you designate to receive the policy's death benefit after your passing. You typically choose individuals who have a clear financial interest in your continued life. It is recommended to name both a primary beneficiary and a contingent one in case your first choice passes away before you.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q33">
+        <button class="qa-question" onclick="toggleQA('q33')" aria-expanded="false">
+          <span class="qa-q-text">Can I change my beneficiary after the policy is issued?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, as the policy owner, you generally have the right to change your beneficiaries at any time by submitting a written request to the insurance company. Keeping your beneficiary designations up to date is crucial to ensure the funds are distributed according to your current wishes. Some policies may have irrevocable beneficiaries that require the beneficiary's consent before they can be changed.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q34">
+        <button class="qa-question" onclick="toggleQA('q34')" aria-expanded="false">
+          <span class="qa-q-text">What is a rider and what riders are commonly available?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A rider is an optional add-on to your base insurance policy that provides extra benefits, often for an additional cost. Common riders include coverage for your children, the ability to increase your coverage later, and living benefits for chronic illness. Riders allow you to customize a policy to fit your specific family needs.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q35">
+        <button class="qa-question" onclick="toggleQA('q35')" aria-expanded="false">
+          <span class="qa-q-text">What is an accidental death benefit rider?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>An accidental death benefit rider pays an additional sum of money to your beneficiaries if your death is caused specifically by a covered accident. This payout is often equal to the face amount of the base policy, potentially doubling the total benefit received. These riders typically have age limits and must be added when you first purchase the policy.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q36">
+        <button class="qa-question" onclick="toggleQA('q36')" aria-expanded="false">
+          <span class="qa-q-text">What is a waiver of premium rider?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A waiver of premium rider ensures your policy remains active if you become totally disabled and are unable to work. While you are disabled, the insurance company waives your premiums so you do not lose your coverage. This protection typically applies after a set waiting period, such as six months of uninterrupted disability.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q37">
+        <button class="qa-question" onclick="toggleQA('q37')" aria-expanded="false">
+          <span class="qa-q-text">What are living benefits and when can they be accessed?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Living benefits allow you to access a portion of your policy's death benefit while you are still alive if you suffer a qualifying health event. These benefits are typically triggered by a terminal illness, chronic illness, or a major critical event like a heart attack or stroke. The funds received are generally unrestricted and can be used for medical bills or daily living expenses.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q38">
+        <button class="qa-question" onclick="toggleQA('q38')" aria-expanded="false">
+          <span class="qa-q-text">What is a guaranteed insurability rider?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A guaranteed insurability rider allows you to purchase additional life insurance at specific future dates without having to prove you are still in good health. Qualifying events often include getting married, having a child, or reaching certain policy anniversaries. This is a valuable tool for young families who anticipate needing more protection as their financial responsibilities grow.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">Claims and Payouts</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q39">
+        <button class="qa-question" onclick="toggleQA('q39')" aria-expanded="false">
+          <span class="qa-q-text">How does a beneficiary file a life insurance claim?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>To file a claim, the beneficiary should notify the insurance company's claims department following the insured's death. They will need to provide the policy number and a certified copy of the death certificate as proof of loss. Once the company approves the documentation, the payment is sent directly to the beneficiary.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q40">
+        <button class="qa-question" onclick="toggleQA('q40')" aria-expanded="false">
+          <span class="qa-q-text">How long does it take for a death benefit to be paid out?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Most life insurance claims are paid within a few weeks once the company approves the proof of death. However, if the death occurs within the first two years of the policy, the company may conduct an investigation, which can delay the payout. Some policies offer a portion of the death benefit that can be accessed quickly to cover immediate funeral expenses.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q41">
+        <button class="qa-question" onclick="toggleQA('q41')" aria-expanded="false">
+          <span class="qa-q-text">Is a life insurance death benefit taxable?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Life insurance death benefits paid to your beneficiaries are generally received income tax-free. However, any interest that accumulates on the benefit before the final settlement date may be taxable as interest income. For large estates, the benefit could potentially be subject to estate taxes, so consulting a tax advisor is recommended.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q42">
+        <button class="qa-question" onclick="toggleQA('q42')" aria-expanded="false">
+          <span class="qa-q-text">What is a contestability period?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>The contestability period is a two-year timeframe starting from the policy's issue date during which the company can review the application for accuracy. If material misrepresentations or fraud are discovered during this time, the company may deny a claim or cancel the coverage. After the two years have passed, the policy generally becomes incontestable.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q43">
+        <button class="qa-question" onclick="toggleQA('q43')" aria-expanded="false">
+          <span class="qa-q-text">What could cause a claim to be denied?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A claim may be denied if premiums were not paid and the policy lapsed before the insured's death. Denials can also occur if the insured dies by suicide within the first two years or if significant medical history was withheld during the application. Providing honest and complete information when you apply is the best way to protect your beneficiaries' claim.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q44">
+        <button class="qa-question" onclick="toggleQA('q44')" aria-expanded="false">
+          <span class="qa-q-text">What happens to my policy if I outlive a term policy?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>If you outlive a term policy, you may have the option to renew the coverage, but your premiums will typically increase significantly. Many people choose to convert their term coverage into a permanent policy before it expires, often without needing a new medical exam. If you take no action, the coverage simply ends.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">Whole Life and Cash Value</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q45">
+        <button class="qa-question" onclick="toggleQA('q45')" aria-expanded="false">
+          <span class="qa-q-text">What is cash value in a whole life policy?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Cash value is a savings component within a permanent policy that grows over time on a tax-deferred basis. As you pay your premiums, a portion of the money is set into this account and can earn interest or dividends. You can access this value during your lifetime for any financial need, such as supplemental retirement income or emergencies.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q46">
+        <button class="qa-question" onclick="toggleQA('q46')" aria-expanded="false">
+          <span class="qa-q-text">Can I borrow against my life insurance policy?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Yes, most permanent policies allow you to take a policy loan using your accumulated cash value as collateral. Unlike bank loans, there are generally no credit checks or fixed repayment schedules required. However, any outstanding loan balance plus interest will be deducted from the final death benefit paid to your beneficiaries.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q47">
+        <button class="qa-question" onclick="toggleQA('q47')" aria-expanded="false">
+          <span class="qa-q-text">What happens to the cash value when I pass away?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>In a standard whole life policy, the insurance company typically pays only the face amount of the death benefit to your beneficiaries, and the cash value reverts to the company. However, some flexible policies allow you to choose an option where your beneficiaries receive both the face amount and the accumulated cash value. It is important to review your specific policy design to understand how cash value is handled at death.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q48">
+        <button class="qa-question" onclick="toggleQA('q48')" aria-expanded="false">
+          <span class="qa-q-text">What is a paid-up policy?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A paid-up policy is one where you have fulfilled all required premium payments and the coverage will remain in effect for the rest of your life without further cost. Some policies are designed to be paid up after a specific number of years, such as 10, 20, or 30. You can also use policy dividends to purchase paid-up additions, which increase your total death benefit over time.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q49">
+        <button class="qa-question" onclick="toggleQA('q49')" aria-expanded="false">
+          <span class="qa-q-text">What is a policy loan and how does it work?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A policy loan allows you to borrow money from the insurance company using your policy's cash value as the only security. The company charges interest on the loan, which can be paid back or allowed to accumulate within the policy. If the total loan and interest ever exceed the available cash value, the policy will lapse.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="qa-section">
+      <h2 class="qa-section-title">About This Practice</h2>
+      <div class="qa-list">
+        
+      <div class="qa-item" id="q50">
+        <button class="qa-question" onclick="toggleQA('q50')" aria-expanded="false">
+          <span class="qa-q-text">What is the difference between a captive agent and an independent agent?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>A captive agent represents only one specific insurance company, limiting your options to that carrier's products. An independent agent represents many different insurance companies, allowing them to compare rates across the market to find the best fit for you. This practice operates as an independent advisory practice to ensure you have access to the most suitable solutions available.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q51">
+        <button class="qa-question" onclick="toggleQA('q51')" aria-expanded="false">
+          <span class="qa-q-text">Why work with an independent agent instead of going directly to an insurance company?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Working with an independent agent gives you a single point of contact who can shop around and advocate for you across many carriers. Because different companies have different underwriting standards for health conditions, an independent agent can match you with the one most likely to offer you the best rate. This saves you the time of filling out multiple individual applications while ensuring you are well represented.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q52">
+        <button class="qa-question" onclick="toggleQA('q52')" aria-expanded="false">
+          <span class="qa-q-text">How does an independent agent get paid?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Independent agents are typically paid through a commission provided by the insurance company after a policy is successfully issued. This means there is generally no direct fee or extra cost to you for using an agent's expertise. Because their compensation is tied to the policy's issuance, they are motivated to find a carrier that will approve your coverage at a competitive rate.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q53">
+        <button class="qa-question" onclick="toggleQA('q53')" aria-expanded="false">
+          <span class="qa-q-text">What carriers does this practice work with?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>This practice works with a broad portfolio of insurance carriers ranging from major industry leaders to specialized providers for specific health needs. This extensive reach allows for a customized search to find the best rates and benefits available for your unique situation. The specific carriers available depend on your state of residence and the type of coverage being sought.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q54">
+        <button class="qa-question" onclick="toggleQA('q54')" aria-expanded="false">
+          <span class="qa-q-text">Is my information shared with anyone during the inquiry process?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>Your information is protected under applicable privacy laws and is only shared with the specific insurance companies being considered for your coverage. During underwriting, those companies may verify your data through reports from the Medical Information Bureau or consumer reporting agencies as disclosed in your application. Your privacy and data security are maintained according to strict industry regulations.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q55">
+        <button class="qa-question" onclick="toggleQA('q55')" aria-expanded="false">
+          <span class="qa-q-text">What is this advisor's NPN and how can I verify their license?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>This practice is operated by Eboni Morris, a licensed independent insurance agent with National Producer Number (NPN) 18509552. You can verify this license at any time by contacting the National Insurance Producers Registry (NIPR) at 1-855-674-6477 and referencing NPN 18509552. You may also verify licensure through your state's Department of Insurance website.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q56">
+        <button class="qa-question" onclick="toggleQA('q56')" aria-expanded="false">
+          <span class="qa-q-text">What states is this advisor licensed in?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>This advisor is currently licensed in Georgia, Michigan, Ohio, South Carolina, and Texas, with a Florida appointment in progress. If you reside in a state not listed, we encourage you to complete the quote intake form anyway. We maintain professional relationships with trusted advisors across additional states who may be able to assist you.</p>
+        </div>
+      </div>
+      <div class="qa-item" id="q57">
+        <button class="qa-question" onclick="toggleQA('q57')" aria-expanded="false">
+          <span class="qa-q-text">What if I do not live in a state where this advisor is licensed?</span>
+          <span class="qa-arrow" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="qa-answer" aria-hidden="true">
+          <p>We encourage you to complete the intake questionnaire regardless of your state of residence. Through professional referral relationships, we work to connect clients in unlicensed states with qualified advisors who can assist with their coverage needs. Submitting your information ensures we can take the appropriate next step on your behalf.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+</div>
+
+<footer>
+  <p>Eboni Morris &nbsp;&middot;&nbsp; NPN: 18509552 &nbsp;&middot;&nbsp; Licensed Independent Insurance Agent<br>
+  GA, FL*, MI, OH, SC, TX &nbsp;&middot;&nbsp; General information only &nbsp;&middot;&nbsp; Not personalized insurance advice &nbsp;&middot;&nbsp; Subject to change &nbsp;&middot;&nbsp; &copy; 2026</p>
+</footer>
+
+<script>
+function toggleQA(id) {
+  var item = document.getElementById(id);
+  var answer = item.querySelector('.qa-answer');
+  var btn = item.querySelector('.qa-question');
+  var isOpen = item.classList.contains('open');
+  // Close all others
+  document.querySelectorAll('.qa-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.qa-question').setAttribute('aria-expanded','false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+}
+</script>
+
+</body>
+</html>
