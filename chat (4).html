@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ask a Question - Covered With Conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#1A1A18;--gold:#9E8047;--warm:#F5F2EC;--warm2:#EDE9E0;--warm3:#DDD9D0;--stone:#4A4845;--text:#5C5955;--light:#9C9894;--white:#FFFFFF;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;}
+html{font-size:16px;font-family:var(--sans);background:var(--warm);color:var(--ink);}
+body{min-height:100vh;display:flex;flex-direction:column;}
+
+/* NAV */
+.navbar{background:var(--white);border-bottom:1px solid var(--warm3);padding:0 5%;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;}
+.nav-brand{display:flex;flex-direction:column;gap:2px;}
+.brand-main{font-family:var(--serif);font-size:1.1rem;color:var(--ink);}
+.brand-sub{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
+.nav-links{display:flex;list-style:none;gap:2rem;align-items:center;}
+.nav-links a{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;}
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--warm3);z-index:999;padding:1rem 5%;flex-direction:column;}
+.mobile-nav a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;padding:0.75rem 0;border-bottom:1px solid var(--warm3);display:block;}
+.mobile-nav a.active,.mobile-nav a:hover{color:var(--gold);}
+
+/* HERO */
+.chat-hero{background:var(--ink);padding:4rem 5% 3rem;}
+.chat-hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.hero-title{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--white);line-height:1.15;margin-bottom:1rem;}
+.hero-title em{color:var(--gold);}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.85;margin-bottom:1rem;}
+.privacy-tag{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(158,128,71,0.12);border:1px solid rgba(158,128,71,0.25);border-radius:20px;padding:0.35rem 0.8rem;font-size:0.72rem;color:rgba(255,255,255,0.5);}
+.hero-steps{display:flex;flex-direction:column;gap:1rem;}
+.hero-step{display:flex;align-items:flex-start;gap:0.75rem;}
+.hero-step-num{width:28px;height:28px;border-radius:50%;border:1px solid rgba(158,128,71,0.5);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;color:var(--gold);flex-shrink:0;margin-top:2px;}
+.hero-step-text{font-size:0.92rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.7;}
+.hero-step-text strong{color:var(--white);font-weight:500;}
+
+/* CHAT SECTION */
+.chat-section{background:var(--warm);flex:1;padding:3rem 5%;}
+.chat-section-inner{max-width:900px;margin:0 auto;}
+.section-label{font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--light);margin-bottom:1.5rem;}
+
+/* CHAT BOX */
+.chat-box{background:var(--white);border:1px solid var(--warm3);border-radius:6px;overflow:hidden;}
+.chat-header{background:var(--ink);padding:1rem 1.4rem;display:flex;align-items:center;gap:0.75rem;}
+.chat-dot{width:9px;height:9px;border-radius:50%;background:#4caf50;flex-shrink:0;}
+.chat-name{font-family:var(--serif);font-size:1rem;font-weight:300;color:var(--white);}
+.chat-role{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
+.chat-hipaa{margin-left:auto;font-size:0.6rem;color:rgba(255,255,255,0.3);}
+
+.chat-messages{height:380px;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:0.7rem;}
+.msg{display:flex;flex-direction:column;max-width:78%;}
+.msg.advisor{align-self:flex-start;}
+.msg.client{align-self:flex-end;}
+.msg-bubble{padding:0.75rem 1rem;font-size:0.95rem;line-height:1.7;}
+.msg.advisor .msg-bubble{background:var(--warm);border:1px solid var(--warm3);border-radius:10px 10px 10px 2px;color:var(--ink);}
+.msg.client .msg-bubble{background:var(--ink);border-radius:10px 10px 2px 10px;color:var(--white);}
+.msg-time{font-size:0.65rem;color:var(--light);margin-top:0.2rem;padding:0 0.2rem;}
+.msg.client .msg-time{text-align:right;}
+.sys-note{align-self:center;font-size:0.7rem;color:var(--light);background:var(--warm);border:1px solid var(--warm3);border-radius:20px;padding:0.3rem 0.9rem;}
+.typing-row{align-self:flex-start;display:none;}
+.typing-row.show{display:flex;}
+.typing-bbl{background:var(--warm);border:1px solid var(--warm3);border-radius:10px 10px 10px 2px;padding:0.65rem 1rem;display:flex;gap:4px;align-items:center;}
+.t-d{width:6px;height:6px;border-radius:50%;background:var(--light);animation:td 1.2s infinite;}
+.t-d:nth-child(2){animation-delay:0.2s;}
+.t-d:nth-child(3){animation-delay:0.4s;}
+@keyframes td{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+
+/* TOPICS */
+.topic-row{padding:1rem 1.4rem;background:var(--warm2);border-top:1px solid var(--warm3);}
+.topic-label{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.7rem;}
+.topic-btns{display:flex;flex-wrap:wrap;gap:0.45rem;}
+.topic-btn{background:var(--white);border:1px solid var(--warm3);border-radius:20px;padding:0.4rem 0.9rem;font-family:var(--sans);font-size:0.85rem;color:var(--stone);cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.topic-btn:hover{background:var(--ink);border-color:var(--ink);color:var(--white);}
+.topic-btn.sel{background:var(--gold);border-color:var(--gold);color:var(--white);}
+.topic-btn.always{background:var(--warm2);border:1px solid rgba(158,128,71,0.4);color:var(--stone);font-weight:500;}
+.topic-btn.always:hover{background:var(--gold);border-color:var(--gold);color:var(--white);}
+
+/* INPUT */
+.chat-footer{padding:0.85rem 1.2rem;background:var(--warm2);border-top:1px solid var(--warm3);display:flex;gap:0.6rem;align-items:flex-end;}
+.chat-input-wrap{flex:1;}
+.anon-tag{font-size:0.68rem;color:var(--light);margin-bottom:0.35rem;display:block;}
+.chat-ta{width:100%;padding:0.65rem 0.9rem;border:1px solid var(--warm3);background:var(--white);font-family:var(--sans);font-size:0.95rem;color:var(--ink);border-radius:4px;outline:none;resize:none;min-height:44px;max-height:110px;line-height:1.5;transition:border-color 0.2s;}
+.chat-ta:focus{border-color:var(--gold);}
+.send-btn{background:var(--ink);border:none;border-radius:4px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background 0.2s;}
+.send-btn:hover{background:var(--gold);}
+.send-btn svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2rem 5%;}
+.footer-inner{max-width:1160px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+.footer-brand .fb-main{font-family:var(--serif);font-size:1.1rem;color:var(--white);margin-bottom:0.2rem;}
+.footer-brand .fb-sub{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.fl-title{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.5rem;}
+.fl-body{font-size:0.78rem;color:rgba(255,255,255,0.3);font-weight:300;line-height:1.7;}
+.footer-col h4{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.8rem;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:0.4rem;}
+.footer-col a{font-size:0.78rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{padding-top:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+.footer-bottom span{font-size:0.65rem;color:rgba(255,255,255,0.2);}
+
+/* A11Y */
+#a11yTab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:500;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-right:none;border-radius:6px 0 0 6px;padding:0.8rem 0.42rem;cursor:pointer;writing-mode:vertical-rl;font-family:system-ui,sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#9e8047;user-select:none;touch-action:manipulation;pointer-events:auto !important;}
+#a11yPanel{position:fixed;right:34px;top:50%;transform:translateY(-50%);z-index:499;background:#1a1a18;border:1px solid rgba(158,128,71,0.3);border-radius:10px 0 0 10px;padding:1.2rem 1rem;width:220px;display:none;pointer-events:auto;}
+.a11y-heading{font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#9e8047 !important;padding-bottom:0.6rem;margin-bottom:0.8rem;border-bottom:1px solid rgba(158,128,71,0.35);display:block;}
+.a11y-row{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.75rem;}
+.a11y-row-label{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#ffffff !important;display:block;}
+.a11y-row-btns{display:flex;flex-direction:row;gap:0.3rem;flex-wrap:wrap;}
+.a11y-btn{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:4px;padding:0.28rem 0.65rem;font-size:0.75rem;color:rgba(255,255,255,0.5);cursor:pointer;}
+.a11y-btn.active{background:#9e8047;border-color:#9e8047;color:#fff;}
+.a11y-sep{height:1px;background:rgba(255,255,255,0.08);margin:0.25rem 0;}
+.a11y-reset{width:100%;margin-top:0.5rem;background:none;border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:0.4rem;font-size:0.65rem;color:rgba(255,255,255,0.3);cursor:pointer;text-transform:uppercase;letter-spacing:0.06em;}
+
+@media(max-width:700px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:block;}
+  .chat-hero-inner{grid-template-columns:1fr;}
+  .hero-steps{display:none;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Covered With Conditions</div>
+    <div class="brand-sub">Life &middot; Accident &middot; Sickness</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="education.html">Insurance Education</a></li>
+    <li><a href="myths.html">Myth Busted</a></li>
+    <li><a href="quote.html">Get a Quote</a></li>
+    <li><a href="chat.html" class="active">Ask a Question</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="document.getElementById('mobileNav').style.display=document.getElementById('mobileNav').style.display==='flex'?'none':'flex'" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Insurance Education</a>
+  <a href="myths.html">Myth Busted</a>
+  <a href="quote.html">Get a Quote</a>
+  <a href="chat.html" class="active">Ask a Question</a>
+</div>
+
+<div class="chat-hero">
+  <div class="chat-hero-inner">
+    <div>
+      <div class="hero-eyebrow">Ask a Question</div>
+      <h1 class="hero-title">Speak directly<br>with a licensed<br><em>advisor.</em></h1>
+      <p class="hero-desc">Have a question about your condition, coverage options, or the application process? Ask it here privately. No account, no email, and no personal information required to start.</p>
+      <div class="privacy-tag">&#128274; Private &amp; Anonymous &nbsp;&middot;&nbsp; HIPAA-Compliant</div>
+    </div>
+    <div class="hero-steps">
+      <div class="hero-step"><div class="hero-step-num">1</div><div class="hero-step-text">Select a topic below or type your question freely. <strong>No personal information required.</strong></div></div>
+      <div class="hero-step"><div class="hero-step-num">2</div><div class="hero-step-text">Your advisor receives your message privately and <strong>responds personally.</strong> This is not an automated chatbot.</div></div>
+      <div class="hero-step"><div class="hero-step-num">3</div><div class="hero-step-text">When ready, your advisor will send you a <strong>private interview link</strong> to complete the process.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="chat-section">
+  <div class="chat-section-inner">
+    <div class="section-label">Your private conversation</div>
+    <div class="chat-box">
+      <div class="chat-header">
+        <div class="chat-dot"></div>
+        <div>
+          <div class="chat-name">Eboni Morris</div>
+          <div class="chat-role">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; NPN 18509552</div>
+        </div>
+        <div class="chat-hipaa">HIPAA-Compliant</div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="sys-note">Conversation is private and anonymous</div>
+      </div>
+
+      <div class="topic-row" id="topicRow">
+        <div class="topic-label">Select a topic or type your question below</div>
+        <div class="topic-btns" id="topicBtns">
+          <!-- Always-visible pinned options -->
+          <button class="topic-btn always" onclick="selectTopic(this,'What is your NPN number and how do I verify your license?')">Verify advisor license</button>
+          <button class="topic-btn always" onclick="selectTopic(this,'What states are you licensed in?')">Licensed states</button>
+          <button class="topic-btn always" onclick="window.location.href='quote.html'">Go to Get a Quote form</button>
+          <!-- Topic buttons - swapped after each message -->
+          <button class="topic-btn" onclick="selectTopic(this,'I have a health condition and want to know my options')">Health condition</button>
+          <button class="topic-btn" onclick="selectTopic(this,'I was previously declined for coverage')">Prior decline</button>
+          <button class="topic-btn" onclick="selectTopic(this,'I want to understand term vs whole life insurance')">Term vs whole life</button>
+          <button class="topic-btn" onclick="selectTopic(this,'I need coverage for a family member')">Family member</button>
+          <button class="topic-btn" onclick="selectTopic(this,'I want to know how much coverage I need')">Coverage amount</button>
+          <button class="topic-btn" onclick="selectTopic(this,'I have questions about the application process')">Application process</button>
+          <button class="topic-btn" onclick="selectTopic(this,'I have questions about premiums and cost')">Premiums and cost</button>
+          <button class="topic-btn always" onclick="selectTopic(this,'')">Other - type my question</button>
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <div class="chat-input-wrap">
+          <span class="anon-tag">Anonymous - no personal information required</span>
+          <textarea class="chat-ta" id="chatInput" rows="1" placeholder="Type your question here..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        </div>
+        <button class="send-btn" onclick="sendMsg()" aria-label="Send">
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-main">Eboni Morris</div>
+        <div class="fb-sub">Licensed Independent Insurance Advisor &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+        <div>
+          <div class="fl-title">License Verification</div>
+          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL*, MI, OH, SC, TX</p>
+          <p class="fl-body" style="margin-top:0.4rem;font-style:italic;">*FL appointment in progress - coming soon!</p>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Insurance Education</a></li>
+        <li><a href="myths.html">Myth Busted</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+        <li><a href="chat.html">Ask a Question</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a href="#" onclick="return false;">Privacy Policy</a></li>
+        <li><a href="#" onclick="return false;">HIPAA Notice</a></li>
+        <li><a href="#" onclick="return false;">FCRA Disclosure</a></li>
+        <li><a href="#" onclick="return false;">Terms of Use</a></li>
+        <li><a href="#" onclick="return false;">Licensing Information</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Advisor. All rights reserved.</span>
+      <span>General information only. Not personalized insurance advice.</span>
+    </div>
+  </div>
+</footer>
+
+<button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
+<div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
+  <span class="a11y-heading">Accessibility Options</span>
+  <div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">High Contrast</span><div class="a11y-row-btns"><button class="a11y-btn" id="hc-btn" onclick="a11yToggle('hc-btn','hc-mode')">Enable</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">Dyslexia Font</span><div class="a11y-row-btns"><button class="a11y-btn" id="dy-btn" onclick="a11yToggle('dy-btn','dyslexia-font')">Enable</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">Reduce Motion</span><div class="a11y-row-btns"><button class="a11y-btn" id="rm-btn" onclick="a11yToggle('rm-btn','reduce-motion')">Enable</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">Screen Reader</span><div class="a11y-row-btns"><button class="a11y-btn" id="sr-btn" onclick="a11yToggle('sr-btn','sr-mode')">Enable</button></div></div>
+  <button class="a11y-reset" onclick="a11yReset()">Reset All</button>
+</div>
+
+<script>
+var msgCount = 0;
+
+// ── PREBUILT ANSWERS for immediate responses ──
+var QA = {
+  'What is your NPN number and how do I verify your license?': 'This practice is operated by Eboni Morris. My National Producer Number (NPN) is 18509552. You can verify my license at any time by calling the National Insurance Producers Registry (NIPR) at 1-855-674-6477 and referencing that NPN, or by visiting your state Department of Insurance website.',
+  'What states are you licensed in?': 'I am currently licensed in Georgia, Michigan, Ohio, South Carolina, and Texas, with a Florida appointment in progress. If you are in a state not listed, please complete the quote form anyway. I have professional referral relationships with trusted advisors across additional states who may be able to assist you.',
+  'I have a health condition and want to know my options': 'Many carriers offer coverage for individuals with pre-existing conditions including high blood pressure, diabetes, heart history, and more. Eligibility and cost depend on the severity and how well the condition is managed. For very serious conditions, guaranteed issue policies are available that do not ask any health questions. Please note that eligibility varies by carrier. Would you like to share more about your situation so I can point you in the right direction?',
+  'I was previously declined for coverage': 'A decline from one carrier is not necessarily permanent. Different companies have very different underwriting standards, and the carrier that declined you may not be the right fit. Some people also qualify for guaranteed issue products that do not review prior medical history. Would you like to tell me more about your situation?',
+  'I want to understand term vs whole life insurance': 'Term life provides temporary coverage for a set number of years and is typically more affordable. Whole life is permanent coverage that lasts your entire lifetime as long as premiums are paid, and it also builds cash value over time. The right choice depends on your goals, budget, and how long you need the coverage. Would you like to go deeper on either option?',
+  'I need coverage for a family member': 'Yes, you can purchase life insurance on a family member as long as there is an insurable interest and the insured person consents. Common situations include coverage on a spouse, parent, or child. Coverage amounts and eligibility depend on the individual being insured. Would you like to tell me more about the family member you have in mind?',
+  'I want to know how much coverage I need': 'Coverage needs are typically based on a multiplier of annual income, total debts, future expenses, and the income your family would need to maintain their lifestyle. A general starting point is 10 times your annual income, though this varies significantly. I can help you think through a more specific number. Would you like to share some details?',
+  'I have questions about the application process': 'The application collects basic personal information, health history, and lifestyle factors. Depending on the product, approval can happen in minutes digitally or take a few weeks if medical records are needed. Most carriers I work with offer streamlined digital options. What specific part of the process did you want to know more about?',
+  'I have questions about premiums and cost': 'Premiums are determined by your age, gender, health status, tobacco use, coverage amount, and type of policy. Younger and healthier applicants generally qualify for lower rates. I can give you a general sense of what to expect once I know more about your situation. What would you like to know?',
+};
+
+var FOLLOWUP_TOPICS = [
+  ['I have questions about premiums and cost','Premiums and cost'],
+  ['I want to understand term vs whole life insurance','Term vs whole life'],
+  ['I have questions about the application process','Application process'],
+  ['I want to know how much coverage I need','Coverage amount'],
+  ['I need coverage for a family member','Family member'],
+  ['I have a health condition and want to know my options','Health condition'],
+  ['I was previously declined for coverage','Prior decline'],
+];
+
+function now(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,110)+'px';}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+
+function escHtml(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function addMsg(role,text){
+  var area=document.getElementById('chatMessages');
+  var div=document.createElement('div');
+  div.className='msg '+role;
+  div.innerHTML='<div class="msg-bubble">'+escHtml(text)+'</div><div class="msg-time">'+(role==='advisor'?'Advisor':'You')+' &middot; '+now()+'</div>';
+  area.appendChild(div);
+  area.scrollTop=area.scrollHeight;
+}
+
+function showTyping(){
+  var area=document.getElementById('chatMessages');
+  var t=document.getElementById('typingRow');
+  if(!t){t=document.createElement('div');t.id='typingRow';t.className='typing-row';t.innerHTML='<div class="typing-bbl"><div class="t-d"></div><div class="t-d"></div><div class="t-d"></div></div>';area.appendChild(t);}
+  t.classList.add('show');area.scrollTop=area.scrollHeight;
+}
+function hideTyping(){var t=document.getElementById('typingRow');if(t)t.classList.remove('show');}
+
+function refreshTopics(){
+  // Rebuild topic buttons - always show pinned + a rotating set + Other
+  var btns=document.getElementById('topicBtns');
+  var html='';
+  // Pinned always-visible
+  html+='<button class="topic-btn always" onclick="selectTopic(this,\'What is your NPN number and how do I verify your license?\')">Verify advisor license</button>';
+  html+='<button class="topic-btn always" onclick="selectTopic(this,\'What states are you licensed in?\')">Licensed states</button>';
+  html+='<button class="topic-btn always" onclick="window.location.href=\'quote.html\'">Go to Get a Quote form</button>';
+  // Rotating followup topics
+  FOLLOWUP_TOPICS.forEach(function(t){
+    html+='<button class="topic-btn" onclick="selectTopic(this,\''+t[0].replace(/'/g,"\\'")+'\')" >'+t[1]+'</button>';
+  });
+  // Other always last
+  html+='<button class="topic-btn always" onclick="selectTopic(this,\'\')">Other - type my question</button>';
+  btns.innerHTML=html;
+}
+
+function selectTopic(btn,topic){
+  if(!topic){
+    // "Other" - just focus the input
+    document.getElementById('chatInput').focus();
+    document.getElementById('chatInput').placeholder='Type your question here...';
+    return;
+  }
+  document.getElementById('chatInput').value=topic;
+  sendMsg();
+}
+
+function sendMsg(){
+  var input=document.getElementById('chatInput');
+  var text=input.value.trim();
+  if(!text)return;
+
+  addMsg('client',text);
+  input.value='';
+  autoResize(input);
+  msgCount++;
+
+  // Check for immediate answer
+  var answer=QA[text];
+
+  showTyping();
+  setTimeout(function(){
+    hideTyping();
+    if(answer){
+      addMsg('advisor',answer);
+    } else if(msgCount===1){
+      addMsg('advisor','Thank you for reaching out. I have received your message and will respond personally. Your conversation is completely private and anonymous. Feel free to share as much or as little as you are comfortable with.');
+    } else {
+      addMsg('advisor','I have noted your message. I will follow up here personally. If you are ready to move forward at any point, select the Get a Quote option below or type any other question.');
+    }
+    // Refresh topic buttons after each message
+    refreshTopics();
+    document.getElementById('topicRow').style.display='';
+  }, 1200);
+}
+
+// Opening greeting
+setTimeout(function(){
+  addMsg('advisor','Hello. I am Eboni Morris, your licensed insurance advisor (NPN 18509552). Ask me anything about life insurance coverage. There is no obligation and no personal information required to start. Everything you share here is private.');
+}, 800);
+
+// A11Y
+function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),isOpen=p.style.display==='block';p.style.display=isOpen?'none':'block';t.setAttribute('aria-expanded',isOpen?'false':'true');}
+function a11yText(val){document.body.classList.remove('lg-text','xl-text');['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});if(val==='large'){document.body.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}else if(val==='xl'){document.body.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}else{document.getElementById('ts-normal').classList.add('active');}}
+function a11yToggle(btnId,cssClass){var on=!document.body.classList.contains(cssClass);document.body.classList.toggle(cssClass,on);var btn=document.getElementById(btnId);if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}}
+function a11yReset(){document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});document.getElementById('ts-normal').classList.add('active');}
+</script>
+</body>
+</html>
