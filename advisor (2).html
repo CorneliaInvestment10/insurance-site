@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Advisor Portal - Covered With Conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1A1A18;--gold:#9E8047;--warm:#F5F2EC;--warm2:#EDE9E0;
+  --warm3:#DDD9D0;--stone:#4A4845;--text:#5C5955;--light:#9C9894;
+  --white:#FFFFFF;--serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;--green:#2E7D52;--red:#8B2323;
+}
+html{font-size:15px;font-family:var(--sans);background:var(--ink);color:var(--white);min-height:100vh;}
+body{min-height:100vh;display:flex;flex-direction:column;}
+
+/* LOGIN SCREEN */
+.login-screen{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;}
+.login-card{background:rgba(255,255,255,0.04);border:1px solid rgba(158,128,71,0.25);border-radius:8px;padding:2.5rem 2rem;width:100%;max-width:380px;}
+.login-logo{font-family:var(--serif);font-size:1.1rem;color:var(--white);margin-bottom:0.3rem;}
+.login-sub{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;}
+.login-title{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--white);margin-bottom:0.4rem;}
+.login-desc{font-size:0.78rem;color:rgba(255,255,255,0.35);font-weight:300;margin-bottom:1.8rem;line-height:1.7;}
+.field-label{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:0.4rem;}
+.field-input{width:100%;padding:0.75rem 0.9rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;font-family:var(--sans);font-size:0.9rem;color:var(--white);outline:none;transition:border-color 0.2s;margin-bottom:1rem;}
+.field-input:focus{border-color:var(--gold);}
+.field-input::placeholder{color:rgba(255,255,255,0.2);}
+.login-btn{width:100%;background:var(--gold);border:none;color:var(--white);padding:0.85rem;font-family:var(--sans);font-size:0.78rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.login-btn:hover{background:#b8963d;}
+.login-error{font-size:0.75rem;color:#f8a8a8;margin-top:0.6rem;display:none;text-align:center;}
+.login-note{font-size:0.68rem;color:rgba(255,255,255,0.2);text-align:center;margin-top:1.2rem;line-height:1.6;}
+
+/* DASHBOARD */
+.dashboard{display:none;flex:1;flex-direction:column;}
+.dash-header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.07);padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;}
+.dash-brand{font-family:var(--serif);font-size:1rem;color:var(--white);}
+.dash-sub{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
+.dash-user{display:flex;align-items:center;gap:1rem;}
+.dash-name{font-size:0.75rem;color:rgba(255,255,255,0.4);}
+.logout-btn{background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);font-family:var(--sans);font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:4px;cursor:pointer;transition:all 0.2s;}
+.logout-btn:hover{border-color:rgba(255,255,255,0.35);color:rgba(255,255,255,0.7);}
+
+.dash-main{flex:1;padding:2.5rem 5%;max-width:900px;margin:0 auto;width:100%;}
+
+/* GENERATE CODE SECTION */
+.section-eyebrow{font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.section-title{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--white);margin-bottom:0.4rem;}
+.section-desc{font-size:0.82rem;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.75;margin-bottom:2rem;}
+
+.gen-card{background:rgba(255,255,255,0.04);border:1px solid rgba(158,128,71,0.2);border-radius:6px;padding:1.8rem;margin-bottom:2rem;}
+.gen-card-title{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;}
+.gen-form{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.2rem;}
+.gen-field{display:flex;flex-direction:column;gap:0.3rem;}
+.gen-label{font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.gen-input{padding:0.65rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:4px;font-family:var(--sans);font-size:0.85rem;color:var(--white);outline:none;transition:border-color 0.2s;}
+.gen-input:focus{border-color:var(--gold);}
+.gen-input::placeholder{color:rgba(255,255,255,0.15);}
+.gen-btn{background:var(--gold);border:none;color:var(--white);padding:0.75rem 1.5rem;font-family:var(--sans);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:background 0.2s;white-space:nowrap;}
+.gen-btn:hover{background:#b8963d;}
+
+/* GENERATED CODE DISPLAY */
+.code-result{display:none;background:rgba(46,125,82,0.1);border:1px solid rgba(46,125,82,0.3);border-radius:6px;padding:1.4rem;margin-top:1.2rem;}
+.code-result-label{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(46,125,82,0.8);margin-bottom:0.8rem;}
+.code-display{font-family:monospace;font-size:2rem;font-weight:700;color:var(--white);letter-spacing:0.3em;margin-bottom:0.8rem;}
+.code-client-name{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
+.code-msg-box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1rem;font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.8;white-space:pre-wrap;font-family:var(--sans);margin-bottom:0.8rem;}
+.copy-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:4px;cursor:pointer;transition:all 0.2s;margin-right:0.5rem;}
+.copy-btn:hover{background:rgba(255,255,255,0.15);color:var(--white);}
+.copy-btn.copied{background:rgba(46,125,82,0.3);border-color:rgba(46,125,82,0.5);color:#a8f0c0;}
+.new-code-btn{background:none;border:1px solid rgba(158,128,71,0.3);color:var(--gold);font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:4px;cursor:pointer;transition:all 0.2s;}
+.new-code-btn:hover{border-color:var(--gold);background:rgba(158,128,71,0.1);}
+
+/* ACTIVE CODES TABLE */
+.codes-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:6px;overflow:hidden;}
+.codes-header{padding:1rem 1.4rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;}
+.codes-title{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.codes-count{font-size:0.7rem;color:rgba(255,255,255,0.25);}
+.codes-table{width:100%;border-collapse:collapse;}
+.codes-table th{font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:0.7rem 1.4rem;text-align:left;border-bottom:1px solid rgba(255,255,255,0.06);}
+.codes-table td{font-size:0.8rem;color:rgba(255,255,255,0.6);padding:0.75rem 1.4rem;border-bottom:1px solid rgba(255,255,255,0.04);}
+.codes-table tr:last-child td{border-bottom:none;}
+.codes-table tr:hover td{background:rgba(255,255,255,0.02);}
+.code-mono{font-family:monospace;font-size:0.88rem;color:var(--white);letter-spacing:0.1em;}
+.status-available{color:#a8f0c0;font-size:0.72rem;font-weight:500;}
+.status-active{color:var(--gold);font-size:0.72rem;font-weight:500;}
+.status-used{color:rgba(255,255,255,0.2);font-size:0.72rem;}
+.revoke-btn{background:none;border:1px solid rgba(139,35,35,0.3);color:rgba(248,168,168,0.6);font-family:var(--sans);font-size:0.62rem;padding:0.25rem 0.6rem;border-radius:3px;cursor:pointer;transition:all 0.2s;}
+.revoke-btn:hover{border-color:rgba(139,35,35,0.7);color:#f8a8a8;}
+.empty-state{padding:2rem;text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.2);}
+
+/* MOBILE */
+@media(max-width:600px){
+  .gen-form{grid-template-columns:1fr;}
+  .dash-main{padding:1.5rem 4%;}
+  .code-display{font-size:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">Covered With Conditions</div>
+    <div class="login-sub">Advisor Portal</div>
+    <h1 class="login-title">Sign in to continue.</h1>
+    <p class="login-desc">This portal is private. Enter your advisor credentials to access the code generator and session management tools.</p>
+    <label class="field-label" for="loginUser">Username</label>
+    <input class="field-input" id="loginUser" type="text" placeholder="Advisor username" autocomplete="username"/>
+    <label class="field-label" for="loginPass">Password</label>
+    <input class="field-input" id="loginPass" type="password" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="loginError">Incorrect credentials. Please try again.</div>
+    <p class="login-note">This page is not linked from the public website.<br>Do not share this URL with clients.</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <div>
+      <div class="dash-brand">Covered With Conditions</div>
+      <div class="dash-sub">Advisor Portal</div>
+    </div>
+    <div class="dash-user">
+      <span class="dash-name">Eboni Morris &nbsp;&middot;&nbsp; NPN 18509552</span>
+      <button class="logout-btn" onclick="doLogout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="dash-main">
+    <div class="section-eyebrow">Code Management</div>
+    <h2 class="section-title">Generate a client session code.</h2>
+    <p class="section-desc">Enter the client's first name to generate their one-time interview code. Copy the ready-made text message and send it directly to their phone. Each code works once and locks the moment the client enters it.</p>
+
+    <!-- GENERATE -->
+    <div class="gen-card">
+      <div class="gen-card-title">New Session Code</div>
+      <div class="gen-form">
+        <div class="gen-field" style="grid-column:1/-1;">
+          <label class="gen-label">Client First Name *</label>
+          <input class="gen-input" id="clientName" type="text" placeholder="e.g. Marcus" onkeydown="if(event.key==='Enter')generateCode()"/>
+        </div>
+        <div class="gen-field">
+          <label class="gen-label">Product Type (optional)</label>
+          <input class="gen-input" id="productType" type="text" placeholder="e.g. Term, Whole Life, IUL"/>
+        </div>
+        <div class="gen-field">
+          <label class="gen-label">Notes (optional)</label>
+          <input class="gen-input" id="codeNotes" type="text" placeholder="e.g. diabetic, prior decline"/>
+        </div>
+      </div>
+      <button class="gen-btn" onclick="generateCode()">Generate Code</button>
+
+      <!-- RESULT -->
+      <div class="code-result" id="codeResult">
+        <div class="code-result-label">Code generated - ready to send</div>
+        <div class="code-display" id="codeDisplay"></div>
+        <div class="code-client-name" id="codeClientName"></div>
+        <div class="code-msg-box" id="codeMsgBox"></div>
+        <button class="copy-btn" id="copyBtn" onclick="copyMsg()">Copy Text Message</button>
+        <button class="new-code-btn" onclick="resetGen()">Generate Another</button>
+      </div>
+    </div>
+
+    <!-- ACTIVE CODES -->
+    <div class="codes-card">
+      <div class="codes-header">
+        <div class="codes-title">All Session Codes</div>
+        <div class="codes-count" id="codesCount"></div>
+      </div>
+      <table class="codes-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Client</th>
+            <th>Product</th>
+            <th>Notes</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="codesBody">
+          <tr><td colspan="7" class="empty-state">No codes generated yet. Create your first one above.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// ADVISOR CREDENTIALS
+// Change these to your own username and password
+// ============================================================
+var ADVISOR_USER = 'eboni';
+var ADVISOR_PASS = 'CoveredWithConditions2026';
+
+// Storage key
+var STORE_KEY = 'cwc_advisor_codes';
+var SESSION_KEY = 'cwc_advisor_session';
+
+// ── AUTH ──────────────────────────────────────────────────
+function doLogin() {
+  var u = document.getElementById('loginUser').value.trim();
+  var p = document.getElementById('loginPass').value.trim();
+  var err = document.getElementById('loginError');
+
+  if (u === ADVISOR_USER && p === ADVISOR_PASS) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    err.style.display = 'none';
+    showDashboard();
+  } else {
+    err.style.display = 'block';
+    document.getElementById('loginPass').value = '';
+  }
+}
+
+function doLogout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+}
+
+function showDashboard() {
+  document.getElementById('loginScreen').style.display = 'none';
+  var dash = document.getElementById('dashboard');
+  dash.style.display = 'flex';
+  dash.style.flexDirection = 'column';
+  renderCodes();
+}
+
+// Check if already logged in
+if (sessionStorage.getItem(SESSION_KEY) === '1') {
+  showDashboard();
+}
+
+// ── CODE GENERATION ───────────────────────────────────────
+function generateCode() {
+  var name = document.getElementById('clientName').value.trim();
+  if (!name) {
+    document.getElementById('clientName').style.borderColor = '#8B2323';
+    document.getElementById('clientName').focus();
+    return;
+  }
+  document.getElementById('clientName').style.borderColor = '';
+
+  var product = document.getElementById('productType').value.trim();
+  var notes   = document.getElementById('codeNotes').value.trim();
+
+  // Generate random 6-character alphanumeric code
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var code  = '';
+  for (var i = 0; i < 6; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  // Save to localStorage
+  var codes = getCodes();
+  codes.push({
+    code:    code,
+    client:  name,
+    product: product,
+    notes:   notes,
+    created: new Date().toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}),
+    status:  'available'
+  });
+  saveCodes(codes);
+
+  // Also write to interview.html storage so it knows the code is valid
+  var usedCodes = JSON.parse(localStorage.getItem('cwc_used_codes') || '{}');
+  // New code is available - do NOT add to usedCodes yet
+  // The interview page checks its own VALID_CODES object
+  // We store it separately so the interview page can verify
+  var validCodes = JSON.parse(localStorage.getItem('cwc_valid_codes') || '{}');
+  validCodes[code] = 'available';
+  localStorage.setItem('cwc_valid_codes', JSON.stringify(validCodes));
+
+  // Build text message
+  var msg = buildMessage(name, code);
+
+  // Show result
+  document.getElementById('codeDisplay').textContent = code;
+  document.getElementById('codeClientName').textContent = 'Client: ' + name + (product ? '  |  Product: ' + product : '');
+  document.getElementById('codeMsgBox').textContent = msg;
+  document.getElementById('codeResult').style.display = 'block';
+  document.getElementById('codeResult').scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  renderCodes();
+}
+
+function buildMessage(name, code) {
+  return 'Hello ' + name + ', this is Eboni Morris, your licensed insurance advisor. You are ready to begin your private life insurance interview.\n\nVisit the link below and enter your one-time code to get started:\n\nLink: coveredwithconditions.com/interview.html\nYour Code: ' + code + '\n\nThis code works one time only. If you have any questions before your session, reply to this message.';
+}
+
+function copyMsg() {
+  var msg = document.getElementById('codeMsgBox').textContent;
+  navigator.clipboard.writeText(msg).then(function() {
+    var btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy Text Message';
+      btn.classList.remove('copied');
+    }, 2500);
+  }).catch(function() {
+    // Fallback for older browsers
+    var ta = document.createElement('textarea');
+    ta.value = msg;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    var btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy Text Message';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+function resetGen() {
+  document.getElementById('clientName').value = '';
+  document.getElementById('productType').value = '';
+  document.getElementById('codeNotes').value = '';
+  document.getElementById('codeResult').style.display = 'none';
+  document.getElementById('clientName').focus();
+}
+
+// ── REVOKE CODE ───────────────────────────────────────────
+function revokeCode(code) {
+  if (!confirm('Revoke code ' + code + '? The client will no longer be able to use it.')) return;
+  var codes = getCodes();
+  codes = codes.map(function(c) {
+    if (c.code === code) c.status = 'revoked';
+    return c;
+  });
+  saveCodes(codes);
+
+  // Mark as used in interview system
+  var validCodes = JSON.parse(localStorage.getItem('cwc_valid_codes') || '{}');
+  delete validCodes[code];
+  localStorage.setItem('cwc_valid_codes', JSON.stringify(validCodes));
+
+  var usedCodes = JSON.parse(localStorage.getItem('cwc_used_codes') || '{}');
+  usedCodes[code] = 'used';
+  localStorage.setItem('cwc_used_codes', JSON.stringify(usedCodes));
+
+  renderCodes();
+}
+
+// ── RENDER CODES TABLE ────────────────────────────────────
+function renderCodes() {
+  var codes = getCodes();
+  var tbody = document.getElementById('codesBody');
+  var count = document.getElementById('codesCount');
+
+  // Sync status from interview system
+  var usedCodes = JSON.parse(localStorage.getItem('cwc_used_codes') || '{}');
+  codes = codes.map(function(c) {
+    if (usedCodes[c.code] === 'active') c.status = 'active';
+    if (usedCodes[c.code] === 'used') c.status = 'used';
+    return c;
+  });
+  saveCodes(codes);
+
+  var available = codes.filter(function(c){return c.status==='available';}).length;
+  count.textContent = codes.length + ' total &nbsp;&middot;&nbsp; ' + available + ' available';
+
+  if (codes.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No codes generated yet. Create your first one above.</td></tr>';
+    return;
+  }
+
+  // Show newest first
+  var sorted = codes.slice().reverse();
+  tbody.innerHTML = sorted.map(function(c) {
+    var statusClass = c.status === 'available' ? 'status-available' : c.status === 'active' ? 'status-active' : 'status-used';
+    var statusLabel = c.status === 'available' ? 'Available' : c.status === 'active' ? 'In Session' : c.status === 'revoked' ? 'Revoked' : 'Used';
+    var canRevoke = c.status === 'available';
+    return '<tr>'
+      + '<td><span class="code-mono">' + c.code + '</span></td>'
+      + '<td>' + escHtml(c.client) + '</td>'
+      + '<td>' + escHtml(c.product || '-') + '</td>'
+      + '<td>' + escHtml(c.notes || '-') + '</td>'
+      + '<td>' + c.created + '</td>'
+      + '<td><span class="' + statusClass + '">' + statusLabel + '</span></td>'
+      + '<td>' + (canRevoke ? '<button class="revoke-btn" onclick="revokeCode(\'' + c.code + '\')">Revoke</button>' : '') + '</td>'
+      + '</tr>';
+  }).join('');
+}
+
+// ── STORAGE HELPERS ───────────────────────────────────────
+function getCodes() {
+  return JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+}
+function saveCodes(codes) {
+  localStorage.setItem(STORE_KEY, JSON.stringify(codes));
+}
+function escHtml(t) {
+  return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+
+</body>
+</html>
