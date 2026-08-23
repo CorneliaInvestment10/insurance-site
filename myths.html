@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Myth Busted - Insurance Knowledge Game | Covered With Conditions</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Myth Busted - Insurance Knowledge Game | Covered With Conditions</title>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -935,7 +936,7 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 @media(max-width:768px){}
 
 </style>
-  <style>
+<style>
 .stadium-scoreboard{background:#0a0a0c;border:3px solid #222;border-radius:12px;padding:1rem 1.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;box-shadow:0 0 0 1px rgba(158,128,71,0.2),0 8px 32px rgba(0,0,0,0.4);}
 .sb-team{display:flex;flex-direction:column;align-items:center;gap:0.3rem;}
 .sb-team-name{font-family:var(--sans);font-size:0.85rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
@@ -1025,12 +1026,10 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   .br-title,.rules-title,.final-title{font-size:1.5rem;} .final-score-big{font-size:2.5rem;}
 }
   </style>
-
 <style>
 #mobileNav{display:none!important;}
 #mobileNav.open{display:flex!important;}
 </style>
-
 <style>
 /* Device-complementary layout - tablet and 4K additions only */
 @media(min-width:769px) and (max-width:1024px){
@@ -1044,94 +1043,437 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   .footer-col ul li a{font-size:0.82rem!important;}
 }
 </style>
-<button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
-<div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
-  <span class="a11y-heading">Accessibility Options</span>
-  <div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button></div></div>
 
+<style id="cwc-footer-a11y-fix">
+/* Final shared footer/accessibility/modal fixes */
+footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !important; }
+.footer-inner { max-width: 1160px !important; margin: 0 auto !important; }
+.footer-top { display: grid !important; grid-template-columns: 2fr 1fr 1fr !important; gap: 4rem !important; padding-bottom: 3rem !important; border-bottom: 1px solid rgba(255,255,255,0.07) !important; }
+.footer-brand .fb-main { font-family: var(--serif, Georgia) !important; font-size: 1.2rem !important; font-weight: 400 !important; color: var(--white, #fff) !important; }
+.footer-brand .fb-sub { font-size: 0.58rem !important; font-weight: 500 !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; color: var(--gold, #9e8047) !important; margin-top: 3px !important; }
+.footer-brand p { font-size: 0.85rem !important; color: rgba(255,255,255,0.32) !important; margin-top: 1rem !important; line-height: 1.8 !important; max-width: 240px !important; font-weight: 300 !important; }
+.footer-col h4 { font-size: 0.85rem !important; font-weight: 500 !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: var(--gold, #9e8047) !important; margin-bottom: 1.1rem !important; }
+.footer-col ul { list-style: none !important; display: flex !important; flex-direction: column !important; gap: 0.5rem !important; margin: 0 !important; padding: 0 !important; }
+.footer-col ul a { font-size: 0.85rem !important; color: rgba(255,255,255,0.32) !important; text-decoration: none !important; font-weight: 300 !important; }
+.footer-col ul a:hover { color: var(--white, #fff) !important; }
+.footer-bottom { display:flex !important; justify-content:space-between !important; align-items:center !important; flex-wrap:wrap !important; gap:0.5rem !important; padding-top:2rem !important; font-size:0.85rem !important; color:rgba(255,255,255,0.2) !important; font-weight:300 !important; }
+.footer-bottom a { color:var(--gold, #9e8047) !important; }
+.footer-license { margin-top:1.4rem !important; padding-top:1.4rem !important; border-top:1px solid rgba(255,255,255,0.07) !important; }
+.fl-title { font-family:var(--sans, system-ui) !important; font-size:0.85rem !important; font-weight:500 !important; letter-spacing:0.2em !important; text-transform:uppercase !important; color:var(--gold, #9e8047) !important; margin-bottom:0.6rem !important; }
+.fl-body { font-size:0.85rem !important; color:rgba(255,255,255,0.32) !important; line-height:1.8 !important; font-weight:300 !important; max-width:340px !important; }
+.fl-body strong { color:rgba(255,255,255,0.6) !important; font-weight:500 !important; }
+#a11yTab { position:fixed !important; right:0 !important; top:50% !important; transform:translateY(-50%) !important; z-index:10001 !important; background:#1a1a18 !important; border:1px solid rgba(158,128,71,0.5) !important; border-right:none !important; border-radius:6px 0 0 6px !important; padding:0.8rem 0.42rem !important; cursor:pointer !important; pointer-events:auto !important; writing-mode:vertical-rl !important; font-family:system-ui,sans-serif !important; font-size:0.85rem !important; font-weight:600 !important; letter-spacing:0.15em !important; text-transform:uppercase !important; color:#9e8047 !important; user-select:none !important; touch-action:manipulation !important; }
+#a11yTab:hover { background:#252522 !important; }
+#a11yPanel { display:none !important; position:fixed !important; right:32px !important; top:50% !important; transform:translateY(-50%) !important; z-index:10000 !important; background:#1a1a18 !important; border:1px solid rgba(158,128,71,0.3) !important; border-radius:10px 0 0 10px !important; padding:1.2rem 1rem !important; width:220px !important; max-height:calc(100vh - 40px) !important; overflow-y:auto !important; }
+#a11yPanel.open { display:block !important; }
+.a11y-heading { font-size:0.85rem !important; font-weight:700 !important; color:#9e8047 !important; padding-bottom:0.6rem !important; margin-bottom:0.8rem !important; border-bottom:1px solid rgba(158,128,71,0.35) !important; display:block !important; }
+.a11y-row { display:flex !important; flex-direction:column !important; gap:0.3rem !important; margin-bottom:0.75rem !important; }
+.a11y-row-label { font-size:0.85rem !important; font-weight:600 !important; color:#fff !important; }
+.a11y-row-btns { display:flex !important; gap:0.3rem !important; flex-wrap:wrap !important; }
+.a11y-btn { background:rgba(255,255,255,0.07) !important; border:1px solid rgba(255,255,255,0.15) !important; border-radius:4px !important; padding:0.28rem 0.65rem !important; font-size:0.85rem !important; color:rgba(255,255,255,0.5) !important; cursor:pointer !important; }
+.a11y-btn.active { background:#9e8047 !important; border-color:#9e8047 !important; color:#fff !important; }
+.a11y-sep { height:1px !important; background:rgba(255,255,255,0.08) !important; margin:0.25rem 0 !important; }
+.a11y-reset { width:100% !important; margin-top:0.5rem !important; background:none !important; border:1px solid rgba(255,255,255,0.12) !important; border-radius:4px !important; padding:0.4rem !important; font-size:0.85rem !important; color:rgba(255,255,255,0.35) !important; cursor:pointer !important; }
+.modal-overlay { display:none !important; position:fixed !important; inset:0 !important; background:rgba(10,10,10,0.72) !important; z-index:11000 !important; align-items:center !important; justify-content:center !important; padding:1.5rem !important; pointer-events:none !important; }
+.modal-overlay.open { display:flex !important; pointer-events:auto !important; }
+.modal-box { background:#fff !important; border-radius:8px !important; max-width:680px !important; width:100% !important; max-height:88vh !important; overflow-y:auto !important; }
+.modal-header { background:#1a1a18 !important; padding:1.4rem 1.8rem !important; display:flex !important; align-items:flex-start !important; justify-content:space-between !important; gap:1rem !important; border-radius:8px 8px 0 0 !important; }
+.modal-close { background:none !important; border:1px solid rgba(255,255,255,0.2) !important; border-radius:4px !important; width:32px !important; height:32px !important; display:flex !important; align-items:center !important; justify-content:center !important; cursor:pointer !important; color:rgba(255,255,255,0.6) !important; font-size:1.1rem !important; }
+.modal-body { padding:1.8rem 2rem !important; }
+@media(max-width:768px){ footer { padding:2rem 4% !important; } .footer-top { grid-template-columns:1fr !important; gap:1.5rem !important; } .footer-bottom { flex-direction:column !important; gap:0.3rem !important; } #a11yTab { top:auto !important; bottom:80px !important; transform:none !important; } #a11yPanel { top:auto !important; bottom:140px !important; transform:none !important; right:0 !important; width:calc(100vw - 2rem) !important; max-width:260px !important; border-radius:10px !important; max-height:50vh !important; } }
+</style>
+</head></html>
 <footer>
 <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="fb-main">Eboni Morris</div>
-        <div class="fb-sub">Licensed Independent Insurance Agent &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
-        <div class="footer-license">
-          <div class="fl-title">License Verification</div>
-          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
-          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, MI, OH, SC, TX</p>
-          
-        </div>
-      </div>
-      <div class="footer-col"><h4>Navigate</h4><ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="diabetes.html">Diabetes Coverage</a></li>
-        <li><a href="hiv-aids.html">HIV Coverage</a></li>
-        <li><a href="cancer.html">Cancer Coverage</a></li>
-        <li><a href="quote.html">Get a Quote</a></li>
-        <li><a href="education.html">Insurance Education</a></li>
-        <li><a href="myths.html">Myth Busted</a></li>
-        <li><a href="chat.html">Ask a Question</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Legal</h4><ul>
-        <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
-        <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
-        <li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li>
-        <li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li>
-        <li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li>
-        <li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li>
-        <li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li>
-        <li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li>
-      </ul></div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Agent. All rights reserved.</span>
-      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
-    </div>
-  
-  <p style="font-size:0.82rem;color:rgba(255,255,255,0.2);font-weight:300;line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">Covered with Conditions is a licensed independent insurance practice managed by Eboni Morris (NPN 18509552). All coverage options are subject to third-party carrier underwriting verification and are not guaranteed. Operations conducted in compliance with the Georgia Office of Commissioner of Insurance, Florida Department of Financial Services, Michigan Department of Insurance and Financial Services, Ohio Department of Insurance, South Carolina Department of Insurance, and Texas Department of Insurance.</p>
+<div class="footer-top">
+<div class="footer-brand">
+<div class="fb-main">Eboni Morris</div>
+<div class="fb-sub">Licensed Independent Insurance Agent  ·  Life  ·  Accident  ·  Sickness</div>
+<div class="footer-license">
+<div class="fl-title">License Verification</div>
+<p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+<p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, MI, OH, SC, TX</p>
+</div>
+</div>
+<div class="footer-col"><h4>Navigate</h4><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="diabetes.html">Diabetes Coverage</a></li>
+<li><a href="hiv-aids.html">HIV Coverage</a></li>
+<li><a href="cancer.html">Cancer Coverage</a></li>
+<li><a href="quote.html">Get a Quote</a></li>
+<li><a href="education.html">Insurance Education</a></li>
+<li><a href="myths.html">Myth Busted</a></li>
+<li><a href="chat.html">Ask a Question</a></li>
+</ul></div>
+<div class="footer-col"><h4>Legal</h4><ul>
+<li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
+<li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
+<li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li>
+<li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li>
+<li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li>
+<li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li>
+<li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li>
+<li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li>
+</ul></div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Eboni Morris. Licensed Independent Insurance Agent. All rights reserved.</span>
+<span>Licensed  ·  Life, Accident &amp; Sickness</span>
+</div>
+<p style="font-size:0.82rem;color:rgba(255,255,255,0.2);font-weight:300;line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">Covered with Conditions is a licensed independent insurance practice managed by Eboni Morris (NPN 18509552). All coverage options are subject to third-party carrier underwriting verification and are not guaranteed. Operations conducted in compliance with the Georgia Office of Commissioner of Insurance, Florida Department of Financial Services, Michigan Department of Insurance and Financial Services, Ohio Department of Insurance, South Carolina Department of Insurance, and Texas Department of Insurance.</p>
 </div>
 </footer>
-<script>
-function openModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
+<button aria-expanded="false" aria-label="Open accessibility options" id="a11yTab" onclick="a11yOpen()" type="button">Accessibility</button>
+<div aria-hidden="true" aria-label="Accessibility Options" id="a11yPanel" role="dialog">
+<span class="a11y-heading">Accessibility Options</span>
+<div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')" type="button">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')" type="button">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')" type="button">X-Large</button></div></div>
+<div class="a11y-sep"></div>
+<div class="a11y-row"><span class="a11y-row-label">High Contrast</span><div class="a11y-row-btns"><button class="a11y-btn" id="hc-btn" onclick="a11yToggle('hc-btn','hc-mode')" type="button">Enable</button></div></div>
+<div class="a11y-sep"></div>
+<div class="a11y-row"><span class="a11y-row-label">Dyslexia Font</span><div class="a11y-row-btns"><button class="a11y-btn" id="dy-btn" onclick="a11yToggle('dy-btn','dyslexia-font')" type="button">Enable</button></div></div>
+<div class="a11y-sep"></div>
+<div class="a11y-row"><span class="a11y-row-label">Reduce Motion</span><div class="a11y-row-btns"><button class="a11y-btn" id="rm-btn" onclick="a11yToggle('rm-btn','reduce-motion')" type="button">Enable</button></div></div>
+<div class="a11y-sep"></div>
+<div class="a11y-row"><span class="a11y-row-label">Screen Reader</span><div class="a11y-row-btns"><button class="a11y-btn" id="sr-btn" onclick="a11yToggle('sr-btn','sr-mode')" type="button">Enable</button></div></div>
+<button class="a11y-reset" onclick="a11yReset()" type="button">Reset All</button>
+</div>
+<span aria-live="polite" id="a11y-live" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;"></span>
+<div aria-labelledby="modal-privacy-title" aria-modal="true" class="modal-overlay" id="modal-privacy" onclick="closeModalOnOverlay(event,'modal-privacy')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div>
+<div class="modal-subtitle">Legal</div>
+<div class="modal-title" id="modal-privacy-title">Privacy Policy</div>
+</div>
+<button aria-label="Close privacy policy" class="modal-close" onclick="closeModal('modal-privacy')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">What This Policy Covers</div>
+<p>This privacy policy describes how Eboni Morris, licensed independent insurance agent (NPN: 18509552), collects, uses, and protects information submitted through this website. This policy applies to all information gathered through the intake questionnaire, referral forms, and any other communications submitted through coveredwithconditions.com.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Information We Collect</div>
+<p>When you submit an intake form or inquiry, we may collect the following types of information:</p>
+<ul>
+<li>Personal identifiers such as your name, date of birth, address, phone number, and email address</li>
+<li>Health and lifestyle information provided voluntarily for the purpose of evaluating coverage options</li>
+<li>Information about medications, medical history, and functional status as relevant to insurance underwriting</li>
+<li>Beneficiary relationship information provided in connection with coverage inquiries</li>
+</ul>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">How Your Information Is Used</div>
+<p>Information you submit is used solely for the purpose of evaluating and presenting life insurance coverage options on your behalf. It is not sold, rented, or shared with any third party except as necessary to process a formal insurance application at your direction, and only with your explicit written authorization prior to any application submission.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Your Rights</div>
+<p>You have the right to request access to the information we hold about you, request corrections to inaccurate information, and request that your information not be used for purposes beyond this independent engagement. To exercise any of these rights, contact this office directly.</p>
+</div>
+<div class="modal-notice">This policy is subject to applicable federal and state insurance privacy regulations. Nothing in this policy limits any rights you may have under HIPAA, applicable state insurance privacy laws, or the Fair Credit Reporting Act.</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="modal-hipaa-title" aria-modal="true" class="modal-overlay" id="modal-hipaa" onclick="closeModalOnOverlay(event,'modal-hipaa')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div>
+<div class="modal-subtitle">Federal Privacy Law</div>
+<div class="modal-title" id="modal-hipaa-title">HIPAA Privacy Notice</div>
+</div>
+<button aria-label="Close HIPAA notice" class="modal-close" onclick="closeModal('modal-hipaa')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">What HIPAA Is</div>
+<p>The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that establishes national standards for the protection of certain health information. HIPAA restricts how health information may be used and shared and gives individuals specific rights regarding their health data.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">How It Applies Here</div>
+<p>Any health-related information you provide through this website or during our professional engagement is handled in strict compliance with applicable HIPAA privacy standards. This includes any medical history, conditions, medications, or other health information submitted as part of an intake questionnaire or consultation.</p>
+<p>Your health information will not be disclosed to any insurance carrier or third party without your written authorization prior to any formal application submission. You will be informed of what information is being shared, with whom, and for what purpose before any such disclosure occurs.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Your HIPAA Rights</div>
+<ul>
+<li>The right to receive a notice of privacy practices</li>
+<li>The right to access and review health information held about you</li>
+<li>The right to request corrections to inaccurate information</li>
+<li>The right to request restrictions on certain uses or disclosures</li>
+<li>The right to receive an accounting of disclosures made on your behalf</li>
+<li>The right to file a complaint if you believe your privacy rights have been violated</li>
+</ul>
+</div>
+<div class="modal-notice">If you believe your health information privacy rights have been violated, you may file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights. Filing a complaint will not affect your ability to obtain coverage or services through this practice.</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="modal-terms-title" aria-modal="true" class="modal-overlay" id="modal-terms" onclick="closeModalOnOverlay(event,'modal-terms')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div>
+<div class="modal-subtitle">Legal</div>
+<div class="modal-title" id="modal-terms-title">Terms of Use</div>
+</div>
+<button aria-label="Close terms of use" class="modal-close" onclick="closeModal('modal-terms')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">Use of This Website</div>
+<p>This website, coveredwithconditions.com, is operated by Eboni Morris, a licensed independent insurance agent (NPN: 18509552). By accessing or using this website, you agree to the following terms. If you do not agree, please do not use this site.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">No Insurance Offer or Guarantee</div>
+<p>Nothing on this website constitutes an offer, commitment, or guarantee of insurance coverage. All coverage is subject to formal application, individual carrier underwriting approval, and the terms of the actual policy contract issued by the insurance company. Information on this site is provided for general educational and informational purposes only.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Accuracy of Information</div>
+<p>While we make reasonable efforts to keep information on this site current and accurate, insurance products, carrier guidelines, licensing requirements, and applicable laws are subject to change. You should not rely solely on information found on this website when making insurance decisions. Consult with a licensed insurance professional for advice specific to your situation.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">No Attorney-Client or Financial Advisory Relationship</div>
+<p>Use of this website does not create an attorney-client relationship, a financial advisory relationship, or any other professional engagement beyond that of a licensed insurance producer. Information provided through intake forms is used solely for the purpose of evaluating and presenting life insurance coverage options.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Intellectual Property</div>
+<p>All content on this website, including text, design, layout, and educational materials, is the property of Eboni Morris and may not be reproduced, distributed, or used without written permission.</p>
+</div>
+<div class="modal-notice">These terms are governed by the laws of the State of Georgia. Eboni Morris reserves the right to update these terms at any time. Continued use of this site following any update constitutes acceptance of the revised terms.</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="modal-license-title" aria-modal="true" class="modal-overlay" id="modal-license" onclick="closeModalOnOverlay(event,'modal-license')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div>
+<div class="modal-subtitle">Producer Licensing</div>
+<div class="modal-title" id="modal-license-title">Licensing Information</div>
+</div>
+<button aria-label="Close licensing information" class="modal-close" onclick="closeModal('modal-license')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">Licensed Producer</div>
+<p>This website is operated by Eboni Morris, a licensed independent insurance agent appointed with multiple insurance carriers. Eboni Morris holds life, accident, and sickness licenses and has been licensed since 2017.</p>
+<ul>
+<li>National Producer Number (NPN): 18509552</li>
+<li>License Type: Life, Accident and Sickness</li>
+<li>Licensed Since: 2017</li>
+<li>Resident State: Georgia</li>
+</ul>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">States Where Licensed</div>
+<p>Eboni Morris is currently licensed to solicit, negotiate, and sell life insurance in the following states:</p>
+<ul>
+<li>Georgia (GA) - Resident License</li>
+<li>Florida (FL) - Nonresident License</li>
+<li>Michigan (MI) - Nonresident License</li>
+<li>Ohio (OH) - Nonresident License</li>
+<li>South Carolina (SC) - Nonresident License</li>
+<li>Texas (TX) - Nonresident License</li>
+</ul>
+<p>Expansion to additional states is ongoing. If you are located in a state not listed above, please complete the intake form and we will advise whether service is currently available in your state or connect you with a licensed partner where applicable.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">License Verification</div>
+<p>Licensure can be independently verified through the National Insurance Producers Registry (NIPR) by calling 1 (855) 674-6477 and referencing National Producer Number (NPN) 18509552. You may also verify licensing through the insurance department of your individual state.</p>
+</div>
+<div class="modal-notice">Insurance products are offered through multiple insurance carriers and are subject to individual carrier underwriting approval. Eboni Morris operates as an independent agent and is not an employee or exclusive representative of any single insurance company.</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="modal-fcra-title" aria-modal="true" class="modal-overlay" id="modal-fcra" onclick="closeModalOnOverlay(event,'modal-fcra')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title" id="modal-fcra-title">Fair Credit Reporting Act (FCRA)</div></div>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-fcra')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">What the FCRA Is</div>
+<p>The Fair Credit Reporting Act (FCRA) is a federal law that regulates how consumer reporting agencies collect, use, and share information about individuals. It gives consumers specific rights when their information is used to make decisions about them, including decisions related to insurance.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">How It Applies to Your Insurance Application</div>
+<p>In connection with a formal application for life insurance, the issuing insurance company may obtain a consumer report about you. This report can include information about your creditworthiness, credit standing, character, general reputation, personal characteristics, or mode of living.</p>
+<p>If the insurance company takes an adverse action based in whole or in part on information in a consumer report, such as declining your application, offering a rated premium, or limiting your benefit, the company is required by federal law to notify you. That notice must include the name, address, and phone number of the consumer reporting agency that supplied the report.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Your Rights Under the FCRA</div>
+<ul>
+<li>The right to be told if information in your consumer report was used against you</li>
+<li>The right to request a copy of your consumer report from the reporting agency</li>
+<li>The right to dispute inaccurate or incomplete information in the report</li>
+<li>The right to add a statement of explanation to your file if a dispute is not resolved</li>
+<li>The right to seek damages from violators of the FCRA</li>
+</ul>
+</div>
+<div class="modal-notice">No consumer report will be requested on your behalf without your knowledge. You will be informed prior to any application submission. This independent practice does not request or receive consumer reports directly.</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="modal-mib-title" aria-modal="true" class="modal-overlay" id="modal-mib" onclick="closeModalOnOverlay(event,'modal-mib')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title" id="modal-mib-title">Medical Information Bureau (MIB)</div></div>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mib')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">What the MIB Is</div>
+<p>The Medical Information Bureau (MIB) is a member-owned organization that operates as an information exchange among participating life and health insurance companies. Most individually underwritten life and health insurance carriers are MIB members.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">How It Affects Your Application</div>
+<p>When you apply for individually underwritten life or health insurance, the issuing carrier may request information from the MIB about prior insurance applications or claims you may have submitted with other member companies. This coded information is used during the underwriting process to identify inconsistencies and help prevent misrepresentation on applications, which helps keep premiums fair for all consumers.</p>
+<p>The MIB may also create a record of your current application that future member companies may access if you apply elsewhere.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Your MIB Rights</div>
+<ul>
+<li>You have the right to request a copy of any information the MIB has on file about you</li>
+<li>You may contact the MIB directly at mib.com or by calling 1-866-692-6901</li>
+<li>You have the right to dispute any inaccurate information in your MIB file</li>
+<li>MIB information alone is not used to make a final underwriting decision</li>
+</ul>
+</div>
+<div class="modal-notice">A formal MIB inquiry will not be initiated without your knowledge and will only occur in connection with a formal application submitted at your direction.</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="modal-rx-title" aria-modal="true" class="modal-overlay" id="modal-rx" onclick="closeModalOnOverlay(event,'modal-rx')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-rx-title">Pharmacy Records (Rx History)</div></div>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-rx')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">What a Pharmacy Records Check Is</div>
+<p>Depending on the insurance carrier and the product applied for, the issuing company may request a report that includes your current and historical prescription drug records from participating pharmacies. This type of report is a standard underwriting tool used by many life insurance carriers.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">How It Is Used</div>
+<p>Prescription drug history is reviewed during underwriting to help the carrier correlate medications on file with health conditions disclosed on the application. It helps the carrier evaluate risk and ensure the accuracy of information provided. The report typically covers several years of prescription history from participating pharmacy networks.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Your Rights</div>
+<ul>
+<li>A pharmacy records check will only be requested as part of a formal application submitted at your direction</li>
+<li>You will be informed if such a check is required before your application is submitted</li>
+<li>If an adverse underwriting decision is made based on this information, you will be notified and given the right to dispute inaccuracies</li>
+</ul>
+</div>
+<div class="modal-notice">Pharmacy record checks may or may not be required depending on the specific carrier and product selected. Not every carrier uses this type of report for every application.</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="modal-mvr-title" aria-modal="true" class="modal-overlay" id="modal-mvr" onclick="closeModalOnOverlay(event,'modal-mvr')" role="dialog" style="display:none">
+<div class="modal-box">
+<div class="modal-header">
+<div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-mvr-title">Motor Vehicle Report (MVR)</div></div>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mvr')">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-section">
+<div class="modal-section-title">What a Motor Vehicle Report Is</div>
+<p>A Motor Vehicle Report (MVR) is a report obtained from your state Department of Motor Vehicles that provides a history of your driving record. It may include traffic violations, license suspensions or revocations, DUI or DWI convictions, accidents on record, and the current status of your driver's license.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">How It Is Used in Life Insurance Underwriting</div>
+<p>Some life insurance carriers review driving history as part of the underwriting process because certain driving patterns, such as multiple DUI convictions or a history of reckless driving, are considered indicators of risk. An MVR may be requested depending on the carrier's underwriting guidelines for the specific product applied for.</p>
+</div>
+<div class="modal-divider"></div>
+<div class="modal-section">
+<div class="modal-section-title">Your Rights</div>
+<ul>
+<li>An MVR will only be requested as part of a formal application submitted at your direction</li>
+<li>You will be informed if an MVR is required before your application is submitted</li>
+<li>If an adverse underwriting action is taken based on MVR information, you have the right to be notified under applicable federal and state law</li>
+<li>You may obtain a copy of your own driving record directly from your state DMV at any time</li>
+</ul>
+</div>
+<div class="modal-notice">An MVR may or may not be required depending on the specific carrier and product. Not all carriers order motor vehicle reports for every applicant or product type.</div>
+</div>
+</div>
+</div>
+<script id="cwc-global-fix">
+(function(){
+  function byId(id){ return document.getElementById(id); }
+  window.openModal = function(id){
+    var m=byId(id);
+    if(!m) return false;
+    m.style.display='flex';
     m.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // Focus the close button for keyboard/screen reader users
-    var close = m.querySelector('.modal-close');
-    if (close) setTimeout// Ensure all form buttons are touch-friendly on iOS
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.cbtn, .pob, .kick-btn, .btn-next, .btn-prev, .btn-submit').forEach(function(btn) {
-    btn.style.touchAction = 'manipulation';
-    btn.style.webkitTapHighlightColor = 'rgba(0,0,0,0.1)';
-    btn.style.pointerEvents = 'auto';
-    btn.style.cursor = 'pointer';
-  });
-});
-
-(function(){ close.focus(); }, 50);
-  }
-}
-function closeModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
+    document.body.style.overflow='hidden';
+    var close=m.querySelector('.modal-close');
+    if(close) setTimeout(function(){ try{close.focus();}catch(e){} },50);
+    return false;
+  };
+  window.closeModal = function(id){
+    var m=byId(id);
+    if(!m) return;
+    m.style.display='none';
     m.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-function closeModalOnOverlay(e, id) {
-  if (e.target === e.currentTarget) closeModal(id);
-}
-// Close on Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
-      m.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  }
-});
+    document.body.style.overflow='';
+  };
+  window.closeModalOnOverlay = function(e,id){ if(e.target===e.currentTarget) window.closeModal(id); };
+  window.a11yOpen = function(){
+    var p=byId('a11yPanel'), t=byId('a11yTab');
+    if(!p||!t) return;
+    var open=p.classList.toggle('open');
+    p.setAttribute('aria-hidden',open?'false':'true');
+    t.setAttribute('aria-expanded',open?'true':'false');
+  };
+  window.a11yText = function(val){
+    var b=document.body; b.classList.remove('lg-text','xl-text');
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=byId(id);if(el)el.classList.remove('active');});
+    var id=val==='large'?'ts-large':val==='xl'?'ts-xl':'ts-normal', el=byId(id);
+    if(val==='large') b.classList.add('lg-text');
+    if(val==='xl') b.classList.add('xl-text');
+    if(el) el.classList.add('active');
+    try{localStorage.setItem('a11y_text',val);}catch(e){}
+    var live=byId('a11y-live'); if(live) live.textContent='Text size updated.';
+  };
+  window.a11yToggle = function(btnId,cssClass){
+    var on=!document.body.classList.contains(cssClass); document.body.classList.toggle(cssClass,on);
+    var btn=byId(btnId); if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}
+  };
+  window.a11yReset = function(){
+    document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
+    ['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=byId(id);if(el){el.classList.remove('active');el.textContent='Enable';}});
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=byId(id);if(el)el.classList.remove('active');});
+    var n=byId('ts-normal');if(n)n.classList.add('active');
+  };
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.style.display='none';m.classList.remove('open');});
+      document.body.style.overflow='';
+      var p=byId('a11yPanel'),t=byId('a11yTab'); if(p&&p.classList.contains('open')){p.classList.remove('open');p.setAttribute('aria-hidden','true');if(t)t.setAttribute('aria-expanded','false');}
+    }
+  });
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('button, a').forEach(function(el){el.style.touchAction='manipulation';});
+  });
+})();
 </script>
-</body>
-</html>
