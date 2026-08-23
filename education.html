@@ -1156,6 +1156,182 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
 .modal-body { padding:1.8rem 2rem !important; }
 @media(max-width:768px){ footer { padding:2rem 4% !important; } .footer-top { grid-template-columns:1fr !important; gap:1.5rem !important; } .footer-bottom { flex-direction:column !important; gap:0.3rem !important; } #a11yTab { top:auto !important; bottom:80px !important; transform:none !important; } #a11yPanel { top:auto !important; bottom:140px !important; transform:none !important; right:0 !important; width:calc(100vw - 2rem) !important; max-width:260px !important; border-radius:10px !important; max-height:50vh !important; } }
 </style>
+<style id="interview-modal-visual-fix">
+/* Interview Now modal: isolated styling so existing modal CSS cannot override it. */
+#modal-doxy-note{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:2147483600 !important;
+  display:none;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:24px !important;
+  background:rgba(0,0,0,.72) !important;
+  box-sizing:border-box !important;
+}
+#modal-doxy-note.open{
+  display:flex !important;
+}
+#modal-doxy-note .interview-modal-box{
+  position:relative !important;
+  width:min(700px, calc(100vw - 40px)) !important;
+  max-height:calc(100vh - 48px) !important;
+  overflow:auto !important;
+  margin:0 auto !important;
+  border-radius:10px !important;
+  background:#fff !important;
+  box-shadow:0 24px 70px rgba(0,0,0,.38) !important;
+  box-sizing:border-box !important;
+}
+#modal-doxy-note .interview-modal-header{
+  position:relative !important;
+  min-height:104px !important;
+  padding:25px 70px 23px 30px !important;
+  background:#1a1a18 !important;
+  color:#fff !important;
+  box-sizing:border-box !important;
+}
+#modal-doxy-note .interview-modal-kicker{
+  margin:0 0 10px !important;
+  font-family:var(--serif, Georgia, serif) !important;
+  font-size:1.25rem !important;
+  font-weight:400 !important;
+  line-height:1.2 !important;
+  color:#fff !important;
+}
+#modal-doxy-note .interview-modal-title{
+  margin:0 !important;
+  font-family:var(--sans, Arial, sans-serif) !important;
+  font-size:.72rem !important;
+  font-weight:700 !important;
+  letter-spacing:.18em !important;
+  line-height:1.5 !important;
+  text-transform:uppercase !important;
+  color:#c5a25a !important;
+}
+#modal-doxy-note .interview-modal-close{
+  position:absolute !important;
+  top:22px !important;
+  right:24px !important;
+  width:38px !important;
+  height:38px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+  border:1px solid rgba(255,255,255,.7) !important;
+  border-radius:4px !important;
+  background:transparent !important;
+  color:#fff !important;
+  font-size:24px !important;
+  font-weight:300 !important;
+  line-height:1 !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+}
+#modal-doxy-note .interview-modal-close:hover,
+#modal-doxy-note .interview-modal-close:focus-visible{
+  background:#fff !important;
+  color:#1a1a18 !important;
+  outline:none !important;
+}
+#modal-doxy-note .interview-modal-body{
+  padding:34px 34px 30px !important;
+  background:#fff !important;
+  color:#6b6966 !important;
+  box-sizing:border-box !important;
+}
+#modal-doxy-note .interview-modal-body h3{
+  margin:0 0 18px !important;
+  font-family:var(--sans, Arial, sans-serif) !important;
+  font-size:1rem !important;
+  font-weight:700 !important;
+  line-height:1.4 !important;
+  color:#1a1a18 !important;
+}
+#modal-doxy-note .interview-modal-body p{
+  margin:0 0 20px !important;
+  font-family:var(--sans, Arial, sans-serif) !important;
+  font-size:.96rem !important;
+  line-height:1.8 !important;
+  color:#77736f !important;
+}
+#modal-doxy-note .interview-modal-body p a{
+  color:#b18d46 !important;
+  text-decoration:none !important;
+}
+#modal-doxy-note .interview-modal-body p a:hover{
+  text-decoration:underline !important;
+}
+#modal-doxy-note .interview-modal-action{
+  display:flex !important;
+  justify-content:center !important;
+  width:100% !important;
+  margin:26px 0 0 !important;
+}
+#modal-doxy-note .interview-modal-action a{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-height:58px !important;
+  padding:15px 24px !important;
+  border-radius:4px !important;
+  background:#1a1a18 !important;
+  color:#fff !important;
+  font-family:var(--sans, Arial, sans-serif) !important;
+  font-size:.9rem !important;
+  font-weight:600 !important;
+  line-height:1.3 !important;
+  text-align:center !important;
+  text-decoration:none !important;
+  box-sizing:border-box !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+}
+#modal-doxy-note .interview-modal-action a:hover,
+#modal-doxy-note .interview-modal-action a:focus-visible{
+  background:#2a2a27 !important;
+  color:#fff !important;
+  outline:2px solid #c5a25a !important;
+  outline-offset:2px !important;
+}
+@media (max-width:640px){
+  #modal-doxy-note{
+    padding:14px !important;
+  }
+  #modal-doxy-note .interview-modal-box{
+    width:100% !important;
+    max-height:calc(100vh - 28px) !important;
+  }
+  #modal-doxy-note .interview-modal-header{
+    min-height:112px !important;
+    padding:22px 58px 20px 22px !important;
+  }
+  #modal-doxy-note .interview-modal-kicker{
+    font-size:1.12rem !important;
+  }
+  #modal-doxy-note .interview-modal-title{
+    font-size:.65rem !important;
+    letter-spacing:.13em !important;
+  }
+  #modal-doxy-note .interview-modal-close{
+    top:18px !important;
+    right:18px !important;
+  }
+  #modal-doxy-note .interview-modal-body{
+    padding:26px 22px 24px !important;
+  }
+  #modal-doxy-note .interview-modal-body p{
+    font-size:.93rem !important;
+    line-height:1.7 !important;
+  }
+  #modal-doxy-note .interview-modal-action a{
+    min-height:56px !important;
+    font-size:.84rem !important;
+  }
+}
+</style>
 </head>
 <body>
 <nav class="navbar">
@@ -1742,6 +1918,12 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
 
   <div class="disclaimer"><div class="disclaimer-inner"><strong>Educational Disclaimer:</strong> All content on this page is provided for general informational and educational purposes only and does not constitute insurance advice, a policy illustration, or an offer of coverage. Product terms, structures, benefit definitions, rider provisions, and eligibility criteria vary among carriers and are subject to change at any time without notice. All coverage is subject to the actual policy contract and the underwriting guidelines of the issuing carrier at the time of application. Consult a licensed insurance advisor before making any coverage decision.</div></div>
 </main>
+<div id="interviewNowBtn" style="position:fixed;right:0;bottom:90px;z-index:9997;display:flex;align-items:center;">
+<a href="#" onclick="openModal('modal-doxy-note');return false;" onmouseout="this.style.background='#2e7d52'" onmouseover="this.style.background='#9e8047'" style="display:flex;align-items:center;gap:0.5rem;background:#2e7d52;color:#fff;font-family:system-ui,sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.1rem;border-radius:6px 0 0 6px;border:none;cursor:pointer;text-decoration:none;box-shadow:-2px 2px 8px rgba(0,0,0,0.2);white-space:nowrap;">
+<svg fill="none" height="14" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="14"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    Interview Now
+  </a>
+</div>
 <button id="a11yTab" type="button" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
 <div id="a11yPanel" role="dialog" aria-label="Accessibility Options" aria-hidden="true">
   <span class="a11y-heading">Accessibility Options</span>
@@ -2043,23 +2225,31 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
 </div>
 </div>
 
-<div aria-label="Interview Chat Notice" aria-modal="true" class="modal-overlay" id="modal-doxy-note" onclick="closeModalOnOverlay(event,'modal-doxy-note')" role="dialog" style="display:none">
-<div class="modal-box" style="max-width:480px;">
-<div class="modal-header">
-<div>
-<div class="modal-title">Before You Join</div>
-<div class="modal-subtitle">Important note about your interview session</div>
+
+<div class="modal-overlay" id="modal-doxy-note" role="dialog" aria-modal="true" aria-labelledby="modal-doxy-title" style="display:none;">
+  <div class="interview-modal-box">
+    <div class="interview-modal-header">
+      <div class="interview-modal-kicker">Before You Join</div>
+      <div class="interview-modal-title" id="modal-doxy-title">IMPORTANT NOTE ABOUT YOUR INTERVIEW SESSION</div>
+      <button type="button" class="interview-modal-close" aria-label="Close" onclick="closeModal('modal-doxy-note')">×</button>
+    </div>
+
+    <div class="interview-modal-body">
+      <h3>Before you join the waiting room</h3>
+
+      <p>Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
+
+      <p>You may also visit the <a href="https://insurance-site-b74vp2r33-cornelia-investment-group.vercel.app/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
+
+      <div class="interview-modal-action">
+        <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer">
+          I Understand - Join the Waiting Room
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-doxy-note')">×</button>
-</div>
-<div class="modal-body">
-<p style="font-family:system-ui;font-size:1rem;color:#1a1a18;font-weight:500;margin-bottom:0.75rem;">Before you join the waiting room</p>
-<p style="font-family:system-ui;font-size:0.95rem;color:#5c5955;font-weight:300;line-height:1.8;margin-bottom:1rem;">Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
-<p style="font-family:system-ui;font-size:0.95rem;color:#5c5955;font-weight:300;line-height:1.8;margin-bottom:1.5rem;">You may also visit the <a href="quote.html" style="color:#9e8047;">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
-<a href="https://doxy.me/coveredwithconditions" onclick="closeModal('modal-doxy-note')" rel="noopener noreferrer" style="display:block;background:#1a1a18;color:#fff;font-family:system-ui;font-size:0.9rem;font-weight:500;padding:0.9rem 1.5rem;border-radius:4px;text-decoration:none;text-align:center;" target="_blank">I Understand - Join the Waiting Room</a>
-</div>
-</div>
-</div>
+
 <footer>
 <div class="footer-inner">
 <div class="footer-top">
@@ -2101,22 +2291,8 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
 <p style="font-size:0.82rem;color:rgba(255,255,255,0.2);font-weight:300;line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">Covered with Conditions is a licensed independent insurance practice managed by Eboni Morris (NPN 18509552). All coverage options are subject to third-party carrier underwriting verification and are not guaranteed. Operations conducted in compliance with the Georgia Office of Commissioner of Insurance, Florida Department of Financial Services, Michigan Department of Insurance and Financial Services, Ohio Department of Insurance, South Carolina Department of Insurance, and Texas Department of Insurance.</p>
 </div>
 </footer><script>
-function openModal(id){
-  var m=document.getElementById(id);
-  if(m){
-    m.classList.add('open');
-    document.body.style.overflow='hidden';
-    var close=m.querySelector('.modal-close');
-    if(close) setTimeout(function(){close.focus();},50);
-  }
-}
-function closeModal(id){
-  var m=document.getElementById(id);
-  if(m){
-    m.classList.remove('open');
-    document.body.style.overflow='';
-  }
-}
+
+
 function closeModalOnOverlay(e,id){
   if(e.target===e.currentTarget) closeModal(id);
 }
@@ -2180,35 +2356,51 @@ document.addEventListener('keydown',function(e){
   }
 });
 </script>
+
+<script id="education-modal-interaction-final">
+(function () {
+  window.openModal = function (id) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add('open');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeModal = function (id) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  window.closeModalOnOverlay = function (event, id) {
+    if (event.target === event.currentTarget) {
+      window.closeModal(id);
+    }
+  };
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(function (modal) {
+        modal.classList.remove('open');
+        modal.style.display = 'none';
+      });
+      document.body.style.overflow = '';
+    }
+  });
+})();
+</script>
+
 </body>
 </html><script>
-function openModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
-    m.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // Focus the close button for keyboard/screen reader users
-    var close = m.querySelector('.modal-close');
-    if (close) setTimeout// Ensure all form buttons are touch-friendly on iOS
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.cbtn, .pob, .kick-btn, .btn-next, .btn-prev, .btn-submit').forEach(function(btn) {
-    btn.style.touchAction = 'manipulation';
-    btn.style.webkitTapHighlightColor = 'rgba(0,0,0,0.1)';
-    btn.style.pointerEvents = 'auto';
-    btn.style.cursor = 'pointer';
-  });
-});
+);
 
 (function(){ close.focus(); }, 50);
   }
 }
-function closeModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
-    m.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
+
 function closeModalOnOverlay(e, id) {
   if (e.target === e.currentTarget) closeModal(id);
 }
