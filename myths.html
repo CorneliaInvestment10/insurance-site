@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<title>Myth Busted - Insurance Knowledge Game | Covered With Conditions</title>
-<style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Myth Busted - Insurance Knowledge Game | Covered With Conditions</title>
+  <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -140,40 +139,6 @@ button { font-family: var(--sans); cursor: pointer; }
 .disclaimer { background: var(--warm2); border-top: 1px solid var(--warm3); padding: 1.8rem 6%; font-size: 0.85rem; color: var(--text); line-height: 1.75; font-weight: 300; }
 .disclaimer strong { color: var(--ink); font-weight: 500; }
 .disclaimer-inner { max-width: 1160px; margin: 0 auto; }
-
-/* ===== ACCESSIBILITY TAB + PANEL ===== */
-#a11yTab {
-  position: fixed; right: 0; top: 50%; transform: translateY(-50%);
-  z-index: 9999; background: #1A1A18;
-  border: 1px solid rgba(158,128,71,0.45); border-right: none;
-  border-radius: 6px 0 0 6px; padding: 0.7rem 0.4rem;
-  cursor: pointer; writing-mode: vertical-rl;
-  font-family: var(--sans); font-size: 0.58rem; font-weight: 500;
-  letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold);
-  user-select: none; transition: background 0.2s;
-  box-shadow: -3px 0 12px rgba(0,0,0,0.3);
-  touch-action: manipulation;
-}
-#a11yTab:hover { background: #252522; }
-#a11yPanel {
-  position: fixed; right: 30px; top: 50%; transform: translateY(-50%);
-  z-index: 9998; background: #1A1A18;
-  border: 1px solid rgba(158,128,71,0.3); border-radius: 8px 0 0 8px;
-  padding: 1rem 0.9rem; width: 185px;
-  box-shadow: -4px 0 20px rgba(0,0,0,0.35);
-  display: none;
-}
-#a11yPanel.open { display: flex; flex-direction: column; gap: 0.75rem; }
-.a11y-side-title { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
-.a11y-side-row { display: flex; flex-direction: column; gap: 0.3rem; }
-.a11y-side-label { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
-.a11y-side-btns { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-.a11y-s-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 3px; padding: 0.28rem 0.6rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.15s; white-space: nowrap; line-height: 1; }
-.a11y-s-btn:hover { background: rgba(158,128,71,0.2); border-color: var(--gold); color: var(--gold); }
-.a11y-s-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
-.a11y-side-divider { height: 1px; background: rgba(255,255,255,0.08); }
-.a11y-side-reset { background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; padding: 0.3rem; font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.15s; width: 100%; }
-.a11y-side-reset:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.55); }
 
 /* ── FOOTER ── */
 footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
@@ -520,14 +485,7 @@ footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
   .hero-left{padding:7rem 6% 5rem;min-height:80vh;}
   .phs{grid-template-columns:1fr;}
   .phs-right{padding:4rem 6%;}
-  .cond-mosaic {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--warm3);
-  border: 1px solid var(--warm3);
-  margin-top: 2.5rem;
-}
+  .cond-mosaic{grid-template-columns:repeat(3,1fr);}
   .proc-grid{grid-template-columns:repeat(2,1fr);}
   .proc-item{border-bottom:1px solid var(--warm3);}
   .values-grid{grid-template-columns:repeat(2,1fr);}
@@ -808,10 +766,6 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
 
 
-
-
-
-
 /* ===== COMPREHENSIVE MOBILE ===== */
 @media(max-width:768px){
   body { overflow-x:hidden !important; }
@@ -896,6 +850,11 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
 
 @media(max-width:768px){
+  .nipr-strip { flex-direction:column !important; align-items:center !important; gap:0.25rem !important; padding:0.5rem 4% !important; text-align:center !important; }
+  .nipr-sep { display:none !important; }
+}
+
+@media(max-width:768px){
   .nipr-bar { flex-direction:column !important; align-items:center !important; text-align:center !important; gap:0.3rem !important; padding:0.5rem 4% !important; }
   .nipr-sep { display:none !important; }
 }
@@ -936,7 +895,7 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 @media(max-width:768px){}
 
 </style>
-<style>
+  <style>
 .stadium-scoreboard{background:#0a0a0c;border:3px solid #222;border-radius:12px;padding:1rem 1.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;box-shadow:0 0 0 1px rgba(158,128,71,0.2),0 8px 32px rgba(0,0,0,0.4);}
 .sb-team{display:flex;flex-direction:column;align-items:center;gap:0.3rem;}
 .sb-team-name{font-family:var(--sans);font-size:0.85rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
@@ -1026,454 +985,720 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   .br-title,.rules-title,.final-title{font-size:1.5rem;} .final-score-big{font-size:2.5rem;}
 }
   </style>
-<style>
-#mobileNav{display:none!important;}
-#mobileNav.open{display:flex!important;}
+<style id="myths-interview-about-match">
+#interviewNowBtn { pointer-events:auto !important; z-index:2147483000 !important; }
+#interviewNowBtn a { pointer-events:auto !important; cursor:pointer !important; touch-action:manipulation !important; }
+#modal-doxy-note { z-index:2147483600 !important; }
+#modal-doxy-note.open { display:flex !important; }
 </style>
-<style>
-/* Device-complementary layout - tablet and 4K additions only */
-@media(min-width:769px) and (max-width:1024px){
-  .footer-top{grid-template-columns:1fr 1fr!important;gap:2rem!important;}
-}
-@media(min-width:1920px){
-  .footer-inner{max-width:1400px!important;margin:0 auto!important;}
-}
-@media(max-width:374px){
-  .footer-col h4{font-size:0.68rem!important;}
-  .footer-col ul li a{font-size:0.82rem!important;}
-}
-</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Covered With Conditions</div>
+    <div class="brand-sub">Life &nbsp;&#183;&nbsp; Accident &nbsp;&#183;&nbsp; Sickness</div>
+  </div>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="education.html">Insurance Education</a></li><li><a href="myths.html" class="active">Myth Busted</a></li><li><a href="quote.html">Get a Quote</a></li><li><a href="chat.html">Ask a Question</a></li></ul>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav"><a href="index.html">Home</a><a href="about.html">About</a><a href="education.html">Insurance Education</a><a href="myths.html" class="active">Myth Busted</a><a href="quote.html">Get a Quote</a><a href="chat.html">Ask a Question</a></div>
 
-<style id="cwc-footer-a11y-fix">
-/* Final shared footer/accessibility/modal fixes */
-footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !important; }
-.footer-inner { max-width: 1160px !important; margin: 0 auto !important; }
-.footer-top { display: grid !important; grid-template-columns: 2fr 1fr 1fr !important; gap: 4rem !important; padding-bottom: 3rem !important; border-bottom: 1px solid rgba(255,255,255,0.07) !important; }
-.footer-brand .fb-main { font-family: var(--serif, Georgia) !important; font-size: 1.2rem !important; font-weight: 400 !important; color: var(--white, #fff) !important; }
-.footer-brand .fb-sub { font-size: 0.58rem !important; font-weight: 500 !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; color: var(--gold, #9e8047) !important; margin-top: 3px !important; }
-.footer-brand p { font-size: 0.85rem !important; color: rgba(255,255,255,0.32) !important; margin-top: 1rem !important; line-height: 1.8 !important; max-width: 240px !important; font-weight: 300 !important; }
-.footer-col h4 { font-size: 0.85rem !important; font-weight: 500 !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: var(--gold, #9e8047) !important; margin-bottom: 1.1rem !important; }
-.footer-col ul { list-style: none !important; display: flex !important; flex-direction: column !important; gap: 0.5rem !important; margin: 0 !important; padding: 0 !important; }
-.footer-col ul a { font-size: 0.85rem !important; color: rgba(255,255,255,0.32) !important; text-decoration: none !important; font-weight: 300 !important; }
-.footer-col ul a:hover { color: var(--white, #fff) !important; }
-.footer-bottom { display:flex !important; justify-content:space-between !important; align-items:center !important; flex-wrap:wrap !important; gap:0.5rem !important; padding-top:2rem !important; font-size:0.85rem !important; color:rgba(255,255,255,0.2) !important; font-weight:300 !important; }
-.footer-bottom a { color:var(--gold, #9e8047) !important; }
-.footer-license { margin-top:1.4rem !important; padding-top:1.4rem !important; border-top:1px solid rgba(255,255,255,0.07) !important; }
-.fl-title { font-family:var(--sans, system-ui) !important; font-size:0.85rem !important; font-weight:500 !important; letter-spacing:0.2em !important; text-transform:uppercase !important; color:var(--gold, #9e8047) !important; margin-bottom:0.6rem !important; }
-.fl-body { font-size:0.85rem !important; color:rgba(255,255,255,0.32) !important; line-height:1.8 !important; font-weight:300 !important; max-width:340px !important; }
-.fl-body strong { color:rgba(255,255,255,0.6) !important; font-weight:500 !important; }
-#a11yTab { position:fixed !important; right:0 !important; top:50% !important; transform:translateY(-50%) !important; z-index:10001 !important; background:#1a1a18 !important; border:1px solid rgba(158,128,71,0.5) !important; border-right:none !important; border-radius:6px 0 0 6px !important; padding:0.8rem 0.42rem !important; cursor:pointer !important; pointer-events:auto !important; writing-mode:vertical-rl !important; font-family:system-ui,sans-serif !important; font-size:0.85rem !important; font-weight:600 !important; letter-spacing:0.15em !important; text-transform:uppercase !important; color:#9e8047 !important; user-select:none !important; touch-action:manipulation !important; }
-#a11yTab:hover { background:#252522 !important; }
-#a11yPanel { display:none !important; position:fixed !important; right:32px !important; top:50% !important; transform:translateY(-50%) !important; z-index:10000 !important; background:#1a1a18 !important; border:1px solid rgba(158,128,71,0.3) !important; border-radius:10px 0 0 10px !important; padding:1.2rem 1rem !important; width:220px !important; max-height:calc(100vh - 40px) !important; overflow-y:auto !important; }
-#a11yPanel.open { display:block !important; }
-.a11y-heading { font-size:0.85rem !important; font-weight:700 !important; color:#9e8047 !important; padding-bottom:0.6rem !important; margin-bottom:0.8rem !important; border-bottom:1px solid rgba(158,128,71,0.35) !important; display:block !important; }
-.a11y-row { display:flex !important; flex-direction:column !important; gap:0.3rem !important; margin-bottom:0.75rem !important; }
-.a11y-row-label { font-size:0.85rem !important; font-weight:600 !important; color:#fff !important; }
-.a11y-row-btns { display:flex !important; gap:0.3rem !important; flex-wrap:wrap !important; }
-.a11y-btn { background:rgba(255,255,255,0.07) !important; border:1px solid rgba(255,255,255,0.15) !important; border-radius:4px !important; padding:0.28rem 0.65rem !important; font-size:0.85rem !important; color:rgba(255,255,255,0.5) !important; cursor:pointer !important; }
-.a11y-btn.active { background:#9e8047 !important; border-color:#9e8047 !important; color:#fff !important; }
-.a11y-sep { height:1px !important; background:rgba(255,255,255,0.08) !important; margin:0.25rem 0 !important; }
-.a11y-reset { width:100% !important; margin-top:0.5rem !important; background:none !important; border:1px solid rgba(255,255,255,0.12) !important; border-radius:4px !important; padding:0.4rem !important; font-size:0.85rem !important; color:rgba(255,255,255,0.35) !important; cursor:pointer !important; }
-.modal-overlay { display:none !important; position:fixed !important; inset:0 !important; background:rgba(10,10,10,0.72) !important; z-index:11000 !important; align-items:center !important; justify-content:center !important; padding:1.5rem !important; pointer-events:none !important; }
-.modal-overlay.open { display:flex !important; pointer-events:auto !important; }
-.modal-box { background:#fff !important; border-radius:8px !important; max-width:680px !important; width:100% !important; max-height:88vh !important; overflow-y:auto !important; }
-.modal-header { background:#1a1a18 !important; padding:1.4rem 1.8rem !important; display:flex !important; align-items:flex-start !important; justify-content:space-between !important; gap:1rem !important; border-radius:8px 8px 0 0 !important; }
-.modal-close { background:none !important; border:1px solid rgba(255,255,255,0.2) !important; border-radius:4px !important; width:32px !important; height:32px !important; display:flex !important; align-items:center !important; justify-content:center !important; cursor:pointer !important; color:rgba(255,255,255,0.6) !important; font-size:1.1rem !important; }
-.modal-body { padding:1.8rem 2rem !important; }
-@media(max-width:768px){ footer { padding:2rem 4% !important; } .footer-top { grid-template-columns:1fr !important; gap:1.5rem !important; } .footer-bottom { flex-direction:column !important; gap:0.3rem !important; } #a11yTab { top:auto !important; bottom:80px !important; transform:none !important; } #a11yPanel { top:auto !important; bottom:140px !important; transform:none !important; right:0 !important; width:calc(100vw - 2rem) !important; max-width:260px !important; border-radius:10px !important; max-height:50vh !important; } }
-</style>
-</head></html>
+
+<main class="page-top">
+  <div class="page-hero-centered">
+    <div class="phc-inner">
+      <div class="phc-eyebrow">Interactive Game &nbsp;&middot;&nbsp; 50 Questions &nbsp;&middot;&nbsp; True or False</div>
+      <h1 class="phc-title">Myth Busted</h1>
+      <p class="phc-desc">How much do you really know about life insurance? Step up to the pitch, kick the ball toward Myth or Fact, and find out where you stand.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--warm2);">
+    <div class="section-inner" style="max-width:820px;">
+      <div class="game-wrap">
+
+        <!-- RULES -->
+        <div class="rules-screen show" id="rulesScreen">
+          <div style="font-size:3.5rem;margin-bottom:1rem;">&#9917;</div>
+          <div class="rules-title">Welcome to the Pitch</div>
+          <div class="rules-sub">Life Insurance Myth Busted Challenge</div>
+          <div class="rules-list">
+            <div class="rules-item"><div class="rules-num">1</div><p>You will see a statement about life insurance. Decide if it is a <strong>Myth</strong> or a <strong>Fact</strong> and kick the ball toward your answer.</p></div>
+            <div class="rules-item"><div class="rules-num">2</div><p>After each kick the correct answer is revealed with a brief explanation. Goals score for correct answers. The goalkeeper saves wrong ones.</p></div>
+            <div class="rules-item"><div class="rules-num">3</div><p>There are <strong>50 questions</strong> total. After every 10 questions you can continue or end the game and see your personalized result.</p></div>
+            <div class="rules-item"><div class="rules-num">4</div><p>Watch the scoreboard update in real time. Build your streak to earn the fire badge on the board.</p></div>
+            <div class="rules-item"><div class="rules-num">5</div><p>At the end you will receive a personalized result and an invitation to see what coverage may be available for you.</p></div>
+          </div>
+          <button class="start-btn" onclick="startGame()">Kick Off &#9917;</button>
+        </div>
+
+        <!-- GAME AREA -->
+        <div id="gameArea" style="display:none;">
+          <div class="stadium-scoreboard">
+            <div class="sb-team">
+              <div class="sb-team-name">&#9917; Goals</div>
+              <div class="sb-score goals" id="scoreCorrect">0</div>
+            </div>
+            <div class="sb-center">
+              <div class="sb-qnum" id="qNum">Q 1 / 50</div>
+              <div class="sb-vs">vs</div>
+              <div class="sb-streak" id="streakDisplay">Streak: 0</div>
+            </div>
+            <div class="sb-team">
+              <div class="sb-team-name">&#129342; Saves</div>
+              <div class="sb-score saves" id="scoreWrong">0</div>
+            </div>
+          </div>
+          <div class="game-progress"><div class="game-progress-fill" id="progressFill" style="width:0%"></div></div>
+          <div class="question-card" id="questionCard">
+            <div class="q-header">
+              <div class="q-number" id="qLabel">Question 1 of 50</div>
+              <div class="q-timer-dots" id="timerDots"></div>
+            </div>
+            <div class="q-body">
+              <div class="q-statement" id="qStatement">Loading...</div>
+            </div>
+            <div class="stadium-field" id="stadiumField">
+              <div class="field-lines">
+                <div class="field-center-line"></div>
+                <div class="field-center-circle"></div>
+                <div class="field-penalty-box"></div>
+                <div class="field-penalty-dot"></div>
+              </div>
+              <div class="stadium-goal">
+                <div class="goal-posts">
+                  <div class="goalkeeper" id="keeper">&#129342;</div>
+                </div>
+              </div>
+              <div class="kick-zone">
+                <button class="kick-btn" id="mythBtn" onclick="answer('myth')" aria-label="Kick toward Myth">
+                  <div class="soccer-ball" id="mythBall">&#9917;</div>
+                  <div class="ball-label">MYTH</div>
+                </button>
+                <button class="kick-btn" id="factBtn" onclick="answer('fact')" aria-label="Kick toward Fact">
+                  <div class="soccer-ball" id="factBall">&#9917;</div>
+                  <div class="ball-label">FACT</div>
+                </button>
+              </div>
+            </div>
+            <div class="result-panel" id="resultPanel">
+              <div class="result-verdict" id="resultVerdict"></div>
+              <div class="result-explanation" id="resultExplanation"></div>
+              <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="goal-notif" id="goalNotif">
+          <div>&#9917; GOAL!</div>
+          <div style="font-size:1rem;opacity:0.8;margin-top:0.3rem;" id="goalSub"></div>
+        </div>
+
+        <div class="break-screen" id="breakScreen">
+          <div style="font-size:3rem;margin-bottom:1rem;">&#9205;</div>
+          <div class="br-title" id="brTitle">Half Time</div>
+          <div class="br-msg" id="brMsg"></div>
+          <div class="br-btns">
+            <button class="br-btn-c" onclick="continueGame()">Continue Playing &#9917;</button>
+            <button class="br-btn-e" onclick="endGame()">End Game &amp; See Results</button>
+          </div>
+        </div>
+
+        <div class="final-screen" id="finalScreen">
+          <div class="final-trophy" id="finalTrophy">&#127942;</div>
+          <div class="final-title" id="finalTitle">Final Score</div>
+          <div class="final-score-big" id="finalScoreBig">0/0</div>
+          <div class="final-message" id="finalMessage"></div>
+          <a href="quote.html" class="final-cta">Get a Quote Now</a>
+          <a href="myths.html" class="final-cta-alt" onclick="location.reload();return false;">Play Again</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer"><div class="disclaimer-inner"><strong>Educational Notice:</strong> All statements in this game are provided for general educational purposes only. Insurance products, terms, eligibility criteria, and underwriting guidelines vary by carrier and are subject to change. This game does not constitute insurance advice or an offer of coverage. Consult a licensed insurance agent for guidance specific to your situation.</div></div>
+</main>
+
 <footer>
-<div class="footer-inner">
-<div class="footer-top">
-<div class="footer-brand">
-<div class="fb-main">Eboni Morris</div>
-<div class="fb-sub">Licensed Independent Insurance Agent  ·  Life  ·  Accident  ·  Sickness</div>
-<div class="footer-license">
-<div class="fl-title">License Verification</div>
-<p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
-<p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, MI, OH, SC, TX</p>
-</div>
-</div>
-<div class="footer-col"><h4>Navigate</h4><ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="diabetes.html">Diabetes Coverage</a></li>
-<li><a href="hiv-aids.html">HIV Coverage</a></li>
-<li><a href="cancer.html">Cancer Coverage</a></li>
-<li><a href="quote.html">Get a Quote</a></li>
-<li><a href="education.html">Insurance Education</a></li>
-<li><a href="myths.html">Myth Busted</a></li>
-<li><a href="chat.html">Ask a Question</a></li>
-</ul></div>
-<div class="footer-col"><h4>Legal</h4><ul>
-<li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
-<li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
-<li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li>
-<li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li>
-<li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li>
-<li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li>
-<li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li>
-<li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li>
-</ul></div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 Eboni Morris. Licensed Independent Insurance Agent. All rights reserved.</span>
-<span>Licensed  ·  Life, Accident &amp; Sickness</span>
-</div>
-<p style="font-size:0.82rem;color:rgba(255,255,255,0.2);font-weight:300;line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">Covered with Conditions is a licensed independent insurance practice managed by Eboni Morris (NPN 18509552). All coverage options are subject to third-party carrier underwriting verification and are not guaranteed. Operations conducted in compliance with the Georgia Office of Commissioner of Insurance, Florida Department of Financial Services, Michigan Department of Insurance and Financial Services, Ohio Department of Insurance, South Carolina Department of Insurance, and Texas Department of Insurance.</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-main">Eboni Morris</div>
+        <div class="fb-sub">Licensed Independent Insurance Agent &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+        <div class="footer-license">
+          <div class="fl-title">License Verification</div>
+          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, MI, OH, SC, TX</p>
+          
+        </div>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Insurance Education</a></li>
+        <li><a href="myths.html">Myth Busted</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+        <li><a href="chat.html">Ask a Question</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
+        <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
+        <li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li>
+        <li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li>
+        <li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li>
+        <li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Agent. All rights reserved.</span>
+      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+    </div>
+  </div>
+  <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);font-size:0.82rem;color:rgba(255,255,255,0.18);font-weight:300;display:flex;gap:1.5rem;flex-wrap:wrap;">
+    <a href="privacy.html" style="color:rgba(255,255,255,0.3);text-decoration:none;">Privacy Policy</a>
+    <a href="terms.html" style="color:rgba(255,255,255,0.3);text-decoration:none;">Terms of Service</a>
+    <a href="glossary.html" style="color:rgba(255,255,255,0.3);text-decoration:none;">Glossary</a>
+  </div>
 </div>
 </footer>
-<button aria-expanded="false" aria-label="Open accessibility options" id="a11yTab" onclick="a11yOpen()" type="button">Accessibility</button>
-<div aria-hidden="true" aria-label="Accessibility Options" id="a11yPanel" role="dialog">
-<span class="a11y-heading">Accessibility Options</span>
-<div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')" type="button">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')" type="button">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')" type="button">X-Large</button></div></div>
-<div class="a11y-sep"></div>
-<div class="a11y-row"><span class="a11y-row-label">High Contrast</span><div class="a11y-row-btns"><button class="a11y-btn" id="hc-btn" onclick="a11yToggle('hc-btn','hc-mode')" type="button">Enable</button></div></div>
-<div class="a11y-sep"></div>
-<div class="a11y-row"><span class="a11y-row-label">Dyslexia Font</span><div class="a11y-row-btns"><button class="a11y-btn" id="dy-btn" onclick="a11yToggle('dy-btn','dyslexia-font')" type="button">Enable</button></div></div>
-<div class="a11y-sep"></div>
-<div class="a11y-row"><span class="a11y-row-label">Reduce Motion</span><div class="a11y-row-btns"><button class="a11y-btn" id="rm-btn" onclick="a11yToggle('rm-btn','reduce-motion')" type="button">Enable</button></div></div>
-<div class="a11y-sep"></div>
-<div class="a11y-row"><span class="a11y-row-label">Screen Reader</span><div class="a11y-row-btns"><button class="a11y-btn" id="sr-btn" onclick="a11yToggle('sr-btn','sr-mode')" type="button">Enable</button></div></div>
-<button class="a11y-reset" onclick="a11yReset()" type="button">Reset All</button>
-</div>
-<span aria-live="polite" id="a11y-live" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;"></span>
-<div aria-labelledby="modal-privacy-title" aria-modal="true" class="modal-overlay" id="modal-privacy" onclick="closeModalOnOverlay(event,'modal-privacy')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div>
-<div class="modal-subtitle">Legal</div>
-<div class="modal-title" id="modal-privacy-title">Privacy Policy</div>
-</div>
-<button aria-label="Close privacy policy" class="modal-close" onclick="closeModal('modal-privacy')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">What This Policy Covers</div>
-<p>This privacy policy describes how Eboni Morris, licensed independent insurance agent (NPN: 18509552), collects, uses, and protects information submitted through this website. This policy applies to all information gathered through the intake questionnaire, referral forms, and any other communications submitted through coveredwithconditions.com.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Information We Collect</div>
-<p>When you submit an intake form or inquiry, we may collect the following types of information:</p>
-<ul>
-<li>Personal identifiers such as your name, date of birth, address, phone number, and email address</li>
-<li>Health and lifestyle information provided voluntarily for the purpose of evaluating coverage options</li>
-<li>Information about medications, medical history, and functional status as relevant to insurance underwriting</li>
-<li>Beneficiary relationship information provided in connection with coverage inquiries</li>
-</ul>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">How Your Information Is Used</div>
-<p>Information you submit is used solely for the purpose of evaluating and presenting life insurance coverage options on your behalf. It is not sold, rented, or shared with any third party except as necessary to process a formal insurance application at your direction, and only with your explicit written authorization prior to any application submission.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Your Rights</div>
-<p>You have the right to request access to the information we hold about you, request corrections to inaccurate information, and request that your information not be used for purposes beyond this independent engagement. To exercise any of these rights, contact this office directly.</p>
-</div>
-<div class="modal-notice">This policy is subject to applicable federal and state insurance privacy regulations. Nothing in this policy limits any rights you may have under HIPAA, applicable state insurance privacy laws, or the Fair Credit Reporting Act.</div>
-</div>
-</div>
-</div>
-<div aria-labelledby="modal-hipaa-title" aria-modal="true" class="modal-overlay" id="modal-hipaa" onclick="closeModalOnOverlay(event,'modal-hipaa')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div>
-<div class="modal-subtitle">Federal Privacy Law</div>
-<div class="modal-title" id="modal-hipaa-title">HIPAA Privacy Notice</div>
-</div>
-<button aria-label="Close HIPAA notice" class="modal-close" onclick="closeModal('modal-hipaa')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">What HIPAA Is</div>
-<p>The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that establishes national standards for the protection of certain health information. HIPAA restricts how health information may be used and shared and gives individuals specific rights regarding their health data.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">How It Applies Here</div>
-<p>Any health-related information you provide through this website or during our professional engagement is handled in strict compliance with applicable HIPAA privacy standards. This includes any medical history, conditions, medications, or other health information submitted as part of an intake questionnaire or consultation.</p>
-<p>Your health information will not be disclosed to any insurance carrier or third party without your written authorization prior to any formal application submission. You will be informed of what information is being shared, with whom, and for what purpose before any such disclosure occurs.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Your HIPAA Rights</div>
-<ul>
-<li>The right to receive a notice of privacy practices</li>
-<li>The right to access and review health information held about you</li>
-<li>The right to request corrections to inaccurate information</li>
-<li>The right to request restrictions on certain uses or disclosures</li>
-<li>The right to receive an accounting of disclosures made on your behalf</li>
-<li>The right to file a complaint if you believe your privacy rights have been violated</li>
-</ul>
-</div>
-<div class="modal-notice">If you believe your health information privacy rights have been violated, you may file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights. Filing a complaint will not affect your ability to obtain coverage or services through this practice.</div>
-</div>
-</div>
-</div>
-<div aria-labelledby="modal-terms-title" aria-modal="true" class="modal-overlay" id="modal-terms" onclick="closeModalOnOverlay(event,'modal-terms')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div>
-<div class="modal-subtitle">Legal</div>
-<div class="modal-title" id="modal-terms-title">Terms of Use</div>
-</div>
-<button aria-label="Close terms of use" class="modal-close" onclick="closeModal('modal-terms')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">Use of This Website</div>
-<p>This website, coveredwithconditions.com, is operated by Eboni Morris, a licensed independent insurance agent (NPN: 18509552). By accessing or using this website, you agree to the following terms. If you do not agree, please do not use this site.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">No Insurance Offer or Guarantee</div>
-<p>Nothing on this website constitutes an offer, commitment, or guarantee of insurance coverage. All coverage is subject to formal application, individual carrier underwriting approval, and the terms of the actual policy contract issued by the insurance company. Information on this site is provided for general educational and informational purposes only.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Accuracy of Information</div>
-<p>While we make reasonable efforts to keep information on this site current and accurate, insurance products, carrier guidelines, licensing requirements, and applicable laws are subject to change. You should not rely solely on information found on this website when making insurance decisions. Consult with a licensed insurance professional for advice specific to your situation.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">No Attorney-Client or Financial Advisory Relationship</div>
-<p>Use of this website does not create an attorney-client relationship, a financial advisory relationship, or any other professional engagement beyond that of a licensed insurance producer. Information provided through intake forms is used solely for the purpose of evaluating and presenting life insurance coverage options.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Intellectual Property</div>
-<p>All content on this website, including text, design, layout, and educational materials, is the property of Eboni Morris and may not be reproduced, distributed, or used without written permission.</p>
-</div>
-<div class="modal-notice">These terms are governed by the laws of the State of Georgia. Eboni Morris reserves the right to update these terms at any time. Continued use of this site following any update constitutes acceptance of the revised terms.</div>
-</div>
-</div>
-</div>
-<div aria-labelledby="modal-license-title" aria-modal="true" class="modal-overlay" id="modal-license" onclick="closeModalOnOverlay(event,'modal-license')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div>
-<div class="modal-subtitle">Producer Licensing</div>
-<div class="modal-title" id="modal-license-title">Licensing Information</div>
-</div>
-<button aria-label="Close licensing information" class="modal-close" onclick="closeModal('modal-license')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">Licensed Producer</div>
-<p>This website is operated by Eboni Morris, a licensed independent insurance agent appointed with multiple insurance carriers. Eboni Morris holds life, accident, and sickness licenses and has been licensed since 2017.</p>
-<ul>
-<li>National Producer Number (NPN): 18509552</li>
-<li>License Type: Life, Accident and Sickness</li>
-<li>Licensed Since: 2017</li>
-<li>Resident State: Georgia</li>
-</ul>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">States Where Licensed</div>
-<p>Eboni Morris is currently licensed to solicit, negotiate, and sell life insurance in the following states:</p>
-<ul>
-<li>Georgia (GA) - Resident License</li>
-<li>Florida (FL) - Nonresident License</li>
-<li>Michigan (MI) - Nonresident License</li>
-<li>Ohio (OH) - Nonresident License</li>
-<li>South Carolina (SC) - Nonresident License</li>
-<li>Texas (TX) - Nonresident License</li>
-</ul>
-<p>Expansion to additional states is ongoing. If you are located in a state not listed above, please complete the intake form and we will advise whether service is currently available in your state or connect you with a licensed partner where applicable.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">License Verification</div>
-<p>Licensure can be independently verified through the National Insurance Producers Registry (NIPR) by calling 1 (855) 674-6477 and referencing National Producer Number (NPN) 18509552. You may also verify licensing through the insurance department of your individual state.</p>
-</div>
-<div class="modal-notice">Insurance products are offered through multiple insurance carriers and are subject to individual carrier underwriting approval. Eboni Morris operates as an independent agent and is not an employee or exclusive representative of any single insurance company.</div>
-</div>
-</div>
-</div>
-<div aria-labelledby="modal-fcra-title" aria-modal="true" class="modal-overlay" id="modal-fcra" onclick="closeModalOnOverlay(event,'modal-fcra')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title" id="modal-fcra-title">Fair Credit Reporting Act (FCRA)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-fcra')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">What the FCRA Is</div>
-<p>The Fair Credit Reporting Act (FCRA) is a federal law that regulates how consumer reporting agencies collect, use, and share information about individuals. It gives consumers specific rights when their information is used to make decisions about them, including decisions related to insurance.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">How It Applies to Your Insurance Application</div>
-<p>In connection with a formal application for life insurance, the issuing insurance company may obtain a consumer report about you. This report can include information about your creditworthiness, credit standing, character, general reputation, personal characteristics, or mode of living.</p>
-<p>If the insurance company takes an adverse action based in whole or in part on information in a consumer report, such as declining your application, offering a rated premium, or limiting your benefit, the company is required by federal law to notify you. That notice must include the name, address, and phone number of the consumer reporting agency that supplied the report.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Your Rights Under the FCRA</div>
-<ul>
-<li>The right to be told if information in your consumer report was used against you</li>
-<li>The right to request a copy of your consumer report from the reporting agency</li>
-<li>The right to dispute inaccurate or incomplete information in the report</li>
-<li>The right to add a statement of explanation to your file if a dispute is not resolved</li>
-<li>The right to seek damages from violators of the FCRA</li>
-</ul>
-</div>
-<div class="modal-notice">No consumer report will be requested on your behalf without your knowledge. You will be informed prior to any application submission. This independent practice does not request or receive consumer reports directly.</div>
-</div>
-</div>
-</div>
-<div aria-labelledby="modal-mib-title" aria-modal="true" class="modal-overlay" id="modal-mib" onclick="closeModalOnOverlay(event,'modal-mib')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title" id="modal-mib-title">Medical Information Bureau (MIB)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mib')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">What the MIB Is</div>
-<p>The Medical Information Bureau (MIB) is a member-owned organization that operates as an information exchange among participating life and health insurance companies. Most individually underwritten life and health insurance carriers are MIB members.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">How It Affects Your Application</div>
-<p>When you apply for individually underwritten life or health insurance, the issuing carrier may request information from the MIB about prior insurance applications or claims you may have submitted with other member companies. This coded information is used during the underwriting process to identify inconsistencies and help prevent misrepresentation on applications, which helps keep premiums fair for all consumers.</p>
-<p>The MIB may also create a record of your current application that future member companies may access if you apply elsewhere.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Your MIB Rights</div>
-<ul>
-<li>You have the right to request a copy of any information the MIB has on file about you</li>
-<li>You may contact the MIB directly at mib.com or by calling 1-866-692-6901</li>
-<li>You have the right to dispute any inaccurate information in your MIB file</li>
-<li>MIB information alone is not used to make a final underwriting decision</li>
-</ul>
-</div>
-<div class="modal-notice">A formal MIB inquiry will not be initiated without your knowledge and will only occur in connection with a formal application submitted at your direction.</div>
-</div>
-</div>
-</div>
-<div aria-labelledby="modal-rx-title" aria-modal="true" class="modal-overlay" id="modal-rx" onclick="closeModalOnOverlay(event,'modal-rx')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-rx-title">Pharmacy Records (Rx History)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-rx')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">What a Pharmacy Records Check Is</div>
-<p>Depending on the insurance carrier and the product applied for, the issuing company may request a report that includes your current and historical prescription drug records from participating pharmacies. This type of report is a standard underwriting tool used by many life insurance carriers.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">How It Is Used</div>
-<p>Prescription drug history is reviewed during underwriting to help the carrier correlate medications on file with health conditions disclosed on the application. It helps the carrier evaluate risk and ensure the accuracy of information provided. The report typically covers several years of prescription history from participating pharmacy networks.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Your Rights</div>
-<ul>
-<li>A pharmacy records check will only be requested as part of a formal application submitted at your direction</li>
-<li>You will be informed if such a check is required before your application is submitted</li>
-<li>If an adverse underwriting decision is made based on this information, you will be notified and given the right to dispute inaccuracies</li>
-</ul>
-</div>
-<div class="modal-notice">Pharmacy record checks may or may not be required depending on the specific carrier and product selected. Not every carrier uses this type of report for every application.</div>
-</div>
-</div>
-</div>
-<div aria-labelledby="modal-mvr-title" aria-modal="true" class="modal-overlay" id="modal-mvr" onclick="closeModalOnOverlay(event,'modal-mvr')" role="dialog" style="display:none">
-<div class="modal-box">
-<div class="modal-header">
-<div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-mvr-title">Motor Vehicle Report (MVR)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mvr')">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<div class="modal-section-title">What a Motor Vehicle Report Is</div>
-<p>A Motor Vehicle Report (MVR) is a report obtained from your state Department of Motor Vehicles that provides a history of your driving record. It may include traffic violations, license suspensions or revocations, DUI or DWI convictions, accidents on record, and the current status of your driver's license.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">How It Is Used in Life Insurance Underwriting</div>
-<p>Some life insurance carriers review driving history as part of the underwriting process because certain driving patterns, such as multiple DUI convictions or a history of reckless driving, are considered indicators of risk. An MVR may be requested depending on the carrier's underwriting guidelines for the specific product applied for.</p>
-</div>
-<div class="modal-divider"></div>
-<div class="modal-section">
-<div class="modal-section-title">Your Rights</div>
-<ul>
-<li>An MVR will only be requested as part of a formal application submitted at your direction</li>
-<li>You will be informed if an MVR is required before your application is submitted</li>
-<li>If an adverse underwriting action is taken based on MVR information, you have the right to be notified under applicable federal and state law</li>
-<li>You may obtain a copy of your own driving record directly from your state DMV at any time</li>
-</ul>
-</div>
-<div class="modal-notice">An MVR may or may not be required depending on the specific carrier and product. Not all carriers order motor vehicle reports for every applicant or product type.</div>
-</div>
-</div>
-</div>
-<script id="cwc-global-fix">
-(function(){
-  function byId(id){ return document.getElementById(id); }
-  window.openModal = function(id){
-    var m=byId(id);
-    if(!m) return false;
-    m.style.display='flex';
-    m.classList.add('open');
-    document.body.style.overflow='hidden';
-    var close=m.querySelector('.modal-close');
-    if(close) setTimeout(function(){ try{close.focus();}catch(e){} },50);
-    return false;
-  };
-  window.closeModal = function(id){
-    var m=byId(id);
-    if(!m) return;
-    m.style.display='none';
-    m.classList.remove('open');
-    document.body.style.overflow='';
-  };
-  window.closeModalOnOverlay = function(e,id){ if(e.target===e.currentTarget) window.closeModal(id); };
-  window.a11yOpen = function(){
-    var p=byId('a11yPanel'), t=byId('a11yTab');
-    if(!p||!t) return;
-    var open=p.classList.toggle('open');
-    p.setAttribute('aria-hidden',open?'false':'true');
-    t.setAttribute('aria-expanded',open?'true':'false');
-  };
-  window.a11yText = function(val){
-    var b=document.body; b.classList.remove('lg-text','xl-text');
-    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=byId(id);if(el)el.classList.remove('active');});
-    var id=val==='large'?'ts-large':val==='xl'?'ts-xl':'ts-normal', el=byId(id);
-    if(val==='large') b.classList.add('lg-text');
-    if(val==='xl') b.classList.add('xl-text');
-    if(el) el.classList.add('active');
-    try{localStorage.setItem('a11y_text',val);}catch(e){}
-    var live=byId('a11y-live'); if(live) live.textContent='Text size updated.';
-  };
-  window.a11yToggle = function(btnId,cssClass){
-    var on=!document.body.classList.contains(cssClass); document.body.classList.toggle(cssClass,on);
-    var btn=byId(btnId); if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}
-  };
-  window.a11yReset = function(){
-    document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
-    ['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=byId(id);if(el){el.classList.remove('active');el.textContent='Enable';}});
-    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=byId(id);if(el)el.classList.remove('active');});
-    var n=byId('ts-normal');if(n)n.classList.add('active');
-  };
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){
-      document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.style.display='none';m.classList.remove('open');});
-      document.body.style.overflow='';
-      var p=byId('a11yPanel'),t=byId('a11yTab'); if(p&&p.classList.contains('open')){p.classList.remove('open');p.setAttribute('aria-hidden','true');if(t)t.setAttribute('aria-expanded','false');}
-    }
-  });
-  document.addEventListener('DOMContentLoaded',function(){
-    document.querySelectorAll('button, a').forEach(function(el){el.style.touchAction='manipulation';});
-  });
-})();
+
+<script src="_shared.js"></script>
+<script>
+const QUESTIONS = [
+  { statement: "Life insurance is only for older people.", answer: "myth", explanation: "Life insurance is actually most affordable when purchased young and healthy. Locking in a low premium early is one of the smartest financial moves a young adult can make." },
+  { statement: "You need to have a medical exam to qualify for life insurance.", answer: "myth", explanation: "Many carriers offer simplified issue and guaranteed issue policies that require no medical exam or blood work, particularly at qualifying face amounts. Exam requirements vary by carrier and product." },
+  { statement: "A decline from one insurance company means you cannot get coverage anywhere.", answer: "myth", explanation: "Different carriers have different underwriting guidelines. A condition that causes a decline at one company may qualify for coverage at another - sometimes the difference is age range, lookback period, or current treatment status." },
+  { statement: "The death benefit from a life insurance policy is generally income tax-free to the beneficiary.", answer: "fact", explanation: "In most cases, life insurance death benefits are received income tax-free by named beneficiaries. Tax treatment depends on specific circumstances, so consulting a tax advisor is recommended." },
+  { statement: "Your employer-provided life insurance is always enough coverage.", answer: "myth", explanation: "Employer-provided coverage is often limited to one or two times your salary, which may not adequately cover your family's long-term needs. It is also not portable - you lose it if you leave the job." },
+  { statement: "Life insurance with a health condition is impossible to obtain.", answer: "myth", explanation: "Many carriers specialize in insuring applicants with health conditions. Coverage may come in the form of graded benefit, simplified issue, or standard policies depending on the condition and carrier guidelines." },
+  { statement: "Term life insurance builds cash value over time.", answer: "myth", explanation: "Term life insurance provides pure death benefit protection for a defined period with no savings component. Whole life insurance is the product type that builds cash value over time." },
+  { statement: "Whole life insurance can last for your entire lifetime.", answer: "fact", explanation: "Whole life insurance is designed to remain in force for the insured's lifetime, provided premiums are maintained. It does not expire after a set number of years the way term insurance does." },
+  { statement: "Life insurance premiums are the same regardless of your age.", answer: "myth", explanation: "Age is one of the primary factors in determining your premium. The younger and healthier you are at the time of application, the lower your premium is likely to be." },
+  { statement: "Smokers typically pay higher life insurance premiums than non-smokers.", answer: "fact", explanation: "Tobacco and nicotine use in any form is a significant underwriting factor that generally results in substantially higher premiums compared to non-tobacco users of the same age and health profile." },
+
+  { statement: "A graded benefit policy pays the full death benefit immediately upon the insured's death.", answer: "myth", explanation: "Graded benefit policies typically pay a limited benefit - often a return of premiums plus interest - during an initial period of one to three years. The full benefit becomes payable after the graded period ends." },
+  { statement: "Women generally pay lower life insurance premiums than men of the same age and health.", answer: "fact", explanation: "Statistically, women have a longer life expectancy, which is reflected in premium calculations. Female applicants often receive more favorable rates than male applicants with the same profile." },
+  { statement: "Living benefits allow you to access part of your death benefit while still alive.", answer: "fact", explanation: "Many modern policies include living benefit riders - also called Accelerated Death Benefit riders - that allow access to a portion of the death benefit upon qualifying events like terminal, chronic, or critical illness." },
+  { statement: "All life insurance policies require blood work.", answer: "myth", explanation: "Many carriers offer products that do not require a blood draw or physical exam, particularly for lower face amounts or for applicants in certain age ranges. Exam requirements vary by carrier, product, and coverage amount." },
+  { statement: "If you have HIV, you cannot qualify for any life insurance policy.", answer: "myth", explanation: "A small but growing number of carriers offer coverage to applicants with HIV who meet specific clinical criteria, such as an undetectable viral load and CD4 count within defined ranges. Guidelines vary by carrier." },
+  { statement: "You can name anyone as your life insurance beneficiary.", answer: "myth", explanation: "An insurable interest must exist between the policy owner and the beneficiary. This generally includes spouses, parents, children, siblings, and business partners. Random third parties typically cannot be named." },
+  { statement: "A term life policy can sometimes be converted to a permanent policy without new medical evidence.", answer: "fact", explanation: "Many term policies include a conversion privilege allowing the policyholder to convert to permanent coverage without a new medical exam or health questions, within the carrier's defined conversion window." },
+  { statement: "Cash value in a whole life policy grows tax-free.", answer: "fact", explanation: "Cash value in a whole life policy accumulates on a tax-deferred basis, meaning you do not pay taxes on the growth while it remains in the policy. Tax implications arise in certain withdrawal or loan scenarios." },
+  { statement: "Guaranteed issue life insurance has no waiting period before the full benefit is payable.", answer: "myth", explanation: "Guaranteed issue policies almost universally include a graded benefit period, typically two to three years. During this time, death from natural causes results in a return of premiums plus interest, not the full face amount." },
+  { statement: "Your life insurance rates increase every year.", answer: "myth", explanation: "For most term and whole life policies, premiums are level - they are locked in at the rate established when the policy is issued and do not increase during the policy period." },
+
+  { statement: "A stay-at-home parent does not need life insurance.", answer: "myth", explanation: "The financial value of childcare, household management, and caregiving is significant. The cost of replacing these services if a stay-at-home parent passed away could be substantial for the surviving family." },
+  { statement: "Life insurance benefits can be used for any purpose by the beneficiary.", answer: "fact", explanation: "Life insurance death benefits are paid directly to the named beneficiary and can be used for any purpose - living expenses, mortgage payments, education, or anything else the beneficiary chooses." },
+  { statement: "You need to be in perfect health to qualify for any life insurance.", answer: "myth", explanation: "Coverage is available across a wide range of health profiles. Standard, simplified issue, graded benefit, and guaranteed issue products exist specifically to accommodate applicants with varying health histories." },
+  { statement: "The face amount you choose affects your premium.", answer: "fact", explanation: "The larger the death benefit requested, the higher the premium. Coverage amount is one of several key factors - along with age, health, and policy type - that determine what you pay." },
+  { statement: "Life insurance purchased at a young age locks in your health rating permanently.", answer: "fact", explanation: "Once a policy is issued, your premium and coverage terms are locked in based on your health at time of application. Future health changes do not affect your rate or the carrier's ability to cancel coverage." },
+  { statement: "A life insurance company can cancel your policy if your health deteriorates after it is issued.", answer: "myth", explanation: "Once a policy is in force and past the contestability period, the carrier cannot cancel your coverage or raise your premiums due to changes in your health, as long as you continue to pay your premiums." },
+  { statement: "Final expense policies are typically whole life policies with lower face amounts.", answer: "fact", explanation: "Final expense coverage is generally provided through whole life or guaranteed issue whole life products with face amounts ranging from a few thousand dollars to $25,000 or $50,000, depending on the carrier." },
+  { statement: "Your beneficiary must file for the death benefit - it is not paid automatically.", answer: "fact", explanation: "Beneficiaries must file a claim with the insurance company following the insured's death. Keeping policy documents accessible and informing beneficiaries that coverage exists is critical for timely claim filing." },
+  { statement: "Business owners cannot use life insurance in their business planning.", answer: "myth", explanation: "Life insurance is commonly used in business contexts for key person coverage, buy-sell agreement funding, business loan collateral, and executive benefit programs." },
+  { statement: "You can borrow against the cash value of a whole life policy.", answer: "fact", explanation: "Policyholders can take loans against the accumulated cash value of a whole life policy for any reason. These loans accrue interest and, if not repaid, may reduce the death benefit payable to beneficiaries." },
+
+  { statement: "Term life insurance is permanent coverage.", answer: "myth", explanation: "Term life provides coverage for a defined period - 10, 15, 20, 25, or 30 years. When the term ends, coverage ceases unless the policy is renewed or converted to permanent coverage." },
+  { statement: "A waiver of premium rider keeps your policy active if you become disabled and cannot work.", answer: "fact", explanation: "A waiver of premium rider waives the premium obligation during a qualifying total disability period, keeping the policy in force without payment. Disability definitions and qualifying criteria vary by carrier." },
+  { statement: "All insurance companies use the same underwriting criteria.", answer: "myth", explanation: "Underwriting guidelines vary significantly among carriers. One company may decline a condition that another company covers, making it important to work with an independent agent who can compare multiple options." },
+  { statement: "Life insurance bought through the internet does not require medical questions.", answer: "myth", explanation: "Many online life insurance products do require health questions and may order prescription or database checks as part of automated underwriting. Guaranteed issue products are the exception, not the rule." },
+  { statement: "A chronic illness rider can help cover long-term care costs.", answer: "fact", explanation: "A chronic illness rider allows early access to the death benefit when the insured cannot perform two or more Activities of Daily Living. This can help offset long-term care or home care expenses." },
+  { statement: "Single people never need life insurance.", answer: "myth", explanation: "Single individuals may still benefit from life insurance to cover outstanding debts, support dependents, lock in favorable rates while young, or leave a legacy to a cause or family member." },
+  { statement: "Life insurance premiums are always tax deductible.", answer: "myth", explanation: "Personal life insurance premiums are generally not tax deductible. Certain business-owned policies used for specific purposes may have different tax treatment. Consult a qualified tax advisor for your situation." },
+  { statement: "The contestability period is typically the first two years after a policy is issued.", answer: "fact", explanation: "During the two-year contestability period, the carrier retains the right to investigate and potentially deny a claim based on material misrepresentation on the application. After two years, the policy is generally incontestable." },
+  { statement: "You can have multiple life insurance policies at the same time.", answer: "fact", explanation: "It is perfectly legal and common to have more than one life insurance policy simultaneously. Carriers evaluate total coverage amounts across all policies during underwriting." },
+  { statement: "Limited pay whole life means you pay premiums for only a set number of years but keep coverage for life.", answer: "fact", explanation: "A limited pay or Smartpay whole life policy allows the policyholder to pay premiums for a defined period - such as 10 or 20 years, or until a specific age - after which no further premiums are owed and coverage continues for life." },
+
+  { statement: "The MIB keeps a record of your past insurance applications.", answer: "fact", explanation: "The Medical Information Bureau is a data exchange used by member insurance companies. If you have previously applied for life or health insurance, the MIB may have coded information that future carriers can review." },
+  { statement: "Prescription drug history has no impact on life insurance underwriting.", answer: "myth", explanation: "Many carriers use prescription history databases to cross-reference medications with reported health conditions during underwriting. Your prescription record can reveal conditions not disclosed on an application." },
+  { statement: "A children's term rider can protect a child's future insurability.", answer: "fact", explanation: "A children's term rider can be converted to a permanent policy when the child reaches adulthood, regardless of health changes that occurred after the rider was issued. This preserves the child's ability to obtain coverage later in life." },
+  { statement: "Life insurance is too expensive for most people to afford.", answer: "myth", explanation: "A healthy person in their 30s can often obtain a meaningful term life policy for a cost comparable to a monthly streaming subscription. Premium varies by age, health, coverage amount, and policy type." },
+  { statement: "Organ transplant recipients can never qualify for life insurance.", answer: "myth", explanation: "Certain carriers do offer coverage to organ transplant recipients, subject to specific criteria including time since transplant, type of organ, current health status, and medications. Availability is limited but exists." },
+  { statement: "An accidental death benefit rider pays extra if you die from an accident.", answer: "fact", explanation: "An accidental death benefit rider provides an additional benefit - sometimes double the base death benefit - if the insured dies as a direct result of a covered accident. It does not apply to illness-related deaths." },
+  { statement: "People with a history of substance use cannot get life insurance.", answer: "myth", explanation: "Coverage may be available to applicants with a history of substance use, depending on the time elapsed since use, whether treatment was completed, and the specific carrier's guidelines. Some carriers specialize in this profile." },
+  { statement: "Your driving record can affect your life insurance application.", answer: "fact", explanation: "Carriers may review your motor vehicle report as part of underwriting. Multiple violations or DUI convictions can result in a higher rate or, in some cases, a decline depending on the severity and recency." },
+  { statement: "Alzheimer's patients can qualify for certain types of life insurance.", answer: "fact", explanation: "Guaranteed issue life insurance, which requires no health questions or medical exam, may be available to applicants with Alzheimer's disease who meet the carrier's age requirements. Standard coverage is typically not available." },
+  { statement: "Getting a quote for life insurance negatively impacts your credit score.", answer: "myth", explanation: "A life insurance application does not result in a hard credit inquiry that affects your credit score. Any credit-related checks conducted as part of underwriting are soft inquiries used for risk assessment purposes only." },
+];
+
+var currentQ=0,correct=0,wrong=0,streak=0,answered=false;
+function buildDots(){var c=document.getElementById('timerDots');if(!c)return;c.innerHTML='';var g=currentQ%10;for(var i=0;i<10;i++){var d=document.createElement('div');d.className='q-dot'+(i<g?' active':'');c.appendChild(d);}}
+function startGame(){document.getElementById('rulesScreen').className='rules-screen';document.getElementById('gameArea').style.display='block';loadQuestion();}
+function loadQuestion(){if(currentQ>=QUESTIONS.length){showFinal();return;}var q=QUESTIONS[currentQ];answered=false;document.getElementById('qNum').textContent='Q '+(currentQ+1)+' / '+QUESTIONS.length;document.getElementById('qLabel').textContent='Question '+(currentQ+1)+' of '+QUESTIONS.length;document.getElementById('qStatement').textContent=q.statement;document.getElementById('progressFill').style.width=((currentQ/QUESTIONS.length)*100)+'%';buildDots();['mythBall','factBall'].forEach(function(id){var b=document.getElementById(id);b.className='soccer-ball';b.style.opacity='1';});document.getElementById('mythBtn').disabled=false;document.getElementById('factBtn').disabled=false;document.getElementById('stadiumField').className='stadium-field';document.getElementById('keeper').innerHTML='&#129342;';document.getElementById('keeper').className='goalkeeper';var rp=document.getElementById('resultPanel');rp.className='result-panel';rp.style.display='none';document.getElementById('nextBtn').textContent=(currentQ+1<QUESTIONS.length)?'Next Question \u2192':'See Final Score';}
+function answer(choice){if(answered)return;answered=true;var q=QUESTIONS[currentQ];var ok=choice===q.answer;document.getElementById('mythBtn').disabled=true;document.getElementById('factBtn').disabled=true;var ball=document.getElementById(choice==='myth'?'mythBall':'factBall');var keeper=document.getElementById('keeper');var field=document.getElementById('stadiumField');if(ok){ball.classList.add('ball-goal');keeper.innerHTML='&#128561;';keeper.classList.add(Math.random()>0.5?'dive-left':'dive-right');field.classList.add('flash-goal');correct++;streak++;var se=document.getElementById('scoreCorrect');se.textContent=correct;se.style.transform='scale(1.5)';setTimeout(function(){se.style.transition='transform 0.3s';se.style.transform='scale(1)';},350);setTimeout(function(){var n=document.getElementById('goalNotif');document.getElementById('goalSub').textContent=streak>=3?streak+' in a row!':'';n.classList.add('show');setTimeout(function(){n.classList.remove('show');},1500);},300);}else{ball.classList.add(Math.random()>0.5?'ball-miss-l':'ball-miss-r');keeper.innerHTML='&#128548;';field.classList.add('flash-save');wrong++;streak=0;var we=document.getElementById('scoreWrong');we.textContent=wrong;we.style.transform='scale(1.5)';setTimeout(function(){we.style.transition='transform 0.3s';we.style.transform='scale(1)';},350);}var st=document.getElementById('streakDisplay');st.textContent=streak>=3?'Streak: '+streak+' \uD83D\uDD25':'Streak: '+streak;st.className='sb-streak'+(streak>=3?' hot':'');setTimeout(function(){var rp=document.getElementById('resultPanel');rp.className='result-panel show '+(ok?'correct':'wrong');rp.style.display='block';document.getElementById('resultVerdict').className='result-verdict '+(ok?'correct':'wrong');document.getElementById('resultVerdict').textContent=ok?'Correct - This statement is a '+(q.answer==='myth'?'Myth.':'Fact.'):'Not quite - This statement is actually a '+(q.answer==='myth'?'Myth.':'Fact.');document.getElementById('resultExplanation').textContent=q.explanation;},980);}
+function nextQuestion(){currentQ++;if(currentQ>0&&currentQ%10===0&&currentQ<QUESTIONS.length){showBreak();return;}if(currentQ>=QUESTIONS.length){showFinal();return;}loadQuestion();}
+function showBreak(){document.getElementById('gameArea').style.display='none';var bs=document.getElementById('breakScreen');bs.className='break-screen show';var t=['','Quarter Time','Half Time','Three-Quarter Time','Final Stretch'];document.getElementById('brTitle').textContent=t[currentQ/10]||'Break Time';document.getElementById('brMsg').textContent='Goals: '+correct+'  |  Saves: '+wrong+'  |  Questions answered: '+currentQ+(streak>=3?'  |  Streak: '+streak+'!':'');}
+function continueGame(){document.getElementById('breakScreen').className='break-screen';document.getElementById('gameArea').style.display='block';loadQuestion();}
+function endGame(){document.getElementById('breakScreen').className='break-screen';showFinal();}
+function showFinal(){document.getElementById('gameArea').style.display='none';document.getElementById('breakScreen').className='break-screen';var fs=document.getElementById('finalScreen');fs.className='final-screen show';var total=currentQ,pct=total>0?Math.round((correct/total)*100):0;document.getElementById('finalScoreBig').textContent=correct+'/'+total;var trophy,title,msg;if(pct>=90){trophy='&#127942;';title='Insurance Expert!';msg='Outstanding - you scored '+pct+'% with '+correct+' correct out of '+total+' questions. Your insurance knowledge is exceptional. Even experts benefit from speaking with a licensed advisor.';}else if(pct>=70){trophy='&#129351;';title='Well Informed!';msg='Impressive - you scored '+pct+'% with '+correct+' correct out of '+total+'. Let a licensed advisor help you turn that knowledge into coverage that fits your life.';}else if(pct>=50){trophy='&#129352;';title='Getting There!';msg='Good effort - you scored '+pct+'% with '+correct+' correct out of '+total+'. Life insurance has a lot of moving parts - that is exactly why independent advisors exist.';}else{trophy='&#9917;';title='Keep Learning!';msg='You scored '+pct+'% with '+correct+' correct out of '+total+'. Life insurance can be confusing - that is not your fault. Regardless of your score you deserve coverage that fits your life. Let us help you find it.';}document.getElementById('finalTrophy').innerHTML=trophy;document.getElementById('finalTitle').textContent=title;document.getElementById('finalMessage').textContent=msg;}
 </script>
+<!-- ACCESSIBILITY PANEL -->
+
+
+<script>
+function openModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Focus the close button for keyboard/screen reader users
+    var close = m.querySelector('.modal-close');
+    if (close) setTimeout(function(){ close.focus(); }, 50);
+  }
+}
+function closeModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function closeModalOnOverlay(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+</script>
+
+<!-- FCRA Modal -->
+<!-- MIB Modal -->
+<!-- Pharmacy Records Modal -->
+<!-- MVR Modal -->
+
+
+
+<div class="modal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" onclick="closeModalOnOverlay(event,'modal-privacy')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-privacy-title">Privacy Policy</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-privacy')" aria-label="Close privacy policy">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What This Policy Covers</div>
+        <p>This privacy policy describes how Eboni Morris, licensed independent insurance agent (NPN: 18509552), collects, uses, and protects information submitted through this website. This policy applies to all information gathered through the intake questionnaire, referral forms, and any other communications submitted through coveredwithconditions.com.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Information We Collect</div>
+        <p>When you submit an intake form or inquiry, we may collect the following types of information:</p>
+        <ul>
+          <li>Personal identifiers such as your name, date of birth, address, phone number, and email address</li>
+          <li>Health and lifestyle information provided voluntarily for the purpose of evaluating coverage options</li>
+          <li>Information about medications, medical history, and functional status as relevant to insurance underwriting</li>
+          <li>Beneficiary relationship information provided in connection with coverage inquiries</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How Your Information Is Used</div>
+        <p>Information you submit is used solely for the purpose of evaluating and presenting life insurance coverage options on your behalf. It is not sold, rented, or shared with any third party except as necessary to process a formal insurance application at your direction, and only with your explicit written authorization prior to any application submission.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your Rights</div>
+        <p>You have the right to request access to the information we hold about you, request corrections to inaccurate information, and request that your information not be used for purposes beyond this advisory engagement. To exercise any of these rights, contact this office directly.</p>
+      </div>
+      <div class="modal-notice">This policy is subject to applicable federal and state insurance privacy regulations. Nothing in this policy limits any rights you may have under HIPAA, applicable state insurance privacy laws, or the Fair Credit Reporting Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HIPAA Notice Modal -->
+<div class="modal-overlay" id="modal-hipaa" role="dialog" aria-modal="true" aria-labelledby="modal-hipaa-title" onclick="closeModalOnOverlay(event,'modal-hipaa')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Federal Privacy Law</div>
+        <div class="modal-title" id="modal-hipaa-title">HIPAA Privacy Notice</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-hipaa')" aria-label="Close HIPAA notice">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What HIPAA Is</div>
+        <p>The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that establishes national standards for the protection of certain health information. HIPAA restricts how health information may be used and shared and gives individuals specific rights regarding their health data.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies Here</div>
+        <p>Any health-related information you provide through this website or during our advisory engagement is handled in strict compliance with applicable HIPAA privacy standards. This includes any medical history, conditions, medications, or other health information submitted as part of an intake questionnaire or consultation.</p>
+        <p>Your health information will not be disclosed to any insurance carrier or third party without your written authorization prior to any formal application submission. You will be informed of what information is being shared, with whom, and for what purpose before any such disclosure occurs.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your HIPAA Rights</div>
+        <ul>
+          <li>The right to receive a notice of privacy practices</li>
+          <li>The right to access and review health information held about you</li>
+          <li>The right to request corrections to inaccurate information</li>
+          <li>The right to request restrictions on certain uses or disclosures</li>
+          <li>The right to receive an accounting of disclosures made on your behalf</li>
+          <li>The right to file a complaint if you believe your privacy rights have been violated</li>
+        </ul>
+      </div>
+      <div class="modal-notice">If you believe your health information privacy rights have been violated, you may file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights. Filing a complaint will not affect your ability to obtain coverage or services through this practice.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Terms of Use Modal -->
+<div class="modal-overlay" id="modal-terms" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title" onclick="closeModalOnOverlay(event,'modal-terms')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Legal</div>
+        <div class="modal-title" id="modal-terms-title">Terms of Use</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-terms')" aria-label="Close terms of use">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Use of This Website</div>
+        <p>This website, coveredwithconditions.com, is operated by Eboni Morris, a licensed independent insurance agent (NPN: 18509552). By accessing or using this website, you agree to the following terms. If you do not agree, please do not use this site.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Insurance Offer or Guarantee</div>
+        <p>Nothing on this website constitutes an offer, commitment, or guarantee of insurance coverage. All coverage is subject to formal application, individual carrier underwriting approval, and the terms of the actual policy contract issued by the insurance company. Information on this site is provided for general educational and informational purposes only.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Accuracy of Information</div>
+        <p>While we make reasonable efforts to keep information on this site current and accurate, insurance products, carrier guidelines, licensing requirements, and applicable laws are subject to change. You should not rely solely on information found on this website when making insurance decisions. Consult with a licensed insurance professional for advice specific to your situation.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">No Attorney-Client or Financial Advisory Relationship</div>
+        <p>Use of this website does not create an attorney-client relationship, a financial advisory relationship, or any other professional engagement beyond that of a licensed insurance producer. Information provided through intake forms is used solely for the purpose of evaluating and presenting life insurance coverage options.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Intellectual Property</div>
+        <p>All content on this website, including text, design, layout, and educational materials, is the property of Eboni Morris and may not be reproduced, distributed, or used without written permission.</p>
+      </div>
+      <div class="modal-notice">These terms are governed by the laws of the State of Georgia. Eboni Morris reserves the right to update these terms at any time. Continued use of this site following any update constitutes acceptance of the revised terms.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Licensing Information Modal -->
+<div class="modal-overlay" id="modal-license" role="dialog" aria-modal="true" aria-labelledby="modal-license-title" onclick="closeModalOnOverlay(event,'modal-license')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subtitle">Producer Licensing</div>
+        <div class="modal-title" id="modal-license-title">Licensing Information</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-license')" aria-label="Close licensing information">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Licensed Producer</div>
+        <p>This website is operated by Eboni Morris, a licensed independent insurance agent appointed with multiple insurance carriers. Eboni Morris holds life, accident, and sickness licenses and has been licensed since 2017.</p>
+        <ul>
+          <li>National Producer Number (NPN): 18509552</li>
+          <li>License Type: Life, Accident and Sickness</li>
+          <li>Licensed Since: 2017</li>
+          <li>Resident State: Georgia</li>
+        </ul>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">States Where Licensed</div>
+        <p>Eboni Morris is currently licensed to solicit, negotiate, and sell life insurance in the following states:</p>
+        <ul>
+          <li>Georgia (GA) - Resident License</li>
+          <li>Florida (FL) - Nonresident License</li>
+          <li>Michigan (MI) - Nonresident License</li>
+          <li>Ohio (OH) - Nonresident License</li>
+          <li>South Carolina (SC) - Nonresident License</li>
+          <li>Texas (TX) - Nonresident License</li>
+        </ul>
+        <p>Expansion to additional states is ongoing. If you are located in a state not listed above, please complete the intake form and we will advise whether service is currently available in your state or connect you with a licensed partner where applicable.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">License Verification</div>
+        <p>Licensure can be independently verified through the National Insurance Producers Registry (NIPR) by calling 1 (855) 674-6477 and referencing National Producer Number (NPN) 18509552. You may also verify licensing through the insurance department of your individual state.</p>
+      </div>
+      <div class="modal-notice">Insurance products are offered through multiple insurance carriers and are subject to individual carrier underwriting approval. Eboni Morris operates as an independent agent and is not an employee or exclusive representative of any single insurance company.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Focus the close button for keyboard/screen reader users
+    var close = m.querySelector('.modal-close');
+    if (close) setTimeout(function(){ close.focus(); }, 50);
+  }
+}
+function closeModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function closeModalOnOverlay(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+</script>
+
+<!-- ACCESSIBILITY PANEL -->
+
+
+<script>
+
+function a11y(type,val){
+  var b=document.body;
+  var live=document.getElementById('a11y-live');
+  if(type==='text'){
+    b.classList.remove('lg-text','xl-text');
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');}});
+    if(val==='large'){b.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');document.getElementById('ts-large').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to large.';}
+    else if(val==='xl'){b.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');document.getElementById('ts-xl').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to extra large.';}
+    else{document.getElementById('ts-normal').classList.add('active');document.getElementById('ts-normal').setAttribute('aria-pressed','true');if(live)live.textContent='Text size normal.';}
+    localStorage.setItem('a11y_text',val);
+  }
+  if(type==='contrast'){var on=val==='toggle'?!b.classList.contains('hc-mode'):val==='on';b.classList.toggle('hc-mode',on);var btn=document.getElementById('hc-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'High contrast on.':'High contrast off.';localStorage.setItem('a11y_contrast',on?'on':'off');}
+  if(type==='dyslexia'){var on=val==='toggle'?!b.classList.contains('dyslexia-font'):val==='on';b.classList.toggle('dyslexia-font',on);var btn=document.getElementById('dy-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Dyslexia font on.':'Dyslexia font off.';localStorage.setItem('a11y_dyslexia',on?'on':'off');}
+  if(type==='motion'){var on=val==='toggle'?!b.classList.contains('reduce-motion'):val==='on';b.classList.toggle('reduce-motion',on);var btn=document.getElementById('rm-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Motion reduced.':'Motion on.';localStorage.setItem('a11y_motion',on?'on':'off');}
+  if(type==='screenreader'){var on=val==='toggle'?!b.classList.contains('sr-mode'):val==='on';b.classList.toggle('sr-mode',on);var btn=document.getElementById('sr-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Screen reader mode on. Layout simplified.':'Screen reader mode off.';localStorage.setItem('a11y_sr',on?'on':'off');}
+}
+
+
+function openModal(id){var m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden';}}
+function closeModal(id){var m=document.getElementById(id);if(m){m.classList.remove('open');document.body.style.overflow='';}}
+function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
+function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),isOpen=p.style.display==='block';p.style.display=isOpen?'none':'block';t.setAttribute('aria-expanded',isOpen?'false':'true');}
+function a11yText(val){document.body.classList.remove('lg-text','xl-text');['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});if(val==='large'){document.body.classList.add('lg-text');var el=document.getElementById('ts-large');if(el)el.classList.add('active');}else if(val==='xl'){document.body.classList.add('xl-text');var el=document.getElementById('ts-xl');if(el)el.classList.add('active');}else{var el=document.getElementById('ts-normal');if(el)el.classList.add('active');}}
+function a11yToggle(btnId,cssClass){var on=!document.body.classList.contains(cssClass);document.body.classList.toggle(cssClass,on);var btn=document.getElementById(btnId);if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}}
+function a11yReset(){document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});var n=document.getElementById('ts-normal');if(n)n.classList.add('active');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+
+</script>
+
+<!-- FCRA Modal -->
+<div class="modal-overlay" id="modal-fcra" role="dialog" aria-modal="true" aria-labelledby="modal-fcra-title" onclick="closeModalOnOverlay(event,'modal-fcra')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title" id="modal-fcra-title">Fair Credit Reporting Act (FCRA)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-fcra')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the FCRA Is</div>
+        <p>The Fair Credit Reporting Act (FCRA) is a federal law that regulates how consumer reporting agencies collect, use, and share information about individuals. It gives consumers specific rights when their information is used to make decisions about them, including decisions related to insurance.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Applies to Your Insurance Application</div>
+        <p>In connection with a formal application for life insurance, the issuing insurance company may obtain a consumer report about you. This report can include information about your creditworthiness, credit standing, character, general reputation, personal characteristics, or mode of living.</p>
+        <p>If the insurance company takes an adverse action based in whole or in part on information in a consumer report, such as declining your application, offering a rated premium, or limiting your benefit, the company is required by federal law to notify you. That notice must include the name, address, and phone number of the consumer reporting agency that supplied the report.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your Rights Under the FCRA</div>
+        <ul>
+          <li>The right to be told if information in your consumer report was used against you</li>
+          <li>The right to request a copy of your consumer report from the reporting agency</li>
+          <li>The right to dispute inaccurate or incomplete information in the report</li>
+          <li>The right to add a statement of explanation to your file if a dispute is not resolved</li>
+          <li>The right to seek damages from violators of the FCRA</li>
+        </ul>
+      </div>
+      <div class="modal-notice">No consumer report will be requested on your behalf without your knowledge. You will be informed prior to any application submission. This advisory practice does not request or receive consumer reports directly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MIB Modal -->
+<div class="modal-overlay" id="modal-mib" role="dialog" aria-modal="true" aria-labelledby="modal-mib-title" onclick="closeModalOnOverlay(event,'modal-mib')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title" id="modal-mib-title">Medical Information Bureau (MIB)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mib')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What the MIB Is</div>
+        <p>The Medical Information Bureau (MIB) is a member-owned organization that operates as an information exchange among participating life and health insurance companies. Most individually underwritten life and health insurance carriers are MIB members.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Affects Your Application</div>
+        <p>When you apply for individually underwritten life or health insurance, the issuing carrier may request information from the MIB about prior insurance applications or claims you may have submitted with other member companies. This coded information is used during the underwriting process to identify inconsistencies and help prevent misrepresentation on applications, which helps keep premiums fair for all consumers.</p>
+        <p>The MIB may also create a record of your current application that future member companies may access if you apply elsewhere.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your MIB Rights</div>
+        <ul>
+          <li>You have the right to request a copy of any information the MIB has on file about you</li>
+          <li>You may contact the MIB directly at mib.com or by calling 1-866-692-6901</li>
+          <li>You have the right to dispute any inaccurate information in your MIB file</li>
+          <li>MIB information alone is not used to make a final underwriting decision</li>
+        </ul>
+      </div>
+      <div class="modal-notice">A formal MIB inquiry will not be initiated without your knowledge and will only occur in connection with a formal application submitted at your direction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pharmacy Records Modal -->
+<div class="modal-overlay" id="modal-rx" role="dialog" aria-modal="true" aria-labelledby="modal-rx-title" onclick="closeModalOnOverlay(event,'modal-rx')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-rx-title">Pharmacy Records (Rx History)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-rx')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What a Pharmacy Records Check Is</div>
+        <p>Depending on the insurance carrier and the product applied for, the issuing company may request a report that includes your current and historical prescription drug records from participating pharmacies. This type of report is a standard underwriting tool used by many life insurance carriers.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used</div>
+        <p>Prescription drug history is reviewed during underwriting to help the carrier correlate medications on file with health conditions disclosed on the application. It helps the carrier evaluate risk and ensure the accuracy of information provided. The report typically covers several years of prescription history from participating pharmacy networks.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your Rights</div>
+        <ul>
+          <li>A pharmacy records check will only be requested as part of a formal application submitted at your direction</li>
+          <li>You will be informed if such a check is required before your application is submitted</li>
+          <li>If an adverse underwriting decision is made based on this information, you will be notified and given the right to dispute inaccuracies</li>
+        </ul>
+      </div>
+      <div class="modal-notice">Pharmacy record checks may or may not be required depending on the specific carrier and product selected. Not every carrier uses this type of report for every application.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MVR Modal -->
+<div class="modal-overlay" id="modal-mvr" role="dialog" aria-modal="true" aria-labelledby="modal-mvr-title" onclick="closeModalOnOverlay(event,'modal-mvr')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-mvr-title">Motor Vehicle Report (MVR)</div></div>
+      <button class="modal-close" onclick="closeModal('modal-mvr')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">What a Motor Vehicle Report Is</div>
+        <p>A Motor Vehicle Report (MVR) is a report obtained from your state Department of Motor Vehicles that provides a history of your driving record. It may include traffic violations, license suspensions or revocations, DUI or DWI convictions, accidents on record, and the current status of your driver's license.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">How It Is Used in Life Insurance Underwriting</div>
+        <p>Some life insurance carriers review driving history as part of the underwriting process because certain driving patterns, such as multiple DUI convictions or a history of reckless driving, are considered indicators of risk. An MVR may be requested depending on the carrier's underwriting guidelines for the specific product applied for.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Your Rights</div>
+        <ul>
+          <li>An MVR will only be requested as part of a formal application submitted at your direction</li>
+          <li>You will be informed if an MVR is required before your application is submitted</li>
+          <li>If an adverse underwriting action is taken based on MVR information, you have the right to be notified under applicable federal and state law</li>
+          <li>You may obtain a copy of your own driving record directly from your state DMV at any time</li>
+        </ul>
+      </div>
+      <div class="modal-notice">An MVR may or may not be required depending on the specific carrier and product. Not all carriers order motor vehicle reports for every applicant or product type.</div>
+    </div>
+  </div>
+</div>
+
+
+<div id="chatBubble" style="position:fixed;bottom:24px;left:24px;z-index:490;">
+  <a href="chat.html" style="display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-radius:30px;padding:0.65rem 1.1rem 0.65rem 0.85rem;text-decoration:none;" onmouseover="this.style.background='#9e8047'" onmouseout="this.style.background='#1a1a18'">
+    <div style="width:36px;height:36px;background:rgba(158,128,71,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9e8047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <div><div style="font-family:system-ui,sans-serif;font-size:0.85rem;font-weight:600;color:#fff;">Ask a Question</div><div style="font-family:system-ui,sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.45);">Private &amp; Anonymous</div></div>
+  </a>
+</div>
+
+<div id="interviewNowBtn" style="position:fixed;right:0;bottom:90px;z-index:9997;display:flex;align-items:center;">
+  <a href="#" onclick="openModal('modal-doxy-note');return false;" 
+     style="display:flex;align-items:center;gap:0.5rem;background:#2e7d52;color:#fff;font-family:system-ui,sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.1rem;border-radius:6px 0 0 6px;border:none;cursor:pointer;text-decoration:none;box-shadow:-2px 2px 8px rgba(0,0,0,0.2);white-space:nowrap;"
+     onmouseover="this.style.background='#9e8047'" onmouseout="this.style.background='#2e7d52'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Interview Now
+  </a>
+</div>
+
+<button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
+<div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
+  <span class="a11y-heading">Accessibility Options</span>
+  <div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">High Contrast</span><div class="a11y-row-btns"><button class="a11y-btn" id="hc-btn" onclick="a11yToggle('hc-btn','hc-mode')">Enable</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">Dyslexia Font</span><div class="a11y-row-btns"><button class="a11y-btn" id="dy-btn" onclick="a11yToggle('dy-btn','dyslexia-font')">Enable</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">Reduce Motion</span><div class="a11y-row-btns"><button class="a11y-btn" id="rm-btn" onclick="a11yToggle('rm-btn','reduce-motion')">Enable</button></div></div>
+  <div class="a11y-sep"></div>
+  <div class="a11y-row"><span class="a11y-row-label">Screen Reader</span><div class="a11y-row-btns"><button class="a11y-btn" id="sr-btn" onclick="a11yToggle('sr-btn','sr-mode')">Enable</button></div></div>
+  <button class="a11y-reset" onclick="a11yReset()">Reset All</button>
+</div>
+
+
+
+<div class="modal-overlay" id="modal-doxy-note" onclick="closeModalOnOverlay(event,'modal-doxy-note')" role="dialog" aria-modal="true" aria-label="Interview Chat Notice">
+  <div class="modal-box" style="max-width:480px;">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Before You Join</div>
+        <div class="modal-subtitle">Important note about your interview session</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-doxy-note')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-family:system-ui;font-size:1rem;color:#1a1a18;font-weight:500;margin-bottom:0.75rem;">Before you join the waiting room</p>
+      <p style="font-family:system-ui;font-size:0.95rem;color:#5c5955;font-weight:300;line-height:1.8;margin-bottom:1rem;">Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your advisor will connect with you as soon as possible.</p>
+      <p style="font-family:system-ui;font-size:0.95rem;color:#5c5955;font-weight:300;line-height:1.8;margin-bottom:1.5rem;">You may also visit the <a href="quote.html" style="color:#9e8047;">Get a Quote</a> page to submit your contact information. Your advisor will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
+      <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer" onclick="closeModal('modal-doxy-note')" style="display:block;background:#1a1a18;color:#fff;font-family:system-ui;font-size:0.9rem;font-weight:500;padding:0.9rem 1.5rem;border-radius:4px;text-decoration:none;text-align:center;">I Understand - Join the Waiting Room</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+  <div class="eb-actions">
+    <a href="chat.html" class="eb-btn eb-primary">Ask a Question</a>
+    <a href="quote.html" class="eb-btn eb-secondary">Get a Quote</a>
+    <button class="eb-close" onclick="dismissBar()" aria-label="Close">&times;</button>
+  </div>
+</div>
+
+
+</body>
+</html>
