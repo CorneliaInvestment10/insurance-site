@@ -1007,6 +1007,206 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   .footer-col ul li a{font-size:0.82rem!important;}
 }
 </style>
+
+<style id="index-interview-modal-final">
+/* ===== INDEX INTERVIEW NOW MODAL ===== */
+#modal-doxy-note{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:2147483600 !important;
+  display:none !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:24px !important;
+  background:rgba(0,0,0,.72) !important;
+  box-sizing:border-box !important;
+  pointer-events:none !important;
+}
+#modal-doxy-note.open{
+  display:flex !important;
+  pointer-events:auto !important;
+}
+#modal-doxy-note .interview-modal-box{
+  position:relative !important;
+  width:min(700px, calc(100vw - 40px)) !important;
+  max-height:calc(100vh - 48px) !important;
+  overflow:auto !important;
+  margin:0 auto !important;
+  border-radius:10px !important;
+  background:#fff !important;
+  box-shadow:0 24px 70px rgba(0,0,0,.38) !important;
+  box-sizing:border-box !important;
+}
+#modal-doxy-note .interview-modal-header{
+  position:relative !important;
+  min-height:104px !important;
+  padding:25px 70px 23px 30px !important;
+  background:#1a1a18 !important;
+  color:#fff !important;
+  box-sizing:border-box !important;
+}
+#modal-doxy-note .interview-modal-kicker{
+  margin:0 0 10px !important;
+  font-family:var(--serif,Georgia,serif) !important;
+  font-size:1.25rem !important;
+  font-weight:400 !important;
+  line-height:1.2 !important;
+  color:#fff !important;
+}
+#modal-doxy-note .interview-modal-title{
+  margin:0 !important;
+  font-family:var(--sans,Arial,sans-serif) !important;
+  font-size:.72rem !important;
+  font-weight:700 !important;
+  letter-spacing:.18em !important;
+  line-height:1.5 !important;
+  text-transform:uppercase !important;
+  color:#c5a25a !important;
+}
+#modal-doxy-note .interview-modal-close{
+  position:absolute !important;
+  top:22px !important;
+  right:24px !important;
+  width:38px !important;
+  height:38px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+  border:1px solid rgba(255,255,255,.7) !important;
+  border-radius:4px !important;
+  background:transparent !important;
+  color:#fff !important;
+  font-size:24px !important;
+  font-weight:300 !important;
+  line-height:1 !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+}
+#modal-doxy-note .interview-modal-close:hover,
+#modal-doxy-note .interview-modal-close:focus-visible{
+  background:#fff !important;
+  color:#1a1a18 !important;
+  outline:2px solid #c5a25a !important;
+  outline-offset:2px !important;
+}
+#modal-doxy-note .interview-modal-body{
+  padding:34px 34px 30px !important;
+  background:#fff !important;
+  color:#6b6966 !important;
+  box-sizing:border-box !important;
+}
+#modal-doxy-note .interview-modal-body h3{
+  margin:0 0 18px !important;
+  font-family:var(--sans,Arial,sans-serif) !important;
+  font-size:1rem !important;
+  font-weight:700 !important;
+  line-height:1.4 !important;
+  color:#1a1a18 !important;
+}
+#modal-doxy-note .interview-modal-body p{
+  margin:0 0 20px !important;
+  font-family:var(--sans,Arial,sans-serif) !important;
+  font-size:.96rem !important;
+  line-height:1.8 !important;
+  color:#77736f !important;
+}
+#modal-doxy-note .interview-modal-body p a{
+  color:#b18d46 !important;
+  text-decoration:none !important;
+}
+#modal-doxy-note .interview-modal-body p a:hover{
+  text-decoration:underline !important;
+}
+#modal-doxy-note .interview-modal-action{
+  display:flex !important;
+  justify-content:center !important;
+  width:100% !important;
+  margin:26px 0 0 !important;
+}
+#modal-doxy-note .interview-modal-action a{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-height:58px !important;
+  padding:15px 24px !important;
+  border-radius:4px !important;
+  background:#1a1a18 !important;
+  color:#fff !important;
+  font-family:var(--sans,Arial,sans-serif) !important;
+  font-size:.9rem !important;
+  font-weight:600 !important;
+  line-height:1.3 !important;
+  text-align:center !important;
+  text-decoration:none !important;
+  box-sizing:border-box !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+}
+#modal-doxy-note .interview-modal-action a:hover,
+#modal-doxy-note .interview-modal-action a:focus-visible{
+  background:#2a2a27 !important;
+  color:#fff !important;
+  outline:2px solid #c5a25a !important;
+  outline-offset:2px !important;
+}
+
+/* Interview Now launcher must remain above page content, but below Accessibility. */
+#interviewNowBtn{
+  z-index:2147483000 !important;
+  pointer-events:auto !important;
+}
+#interviewNowBtn > a{
+  pointer-events:auto !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+}
+
+@media(max-width:640px){
+  #modal-doxy-note{
+    padding:14px !important;
+  }
+  #modal-doxy-note .interview-modal-box{
+    width:100% !important;
+    max-height:calc(100vh - 28px) !important;
+  }
+  #modal-doxy-note .interview-modal-header{
+    min-height:112px !important;
+    padding:22px 58px 20px 22px !important;
+  }
+  #modal-doxy-note .interview-modal-kicker{
+    font-size:1.12rem !important;
+  }
+  #modal-doxy-note .interview-modal-title{
+    font-size:.65rem !important;
+    letter-spacing:.13em !important;
+  }
+  #modal-doxy-note .interview-modal-close{
+    top:18px !important;
+    right:18px !important;
+  }
+  #modal-doxy-note .interview-modal-body{
+    padding:26px 22px 24px !important;
+  }
+  #modal-doxy-note .interview-modal-body p{
+    font-size:.93rem !important;
+    line-height:1.7 !important;
+  }
+  #modal-doxy-note .interview-modal-action a{
+    min-height:56px !important;
+    font-size:.84rem !important;
+  }
+}
+
+/* Modest readability increase, keeping the site's 16px base. */
+body{font-size:16px !important;}
+.nav-links a,.mobile-nav a{font-size:.9rem !important;}
+.field label,label{font-size:.9rem !important;}
+.field input,.field select,.field textarea{font-size:.95rem !important;}
+.footer-brand p,.footer-col ul a,.footer-bottom,.fl-body,.fl-npn{font-size:.9rem !important;}
+</style>
+
 </head>
 <body>
 <nav class="navbar">
@@ -1243,6 +1443,9 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
 
 
+</a>
+</div>
+
 <div class="modal-overlay" style="display:none" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" onclick="closeModalOnOverlay(event,'modal-privacy')" style="display:none">
   <div class="modal-box">
     <div class="modal-header">
@@ -1407,47 +1610,7 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   </div>
 </div>
 
-<script>
-function openModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
-    m.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // Focus the close button for keyboard/screen reader users
-    var close = m.querySelector('.modal-close');
-    if (close) setTimeout// Ensure all form buttons are touch-friendly on iOS
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.cbtn, .pob, .kick-btn, .btn-next, .btn-prev, .btn-submit').forEach(function(btn) {
-    btn.style.touchAction = 'manipulation';
-    btn.style.webkitTapHighlightColor = 'rgba(0,0,0,0.1)';
-    btn.style.pointerEvents = 'auto';
-    btn.style.cursor = 'pointer';
-  });
-});
 
-(function(){ close.focus(); }, 50);
-  }
-}
-function closeModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
-    m.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-function closeModalOnOverlay(e, id) {
-  if (e.target === e.currentTarget) closeModal(id);
-}
-// Close on Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
-      m.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  }
-});
-</script>
 
 <!-- ACCESSIBILITY PANEL -->
 
@@ -1633,24 +1796,31 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
 
 
 
-<div class="modal-overlay" style="display:none" id="modal-doxy-note" onclick="closeModalOnOverlay(event,'modal-doxy-note')" role="dialog" aria-modal="true" aria-label="Interview Chat Notice" style="display:none">
-  <div class="modal-box" style="max-width:480px;">
-    <div class="modal-header">
-      <div>
-        <div class="modal-title">Before You Join</div>
-        <div class="modal-subtitle">Important note about your interview session</div>
-      </div>
-      <button class="modal-close" onclick="closeModal('modal-doxy-note')" aria-label="Close">&times;</button>
+
+<div class="modal-overlay" id="modal-doxy-note" role="dialog" aria-modal="true" aria-labelledby="modal-doxy-title" style="display:none;">
+  <div class="interview-modal-box">
+    <div class="interview-modal-header">
+      <div class="interview-modal-kicker">Before You Join</div>
+      <div class="interview-modal-title" id="modal-doxy-title">IMPORTANT NOTE ABOUT YOUR INTERVIEW SESSION</div>
+      <button type="button" class="interview-modal-close" aria-label="Close" onclick="closeModal('modal-doxy-note')">×</button>
     </div>
-    <div class="modal-body">
-      <p style="font-family:system-ui;font-size:1rem;color:#1a1a18;font-weight:500;margin-bottom:0.75rem;">Before you join the waiting room</p>
-      <p style="font-family:system-ui;font-size:0.95rem;color:#5c5955;font-weight:300;line-height:1.8;margin-bottom:1rem;">Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
-      <p style="font-family:system-ui;font-size:0.95rem;color:#5c5955;font-weight:300;line-height:1.8;margin-bottom:1.5rem;">You may also visit the <a href="quote.html" style="color:#9e8047;">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
-      <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer" onclick="closeModal('modal-doxy-note')" style="display:block;background:#1a1a18;color:#fff;font-family:system-ui;font-size:0.9rem;font-weight:500;padding:0.9rem 1.5rem;border-radius:4px;text-decoration:none;text-align:center;">I Understand - Join the Waiting Room</a>
-    
+
+    <div class="interview-modal-body">
+      <h3>Before you join the waiting room</h3>
+
+      <p>Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
+
+      <p>You may also visit the <a href="https://insurance-site-b74vp2r33-cornelia-investment-group.vercel.app/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
+
+      <div class="interview-modal-action">
+        <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer">
+          I Understand - Join the Waiting Room
+        </a>
+      </div>
     </div>
   </div>
 </div>
+
 
 </div>
 <footer>
@@ -1698,122 +1868,216 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
 </footer>
 <script src="_shared.js"></script>
 <script>
-  function submitHomeReferral(){
-    var your_name = document.getElementById('r_your_name').value.trim();
-    var your_phone = document.getElementById('r_your_phone').value.trim();
-    var first = document.getElementById('r_first').value.trim();
-    var last  = document.getElementById('r_last').value.trim();
-    var phone = document.getElementById('r_phone').value.trim();
-    var email = document.getElementById('r_email').value.trim();
-    var r_consent = document.getElementById('r_consent').checked;
-    if(!your_name || !your_phone || !first || !last){
-      alert("Please provide your name, your phone number, and the referred person's first and last name.");
-      return;
-    }
-    if(!phone && !email){
-      alert('Please provide at least a phone number or email address for the person you are referring.');
-      return;
-    }
-    if(!r_consent){
-      alert('Please confirm that you will let this person know they may be contacted.');
-      return;
-    }
-    var refNum = 'CWC-R' + String(Date.now()).slice(-4).padStart(4,'0');
-    var refData = {
-      your_name: your_name,
-      your_phone: your_phone,
-      ref_first: first,
-      ref_last: last,
-      ref_phone: phone,
-      ref_email: email,
-      ref_state: document.getElementById('r_state').value,
-      ref_relationship: document.getElementById('r_relationship').value,
-      ref_age: document.getElementById('r_age').value,
-      ref_time: document.getElementById('r_time').value,
-      ref_consent: 'Confirmed',
-      ref_comments: document.getElementById('r_comments').value.trim(),
-      ref_number: refNum
-    };
-    fetch('https://script.google.com/macros/s/AKfycbyR3DxXWR7XbD03GyEGvHZI3HasEvbw8Lx-e40alna-TwWgaVF6dOROhqvIjxtvwXs3mQ/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(refData)
-    }).catch(function(){});
-    var homeSuccessDiv = document.getElementById('homeReferralSuccess');
-    var homeFormDiv = document.getElementById('homeReferral');
-    if(homeFormDiv) homeFormDiv.style.display = 'none';
-    if(homeSuccessDiv){
-      homeSuccessDiv.style.display = 'block';
-    }
-    setTimeout(function(){
-      var homeRefEl = document.getElementById('homeRefNumDisplay');
-      if(homeRefEl){ homeRefEl.textContent = refNum; }
-      var homeRefTxt = document.getElementById('homeRefNumText');
-      if(homeRefTxt){ homeRefTxt.style.display = 'inline'; }
-    }, 50);
+function submitHomeReferral(){
+  var your_name = document.getElementById('r_your_name').value.trim();
+  var your_phone = document.getElementById('r_your_phone').value.trim();
+  var first = document.getElementById('r_first').value.trim();
+  var last  = document.getElementById('r_last').value.trim();
+  var phone = document.getElementById('r_phone').value.trim();
+  var email = document.getElementById('r_email').value.trim();
+  var r_consent = document.getElementById('r_consent').checked;
+  if(!your_name || !your_phone || !first || !last){
+    alert("Please provide your name, your phone number, and the referred person's first and last name.");
+    return;
   }
-</script>
-<script>
-function openModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
-    m.classList.add('open');
+  if(!phone && !email){
+    alert('Please provide at least a phone number or email address for the person you are referring.');
+    return;
+  }
+  if(!r_consent){
+    alert('Please confirm that you will let this person know they may be contacted.');
+    return;
+  }
+  var refNum = 'CWC-R' + String(Date.now()).slice(-4).padStart(4,'0');
+  var refData = {
+    your_name: your_name,
+    your_phone: your_phone,
+    ref_first: first,
+    ref_last: last,
+    ref_phone: phone,
+    ref_email: email,
+    ref_state: document.getElementById('r_state').value,
+    ref_relationship: document.getElementById('r_relationship').value,
+    ref_age: document.getElementById('r_age').value,
+    ref_time: document.getElementById('r_time').value,
+    ref_consent: 'Confirmed',
+    ref_comments: document.getElementById('r_comments').value.trim(),
+    ref_number: refNum
+  };
+  fetch('https://script.google.com/macros/s/AKfycbyR3DxXWR7XbD03GyEGvHZI3HasEvbw8Lx-e40alna-TwWgaVF6dOROhqvIjxtvwXs3mQ/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(refData)
+  }).catch(function(){});
+  var homeSuccessDiv = document.getElementById('homeReferralSuccess');
+  var homeFormDiv = document.getElementById('homeReferral');
+  if(homeFormDiv) homeFormDiv.style.display = 'none';
+  if(homeSuccessDiv) homeSuccessDiv.style.display = 'block';
+  setTimeout(function(){
+    var homeRefEl = document.getElementById('homeRefNumDisplay');
+    if(homeRefEl) homeRefEl.textContent = refNum;
+    var homeRefTxt = document.getElementById('homeRefNumText');
+    if(homeRefTxt) homeRefTxt.style.display = 'inline';
+  }, 50);
+}
+
+/* =========================================================
+   CLEAN INTERACTION LAYER
+   - Accessibility opens its own panel only.
+   - Interview Now opens the interview notice modal only.
+   - Footer legal links open their matching legal modals.
+   - Nothing in the accessibility control navigates to chat.html.
+   ========================================================= */
+(function(){
+  function byId(id){ return document.getElementById(id); }
+
+  window.openModal = function(id){
+    var modal = byId(id);
+    if(!modal) return false;
+    modal.style.display = 'flex';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
-    // Focus the close button for keyboard/screen reader users
-    var close = m.querySelector('.modal-close');
-    if (close) setTimeout// Ensure all form buttons are touch-friendly on iOS
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.cbtn, .pob, .kick-btn, .btn-next, .btn-prev, .btn-submit').forEach(function(btn) {
-    btn.style.touchAction = 'manipulation';
-    btn.style.webkitTapHighlightColor = 'rgba(0,0,0,0.1)';
-    btn.style.pointerEvents = 'auto';
-    btn.style.cursor = 'pointer';
-  });
-});
+    var close = modal.querySelector('.modal-close');
+    if(close){
+      setTimeout(function(){
+        try { close.focus(); } catch(e) {}
+      },50);
+    }
+    return false;
+  };
 
-(function(){ close.focus(); }, 50);
-  }
-}
-function closeModal(id) {
-  var m = document.getElementById(id);
-  if (m) {
-    m.classList.remove('open');
+  window.closeModal = function(id){
+    var modal = byId(id);
+    if(!modal) return;
+    modal.style.display = 'none';
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
     document.body.style.overflow = '';
-  }
-}
-function closeModalOnOverlay(e, id) {
-  if (e.target === e.currentTarget) closeModal(id);
-}
-// Close on Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
-      m.classList.remove('open');
-      document.body.style.overflow = '';
+  };
+
+  window.closeModalOnOverlay = function(event,id){
+    if(event.target === event.currentTarget) window.closeModal(id);
+  };
+
+  window.a11yOpen = function(){
+    var panel = byId('a11yPanel');
+    var tab = byId('a11yTab');
+    if(!panel || !tab) return;
+    var isOpen = panel.classList.toggle('open');
+    panel.style.display = isOpen ? 'flex' : 'none';
+    panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    tab.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  };
+
+  window.a11yText = function(value){
+    document.body.classList.remove('lg-text','xl-text');
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){
+      var el = byId(id);
+      if(el) el.classList.remove('active');
     });
-  }
-});
-</script>
-<script>
+    var target = 'ts-normal';
+    if(value === 'large'){
+      document.body.classList.add('lg-text');
+      target = 'ts-large';
+    } else if(value === 'xl'){
+      document.body.classList.add('xl-text');
+      target = 'ts-xl';
+    }
+    var button = byId(target);
+    if(button) button.classList.add('active');
+    try { localStorage.setItem('a11y_text', value); } catch(e) {}
+  };
 
-function a11y(type,val){
-  var b=document.body;
-  var live=document.getElementById('a11y-live');
-  if(type==='text'){
-    b.classList.remove('lg-text','xl-text');
-    ['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.setAttribute('aria-pressed','false');}});
-    if(val==='large'){b.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');document.getElementById('ts-large').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to large.';}
-    else if(val==='xl'){b.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');document.getElementById('ts-xl').setAttribute('aria-pressed','true');if(live)live.textContent='Text size increased to extra large.';}
-    else{document.getElementById('ts-normal').classList.add('active');document.getElementById('ts-normal').setAttribute('aria-pressed','true');if(live)live.textContent='Text size normal.';}
-    localStorage.setItem('a11y_text',val);
-  }
-  if(type==='contrast'){var on=val==='toggle'?!b.classList.contains('hc-mode'):val==='on';b.classList.toggle('hc-mode',on);var btn=document.getElementById('hc-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'High contrast on.':'High contrast off.';localStorage.setItem('a11y_contrast',on?'on':'off');}
-  if(type==='dyslexia'){var on=val==='toggle'?!b.classList.contains('dyslexia-font'):val==='on';b.classList.toggle('dyslexia-font',on);var btn=document.getElementById('dy-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Dyslexia font on.':'Dyslexia font off.';localStorage.setItem('a11y_dyslexia',on?'on':'off');}
-  if(type==='motion'){var on=val==='toggle'?!b.classList.contains('reduce-motion'):val==='on';b.classList.toggle('reduce-motion',on);var btn=document.getElementById('rm-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Motion reduced.':'Motion on.';localStorage.setItem('a11y_motion',on?'on':'off');}
-  if(type==='screenreader'){var on=val==='toggle'?!b.classList.contains('sr-mode'):val==='on';b.classList.toggle('sr-mode',on);var btn=document.getElementById('sr-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Screen reader mode on. Layout simplified.':'Screen reader mode off.';localStorage.setItem('a11y_sr',on?'on':'off');}
-}
+  window.a11yToggle = function(buttonId,className){
+    var enabled = !document.body.classList.contains(className);
+    document.body.classList.toggle(className, enabled);
+    var button = byId(buttonId);
+    if(button){
+      button.classList.toggle('active', enabled);
+      button.textContent = enabled ? 'Disable' : 'Enable';
+    }
+  };
 
+  window.a11yReset = function(){
+    document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');
+    ['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){
+      var el = byId(id);
+      if(el){ el.classList.remove('active'); el.textContent = 'Enable'; }
+    });
+    ['ts-normal','ts-large','ts-xl'].forEach(function(id){
+      var el = byId(id);
+      if(el) el.classList.remove('active');
+    });
+    var normal = byId('ts-normal');
+    if(normal) normal.classList.add('active');
+  };
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(function(modal){
+        modal.style.display = 'none';
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+      });
+      document.body.style.overflow = '';
+      var panel = byId('a11yPanel');
+      var tab = byId('a11yTab');
+      if(panel && panel.classList.contains('open')){
+        panel.classList.remove('open');
+        panel.style.display = 'none';
+        panel.setAttribute('aria-hidden','true');
+        if(tab) tab.setAttribute('aria-expanded','false');
+      }
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    /* Make fixed controls reliably clickable on touch devices. */
+    var interview = document.querySelector('#interviewNowBtn > a');
+    if(interview){
+      interview.style.pointerEvents = 'auto';
+      interview.style.cursor = 'pointer';
+      interview.style.touchAction = 'manipulation';
+    }
+
+    var accessibility = byId('a11yTab');
+    if(accessibility){
+      accessibility.type = 'button';
+      accessibility.style.pointerEvents = 'auto';
+      accessibility.style.cursor = 'pointer';
+      accessibility.style.touchAction = 'manipulation';
+    }
+
+    var panel = byId('a11yPanel');
+    if(panel){
+      panel.setAttribute('aria-hidden','true');
+    }
+
+    /* Prevent the Interview Now control from ever behaving like navigation. */
+    if(interview){
+      interview.addEventListener('click', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        window.openModal('modal-doxy-note');
+      });
+    }
+
+    /* Footer legal links: explicitly bind each modal target. */
+    document.querySelectorAll('.footer-col a[href="#"]').forEach(function(link){
+      var match = link.getAttribute('onclick') || '';
+      var found = match.match(/openModal\('([^']+)'\)/);
+      if(!found) return;
+      var modalId = found[1];
+      link.addEventListener('click', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        window.openModal(modalId);
+      });
+    });
+  });
+})();
 </script>
 </body>
 </html>
