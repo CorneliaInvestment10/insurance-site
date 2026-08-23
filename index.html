@@ -1814,15 +1814,6 @@ function a11y(type,val){
   if(type==='screenreader'){var on=val==='toggle'?!b.classList.contains('sr-mode'):val==='on';b.classList.toggle('sr-mode',on);var btn=document.getElementById('sr-on');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}if(live)live.textContent=on?'Screen reader mode on. Layout simplified.':'Screen reader mode off.';localStorage.setItem('a11y_sr',on?'on':'off');}
 }
 
-function openModal(id){var m=document.getElementById(id);if(m){m.style.display='flex';m.classList.add('open');document.body.style.overflow='hidden';}}
-function closeModal(id){var m=document.getElementById(id);if(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';}}
-function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
-function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),isOpen=p.style.display==='block';p.style.display=isOpen?'none':'block';t.setAttribute('aria-expanded',isOpen?'false':'true');}
-function a11yText(val){document.body.classList.remove('lg-text','xl-text');['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});if(val==='large'){document.body.classList.add('lg-text');var el=document.getElementById('ts-large');if(el)el.classList.add('active');}else if(val==='xl'){document.body.classList.add('xl-text');var el=document.getElementById('ts-xl');if(el)el.classList.add('active');}else{var el=document.getElementById('ts-normal');if(el)el.classList.add('active');}}
-function a11yToggle(btnId,cssClass){var on=!document.body.classList.contains(cssClass);document.body.classList.toggle(cssClass,on);var btn=document.getElementById(btnId);if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}}
-function a11yReset(){document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});var n=document.getElementById('ts-normal');if(n)n.classList.add('active');}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';});});
-
 </script>
 </body>
 </html>
