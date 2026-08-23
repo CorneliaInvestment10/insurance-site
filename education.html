@@ -1489,14 +1489,14 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
       </div>
 
       <div class="edu-nav">
-        <button class="edu-tab active" onclick="showTab('purpose',this)">What Is Life Insurance</button>
-        <button class="edu-tab" onclick="showTab('pricing',this)">Pricing Factors</button>
-        <button class="edu-tab" onclick="showTab('insurable',this)">Insurable Interest</button>
-        <button class="edu-tab" onclick="showTab('term',this)">Term Life</button>
-        <button class="edu-tab" onclick="showTab('whole',this)">Whole Life</button>
-        <button class="edu-tab" onclick="showTab('riders',this)">Riders</button>
-        <button class="edu-tab" onclick="showTab('compare',this)">Term vs. Whole Life</button>
-        <button class="edu-tab" onclick="showTab('glossary',this)">Key Terms</button>
+        <button type="button" class="edu-tab active" onclick="showTab('purpose',this)">What Is Life Insurance</button>
+        <button type="button" class="edu-tab" onclick="showTab('pricing',this)">Pricing Factors</button>
+        <button type="button" class="edu-tab" onclick="showTab('insurable',this)">Insurable Interest</button>
+        <button type="button" class="edu-tab" onclick="showTab('term',this)">Term Life</button>
+        <button type="button" class="edu-tab" onclick="showTab('whole',this)">Whole Life</button>
+        <button type="button" class="edu-tab" onclick="showTab('riders',this)">Riders</button>
+        <button type="button" class="edu-tab" onclick="showTab('compare',this)">Term vs. Whole Life</button>
+        <button type="button" class="edu-tab" onclick="showTab('glossary',this)">Key Terms</button>
       </div>
 
       <!-- WHAT IS LIFE INSURANCE FOR -->
@@ -2472,80 +2472,6 @@ document.addEventListener('keydown',function(e){
 });
 </script>
 
-<script id="education-final-interactions">
-(function(){
-  window.showTab=function(id,btn){
-    document.querySelectorAll('.edu-panel').forEach(function(panel){
-      var active=panel.id==='panel-'+id;
-      panel.classList.toggle('active',active);
-      panel.style.display=active?'block':'none';
-      panel.setAttribute('aria-hidden',active?'false':'true');
-    });
-    document.querySelectorAll('.edu-tab').forEach(function(tab){
-      tab.classList.remove('active');
-      tab.setAttribute('aria-selected','false');
-    });
-    if(btn){
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected','true');
-    }
-  };
-
-  window.openModal=function(id){
-    var m=document.getElementById(id);
-    if(!m)return;
-    m.classList.add('open');
-    m.style.display='flex';
-    document.body.style.overflow='hidden';
-  };
-
-  window.closeModal=function(id){
-    var m=document.getElementById(id);
-    if(!m)return;
-    m.classList.remove('open');
-    m.style.display='none';
-    document.body.style.overflow='';
-  };
-
-  window.closeModalOnOverlay=function(e,id){
-    if(e.target===e.currentTarget)window.closeModal(id);
-  };
-
-  window.a11yOpen=function(){
-    var p=document.getElementById('a11yPanel');
-    var t=document.getElementById('a11yTab');
-    if(!p)return;
-    var open=p.classList.contains('open') || p.style.display==='flex' || p.style.display==='block';
-    p.classList.toggle('open',!open);
-    p.style.display=open?'none':'flex';
-    p.setAttribute('aria-hidden',open?'true':'false');
-    if(t)t.setAttribute('aria-expanded',open?'false':'true');
-  };
-
-  document.addEventListener('DOMContentLoaded',function(){
-    var active=document.querySelector('.edu-tab.active');
-    if(active){
-      var onclick=active.getAttribute('onclick')||'';
-      var match=onclick.match(/showTab\(['"]([^'"]+)/);
-      if(match)window.showTab(match[1],active);
-    }
-  });
-
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){
-      document.querySelectorAll('.modal-overlay.open').forEach(function(m){
-        m.classList.remove('open');
-        m.style.display='none';
-      });
-      var p=document.getElementById('a11yPanel');
-      if(p){p.classList.remove('open');p.style.display='none';}
-      document.body.style.overflow='';
-    }
-  });
-})();
-</script>
-
-
 <script id="education-accessibility-click-fix">
 (function(){
   function bindAccessibility(){
@@ -2577,6 +2503,96 @@ document.addEventListener('keydown',function(e){
     document.addEventListener('DOMContentLoaded',bindAccessibility);
   }else{
     bindAccessibility();
+  }
+})();
+</script>
+
+
+<script id="education-final-interactions">
+(function(){
+  function activateTab(id, btn){
+    var panels=document.querySelectorAll('.edu-panel');
+    var tabs=document.querySelectorAll('.edu-tab');
+
+    panels.forEach(function(panel){
+      var isActive = panel.id === 'panel-' + id;
+      panel.classList.toggle('active', isActive);
+      panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      panel.style.display = isActive ? 'block' : 'none';
+    });
+
+    tabs.forEach(function(tab){
+      var active = tab === btn;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      tab.setAttribute('tabindex', active ? '0' : '-1');
+    });
+  }
+
+  window.showTab=function(id,btn){
+    activateTab(id,btn);
+  };
+
+  function bindTabs(){
+    document.querySelectorAll('.edu-tab').forEach(function(tab){
+      if(tab.dataset.tabBound==='1') return;
+      tab.dataset.tabBound='1';
+
+      tab.addEventListener('click',function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        var match=(tab.getAttribute('onclick')||'').match(/showTab\(['"]([^'"]+)/);
+        if(match){
+          activateTab(match[1],tab);
+        }
+      },true);
+    });
+
+    var active=document.querySelector('.edu-tab.active') || document.querySelector('.edu-tab');
+    if(active){
+      var match=(active.getAttribute('onclick')||'').match(/showTab\(['"]([^'"]+)/);
+      if(match) activateTab(match[1],active);
+    }
+  }
+
+  window.openModal=function(id){
+    var m=document.getElementById(id);
+    if(!m)return;
+    m.classList.add('open');
+    m.style.display='flex';
+    document.body.style.overflow='hidden';
+  };
+
+  window.closeModal=function(id){
+    var m=document.getElementById(id);
+    if(!m)return;
+    m.classList.remove('open');
+    m.style.display='none';
+    document.body.style.overflow='';
+  };
+
+  window.closeModalOnOverlay=function(e,id){
+    if(e.target===e.currentTarget) window.closeModal(id);
+  };
+
+  window.a11yOpen=function(){
+    var p=document.getElementById('a11yPanel');
+    var t=document.getElementById('a11yTab');
+    if(!p)return;
+    var open=p.classList.contains('open') ||
+             p.style.display==='flex' ||
+             p.style.display==='block';
+    p.classList.toggle('open',!open);
+    p.style.display=open?'none':'flex';
+    p.setAttribute('aria-hidden',open?'true':'false');
+    if(t)t.setAttribute('aria-expanded',open?'false':'true');
+  };
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',bindTabs);
+  }else{
+    bindTabs();
   }
 })();
 </script>
