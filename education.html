@@ -1156,6 +1156,7 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
 .modal-body { padding:1.8rem 2rem !important; }
 @media(max-width:768px){ footer { padding:2rem 4% !important; } .footer-top { grid-template-columns:1fr !important; gap:1.5rem !important; } .footer-bottom { flex-direction:column !important; gap:0.3rem !important; } #a11yTab { top:auto !important; bottom:80px !important; transform:none !important; } #a11yPanel { top:auto !important; bottom:140px !important; transform:none !important; right:0 !important; width:calc(100vw - 2rem) !important; max-width:260px !important; border-radius:10px !important; max-height:50vh !important; } }
 </style>
+
 <style id="interview-modal-visual-fix">
 /* Interview Now modal: isolated styling so existing modal CSS cannot override it. */
 #modal-doxy-note{
@@ -1332,6 +1333,106 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
   }
 }
 </style>
+
+<style id="education-interview-launcher-fix">
+#interviewNowBtn{
+  pointer-events:auto !important;
+  z-index:2147483000 !important;
+}
+#interviewNowBtn a{
+  pointer-events:auto !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+}
+</style>
+
+
+<style id="education-accessibility-final-css">
+#a11yTab{
+  pointer-events:auto !important;
+  cursor:pointer !important;
+  z-index:2147483647 !important;
+  touch-action:manipulation !important;
+}
+#a11yTab *{
+  pointer-events:none !important;
+}
+#a11yPanel{
+  z-index:2147483646 !important;
+  pointer-events:auto !important;
+}
+</style>
+
+
+<style id="education-tabs-final-visibility">
+/* Final Education tab presentation: visible boxed tabs, no horizontal scroll. */
+.edu-nav{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:.65rem !important;
+  width:100% !important;
+  margin-bottom:2rem !important;
+  overflow:visible !important;
+  padding:0 !important;
+  border-bottom:none !important;
+}
+.edu-tab{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-height:52px !important;
+  padding:.75rem .8rem !important;
+  box-sizing:border-box !important;
+  background:#fff !important;
+  color:#1a1a18 !important;
+  border:1px solid rgba(158,128,71,.45) !important;
+  border-radius:5px !important;
+  font-family:var(--sans,'Jost',system-ui,sans-serif) !important;
+  font-size:.88rem !important;
+  font-weight:500 !important;
+  line-height:1.3 !important;
+  text-align:center !important;
+  white-space:normal !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+}
+.edu-tab.active{
+  background:#1a1a18 !important;
+  color:#fff !important;
+  border-color:#1a1a18 !important;
+}
+.edu-tab:hover,.edu-tab:focus-visible{
+  background:#9e8047 !important;
+  color:#fff !important;
+  border-color:#9e8047 !important;
+  outline:none !important;
+}
+.edu-panel{
+  width:100% !important;
+}
+@media(max-width:768px){
+  .edu-nav{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:.55rem !important;
+    overflow:visible !important;
+  }
+  .edu-tab{
+    min-height:50px !important;
+    padding:.7rem .55rem !important;
+    font-size:.84rem !important;
+  }
+}
+@media(max-width:420px){
+  .edu-nav{
+    grid-template-columns:1fr !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <nav class="navbar">
@@ -2291,8 +2392,22 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
 <p style="font-size:0.82rem;color:rgba(255,255,255,0.2);font-weight:300;line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">Covered with Conditions is a licensed independent insurance practice managed by Eboni Morris (NPN 18509552). All coverage options are subject to third-party carrier underwriting verification and are not guaranteed. Operations conducted in compliance with the Georgia Office of Commissioner of Insurance, Florida Department of Financial Services, Michigan Department of Insurance and Financial Services, Ohio Department of Insurance, South Carolina Department of Insurance, and Texas Department of Insurance.</p>
 </div>
 </footer><script>
-
-
+function openModal(id){
+  var m=document.getElementById(id);
+  if(m){
+    m.classList.add('open');
+    document.body.style.overflow='hidden';
+    var close=m.querySelector('.modal-close');
+    if(close) setTimeout(function(){close.focus();},50);
+  }
+}
+function closeModal(id){
+  var m=document.getElementById(id);
+  if(m){
+    m.classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
 function closeModalOnOverlay(e,id){
   if(e.target===e.currentTarget) closeModal(id);
 }
@@ -2357,50 +2472,144 @@ document.addEventListener('keydown',function(e){
 });
 </script>
 
-<script id="education-modal-interaction-final">
-(function () {
-  window.openModal = function (id) {
-    var modal = document.getElementById(id);
-    if (!modal) return;
-    modal.classList.add('open');
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  };
-
-  window.closeModal = function (id) {
-    var modal = document.getElementById(id);
-    if (!modal) return;
-    modal.classList.remove('open');
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  };
-
-  window.closeModalOnOverlay = function (event, id) {
-    if (event.target === event.currentTarget) {
-      window.closeModal(id);
+<script id="education-final-interactions">
+(function(){
+  window.showTab=function(id,btn){
+    document.querySelectorAll('.edu-panel').forEach(function(panel){
+      var active=panel.id==='panel-'+id;
+      panel.classList.toggle('active',active);
+      panel.style.display=active?'block':'none';
+      panel.setAttribute('aria-hidden',active?'false':'true');
+    });
+    document.querySelectorAll('.edu-tab').forEach(function(tab){
+      tab.classList.remove('active');
+      tab.setAttribute('aria-selected','false');
+    });
+    if(btn){
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
     }
   };
 
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      document.querySelectorAll('.modal-overlay.open').forEach(function (modal) {
-        modal.classList.remove('open');
-        modal.style.display = 'none';
+  window.openModal=function(id){
+    var m=document.getElementById(id);
+    if(!m)return;
+    m.classList.add('open');
+    m.style.display='flex';
+    document.body.style.overflow='hidden';
+  };
+
+  window.closeModal=function(id){
+    var m=document.getElementById(id);
+    if(!m)return;
+    m.classList.remove('open');
+    m.style.display='none';
+    document.body.style.overflow='';
+  };
+
+  window.closeModalOnOverlay=function(e,id){
+    if(e.target===e.currentTarget)window.closeModal(id);
+  };
+
+  window.a11yOpen=function(){
+    var p=document.getElementById('a11yPanel');
+    var t=document.getElementById('a11yTab');
+    if(!p)return;
+    var open=p.classList.contains('open') || p.style.display==='flex' || p.style.display==='block';
+    p.classList.toggle('open',!open);
+    p.style.display=open?'none':'flex';
+    p.setAttribute('aria-hidden',open?'true':'false');
+    if(t)t.setAttribute('aria-expanded',open?'false':'true');
+  };
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var active=document.querySelector('.edu-tab.active');
+    if(active){
+      var onclick=active.getAttribute('onclick')||'';
+      var match=onclick.match(/showTab\(['"]([^'"]+)/);
+      if(match)window.showTab(match[1],active);
+    }
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(function(m){
+        m.classList.remove('open');
+        m.style.display='none';
       });
-      document.body.style.overflow = '';
+      var p=document.getElementById('a11yPanel');
+      if(p){p.classList.remove('open');p.style.display='none';}
+      document.body.style.overflow='';
     }
   });
 })();
 </script>
 
+
+<script id="education-accessibility-click-fix">
+(function(){
+  function bindAccessibility(){
+    var tab=document.getElementById('a11yTab');
+    var panel=document.getElementById('a11yPanel');
+    if(!tab||!panel)return;
+    if(tab.dataset.a11yBound==='1')return;
+    tab.dataset.a11yBound='1';
+
+    tab.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+
+      var open=panel.classList.contains('open') ||
+               panel.style.display==='flex' ||
+               panel.style.display==='block';
+
+      panel.classList.toggle('open',!open);
+      panel.style.display=open?'none':'flex';
+      panel.setAttribute('aria-hidden',open?'true':'false');
+      tab.setAttribute('aria-expanded',open?'false':'true');
+    },true);
+
+    tab.style.pointerEvents='auto';
+    tab.style.cursor='pointer';
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',bindAccessibility);
+  }else{
+    bindAccessibility();
+  }
+})();
+</script>
+
 </body>
 </html><script>
-);
+function openModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Focus the close button for keyboard/screen reader users
+    var close = m.querySelector('.modal-close');
+    if (close) setTimeout// Ensure all form buttons are touch-friendly on iOS
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.cbtn, .pob, .kick-btn, .btn-next, .btn-prev, .btn-submit').forEach(function(btn) {
+    btn.style.touchAction = 'manipulation';
+    btn.style.webkitTapHighlightColor = 'rgba(0,0,0,0.1)';
+    btn.style.pointerEvents = 'auto';
+    btn.style.cursor = 'pointer';
+  });
+});
 
 (function(){ close.focus(); }, 50);
   }
 }
-
+function closeModal(id) {
+  var m = document.getElementById(id);
+  if (m) {
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
 function closeModalOnOverlay(e, id) {
   if (e.target === e.currentTarget) closeModal(id);
 }
