@@ -1114,54 +1114,177 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   .footer-col ul li a{font-size:0.82rem!important;}
 }
 </style>
+
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-main">Covered With Conditions</div>
+    <div class="brand-sub">Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="education.html">Insurance Education</a></li>
+    <li><a href="myths.html">Myth Busted</a></li>
+    <li><a href="quote.html">Get a Quote</a></li>
+    <li><a href="chat.html" class="active">Ask a Question</a></li>
+  </ul>
+  <button class="nav-hamburger" id="ham" type="button" aria-label="Open menu"
+          onclick="document.getElementById('mobileNav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="education.html">Insurance Education</a><a href="myths.html">Myth Busted</a>
+  <a href="quote.html">Get a Quote</a><a href="chat.html" class="active">Ask a Question</a>
+</div>
+
+<main>
+<section class="chat-hero">
+  <div class="chat-hero-inner">
+    <div>
+      <div class="hero-eyebrow">Ask a Question</div>
+      <h1 class="chat-hero-title">Get answers about <em>life insurance.</em></h1>
+      <p class="chat-hero-desc">Choose a common question below or type your own question. Responses on this page are general educational information and are not personalized insurance advice.</p>
+      <span class="privacy-tag">General information &nbsp;·&nbsp; No application required</span>
+    </div>
+    <div class="hero-steps">
+      <div class="hero-step"><div class="hero-step-num">1</div><div class="hero-step-text"><strong>Choose a question</strong><br>Start with one of the common topics below.</div></div>
+      <div class="hero-step"><div class="hero-step-num">2</div><div class="hero-step-text"><strong>Read the answer</strong><br>Use the Q&A material to understand the basics.</div></div>
+      <div class="hero-step"><div class="hero-step-num">3</div><div class="hero-step-text"><strong>Need personalized guidance?</strong><br>Complete the intake questionnaire for your situation.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="chat-section">
+  <div class="chat-section-inner">
+    <div class="section-label">Ask a question</div>
+    <div class="chat-box">
+      <div class="chat-header">
+        <span class="chat-dot"></span><span class="chat-name">Covered With Conditions</span>
+        <span class="chat-role">Insurance Information</span><span class="chat-hipaa">General education</span>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg advisor"><div class="msg-bubble">Hi! What would you like to know about life insurance?</div><div class="msg-time">Now</div></div>
+        <div class="sys-note">Select a common question below or type your own.</div>
+      </div>
+      <div class="topic-row">
+        <div class="topic-label">Common questions</div>
+        <div class="topic-btns"><button class="topic-btn" type="button" onclick="askPreset(0)">What is life insurance and how does it work?</button>
+<button class="topic-btn" type="button" onclick="askPreset(1)">What is the difference between term and whole life insurance?</button>
+<button class="topic-btn" type="button" onclick="askPreset(2)">What is an IUL and how is it different from whole life?</button>
+<button class="topic-btn" type="button" onclick="askPreset(3)">What does a life insurance death benefit pay out?</button>
+<button class="topic-btn" type="button" onclick="askPreset(4)">Can I have more than one life insurance policy at the same time?</button>
+<button class="topic-btn" type="button" onclick="askPreset(5)">At what age should I get life insurance?</button>
+<button class="topic-btn" type="button" onclick="askPreset(6)">How long does a life insurance policy last?</button>
+<button class="topic-btn" type="button" onclick="askPreset(7)">How do I know how much life insurance coverage I need?</button>
+<button class="topic-btn" type="button" onclick="askPreset(8)">What factors affect how much coverage I can qualify for?</button>
+<button class="topic-btn" type="button" onclick="askPreset(9)">What is final expense insurance and who is it for?</button>
+<button class="topic-btn" type="button" onclick="askPreset(10)">What is a face amount and how is it determined?</button>
+<button class="topic-btn" type="button" onclick="askPreset(11)">Can coverage amounts be changed after a policy is issued?</button></div>
+      </div>
+      <form class="chat-bar" onsubmit="sendQuestion(event)">
+        <input class="chat-in" id="chatInput" type="text" placeholder="Type your question..." autocomplete="off" />
+        <button class="chat-go" type="submit" aria-label="Send question">→</button>
+      </form>
+    </div>
+    <div class="referral-box">
+      <strong>Looking for coverage specific to you?</strong>
+      <p style="margin-top:.5rem;color:var(--text);line-height:1.75;">General Q&A cannot determine eligibility or recommend a policy. Use the intake questionnaire to provide information for an individual review.</p>
+      <a href="quote.html" style="display:inline-block;margin-top:1rem;background:var(--ink);color:#fff;padding:.7rem 1.2rem;text-decoration:none;">Complete the Intake</a>
+    </div>
+  </div>
+</section>
+</main>
+
 <button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
 <div id="a11yPanel" role="dialog" aria-label="Accessibility Options">
   <span class="a11y-heading">Accessibility Options</span>
-  <div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button></div></div>
+  <div class="a11y-row"><span class="a11y-row-label">Text Size</span>
+    <div class="a11y-row-btns">
+      <button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button>
+      <button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button>
+      <button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button>
+    </div>
+  </div>
+  <div class="a11y-sep"></div>
+  <button class="a11y-reset" onclick="a11yReset()">Reset</button>
+</div>
 
 <footer>
 <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="fb-main">Eboni Morris</div>
-        <div class="fb-sub">Licensed Independent Insurance Agent &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
-        <div class="footer-license">
-          <div class="fl-title">License Verification</div>
-          <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
-          <p class="fl-body" style="margin-top:0.5rem;"><strong>Licensed in:</strong> GA, FL, MI, OH, SC, TX</p>
-          
-        </div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="fb-main">Eboni Morris</div>
+      <div class="fb-sub">Licensed Independent Insurance Agent &nbsp;&middot;&nbsp; Life &nbsp;&middot;&nbsp; Accident &nbsp;&middot;&nbsp; Sickness</div>
+      <div class="footer-license">
+        <div class="fl-title">License Verification</div>
+        <p class="fl-body">This practice is operated by <strong>Eboni Morris</strong>, a licensed independent insurance agent (NPN: <strong>18509552</strong>). To verify licensure, call the <strong>National Insurance Producers Registry (NIPR)</strong> at <a href="tel:+18556746477" style="color:var(--gold);">1 (855) 674-6477</a>.</p>
+        <p class="fl-body" style="margin-top:.5rem;"><strong>Licensed in:</strong> GA, FL, MI, OH, SC, TX</p>
       </div>
-      <div class="footer-col"><h4>Navigate</h4><ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="diabetes.html">Diabetes Coverage</a></li>
-        <li><a href="hiv-aids.html">HIV Coverage</a></li>
-        <li><a href="cancer.html">Cancer Coverage</a></li>
-        <li><a href="quote.html">Get a Quote</a></li>
-        <li><a href="education.html">Insurance Education</a></li>
-        <li><a href="myths.html">Myth Busted</a></li>
-        <li><a href="chat.html">Ask a Question</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Legal</h4><ul>
-        <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
-        <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
-        <li><a href="#" onclick="openModal('modal-fcra');return false;">FCRA Disclosure</a></li>
-        <li><a href="#" onclick="openModal('modal-mib');return false;">MIB Disclosure</a></li>
-        <li><a href="#" onclick="openModal('modal-rx');return false;">Pharmacy Records</a></li>
-        <li><a href="#" onclick="openModal('modal-mvr');return false;">MVR Disclosure</a></li>
-        <li><a href="#" onclick="openModal('modal-terms');return false;">Terms of Use</a></li>
-        <li><a href="#" onclick="openModal('modal-license');return false;">Licensing Information</a></li>
-      </ul></div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Agent. All rights reserved.</span>
-      <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
-    </div>
-  
-  <p style="font-size:0.82rem;color:rgba(255,255,255,0.2);font-weight:300;line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">Covered with Conditions is a licensed independent insurance practice managed by Eboni Morris (NPN 18509552). All coverage options are subject to third-party carrier underwriting verification and are not guaranteed. Operations conducted in compliance with the Georgia Office of Commissioner of Insurance, Florida Department of Financial Services, Michigan Department of Insurance and Financial Services, Ohio Department of Insurance, South Carolina Department of Insurance, and Texas Department of Insurance.</p>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="diabetes.html">Diabetes Coverage</a></li><li><a href="hiv-aids.html">HIV Coverage</a></li>
+      <li><a href="cancer.html">Cancer Coverage</a></li><li><a href="quote.html">Get a Quote</a></li>
+      <li><a href="education.html">Insurance Education</a></li><li><a href="myths.html">Myth Busted</a></li>
+      <li><a href="chat.html">Ask a Question</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul>
+      <li><a href="#" onclick="return false;">Privacy Policy</a></li><li><a href="#" onclick="return false;">HIPAA Notice</a></li>
+      <li><a href="#" onclick="return false;">FCRA Disclosure</a></li><li><a href="#" onclick="return false;">MIB Disclosure</a></li>
+      <li><a href="#" onclick="return false;">Pharmacy Records</a></li><li><a href="#" onclick="return false;">MVR Disclosure</a></li>
+      <li><a href="#" onclick="return false;">Terms of Use</a></li><li><a href="#" onclick="return false;">Licensing Information</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Eboni Morris. Licensed Independent Insurance Agent. All rights reserved.</span>
+    <span>Licensed &nbsp;&middot;&nbsp; Life, Accident &amp; Sickness</span>
+  </div>
+  <p style="font-size:.82rem;color:rgba(255,255,255,.2);font-weight:300;line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.05);">Covered with Conditions is a licensed independent insurance practice managed by Eboni Morris (NPN 18509552). All coverage options are subject to third-party carrier underwriting verification and are not guaranteed.</p>
 </div>
 </footer>
-<script src="_shared.js"></script>
+
+<script>
+const QA_DATA = [["What is life insurance and how does it work?", "Life insurance is a contract where you pay a premium in exchange for a cash payment, known as a death benefit, paid to your loved ones upon your passing. It is designed to provide financial security for those who depend on you, helping cover expenses like funerals, debts, or daily living costs. This tool offers peace of mind by transferring financial risk from your family to the insurance company."], ["What is the difference between term and whole life insurance?", "Term life insurance provides temporary protection for a set number of years, making it an affordable choice for specific needs like mortgage protection. Whole life is permanent coverage that lasts for your entire life as long as premiums are paid. Unlike term, whole life policies also build cash value over time that you can access while living."], ["What is an IUL and how is it different from whole life?", "An Indexed Universal Life (IUL) policy is a type of permanent insurance that offers flexible premiums and death benefits. While whole life has fixed growth, an IUL's cash value growth is linked to the performance of a stock market index. It provides more flexibility in payments than whole life but carries different potential for growth and risk."], ["What does a life insurance death benefit pay out?", "A life insurance death benefit typically pays out a lump sum of cash directly to your chosen beneficiaries after your passing. This payment is generally income tax-free and can be used for any purpose, such as funeral costs, tuition, or replacing lost income. Some policies also offer options to receive the benefit in fixed installments rather than a single lump sum."], ["Can I have more than one life insurance policy at the same time?", "Yes, you can own multiple life insurance policies simultaneously across different insurance providers. However, the total amount of coverage you can have is generally limited by your age, income, and overall financial need. Insurance companies will review your existing coverage during the application process to ensure the total amount is justifiable."], ["At what age should I get life insurance?", "You can secure life insurance at almost any stage, from just 15 days old up to age 90. Generally, getting coverage when you are younger and healthier results in lower premiums and easier qualification. Many people choose to buy life insurance when they take on new responsibilities, such as having children or starting a business."], ["How long does a life insurance policy last?", "Term policies last for a specific period, typically between 10 and 40 years. Permanent policies, such as whole life or universal life, are designed to last for your entire lifetime, often maturing at age 121. Coverage remains in effect as long as the required premiums are paid."], ["How do I know how much life insurance coverage I need?", "Your coverage need is often determined by a multiplier of your annual income, ranging from 3 to 40 times your earnings depending on your age. You should also consider your total debts, future expenses like college for children, and the income your family would need to maintain their lifestyle. An advisor can help you calculate a specific coverage amount based on these individual financial goals."], ["What factors affect how much coverage I can qualify for?", "Qualification is primarily based on your age, gross annual income, and the specific purpose of the insurance. Companies use formulas to ensure the coverage amount correlates with the potential financial loss your death would cause. Other factors include your current health, net worth, and any hazardous hobbies or activities you participate in."], ["What is final expense insurance and who is it for?", "Final expense insurance is a small whole life policy designed specifically to cover end-of-life costs like funeral services and burial. It is typically intended for older applicants who want to ensure their family is not burdened with these immediate expenses. These policies often have easier qualification requirements and do not require a medical exam."], ["What is a face amount and how is it determined?", "The face amount is the total dollar amount of the death benefit your beneficiaries will receive upon your death. It is determined based on your financial needs, such as debt repayment and income replacement for your family. Carriers may also set minimum and maximum face amounts based on their underwriting rules."], ["Can coverage amounts be changed after a policy is issued?", "In many universal life policies, you can request to increase or decrease your coverage after the policy has been in force for a period of time. For whole life policies, coverage is usually fixed, but you may add riders at purchase that allow for future increases without additional medical exams. Any request to increase coverage typically requires confirming you are still in good health."]];
+function addMessage(text, who) {
+  const wrap=document.createElement('div'); wrap.className='msg '+(who==='user'?'client':'advisor');
+  const bubble=document.createElement('div'); bubble.className='msg-bubble'; bubble.textContent=text;
+  const time=document.createElement('div'); time.className='msg-time'; time.textContent='Now';
+  wrap.append(bubble,time); const box=document.getElementById('chatMessages'); box.appendChild(wrap); box.scrollTop=box.scrollHeight;
+}
+function askPreset(i) {
+  const [q,a]=QA_DATA[i]; addMessage(q,'user');
+  const box=document.getElementById('chatMessages');
+  const t=document.createElement('div'); t.className='typing-row show';
+  t.innerHTML='<div class="typing-bbl"><span class="t-d"></span><span class="t-d"></span><span class="t-d"></span></div>';
+  box.appendChild(t); box.scrollTop=box.scrollHeight;
+  setTimeout(()=>{t.remove();addMessage(a,'advisor');},450);
+}
+function sendQuestion(e) {
+  e.preventDefault(); const input=document.getElementById('chatInput'); const q=input.value.trim(); if(!q)return;
+  addMessage(q,'user'); input.value='';
+  setTimeout(()=>addMessage("I can provide general educational information, but I can't determine your eligibility or give personalized coverage advice here. Please use the intake questionnaire for guidance specific to your situation.",'advisor'),450);
+}
+function a11yOpen() {
+  const p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab');
+  p.classList.toggle('open'); t.setAttribute('aria-expanded',p.classList.contains('open')?'true':'false');
+}
+function a11yText(size) {
+  document.body.classList.remove('lg-text','xl-text');
+  document.querySelectorAll('.a11y-btn').forEach(b=>b.classList.remove('active'));
+  if(size==='large'){document.body.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}
+  else if(size==='xl'){document.body.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}
+  else document.getElementById('ts-normal').classList.add('active');
+}
+function a11yReset(){a11yText('normal');document.getElementById('a11yPanel').classList.remove('open');}
+document.addEventListener('click',e=>{
+  const p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab');
+  if(p.classList.contains('open')&&!p.contains(e.target)&&e.target!==t)p.classList.remove('open');
+});
+</script>
 </body>
 </html>
