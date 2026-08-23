@@ -1021,7 +1021,149 @@ footer { background: var(--ink, #1a1a18) !important; padding: 4rem 6% 2.5rem !im
 .modal-close { background:none !important; border:1px solid rgba(255,255,255,0.2) !important; border-radius:4px !important; width:32px !important; height:32px !important; display:flex !important; align-items:center !important; justify-content:center !important; cursor:pointer !important; color:rgba(255,255,255,0.6) !important; font-size:1.1rem !important; }
 .modal-body { padding:1.8rem 2rem !important; }
 @media(max-width:768px){ footer { padding:2rem 4% !important; } .footer-top { grid-template-columns:1fr !important; gap:1.5rem !important; } .footer-bottom { flex-direction:column !important; gap:0.3rem !important; } #a11yTab { top:auto !important; bottom:80px !important; transform:none !important; } #a11yPanel { top:auto !important; bottom:140px !important; transform:none !important; right:0 !important; width:calc(100vw - 2rem) !important; max-width:260px !important; border-radius:10px !important; max-height:50vh !important; } }
-</style></head>
+</style>
+<style id="a11y-final-fix">
+/* ===== FINAL ACCESSIBILITY + TYPOGRAPHY UPDATE ===== */
+html { font-size: 16px; }
+body { font-size: 16px; }
+
+/* Slightly larger normal reading text without making the design oversized */
+p, li, td, th, .fsub, .sec-lead, .phc-desc { font-size: 1rem !important; }
+label, .field label { font-size: 0.9rem !important; }
+.footer-brand p, .footer-col ul a, .footer-bottom, .fl-body { font-size: 0.9rem !important; }
+.footer-col h4, .fl-title { font-size: 0.9rem !important; }
+.nav-links a { font-size: 0.9rem !important; }
+
+/* Accessibility tab: always above page content and fully clickable */
+#a11yTab {
+  position: fixed !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  width: auto !important;
+  min-width: 44px !important;
+  min-height: 48px !important;
+  padding: 0.85rem 0.55rem !important;
+  margin: 0 !important;
+  border: 1px solid rgba(158,128,71,0.55) !important;
+  border-right: none !important;
+  border-radius: 7px 0 0 7px !important;
+  background: #1a1a18 !important;
+  color: #9e8047 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  touch-action: manipulation !important;
+  writing-mode: vertical-rl !important;
+  font-family: system-ui, sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  box-shadow: -3px 0 14px rgba(0,0,0,0.28) !important;
+}
+#a11yTab:hover,
+#a11yTab:focus-visible {
+  background: #252522 !important;
+  outline: 2px solid #9e8047 !important;
+  outline-offset: 2px !important;
+}
+
+/* Accessibility panel */
+#a11yPanel {
+  position: fixed !important;
+  right: 46px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483646 !important;
+  width: 250px !important;
+  max-width: calc(100vw - 70px) !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  display: none !important;
+  padding: 1.25rem 1.1rem !important;
+  border: 1px solid rgba(158,128,71,0.35) !important;
+  border-radius: 10px !important;
+  background: #1a1a18 !important;
+  box-shadow: -5px 0 24px rgba(0,0,0,0.38) !important;
+  pointer-events: auto !important;
+}
+#a11yPanel.open { display: block !important; }
+#a11yPanel .a11y-heading {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+}
+#a11yPanel .a11y-row-label {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+}
+#a11yPanel .a11y-btn {
+  min-height: 36px !important;
+  padding: 0.4rem 0.7rem !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* Accessibility text modes */
+body.lg-text { font-size: 24px !important; }
+body.xl-text { font-size: 32px !important; }
+body.lg-text p, body.lg-text li, body.lg-text td, body.lg-text th,
+body.lg-text .fsub, body.lg-text .sec-lead, body.lg-text .phc-desc { font-size: 1.2em !important; }
+body.xl-text p, body.xl-text li, body.xl-text td, body.xl-text th,
+body.xl-text .fsub, body.xl-text .sec-lead, body.xl-text .phc-desc { font-size: 1.35em !important; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  #a11yTab {
+    top: auto !important;
+    bottom: 80px !important;
+    transform: none !important;
+    min-height: 48px !important;
+  }
+  #a11yPanel {
+    top: auto !important;
+    bottom: 140px !important;
+    transform: none !important;
+    right: 12px !important;
+    width: min(280px, calc(100vw - 24px)) !important;
+    max-width: none !important;
+    max-height: 55vh !important;
+    border-radius: 10px !important;
+  }
+}
+</style>
+
+
+<style id="interview-cta-click-fix">
+/* Keep the Interview Now CTA above decorative layers and fully interactive. */
+.interview-btn,
+.interview-now,
+a[href*="interview"],
+button[id*="interview"],
+button[class*="interview"] {
+  position: relative !important;
+  z-index: 20 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+}
+</style>
+
+
+<style id="interview-modal-final-fix">
+#interviewNowBtn,
+#interviewNowBtn a {
+  pointer-events:auto !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+}
+</style>
+
+</head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -1239,14 +1381,14 @@ function a11y(type,val){
 function openModal(id){var m=document.getElementById(id);if(m){m.style.display='flex';m.classList.add('open');document.body.style.overflow='hidden';}}
 function closeModal(id){var m=document.getElementById(id);if(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';}}
 function closeModalOnOverlay(e,id){if(e.target===e.currentTarget)closeModal(id);}
-function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),isOpen=p.style.display==='block';p.style.display=isOpen?'none':'block';t.setAttribute('aria-expanded',isOpen?'false':'true');}
+function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),isOpen=p.classList.contains('open');p.classList.toggle('open',!isOpen);p.setAttribute('aria-hidden',isOpen?'true':'false');t.setAttribute('aria-expanded',isOpen?'false':'true');}
 function a11yText(val){document.body.classList.remove('lg-text','xl-text');['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});if(val==='large'){document.body.classList.add('lg-text');var el=document.getElementById('ts-large');if(el)el.classList.add('active');}else if(val==='xl'){document.body.classList.add('xl-text');var el=document.getElementById('ts-xl');if(el)el.classList.add('active');}else{var el=document.getElementById('ts-normal');if(el)el.classList.add('active');}}
 function a11yToggle(btnId,cssClass){var on=!document.body.classList.contains(cssClass);document.body.classList.toggle(cssClass,on);var btn=document.getElementById(btnId);if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}}
 function a11yReset(){document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion','sr-mode');['hc-btn','dy-btn','rm-btn','sr-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});var n=document.getElementById('ts-normal');if(n)n.classList.add('active');}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';});});
 
 </script>
-<button aria-expanded="false" aria-label="Open accessibility options" id="a11yTab" onclick="a11yOpen()" type="button">Accessibility</button>
+<button aria-expanded="false" aria-label="Open accessibility options" title="Accessibility options" id="a11yTab" onclick="a11yOpen()" type="button">Accessibility</button>
 <div aria-hidden="true" aria-label="Accessibility Options" id="a11yPanel" role="dialog">
 <span class="a11y-heading">Accessibility Options</span>
 <div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')" type="button">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')" type="button">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')" type="button">X-Large</button></div></div>
@@ -1261,6 +1403,29 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
 <button class="a11y-reset" onclick="a11yReset()" type="button">Reset All</button>
 </div>
 <span aria-live="polite" id="a11y-live" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;"></span>
+
+
+<div class="modal-overlay" id="modal-doxy-note" role="dialog" aria-modal="true" aria-labelledby="modal-doxy-title" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">Before You Join</div>
+        <h2 id="modal-doxy-title">Important note about your interview session</h2>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close" onclick="closeModal('modal-doxy-note')">×</button>
+    </div>
+    <div class="modal-body">
+      <h3>Before you join the waiting room</h3>
+      <p>Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
+      <p>You may also visit the <a href="https://insurance-site-b74vp2r33-cornelia-investment-group.vercel.app/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
+      <div style="margin-top:1.25rem;">
+        <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer" class="cbtn" style="display:inline-block;text-decoration:none;">I Understand - Join the Waiting Room</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div aria-labelledby="modal-privacy-title" aria-modal="true" class="modal-overlay" id="modal-privacy" onclick="closeModalOnOverlay(event,'modal-privacy')" role="dialog" style="display:none">
 <div class="modal-box">
 <div class="modal-header">
