@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -4304,7 +4303,20 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
   }
 }
 </style>
-</head>
+<style id="cancer-quote-backend-final-style">
+#cancer-intake-form .cbtn-dark{
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  touch-action:manipulation!important;
+}
+#cancer-intake-form .btn-submit-dark{
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+</style></head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -4500,7 +4512,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="conf-box">
 <div class="conf-label">Your Confirmation Number</div>
 <div class="conf-num" id="cancerConfNum"></div>
-<div class="conf-note">Please save this number for your records</div>
+<div class="conf-note">Please save this confirmation number for your records.</div>
 </div>
 <p>To protect your privacy under federal HIPAA guidelines, your profile will be reviewed by Eboni Morris, Licensed Independent Insurance Agent (NPN 18509552).</p>
 <p>A Doxy.me appointment link will be sent to your preferred contact method at your scheduled time or as soon as available if you selected Send Now.</p>
@@ -4515,10 +4527,6 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 </div>
 </section>
 <!-- AUTHOR BIO -->
-
-
-
-
 <script>
 
 function a11y(type,val){
@@ -4548,63 +4556,7 @@ function a11yReset(){document.body.classList.remove('lg-text','xl-text','hc-mode
 document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';});});
 
 </script>
-<script>
-var cFd = {};
-function cPick(btn,key,val){
-  btn.parentNode.querySelectorAll('.cbtn-dark').forEach(function(b){b.classList.remove('sel');b.style.removeProperty('background');b.style.removeProperty('border-color');b.style.removeProperty('color');});
-  btn.classList.add('sel');btn.style.background='#9e8047';btn.style.borderColor='#9e8047';btn.style.color='#fff';
-  cFd[key]=val;
-}
-function submitCancerForm(){
-  var errors=[];
-  var fname=document.getElementById('c_fname').value.trim();
-  var lname=document.getElementById('c_lname').value.trim();
-  var age=document.getElementById('c_age').value.trim();
-  var state=document.getElementById('c_state').value;
-  var phone=document.getElementById('c_phone').value.trim();
-  var email=document.getElementById('c_email').value.trim();
-  var date=document.getElementById('c_date').value;
-  var time=document.getElementById('c_time').value;
-  var consent=document.getElementById('c_consent').checked;
-  if(!fname)errors.push('First name is required.');
-  if(!lname)errors.push('Last name is required.');
-  if(!age)errors.push('Age is required.');
-  if(!state)errors.push('State of residence is required.');
-  if(!phone&&!email)errors.push('Please provide at least a phone number or email address.');
-  if(!cFd['c_contact'])errors.push('Please select your preferred contact method.');
-  if(!cFd['c_urgency'])errors.push('Please select how soon you want coverage.');
-  if(!date)errors.push('Please select your best date to contact.');
-  if(!time)errors.push('Please select your best time to contact.');
-  if(!consent)errors.push('Please confirm your consent before submitting.');
-  var errDiv=document.getElementById('cancerFormErr');
-  if(errors.length){errDiv.innerHTML=errors.join('<br>');errDiv.style.display='block';errDiv.scrollIntoView({behavior:'smooth',block:'center'});return;}
-  errDiv.style.display='none';
-  var confNum='CWC-'+String(Date.now()).slice(-4).padStart(4,'0');
-  var payload={
-    fname:fname,lname:lname,age:age,state:state,phone:phone,email:email,
-    contact_method:cFd['c_contact']||'',
-    coverage_urgency:cFd['c_urgency']||'',
-    best_date:date,best_time:time,
-    no_medical:'',
-    source:'cancer-landing-page',
-    consent:'Yes - Consent Confirmed',
-    confirmation_number:confNum
-  };
-  fetch('https://script.google.com/macros/s/AKfycbwZjXMLa4de2bYc6fM82oMFCyuMKOuqlcbl4iAEk-gL_EjyMbW__UNgHYjehpZ6yH9qVA/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
-  document.getElementById('cancerIntakeForm').style.display='none';
-  document.getElementById('cancerSuccessBlock').classList.add('active');
-  setTimeout(function(){var el=document.getElementById('cancerConfNum');if(el)el.textContent=confNum;},50);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function openModal(id){var m=document.getElementById(id);if(m){m.style.display='flex';m.classList.add('open');document.body.style.overflow='hidden';}}
-function closeModal(id){var m=document.getElementById(id);if(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';}}
-function a11yOpen(){var p=document.getElementById('a11yPanel'),t=document.getElementById('a11yTab'),o=p.classList.contains('open');p.classList.toggle('open',!o);t.setAttribute('aria-expanded',o?'false':'true');}
-function a11yText(val){document.body.classList.remove('lg-text','xl-text');['ts-normal','ts-large','ts-xl'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});if(val==='large'){document.body.classList.add('lg-text');document.getElementById('ts-large').classList.add('active');}else if(val==='xl'){document.body.classList.add('xl-text');document.getElementById('ts-xl').classList.add('active');}else{document.getElementById('ts-normal').classList.add('active');}}
-function a11yToggle(btnId,cls){var on=!document.body.classList.contains(cls);document.body.classList.toggle(cls,on);var btn=document.getElementById(btnId);if(btn){btn.classList.toggle('active',on);btn.textContent=on?'Disable':'Enable';}}
-function a11yReset(){document.body.classList.remove('lg-text','xl-text','hc-mode','dyslexia-font','reduce-motion');['hc-btn','dy-btn','rm-btn'].forEach(function(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.textContent='Enable';}});document.getElementById('ts-normal').classList.add('active');}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';})}});
-(function(){var ham=document.getElementById('ham');var nav=document.getElementById('mobileNav');if(ham&&nav){ham.addEventListener('click',function(){ham.classList.toggle('open');nav.classList.toggle('open');nav.style.display=nav.classList.contains('open')?'flex':'none';});}})();
-</script>
+
 <script src="_shared.js"></script>
 <button aria-expanded="false" aria-label="Open accessibility options" id="a11yTab" onclick="a11yOpen()" title="Accessibility options" type="button">Accessibility</button><div aria-hidden="true" aria-label="Accessibility Options" id="a11yPanel" role="dialog">
 <span class="a11y-heading">Accessibility Options</span>
@@ -4933,7 +4885,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
 <li><a href="education.html">Insurance Education</a></li>
 <li><a href="myths.html">Myth Busted</a></li>
 <li><a href="chat.html">Ask a Question</a></li>
-</ul></div>
+</li></li></li></ul></div>
 <div class="footer-col"><h4>Legal</h4><ul>
 <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
 <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
@@ -5043,6 +4995,142 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
         m.style.display='none';m.classList.remove('open');
       });
       document.body.style.overflow='';
+    }
+  });
+})();
+</script><script id="cancer-cwc-quote-backend">
+(function(){
+  "use strict";
+
+  var QUOTE_WEB_APP_URL="https://script.google.com/macros/s/AKfycbwZjXMLa4de2bYc6fM82oMFCyuMKOuqlcbl4iAEk-gL_EjyMbW__UNgHYjehpZ6yH9qVA/exec";
+  var cancerFd={};
+
+  window.cPick=function(btn,key,val){
+    var group=btn && btn.parentElement;
+    if(group){
+      group.querySelectorAll('.cbtn-dark').forEach(function(b){
+        b.classList.remove('sel');
+        b.setAttribute('aria-pressed','false');
+      });
+    }
+    if(btn){
+      btn.classList.add('sel');
+      btn.setAttribute('aria-pressed','true');
+    }
+    cancerFd[key]=val;
+  };
+
+  window.submitCancerForm=function(){
+    function val(id){
+      var el=document.getElementById(id);
+      return el ? String(el.value||'').trim() : '';
+    }
+
+    var errors=[];
+    var fname=val('c_fname');
+    var lname=val('c_lname');
+    var age=val('c_age');
+    var state=val('c_state');
+    var phone=val('c_phone');
+    var email=val('c_email');
+    var date=val('c_date');
+    var time=val('c_time');
+    var consentEl=document.getElementById('c_consent');
+    var consent=!!(consentEl && consentEl.checked);
+
+    if(!fname)errors.push('First name is required.');
+    if(!lname)errors.push('Last name is required.');
+    if(!age)errors.push('Age is required.');
+    if(!state)errors.push('State of residence is required.');
+    if(!phone && !email)errors.push('Please provide at least a phone number or email address.');
+    if(!cancerFd.c_contact)errors.push('Please select your preferred contact method.');
+    if(!cancerFd.c_urgency)errors.push('Please select how soon you want coverage.');
+    if(!date)errors.push('Please select your best date to contact.');
+    if(!time)errors.push('Please select your best time to contact.');
+    if(!consent)errors.push('Please confirm your consent before submitting.');
+
+    var err=document.getElementById('cancerFormErr');
+    if(errors.length){
+      if(err){
+        err.innerHTML=errors.join('<br>');
+        err.style.display='block';
+        err.scrollIntoView({behavior:'smooth',block:'center'});
+      }
+      return false;
+    }
+
+    if(err)err.style.display='none';
+
+    var confNum='CWC-'+String(Date.now()).slice(-4).padStart(4,'0');
+
+    var payload={
+      fname:fname,
+      lname:lname,
+      age:age,
+      state:state,
+      phone:phone,
+      email:email,
+      contact_method:cancerFd.c_contact||'',
+      coverage_urgency:cancerFd.c_urgency||'',
+      best_date:date,
+      best_time:time,
+      no_medical:'',
+      consent:'Yes - Consent Confirmed',
+      confirmation_number:confNum,
+      source:'cancer-landing-page'
+    };
+
+    fetch(QUOTE_WEB_APP_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    }).catch(function(){});
+
+    // Hide only the actual inputs so the confirmation screen remains visible.
+    var intake=document.getElementById('cancerIntakeForm');
+    var success=document.getElementById('cancerSuccessBlock');
+    var conf=document.getElementById('cancerConfNum');
+
+    if(intake)intake.style.display='none';
+    if(success){
+      success.classList.add('active');
+      success.style.display='block';
+    }
+    if(conf)conf.textContent=confNum;
+
+    window.scrollTo({top:0,behavior:'smooth'});
+    return false;
+  };
+
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('#cancer-intake-form .cbtn-dark').forEach(function(btn){
+      btn.type='button';
+      btn.style.pointerEvents='auto';
+      btn.style.cursor='pointer';
+    });
+
+    document.querySelectorAll('#cancer-intake-form .cbtn-dark').forEach(function(btn){
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var oc=btn.getAttribute('onclick')||'';
+        var m=oc.match(/cPick\(this,\s*['"]([^'"]+)['"],\s*['"]([^'"]+)['"]\)/);
+        if(m)window.cPick(btn,m[1],m[2]);
+      },true);
+    });
+
+    var submit=document.querySelector('#cancer-intake-form .btn-submit-dark');
+    if(submit){
+      submit.type='button';
+      submit.disabled=false;
+      submit.style.pointerEvents='auto';
+      submit.style.cursor='pointer';
+      submit.addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        window.submitCancerForm();
+      },true);
     }
   });
 })();
