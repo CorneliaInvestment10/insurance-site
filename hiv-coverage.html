@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -4100,7 +4096,88 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
   color:var(--ink)!important;
 }
 </style>
-</head>
+<style id="legal-disclosure-mobile-close-final">
+/* Legal disclosure modal: mobile-safe sizing and reachable close button */
+@media (max-width: 768px){
+  .modal-overlay{
+    position:fixed!important;
+    inset:0!important;
+    padding:1rem!important;
+    display:none!important;
+    align-items:flex-start!important;
+    justify-content:center!important;
+    overflow:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    z-index:11000!important;
+  }
+
+  .modal-overlay.open{
+    display:flex!important;
+    pointer-events:auto!important;
+  }
+
+  .modal-box{
+    width:100%!important;
+    max-width:680px!important;
+    height:calc(100dvh - 2rem)!important;
+    max-height:calc(100dvh - 2rem)!important;
+    margin:0!important;
+    position:relative!important;
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+    border-radius:8px!important;
+  }
+
+  .modal-header{
+    position:sticky!important;
+    top:0!important;
+    z-index:5!important;
+    flex:0 0 auto!important;
+    min-height:64px!important;
+    padding:1rem 1rem 1rem 1.2rem!important;
+    align-items:flex-start!important;
+  }
+
+  .modal-close{
+    position:relative!important;
+    z-index:6!important;
+    flex:0 0 32px!important;
+    width:32px!important;
+    height:32px!important;
+    min-width:32px!important;
+    min-height:32px!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+  }
+
+  .modal-body{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    padding:1.25rem 1rem 1.5rem!important;
+  }
+
+  .modal-title{
+    font-size:1.05rem!important;
+    line-height:1.3!important;
+  }
+
+  .modal-section{
+    margin-bottom:1.25rem!important;
+  }
+
+  /* Keep fixed-site controls below the disclosure layer. */
+  #a11yTab,#interviewNowBtn,#chatBubble{
+    z-index:10001!important;
+  }
+}
+</style></head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -4353,7 +4430,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="interview-modal-header">
 <div class="interview-modal-kicker">Before You Join</div>
 <div class="interview-modal-title" id="modal-doxy-title">IMPORTANT NOTE ABOUT YOUR INTERVIEW SESSION</div>
-<button aria-label="Close" class="interview-modal-close" onclick="closeModal('modal-doxy-note')" type="button">×</button>
+<button aria-label="Close" class="interview-modal-close" onclick="closeModal('modal-doxy-note')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="interview-modal-body">
 <h3>Before you join the waiting room</h3>
@@ -4373,7 +4450,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-subtitle">Legal</div>
 <div class="modal-title" id="modal-privacy-title">Privacy Policy</div>
 </div>
-<button aria-label="Close privacy policy" class="modal-close" onclick="closeModal('modal-privacy')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-privacy')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
@@ -4411,7 +4488,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-subtitle">Federal Privacy Law</div>
 <div class="modal-title" id="modal-hipaa-title">HIPAA Privacy Notice</div>
 </div>
-<button aria-label="Close HIPAA notice" class="modal-close" onclick="closeModal('modal-hipaa')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-hipaa')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
@@ -4446,7 +4523,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-subtitle">Legal</div>
 <div class="modal-title" id="modal-terms-title">Terms of Use</div>
 </div>
-<button aria-label="Close terms of use" class="modal-close" onclick="closeModal('modal-terms')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-terms')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
@@ -4483,7 +4560,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-subtitle">Producer Licensing</div>
 <div class="modal-title" id="modal-license-title">Licensing Information</div>
 </div>
-<button aria-label="Close licensing information" class="modal-close" onclick="closeModal('modal-license')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-license')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
@@ -4522,7 +4599,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-box">
 <div class="modal-header">
 <div><div class="modal-subtitle">Federal Consumer Protection Law</div><div class="modal-title" id="modal-fcra-title">Fair Credit Reporting Act (FCRA)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-fcra')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-fcra')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
@@ -4553,7 +4630,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-box">
 <div class="modal-header">
 <div><div class="modal-subtitle">Industry Disclosure</div><div class="modal-title" id="modal-mib-title">Medical Information Bureau (MIB)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mib')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mib')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
@@ -4583,7 +4660,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-box">
 <div class="modal-header">
 <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-rx-title">Pharmacy Records (Rx History)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-rx')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-rx')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
@@ -4611,7 +4688,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="modal-box">
 <div class="modal-header">
 <div><div class="modal-subtitle">Underwriting Disclosure</div><div class="modal-title" id="modal-mvr-title">Motor Vehicle Report (MVR)</div></div>
-<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mvr')">×</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-mvr')" style="pointer-events:auto;touch-action:manipulation" type="button">×</button>
 </div>
 <div class="modal-body">
 <div class="modal-section">
