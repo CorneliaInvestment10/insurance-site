@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -4017,7 +4016,28 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
   .nav-brand .brand-sub{font-size:.52rem!important;letter-spacing:.14em!important;}
 }
 </style>
-</head>
+<style id="hiv-form-clickability-final">
+#hiv-intake-form .choices-dark,
+#hiv-intake-form .cbtn-dark{
+  pointer-events:auto!important;
+}
+#hiv-intake-form .cbtn-dark{
+  position:relative!important;
+  z-index:5!important;
+  cursor:pointer!important;
+  touch-action:manipulation!important;
+}
+#hiv-intake-form .btn-submit-dark{
+  position:relative!important;
+  z-index:5!important;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  touch-action:manipulation!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+</style></head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -4208,8 +4228,6 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 </div>
 </section>
 <!-- AUTHOR BIO -->
-
-
 <footer>
 <div class="footer-inner">
 <div class="footer-top">
@@ -4232,7 +4250,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <li><a href="education.html">Insurance Education</a></li>
 <li><a href="myths.html">Myth Busted</a></li>
 <li><a href="chat.html">Ask a Question</a></li>
-</ul></div>
+</li></li></li></ul></div>
 <div class="footer-col"><h4>Legal</h4><ul>
 <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
 <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
@@ -4655,6 +4673,102 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
         m.classList.remove('open');
       });
       document.body.style.overflow='';
+    }
+  });
+})();
+</script><script id="hiv-form-interactions-final">
+(function(){
+  "use strict";
+
+  window.hivPick=function(btn, fieldId, value){
+    if(!btn)return;
+    var container=btn.closest('.choices-dark');
+    if(container){
+      container.querySelectorAll('.cbtn-dark').forEach(function(b){
+        b.classList.remove('sel');
+        b.setAttribute('aria-pressed','false');
+      });
+    }
+    btn.classList.add('sel');
+    btn.setAttribute('aria-pressed','true');
+    var existing=document.getElementById(fieldId);
+    if(existing && (existing.tagName==='INPUT' || existing.tagName==='SELECT')){
+      existing.value=value;
+    }
+    // Store the selected values for submission without changing the page design.
+    if(fieldId==='hiv_contact') window._hivContact=value;
+    if(fieldId==='hiv_urgency') window._hivUrgency=value;
+  };
+
+  window.submitHIVForm=function(){
+    var name=(document.getElementById('hiv_name')||{}).value || '';
+    var state=(document.getElementById('hiv_state')||{}).value || '';
+    var phone=(document.getElementById('hiv_phone')||{}).value || '';
+    var email=(document.getElementById('hiv_email')||{}).value || '';
+    var date=(document.getElementById('hiv_date')||{}).value || '';
+    var time=(document.getElementById('hiv_time')||{}).value || '';
+    var consent=document.getElementById('hiv_consent');
+    var err=document.getElementById('hivFormError') || document.querySelector('#hiv-intake-form .err-msg');
+
+    var errors=[];
+    if(!name.trim()) errors.push('Please enter your full name.');
+    if(!state) errors.push('Please select your state.');
+    if(!phone.trim() && !email.trim()) errors.push('Please provide a phone number or email address.');
+    if(!window._hivContact) errors.push('Please select your preferred contact method.');
+    if(!window._hivUrgency) errors.push('Please select how soon you want coverage.');
+    if(!date) errors.push('Please select your best date to contact you.');
+    if(!time) errors.push('Please select your best time to contact you.');
+    if(consent && !consent.checked) errors.push('Please provide consent before submitting.');
+
+    if(errors.length){
+      if(err){
+        err.textContent=errors[0];
+        err.style.display='block';
+      }else{
+        alert(errors[0]);
+      }
+      return false;
+    }
+
+    if(err) err.style.display='none';
+
+    var form=document.getElementById('hiv-intake-form');
+    var success=document.getElementById('hivSuccessBlock');
+    var conf=document.getElementById('hivConfNum');
+    if(form) form.style.display='none';
+    if(success){
+      var n='HIV-'+String(Date.now()).slice(-8);
+      if(conf) conf.textContent=n;
+      success.classList.add('active');
+      success.style.display='block';
+      success.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    return false;
+  };
+
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('#hiv-intake-form .cbtn-dark').forEach(function(btn){
+      btn.type='button';
+      btn.style.pointerEvents='auto';
+      btn.style.cursor='pointer';
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var m=(btn.getAttribute('onclick')||'').match(/hivPick\(this,\s*['"]([^'"]+)['"],\s*['"]([^'"]+)['"]\)/);
+        if(m) window.hivPick(btn,m[1],m[2]);
+      },true);
+    });
+
+    var submit=document.querySelector('#hiv-intake-form .btn-submit-dark');
+    if(submit){
+      submit.type='button';
+      submit.style.pointerEvents='auto';
+      submit.style.cursor='pointer';
+      submit.addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        window.submitHIVForm();
+      },true);
     }
   });
 })();
