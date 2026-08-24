@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -4713,9 +4711,12 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 (function(){
   "use strict";
 
+  var GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyOnDlCKBrlj64ZymOXc8PKJGLAYd55VBTw61TmMZo2bx55EY95jGq6Jkpy-9LVy6Nwsg/exec";
+
   window.submitHIVForm=function(){
     var first=(document.getElementById('hiv_fname')||{}).value || '';
     var last=(document.getElementById('hiv_lname')||{}).value || '';
+    var age=(document.getElementById('hiv_age')||{}).value || '';
     var state=(document.getElementById('hiv_state')||{}).value || '';
     var phone=(document.getElementById('hiv_phone')||{}).value || '';
     var email=(document.getElementById('hiv_email')||{}).value || '';
@@ -4727,6 +4728,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     var errors=[];
     if(!first.trim()) errors.push('Please enter your first name.');
     if(!last.trim()) errors.push('Please enter your last name.');
+    if(!age.trim()) errors.push('Please enter your age.');
     if(!state) errors.push('Please select your state.');
     if(!phone.trim() && !email.trim()) errors.push('Please provide a phone number or email address.');
     if(!window._hivContact) errors.push('Please select your preferred contact method.');
@@ -4737,7 +4739,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 
     if(errors.length){
       if(err){
-        err.textContent=errors[0];
+        err.innerHTML=errors.join('<br>');
         err.style.display='block';
         err.scrollIntoView({behavior:'smooth',block:'center'});
       }
@@ -4746,18 +4748,49 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 
     if(err) err.style.display='none';
 
+    var confNum='CWC-'+String(Date.now()).slice(-4).padStart(4,'0');
+
+    var payload={
+      fname:first,
+      lname:last,
+      age:age,
+      state:state,
+      phone:phone,
+      email:email,
+      contact_method:window._hivContact || '',
+      coverage_urgency:window._hivUrgency || '',
+      best_date:date,
+      best_time:time,
+      no_medical:'',
+      source:'hiv-aids-landing-page',
+      consent:'Yes - Consent Confirmed',
+      confirmation_number:confNum
+    };
+
+    // text/plain keeps this a simple cross-origin POST, while Apps Script
+    // still receives the JSON string in e.postData.contents.
+    fetch(GOOGLE_WEB_APP_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
+    }).catch(function(){});
+
     var form=document.getElementById('hiv-intake-form');
     var success=document.getElementById('hivSuccessBlock');
     var conf=document.getElementById('hivConfNum');
 
     if(form) form.style.display='none';
+
     if(success){
-      var n='HIV-'+String(Date.now()).slice(-8);
-      if(conf) conf.textContent=n;
       success.classList.add('active');
       success.style.display='block';
+      setTimeout(function(){
+        if(conf) conf.textContent=confNum;
+      },50);
       success.scrollIntoView({behavior:'smooth',block:'center'});
     }
+
     return false;
   };
 
