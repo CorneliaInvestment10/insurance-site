@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -4707,11 +4709,11 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     }
   });
 })();
-</script><script id="hiv-submit-final-fix">
+</script><script id="hiv-quote-backend-submit">
 (function(){
   "use strict";
 
-  var GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyOnDlCKBrlj64ZymOXc8PKJGLAYd55VBTw61TmMZo2bx55EY95jGq6Jkpy-9LVy6Nwsg/exec";
+  var QUOTE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwZjXMLa4de2bYc6fM82oMFCyuMKOuqlcbl4iAEk-gL_EjyMbW__UNgHYjehpZ6yH9qVA/exec";
 
   function getValue(id){
     var el=document.getElementById(id);
@@ -4719,81 +4721,80 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
   }
 
   window.submitHIVForm=function(){
-    var first=getValue('hiv_fname');
-    var last=getValue('hiv_lname');
+    var errors=[];
+    var fname=getValue('hiv_fname');
+    var lname=getValue('hiv_lname');
     var age=getValue('hiv_age');
     var state=getValue('hiv_state');
     var phone=getValue('hiv_phone');
     var email=getValue('hiv_email');
-    var date=getValue('hiv_date');
-    var time=getValue('hiv_time');
+    var best_date=getValue('hiv_date');
+    var best_time=getValue('hiv_time');
     var consentEl=document.getElementById('hiv_consent');
     var consent=!!(consentEl && consentEl.checked);
-    var err=document.getElementById('hivFormErr');
 
-    var errors=[];
-    if(!first) errors.push('Please enter your first name.');
-    if(!last) errors.push('Please enter your last name.');
-    if(!age) errors.push('Please enter your age.');
-    if(!state) errors.push('Please select your state of residence.');
-    if(!phone && !email) errors.push('Please provide a phone number or email address.');
-    if(!window._hivContact) errors.push('Please select your preferred contact method.');
-    if(!window._hivUrgency) errors.push('Please select how soon you want coverage.');
-    if(!date) errors.push('Please select your best date to contact.');
-    if(!time) errors.push('Please select your best time to contact.');
-    if(!consent) errors.push('Please confirm your consent before submitting.');
+    if(!fname)errors.push('First name is required.');
+    if(!lname)errors.push('Last name is required.');
+    if(!age)errors.push('Age is required.');
+    if(!state)errors.push('State of residence is required.');
+    if(!phone && !email)errors.push('Please provide at least a phone number or email address.');
+    if(!window._hivContact)errors.push('Please select your preferred contact method.');
+    if(!window._hivUrgency)errors.push('Please select how soon you want coverage.');
+    if(!best_date)errors.push('Please select your best date to contact.');
+    if(!best_time)errors.push('Please select your best time to contact.');
+    if(!consent)errors.push('Please confirm your consent before submitting.');
 
+    var errDiv=document.getElementById('hivFormErr');
     if(errors.length){
-      if(err){
-        err.innerHTML=errors.join('<br>');
-        err.style.display='block';
-        err.scrollIntoView({behavior:'smooth',block:'center'});
+      if(errDiv){
+        errDiv.innerHTML=errors.join('<br>');
+        errDiv.style.display='block';
+        errDiv.scrollIntoView({behavior:'smooth',block:'center'});
       }
       return false;
     }
 
-    if(err) err.style.display='none';
+    if(errDiv)errDiv.style.display='none';
 
-    // Confirmation number is generated before submission and sent to the sheet.
-    var confirmationNumber='CWC-'+String(Date.now()).slice(-8);
+    // Same confirmation-number format as the working Quote page.
+    var confNum='CWC-' + String(Date.now()).slice(-4).padStart(4,'0');
 
+    // Same backend field structure as the Quote page.
+    // Only the source is changed so you can tell the form origin.
     var payload={
-      'First Name': first,
-      'Last Name': last,
-      'Age': age,
-      'State of Residence': state,
-      'Phone Number': phone,
-      'Email Address': email,
-      'Preferred Contact Method': window._hivContact || '',
-      'How Soon Do You Want Coverage': window._hivUrgency || '',
-      'Best Date to Contact': date,
-      'Best Time to Contact': time,
-      'Consent': 'Yes - Consent Confirmed',
-      'Confirmation Number': confirmationNumber
+      fname:fname,
+      lname:lname,
+      age:age,
+      state:state,
+      phone:phone,
+      email:email,
+      contact_method:window._hivContact || '',
+      coverage_urgency:window._hivUrgency || '',
+      best_date:best_date,
+      best_time:best_time,
+      no_medical:'',
+      consent:'Yes - Consent Confirmed',
+      confirmation_number:confNum,
+      source:'hiv-aids-landing-page'
     };
 
-    // Send to Google Apps Script Web App.
-    // text/plain avoids browser preflight while Apps Script reads the JSON body.
-    fetch(GOOGLE_WEB_APP_URL,{
+    fetch(QUOTE_WEB_APP_URL,{
       method:'POST',
       mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify(payload)
     }).catch(function(){});
 
-    // Hide form and show the exact confirmation number that was submitted.
+    // Show the confirmation number exactly like the Quote page.
     var form=document.getElementById('hiv-intake-form');
     var success=document.getElementById('hivSuccessBlock');
-    var conf=document.getElementById('hivConfNum');
+    var confEl=document.getElementById('hivConfNum');
 
-    if(form) form.style.display='none';
-    if(success){
-      success.classList.add('active');
-      success.style.display='block';
-      if(conf) conf.textContent=confirmationNumber;
-      success.scrollIntoView({behavior:'smooth',block:'center'});
-    }
+    if(form)form.style.display='none';
+    if(success)success.classList.add('active');
+    if(confEl)confEl.textContent=confNum;
 
+    window.scrollTo({top:0,behavior:'smooth'});
     return false;
   };
 
@@ -4802,8 +4803,6 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     if(submit){
       submit.type='button';
       submit.disabled=false;
-      submit.style.pointerEvents='auto';
-      submit.style.cursor='pointer';
       submit.addEventListener('click',function(e){
         e.preventDefault();
         e.stopImmediatePropagation();
