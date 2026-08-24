@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1037,13 +1036,42 @@ body{font-size:16px !important;}
 .field input,.field select,.field textarea{font-size:.95rem !important;}
 .footer-brand p,.footer-col ul a,.footer-bottom,.fl-body,.fl-npn{font-size:.9rem !important;}
 </style>
-
 <style id="quote-modal-layer-fix">
 #modal-doxy-note{z-index:2147483600 !important;}
 #modal-doxy-note .interview-modal-box{z-index:2147483601 !important;}
 </style>
+<style id="quote-mobile-hamburger-css">
+@media(max-width:768px){
+  #ham{
+    display:flex!important;
+    position:relative!important;
+    z-index:10001!important;
+    pointer-events:auto!important;
+    cursor:pointer!important;
+    touch-action:manipulation!important;
+  }
 
-</head>
+  #mobileNav{
+    position:fixed!important;
+    top:72px!important;
+    left:0!important;
+    right:0!important;
+    z-index:10000!important;
+    pointer-events:auto!important;
+  }
+
+  #mobileNav.open{
+    display:flex!important;
+  }
+
+  #mobileNav a{
+    position:relative!important;
+    z-index:10001!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+  }
+}
+</style></head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -1634,28 +1662,24 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
 </div>
 </div>
 </div>
-<div class="modal-overlay" id="modal-doxy-note" role="dialog" aria-modal="true" aria-labelledby="modal-doxy-title" style="display:none;">
-  <div class="interview-modal-box">
-    <div class="interview-modal-header">
-      <div class="interview-modal-kicker">Before You Join</div>
-      <div class="interview-modal-title" id="modal-doxy-title">IMPORTANT NOTE ABOUT YOUR INTERVIEW SESSION</div>
-      <button type="button" class="interview-modal-close" aria-label="Close" onclick="closeModal('modal-doxy-note')">×</button>
-    </div>
-
-    <div class="interview-modal-body">
-      <h3>Before you join the waiting room</h3>
-
-      <p>Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
-
-      <p>You may also visit the <a href="https://insurance-site-b74vp2r33-cornelia-investment-group.vercel.app/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
-
-      <div class="interview-modal-action">
-        <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer">
+<div aria-labelledby="modal-doxy-title" aria-modal="true" class="modal-overlay" id="modal-doxy-note" role="dialog" style="display:none;">
+<div class="interview-modal-box">
+<div class="interview-modal-header">
+<div class="interview-modal-kicker">Before You Join</div>
+<div class="interview-modal-title" id="modal-doxy-title">IMPORTANT NOTE ABOUT YOUR INTERVIEW SESSION</div>
+<button aria-label="Close" class="interview-modal-close" onclick="closeModal('modal-doxy-note')" type="button">×</button>
+</div>
+<div class="interview-modal-body">
+<h3>Before you join the waiting room</h3>
+<p>Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
+<p>You may also visit the <a href="https://insurance-site-b74vp2r33-cornelia-investment-group.vercel.app/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect.</p>
+<div class="interview-modal-action">
+<a href="https://doxy.me/coveredwithconditions" rel="noopener noreferrer" target="_blank">
           I Understand - Join the Waiting Room
         </a>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </div>
 <div id="interviewNowBtn" style="position:fixed;right:0;bottom:90px;z-index:9997;display:flex;align-items:center;">
 <a href="#" onclick="openModal('modal-doxy-note');return false;" onmouseout="this.style.background='#2e7d52'" onmouseover="this.style.background='#9e8047'" style="display:flex;align-items:center;gap:0.5rem;background:#2e7d52;color:#fff;font-family:system-ui,sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.1rem;border-radius:6px 0 0 6px;border:none;cursor:pointer;text-decoration:none;box-shadow:-2px 2px 8px rgba(0,0,0,0.2);white-space:nowrap;">
@@ -1685,7 +1709,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
 <li><a href="education.html">Insurance Education</a></li>
 <li><a href="myths.html">Myth Busted</a></li>
 <li><a href="chat.html">Ask a Question</a></li>
-</ul></div>
+</li></li></li></ul></div>
 <div class="footer-col"><h4>Legal</h4><ul>
 <li><a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a></li>
 <li><a href="#" onclick="openModal('modal-hipaa');return false;">HIPAA Notice</a></li>
@@ -1806,7 +1830,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
   });
 })();
 </script>
-
 <script id="working-about-control-bindings">
 document.addEventListener('DOMContentLoaded',function(){
   var tab=document.getElementById('a11yTab');
@@ -1838,6 +1861,57 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 </script>
+<script id="quote-mobile-hamburger-fix">
+(function(){
+  "use strict";
 
-</body>
+  function initQuoteMobileMenu(){
+    var ham=document.getElementById("ham");
+    var mobileNav=document.getElementById("mobileNav");
+
+    if(!ham || !mobileNav) return;
+
+    ham.setAttribute("type","button");
+    ham.setAttribute("aria-expanded","false");
+    ham.setAttribute("aria-controls","mobileNav");
+    ham.style.pointerEvents="auto";
+    ham.style.cursor="pointer";
+    ham.style.touchAction="manipulation";
+
+    ham.addEventListener("click",function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      var isOpen=mobileNav.classList.contains("open");
+
+      if(isOpen){
+        mobileNav.classList.remove("open");
+        mobileNav.style.display="none";
+        ham.setAttribute("aria-expanded","false");
+        ham.setAttribute("aria-label","Open menu");
+      }else{
+        mobileNav.classList.add("open");
+        mobileNav.style.display="flex";
+        ham.setAttribute("aria-expanded","true");
+        ham.setAttribute("aria-label","Close menu");
+      }
+    },true);
+
+    mobileNav.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click",function(){
+        mobileNav.classList.remove("open");
+        mobileNav.style.display="none";
+        ham.setAttribute("aria-expanded","false");
+        ham.setAttribute("aria-label","Open menu");
+      });
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",initQuoteMobileMenu);
+  }else{
+    initQuoteMobileMenu();
+  }
+})();
+</script></body>
 </html>
