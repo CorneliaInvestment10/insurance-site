@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -4037,7 +4039,38 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
   visibility:visible!important;
   opacity:1!important;
 }
-</style></head>
+</style><style id="hiv-submit-final-css">
+#hiv-intake-form .btn-submit-dark{
+  display:block!important;
+  width:100%!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  position:relative!important;
+  z-index:20!important;
+  touch-action:manipulation!important;
+}
+</style>
+<style id="hiv-options-final-css">
+#hiv-intake-form .choices-dark{
+  position:relative!important;
+  z-index:40!important;
+  pointer-events:auto!important;
+}
+#hiv-intake-form .choices-dark .cbtn-dark{
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  touch-action:manipulation!important;
+  user-select:none!important;
+}
+#hiv-intake-form .choices-dark .cbtn-dark.sel{
+  background:var(--gold)!important;
+  border-color:var(--gold)!important;
+  color:var(--white)!important;
+}
+</style>
+</head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -4676,42 +4709,24 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     }
   });
 })();
-</script><script id="hiv-form-interactions-final">
+</script><script id="hiv-submit-final-fix">
 (function(){
   "use strict";
 
-  window.hivPick=function(btn, fieldId, value){
-    if(!btn)return;
-    var container=btn.closest('.choices-dark');
-    if(container){
-      container.querySelectorAll('.cbtn-dark').forEach(function(b){
-        b.classList.remove('sel');
-        b.setAttribute('aria-pressed','false');
-      });
-    }
-    btn.classList.add('sel');
-    btn.setAttribute('aria-pressed','true');
-    var existing=document.getElementById(fieldId);
-    if(existing && (existing.tagName==='INPUT' || existing.tagName==='SELECT')){
-      existing.value=value;
-    }
-    // Store the selected values for submission without changing the page design.
-    if(fieldId==='hiv_contact') window._hivContact=value;
-    if(fieldId==='hiv_urgency') window._hivUrgency=value;
-  };
-
   window.submitHIVForm=function(){
-    var name=(document.getElementById('hiv_name')||{}).value || '';
+    var first=(document.getElementById('hiv_fname')||{}).value || '';
+    var last=(document.getElementById('hiv_lname')||{}).value || '';
     var state=(document.getElementById('hiv_state')||{}).value || '';
     var phone=(document.getElementById('hiv_phone')||{}).value || '';
     var email=(document.getElementById('hiv_email')||{}).value || '';
     var date=(document.getElementById('hiv_date')||{}).value || '';
     var time=(document.getElementById('hiv_time')||{}).value || '';
     var consent=document.getElementById('hiv_consent');
-    var err=document.getElementById('hivFormError') || document.querySelector('#hiv-intake-form .err-msg');
+    var err=document.getElementById('hivFormErr');
 
     var errors=[];
-    if(!name.trim()) errors.push('Please enter your full name.');
+    if(!first.trim()) errors.push('Please enter your first name.');
+    if(!last.trim()) errors.push('Please enter your last name.');
     if(!state) errors.push('Please select your state.');
     if(!phone.trim() && !email.trim()) errors.push('Please provide a phone number or email address.');
     if(!window._hivContact) errors.push('Please select your preferred contact method.');
@@ -4724,8 +4739,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
       if(err){
         err.textContent=errors[0];
         err.style.display='block';
-      }else{
-        alert(errors[0]);
+        err.scrollIntoView({behavior:'smooth',block:'center'});
       }
       return false;
     }
@@ -4735,6 +4749,7 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     var form=document.getElementById('hiv-intake-form');
     var success=document.getElementById('hivSuccessBlock');
     var conf=document.getElementById('hivConfNum');
+
     if(form) form.style.display='none';
     if(success){
       var n='HIV-'+String(Date.now()).slice(-8);
@@ -4747,18 +4762,6 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
   };
 
   document.addEventListener('DOMContentLoaded',function(){
-    document.querySelectorAll('#hiv-intake-form .cbtn-dark').forEach(function(btn){
-      btn.type='button';
-      btn.style.pointerEvents='auto';
-      btn.style.cursor='pointer';
-      btn.addEventListener('click',function(e){
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        var m=(btn.getAttribute('onclick')||'').match(/hivPick\(this,\s*['"]([^'"]+)['"],\s*['"]([^'"]+)['"]\)/);
-        if(m) window.hivPick(btn,m[1],m[2]);
-      },true);
-    });
-
     var submit=document.querySelector('#hiv-intake-form .btn-submit-dark');
     if(submit){
       submit.type='button';
@@ -4772,5 +4775,48 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     }
   });
 })();
-</script></body>
+</script>
+<script id="hiv-options-final-fix">
+(function(){
+  "use strict";
+
+  window.hivPick=function(btn, fieldId, value){
+    var group=btn && btn.parentElement;
+    if(group){
+      group.querySelectorAll(".cbtn-dark").forEach(function(b){
+        b.classList.remove("sel");
+        b.setAttribute("aria-pressed","false");
+      });
+    }
+    if(btn){
+      btn.classList.add("sel");
+      btn.setAttribute("aria-pressed","true");
+    }
+    if(fieldId==="hiv_contact") window._hivContact=value;
+    if(fieldId==="hiv_urgency") window._hivUrgency=value;
+  };
+
+  document.addEventListener("DOMContentLoaded",function(){
+    document.querySelectorAll("#hiv-intake-form .cbtn-dark").forEach(function(btn){
+      btn.type="button";
+      btn.style.setProperty("display","inline-flex","important");
+      btn.style.setProperty("visibility","visible","important");
+      btn.style.setProperty("opacity","1","important");
+      btn.style.setProperty("pointer-events","auto","important");
+      btn.style.setProperty("cursor","pointer","important");
+      btn.style.setProperty("position","relative","important");
+      btn.style.setProperty("z-index","50","important");
+      btn.addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var m=(btn.getAttribute("onclick")||"").match(
+          /hivPick\(this,\s*['"]([^'"]+)['"],\s*['"]([^'"]+)['"]\)/
+        );
+        if(m) window.hivPick(btn,m[1],m[2]);
+      },true);
+    });
+  });
+})();
+</script>
+</body>
 </html>
