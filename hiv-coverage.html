@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -4245,11 +4243,61 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     border-radius:10px!important;
   }
 }
+</style><style id="hiv-mobile-hamburger-final-css">
+@media(max-width:768px){
+  #ham{
+    display:flex!important;
+    position:relative!important;
+    z-index:10002!important;
+    pointer-events:auto!important;
+    cursor:pointer!important;
+    touch-action:manipulation!important;
+  }
+
+  #mobileNav{
+    position:fixed!important;
+    top:72px!important;
+    left:0!important;
+    right:0!important;
+    z-index:10001!important;
+    pointer-events:auto!important;
+  }
+
+  #mobileNav.open{
+    display:flex!important;
+  }
+
+  #mobileNav a{
+    position:relative!important;
+    z-index:10002!important;
+    display:block!important;
+    pointer-events:auto!important;
+    cursor:pointer!important;
+    touch-action:manipulation!important;
+  }
+}
+</style><style id="hiv-chat-bubble-full-label">
+#chatBubble .chat-bubble-label{
+  display:inline-block!important;
+}
+@media(max-width:768px){
+  #chatBubble{
+    left:12px!important;
+    bottom:24px!important;
+  }
+  #chatBubble a{
+    max-width:calc(100vw - 24px)!important;
+  }
+  #chatBubble .chat-bubble-label{
+    display:inline-block!important;
+    font-size:.8rem!important;
+  }
+}
 </style></head>
 <div id="chatBubble" style="position:fixed;bottom:24px;left:24px;z-index:490;">
 <a href="chat.html" onmouseout="this.style.background='#1a1a18'" onmouseover="this.style.background='#9e8047'" style="display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-radius:30px;padding:0.65rem 1.1rem 0.65rem 0.85rem;text-decoration:none;">
 <div style="width:36px;height:36px;background:rgba(158,128,71,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg fill="none" height="18" stroke="#9e8047" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-</a>
+<span class="chat-bubble-label" style="font-family:var(--sans,system-ui,sans-serif);font-size:0.85rem;font-weight:500;letter-spacing:0.05em;color:#fff;white-space:nowrap;">Ask a Question</span></a>
 </div><body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -5145,6 +5193,64 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
       });
     }
   });
+})();
+</script><script id="hiv-mobile-hamburger-final">
+(function(){
+  "use strict";
+
+  function initHivMobileMenu(){
+    var ham=document.getElementById("ham");
+    var mobileNav=document.getElementById("mobileNav");
+
+    if(!ham || !mobileNav) return;
+
+    ham.type="button";
+    ham.setAttribute("aria-controls","mobileNav");
+    ham.setAttribute("aria-expanded","false");
+    ham.setAttribute("aria-label","Open menu");
+
+    ham.style.pointerEvents="auto";
+    ham.style.cursor="pointer";
+    ham.style.touchAction="manipulation";
+
+    ham.addEventListener("click",function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      var open=mobileNav.classList.contains("open");
+
+      if(open){
+        mobileNav.classList.remove("open");
+        mobileNav.style.display="none";
+        ham.setAttribute("aria-expanded","false");
+        ham.setAttribute("aria-label","Open menu");
+      }else{
+        mobileNav.classList.add("open");
+        mobileNav.style.display="flex";
+        ham.setAttribute("aria-expanded","true");
+        ham.setAttribute("aria-label","Close menu");
+      }
+    },true);
+
+    mobileNav.querySelectorAll("a").forEach(function(link){
+      link.style.pointerEvents="auto";
+      link.style.cursor="pointer";
+      link.style.touchAction="manipulation";
+
+      link.addEventListener("click",function(){
+        mobileNav.classList.remove("open");
+        mobileNav.style.display="none";
+        ham.setAttribute("aria-expanded","false");
+        ham.setAttribute("aria-label","Open menu");
+      });
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",initHivMobileMenu);
+  }else{
+    initHivMobileMenu();
+  }
 })();
 </script></body>
 </html>
