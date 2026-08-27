@@ -854,9 +854,9 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   .footer-bottom { flex-direction:column !important; gap:0.3rem !important; }
 
   /* Fixed elements */
-  #a11yTab { top:auto !important; bottom:80px !important; transform:none !important; z-index:9999 !important; }
-  #a11yPanel { top:auto !important; bottom:140px !important; transform:none !important; right:0 !important; width:calc(100vw - 2rem) !important; max-width:260px !important; border-radius:10px !important; }
-  #interviewNowBtn { bottom:140px !important; }
+  #a11yTab { top:auto !important; bottom:70px !important; transform:none !important; }
+  #a11yPanel { top:auto !important; bottom:130px !important; ... }
+  #interviewNowBtn { bottom:170px !important; }
   #chatBubble { bottom:12px !important; left:12px !important; }
 
   /* Trust bar */
@@ -889,10 +889,17 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   footer{padding:2rem 4% !important;}
   .footer-top{grid-template-columns:1fr !important;gap:1.5rem !important;}
   .footer-bottom{flex-direction:column !important;gap:0.5rem !important;}
-  #interviewNowBtn{bottom:160px !important;}
-  #a11yTab{bottom:90px !important;top:auto !important;transform:none !important;}
-  #a11yPanel{bottom:140px !important;top:auto !important;transform:none !important;right:0 !important;width:calc(100vw - 2rem) !important;max-width:260px !important;border-radius:10px !important;}
+  #interviewNowBtn{bottom:170px !important;}
+  #a11yTab{bottom:70px !important;top:auto !important;transform:none !important;}
+  #a11yPanel{bottom:130px !important;top:auto !important;transform:none !important;right:0 !important;width:calc(100vw - 2rem) !important;max-width:260px !important;border-radius:10px !important;}
   #chatBubble{bottom:24px !important;}
+#a11yPanel{max-height:calc(100vh - 120px)!important;padding:0.7rem 0.75rem!important;}
+#a11yPanel .a11y-heading{padding-bottom:0.4rem!important;margin-bottom:0.5rem!important;}
+#a11yPanel .a11y-row{gap:0.15rem!important;margin-bottom:0.45rem!important;}
+#a11yPanel .a11y-row-label{font-size:0.75rem!important;}
+#a11yPanel .a11y-row-btns{gap:0.2rem!important;}
+#a11yPanel .a11y-btn{padding:0.2rem 0.45rem!important;font-size:0.75rem!important;}
+#a11yPanel .a11y-reset{margin-top:0.3rem!important;padding:0.3rem!important;}
 }
 
 
