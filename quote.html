@@ -1269,7 +1269,7 @@ body{font-size:16px !important;}
 </div>
 </div>
 <script>
-var fd = {}; document.getElementById('best_date').min = new Date().toISOString().split('T')[0];
+var fd = {}; var d = new Date(); document.getElementById('best_date').min = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 function pick(btn,key,val){btn.parentNode.querySelectorAll('.cbtn').forEach(function(b){b.classList.remove('sel');b.style.removeProperty('background');b.style.removeProperty('border-color');b.style.removeProperty('color');});btn.classList.add('sel');btn.style.background='#9e8047';btn.style.borderColor='#9e8047';btn.style.color='#fff';fd[key]=val;}
 function submitIntake(){
   var errors=[];
