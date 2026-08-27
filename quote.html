@@ -1163,7 +1163,7 @@ body{font-size:16px !important;}
 <div class="two-col">
 <div class="field">
 <label>Best Date to Contact *</label>
-<input id="best_date" type="date"/>
+<input id="best_date" type="date" required/>
 </div>
 <div class="field">
 <label>Best Time to Contact *</label>
@@ -1269,7 +1269,7 @@ body{font-size:16px !important;}
 </div>
 </div>
 <script>
-var fd = {};
+var fd = {}; document.getElementById('best_date').min = new Date().toISOString().split('T')[0];
 function pick(btn,key,val){btn.parentNode.querySelectorAll('.cbtn').forEach(function(b){b.classList.remove('sel');b.style.removeProperty('background');b.style.removeProperty('border-color');b.style.removeProperty('color');});btn.classList.add('sel');btn.style.background='#9e8047';btn.style.borderColor='#9e8047';btn.style.color='#fff';fd[key]=val;}
 function submitIntake(){
   var errors=[];
