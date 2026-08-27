@@ -2023,8 +2023,8 @@ body{font-size:16px !important;}
     <li><a href="quote.html">Get a Quote</a></li>
     <li><a href="chat.html" class="active">Ask a Question</a></li>
   </ul>
-  <button class="nav-hamburger" onclick="document.getElementById('mobileNav').style.display=document.getElementById('mobileNav').style.display==='flex'?'none':'flex'" aria-label="Menu">
-    <span></span><span></span><span></span>
+<button class="nav-hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
+  <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-nav" id="mobileNav" style="display:none">
