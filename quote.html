@@ -2182,53 +2182,76 @@ document.addEventListener('DOMContentLoaded',function(){
   "use strict";
 
   function initQuoteMobileMenu(){
-    var ham=document.getElementById("ham");
-    var mobileNav=document.getElementById("mobileNav");
+
+    var ham = document.getElementById("ham");
+    var mobileNav = document.getElementById("mobileNav");
 
     if(!ham || !mobileNav) return;
 
-    ham.setAttribute("type","button");
+    ham.type = "button";
     ham.setAttribute("aria-expanded","false");
     ham.setAttribute("aria-controls","mobileNav");
-    ham.style.pointerEvents="auto";
-    ham.style.cursor="pointer";
-    ham.style.touchAction="manipulation";
-
-  ham.addEventListener("click",function(e){
-
-  e.preventDefault();
-  e.stopPropagation();
-
-  var isOpen=mobileNav.classList.contains("open");
-
-  if(isOpen){
-    mobileNav.classList.remove("open");
-    mobileNav.style.display="none";
-    ham.setAttribute("aria-expanded","false");
     ham.setAttribute("aria-label","Open menu");
-  }else{
-    mobileNav.classList.add("open");
-    mobileNav.style.display="flex";
-    ham.setAttribute("aria-expanded","true");
-    ham.setAttribute("aria-label","Close menu");
-  }
-},true);
 
-    mobileNav.querySelectorAll("a").forEach(function(link){
-      link.addEventListener("click",function(){
+    function toggleMenu(e){
+
+      if(e){
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      var isOpen = mobileNav.classList.contains("open");
+
+      if(isOpen){
+
         mobileNav.classList.remove("open");
-        mobileNav.style.display="none";
+        mobileNav.style.display = "none";
+
         ham.setAttribute("aria-expanded","false");
         ham.setAttribute("aria-label","Open menu");
-      });
+
+      }else{
+
+        mobileNav.classList.add("open");
+        mobileNav.style.display = "flex";
+
+        ham.setAttribute("aria-expanded","true");
+        ham.setAttribute("aria-label","Close menu");
+
+      }
+    }
+
+    ham.onclick = toggleMenu;
+
+    mobileNav.querySelectorAll("a").forEach(function(link){
+
+      link.onclick = function(){
+
+        mobileNav.classList.remove("open");
+        mobileNav.style.display = "none";
+
+        ham.setAttribute("aria-expanded","false");
+        ham.setAttribute("aria-label","Open menu");
+
+      };
+
     });
+
   }
 
-  if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",initQuoteMobileMenu);
+  if(document.readyState === "loading"){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initQuoteMobileMenu
+    );
+
   }else{
+
     initQuoteMobileMenu();
+
   }
+
 })();
 </script>
 <script id="quote-final-control-bindings">
