@@ -1043,14 +1043,14 @@ body{font-size:16px !important;}
 <style id="quote-mobile-hamburger-css">
 @media(max-width:768px){
   #ham{
-  display:flex!important;
-  position:relative!important;
-  z-index:2147483647!important;
-  pointer-events:auto!important;
-  cursor:pointer!important;
-  touch-action:manipulation!important;
-}
-  
+    display:flex!important;
+    position:relative!important;
+    z-index:10001!important;
+    pointer-events:auto!important;
+    cursor:pointer!important;
+    touch-action:manipulation!important;
+  }
+
   #mobileNav{
     position:fixed!important;
     top:72px!important;
@@ -1132,7 +1132,7 @@ body > #interviewNowBtn{
   right:0 !important;
   left:auto !important;
   top:auto !important;
-  bottom:24px !important;
+  bottom:18px !important;
   z-index:2147483000 !important;
   display:flex !important;
   align-items:center !important;
@@ -1375,6 +1375,216 @@ body > #chatBubble .chat-copy small{
 }
 </style>
 
+
+<style id="quote-hamburger-final-fix">
+/* ===== FINAL MOBILE HAMBURGER FIX ===== */
+@media (max-width:768px){
+  .navbar{
+    position:sticky !important;
+    top:0 !important;
+    z-index:2147483000 !important;
+  }
+
+  #ham{
+    display:flex !important;
+    position:relative !important;
+    z-index:2147483001 !important;
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+    min-height:34px !important;
+    padding:5px !important;
+    margin:0 !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    align-items:center !important;
+    gap:5px !important;
+    background:transparent !important;
+    border:0 !important;
+    pointer-events:auto !important;
+    cursor:pointer !important;
+    touch-action:manipulation !important;
+    -webkit-tap-highlight-color:transparent !important;
+  }
+
+  #ham span{
+    display:block !important;
+    width:24px !important;
+    height:2px !important;
+    min-height:2px !important;
+    background:#1A1A18 !important;
+    pointer-events:none !important;
+  }
+
+  #mobileNav{
+    position:fixed !important;
+    top:72px !important;
+    left:0 !important;
+    right:0 !important;
+    z-index:2147482999 !important;
+    pointer-events:none !important;
+  }
+
+  #mobileNav.open{
+    display:flex !important;
+    pointer-events:auto !important;
+  }
+
+  #mobileNav a{
+    pointer-events:auto !important;
+    touch-action:manipulation !important;
+  }
+}
+</style>
+<script id="quote-hamburger-final-controller">
+(function(){
+  "use strict";
+
+  function setupHamburger(){
+    var ham=document.getElementById("ham");
+    var nav=document.getElementById("mobileNav");
+    if(!ham || !nav || ham.dataset.menuBound==="true") return;
+
+    ham.dataset.menuBound="true";
+    ham.type="button";
+    ham.setAttribute("aria-controls","mobileNav");
+    ham.setAttribute("aria-expanded","false");
+    ham.setAttribute("aria-label","Open menu");
+
+    function closeMenu(){
+      nav.classList.remove("open");
+      ham.setAttribute("aria-expanded","false");
+      ham.setAttribute("aria-label","Open menu");
+    }
+
+    function openMenu(){
+      nav.classList.add("open");
+      ham.setAttribute("aria-expanded","true");
+      ham.setAttribute("aria-label","Close menu");
+    }
+
+    ham.onclick=function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(nav.classList.contains("open")){
+        closeMenu();
+      }else{
+        openMenu();
+      }
+    };
+
+    nav.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click",function(){
+        closeMenu();
+      },false);
+    });
+
+    document.addEventListener("keydown",function(e){
+      if(e.key==="Escape") closeMenu();
+    },false);
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",setupHamburger,false);
+  }else{
+    setupHamburger();
+  }
+
+  window.addEventListener("pageshow",setupHamburger,false);
+})();
+</script>
+
+
+<style id="quote-floating-final-position-fix">
+/* FINAL FLOATING CONTROL POSITIONS */
+html body > #a11yTab {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483647 !important;
+}
+
+html body > #interviewNowBtn {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  bottom: 24px !important;
+  transform: none !important;
+  z-index: 2147483646 !important;
+  margin: 0 !important;
+}
+
+html body > #interviewNowBtn > a {
+  position: relative !important;
+  right: 0 !important;
+  left: auto !important;
+}
+
+html body > #chatBubble {
+  position: fixed !important;
+  left: 24px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 24px !important;
+  z-index: 2147483645 !important;
+}
+
+@media (max-width: 768px) {
+  html body > #a11yTab {
+    right: 0 !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+  }
+
+  html body > #interviewNowBtn {
+    right: 0 !important;
+    bottom: 24px !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  html body > #interviewNowBtn > a {
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: 190px !important;
+    min-height: 56px !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    border-radius: 6px 0 0 6px !important;
+  }
+
+  html body > #chatBubble {
+    left: 24px !important;
+    right: auto !important;
+    bottom: 24px !important;
+  }
+
+  html body > #a11yPanel {
+    right: 40px !important;
+    left: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html body > #interviewNowBtn > a {
+    width: 170px !important;
+    min-width: 170px !important;
+    max-width: 170px !important;
+    font-size: .68rem !important;
+    padding-left: .45rem !important;
+    padding-right: .45rem !important;
+  }
+}
+</style>
 </head>
 <body>
 <nav class="navbar">
@@ -2177,154 +2387,6 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 </script>
-<script id="quote-mobile-hamburger-fix">
-(function(){
-  "use strict";
 
-  function initQuoteMobileMenu(){
-
-    var ham = document.getElementById("ham");
-    var mobileNav = document.getElementById("mobileNav");
-
-    if(!ham || !mobileNav) return;
-
-    ham.type = "button";
-    ham.setAttribute("aria-expanded","false");
-    ham.setAttribute("aria-controls","mobileNav");
-    ham.setAttribute("aria-label","Open menu");
-
-    function toggleMenu(e){
-
-      if(e){
-        e.preventDefault();
-        e.stopPropagation();
-      }
-
-      var isOpen = mobileNav.classList.contains("open");
-
-      if(isOpen){
-
-        mobileNav.classList.remove("open");
-        mobileNav.style.display = "none";
-
-        ham.setAttribute("aria-expanded","false");
-        ham.setAttribute("aria-label","Open menu");
-
-      }else{
-
-        mobileNav.classList.add("open");
-        mobileNav.style.display = "flex";
-
-        ham.setAttribute("aria-expanded","true");
-        ham.setAttribute("aria-label","Close menu");
-
-      }
-    }
-
-    ham.onclick = toggleMenu;
-
-    mobileNav.querySelectorAll("a").forEach(function(link){
-
-      link.onclick = function(){
-
-        mobileNav.classList.remove("open");
-        mobileNav.style.display = "none";
-
-        ham.setAttribute("aria-expanded","false");
-        ham.setAttribute("aria-label","Open menu");
-
-      };
-
-    });
-
-  }
-
-  if(document.readyState === "loading"){
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      initQuoteMobileMenu
-    );
-
-  }else{
-
-    initQuoteMobileMenu();
-
-  }
-
-})();
-</script>
-<script id="quote-final-control-bindings">
-(function(){
-  "use strict";
-
-  function initQuoteControls(){
-    var ham=document.getElementById("ham");
-    var mobileNav=document.getElementById("mobileNav");
-    var a11y=document.getElementById("a11yTab");
-    var interview=document.querySelector("#interviewNowBtn > a");
-    var chat=document.querySelector("#chatBubble > a");
-
-    if(ham){
-      ham.type="button";
-      ham.style.pointerEvents="auto";
-      ham.style.cursor="pointer";
-      ham.style.touchAction="manipulation";
-      if(mobileNav) ham.setAttribute("aria-controls","mobileNav");
-    }
-
-    if(a11y){
-      a11y.type="button";
-      a11y.style.pointerEvents="auto";
-      a11y.style.cursor="pointer";
-      a11y.style.touchAction="manipulation";
-    }
-
-    if(interview){
-      interview.style.pointerEvents="auto";
-      interview.style.cursor="pointer";
-      interview.style.touchAction="manipulation";
-    }
-
-    if(chat){
-      chat.style.pointerEvents="auto";
-      chat.style.cursor="pointer";
-      chat.style.touchAction="manipulation";
-    }
-  }
-
-  if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",initQuoteControls);
-  }else{
-    initQuoteControls();
-  }
-})();
-</script>
-
-
-<style id="quote-hide-unwanted-bottom-bar">
-/* Remove the extra injected bottom navigation/CTA bar on the Quote page.
-   Keep the intended Ask a Question, Interview Now, and Accessibility controls. */
-</style>
-<script id="quote-remove-extra-bottom-bar">
-(function(){
-  "use strict";
-  function removeExtraBar(){
-    document.querySelectorAll('body > *').forEach(function(el){
-      if(!el || el.id==='chatBubble' || el.id==='interviewNowBtn' || el.id==='a11yTab' || el.id==='a11yPanel') return;
-      var text=(el.innerText || el.textContent || '').replace(/\s+/g,' ').trim();
-      if(text.indexOf('Ask a Question')!==-1 && text.indexOf('Get a Quote')!==-1){
-        var cs=window.getComputedStyle(el);
-        if(cs.position==='fixed' || cs.position==='sticky' || el.getAttribute('style') && /fixed|sticky/i.test(el.getAttribute('style'))){
-          el.remove();
-        }
-      }
-    });
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',removeExtraBar);
-  else removeExtraBar();
-  new MutationObserver(removeExtraBar).observe(document.documentElement,{childList:true,subtree:true});
-})();
-</script>
 </body>
 </html>
