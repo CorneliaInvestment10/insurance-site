@@ -4935,26 +4935,9 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 .modal-overlay{display:none!important;pointer-events:none!important;}
 .modal-overlay.open{display:flex!important;pointer-events:auto!important;}
 @media(max-width:768px){
-  body > #a11yTab{
-    top:auto!important;
-    bottom:80px!important;
-    transform:none!important;
-  }
-
-  body > #a11yPanel{
-    top:auto!important;
-    bottom:90px!important;
-    right:0!important;
-    max-height:calc(100vh - 110px)!important;
-    overflow-y:auto!important;
-  }
-
-  body > #interviewNowBtn{
-    bottom:10px!important;
-    right:0!important;
-  }
-}
-}
+  body > #a11yTab{top:auto!important;bottom:80px!important;transform:none!important;}
+  body > #a11yPanel{top:auto!important;bottom:140px!important;right:0!important;}
+  body > #interviewNowBtn{bottom:140px!important;}
 }
 </style>
 <style id="education-tabs-no-scroll-final">
@@ -5050,7 +5033,258 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     touch-action:manipulation!important;
   }
 }
-</style></head>
+</style>
+<style id="education-final-controls-fix">
+/* ===== FINAL EDUCATION CONTROL FIX ===== */
+
+/* Accessibility tab: same right-side treatment as the working Index page. */
+body > #a11yTab {
+  position: fixed !important;
+  right: 0 !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+}
+
+/* Accessibility panel: full usable viewport, never the old 50vh limit. */
+body > #a11yPanel {
+  position: fixed !important;
+  right: 30px !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483646 !important;
+  width: 220px !important;
+  max-width: calc(100vw - 50px) !important;
+  max-height: calc(100vh - 36px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+}
+
+/* Interview Now: bottom-right, never stacked with Accessibility. */
+body > #interviewNowBtn {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  bottom: 20px !important;
+  z-index: 2147483645 !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+body > #interviewNowBtn > a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+}
+
+/* Ask a Question: bottom-left, restoring the floating phone control. */
+body > #chatBubble {
+  position: fixed !important;
+  left: 20px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 20px !important;
+  z-index: 2147483644 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+body > #chatBubble > a {
+  display: flex !important;
+  align-items: center !important;
+  gap: .6rem !important;
+  min-width: 205px !important;
+  padding: .65rem 1rem .65rem .8rem !important;
+  background: #1a1a18 !important;
+  border: 1px solid rgba(158,128,71,.55) !important;
+  border-radius: 30px !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2) !important;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+
+body > #chatBubble .chat-icon {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(158,128,71,.12) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+body > #chatBubble .chat-copy {
+  display: flex !important;
+  flex-direction: column !important;
+  line-height: 1.2 !important;
+}
+
+body > #chatBubble .chat-copy strong {
+  color: #fff !important;
+  font-family: system-ui,sans-serif !important;
+  font-size: .88rem !important;
+  font-weight: 600 !important;
+}
+
+body > #chatBubble .chat-copy small {
+  color: rgba(255,255,255,.45) !important;
+  font-family: system-ui,sans-serif !important;
+  font-size: .7rem !important;
+  margin-top: .2rem !important;
+}
+
+/* Keep modal above every floating control. */
+#modal-doxy-note {
+  z-index: 2147483640 !important;
+}
+#modal-doxy-note .interview-modal-box {
+  z-index: 2147483641 !important;
+}
+
+/* Mobile: keep all three controls separated and make the complete
+   Accessibility panel usable. */
+@media (max-width: 768px) {
+  body > #a11yTab {
+    right: 0 !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+  }
+
+  body > #a11yPanel {
+    right: 8px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: min(300px, calc(100vw - 18px)) !important;
+    max-width: calc(100vw - 18px) !important;
+    max-height: calc(100vh - 28px) !important;
+    padding: 1rem .9rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body > #a11yPanel.open {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  body > #interviewNowBtn {
+    right: 0 !important;
+    bottom: 12px !important;
+  }
+
+  body > #interviewNowBtn > a {
+    padding: .72rem .85rem !important;
+    font-size: .76rem !important;
+  }
+
+  body > #chatBubble {
+    left: 12px !important;
+    bottom: 12px !important;
+  }
+
+  body > #chatBubble > a {
+    min-width: 0 !important;
+    padding: .55rem .75rem .55rem .6rem !important;
+  }
+
+  body > #chatBubble .chat-icon {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  body > #chatBubble .chat-copy strong {
+    font-size: .76rem !important;
+  }
+
+  body > #chatBubble .chat-copy small {
+    font-size: .64rem !important;
+  }
+
+  /* Compact Accessibility controls so every option is reachable on phones. */
+  body > #a11yPanel .a11y-heading {
+    font-size: .82rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: .15rem !important;
+  }
+
+  body > #a11yPanel .a11y-row {
+    gap: .25rem !important;
+    margin: 0 !important;
+  }
+
+  body > #a11yPanel .a11y-row-label {
+    font-size: .68rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns {
+    gap: .3rem !important;
+  }
+
+  body > #a11yPanel .a11y-btn {
+    font-size: .76rem !important;
+    padding: .32rem .52rem !important;
+    line-height: 1.1 !important;
+  }
+
+  body > #a11yPanel .a11y-sep {
+    margin: .02rem 0 !important;
+  }
+
+  body > #a11yPanel .a11y-reset {
+    font-size: .62rem !important;
+    padding: .34rem !important;
+    margin-top: .05rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  body > #a11yPanel {
+    right: 6px !important;
+    width: calc(100vw - 12px) !important;
+    max-width: calc(100vw - 12px) !important;
+    padding: .75rem .7rem !important;
+  }
+
+  body > #interviewNowBtn > a {
+    padding: .68rem .72rem !important;
+    font-size: .7rem !important;
+  }
+
+  body > #chatBubble {
+    left: 8px !important;
+  }
+
+  body > #chatBubble .chat-copy strong {
+    font-size: .7rem !important;
+  }
+
+  body > #chatBubble .chat-copy small {
+    font-size: .6rem !important;
+  }
+}
+</style>
+
+</head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -5600,7 +5834,20 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 <div class="a11y-sep"></div>
 <div class="a11y-row"><span class="a11y-row-label">Screen Reader</span><div class="a11y-row-btns"><button class="a11y-btn" id="sr-btn" onclick="a11yToggle('sr-btn','sr-mode')" type="button">Enable</button></div></div>
 <button class="a11y-reset" onclick="a11yReset()" type="button">Reset All</button>
-</div><span aria-live="polite" id="a11y-live" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;"></span><div id="interviewNowBtn" style="position:fixed;right:0;bottom:90px;z-index:9997;display:flex;align-items:center;">
+</div><div id="chatBubble" aria-label="Ask a Question">
+  <a href="chat.html" aria-label="Ask a Question">
+    <span class="chat-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9e8047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </span>
+    <span class="chat-copy">
+      <strong>Ask a Question</strong>
+      <small>Private &amp; Anonymous</small>
+    </span>
+  </a>
+</div>
+<span aria-live="polite" id="a11y-live" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;"></span><div id="interviewNowBtn" style="position:fixed;right:0;bottom:90px;z-index:9997;display:flex;align-items:center;">
 <a href="#" onclick="openModal('modal-doxy-note');return false;" onmouseout="this.style.background='#2e7d52'" onmouseover="this.style.background='#9e8047'" style="display:flex;align-items:center;gap:0.5rem;background:#2e7d52;color:#fff;font-family:system-ui,sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.1rem;border-radius:6px 0 0 6px;border:none;cursor:pointer;text-decoration:none;box-shadow:-2px 2px 8px rgba(0,0,0,0.2);white-space:nowrap;">
 <svg fill="none" height="14" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="14"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     Interview Now
@@ -6141,5 +6388,71 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     }
   });
 })();
-</script></body>
+</script>
+<script id="education-final-interaction-fix">
+(function(){
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", function(){
+    /* Hamburger: preserve the existing navigation and guarantee touch access. */
+    var ham = document.getElementById("ham");
+    var mobileNav = document.getElementById("mobileNav");
+
+    if (ham && mobileNav) {
+      ham.type = "button";
+      ham.style.pointerEvents = "auto";
+      ham.style.cursor = "pointer";
+      ham.style.touchAction = "manipulation";
+
+      if (!ham.getAttribute("aria-controls")) {
+        ham.setAttribute("aria-controls", "mobileNav");
+      }
+      if (!ham.hasAttribute("aria-expanded")) {
+        ham.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    /* Interview Now: guarantee the launcher opens the existing modal. */
+    var interview = document.querySelector("#interviewNowBtn > a");
+    if (interview) {
+      interview.style.pointerEvents = "auto";
+      interview.style.cursor = "pointer";
+      interview.style.touchAction = "manipulation";
+      interview.addEventListener("click", function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof window.openModal === "function") {
+          window.openModal("modal-doxy-note");
+        }
+      }, true);
+    }
+
+    /* Accessibility tab: guarantee it remains independently clickable. */
+    var a11y = document.getElementById("a11yTab");
+    if (a11y) {
+      a11y.type = "button";
+      a11y.style.pointerEvents = "auto";
+      a11y.style.cursor = "pointer";
+      a11y.style.touchAction = "manipulation";
+      a11y.addEventListener("click", function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof window.a11yOpen === "function") {
+          window.a11yOpen();
+        }
+      }, true);
+    }
+
+    /* Ask a Question: ordinary navigation to chat.html. */
+    var chat = document.querySelector("#chatBubble > a");
+    if (chat) {
+      chat.style.pointerEvents = "auto";
+      chat.style.cursor = "pointer";
+      chat.style.touchAction = "manipulation";
+    }
+  });
+})();
+</script>
+
+</body>
 </html>
