@@ -1375,9 +1375,14 @@ function openModal(id) {
   if (m) {
     m.classList.add('open');
     document.body.style.overflow = 'hidden';
-    // Focus the close button for keyboard/screen reader users
     var close = m.querySelector('.modal-close');
-    if (close) setTimeout// Ensure all form buttons are touch-friendly on iOS
+    if (close) {
+      setTimeout(function() {
+        close.focus();
+      }, 50);
+    }
+  }
+}
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.cbtn, .pob, .kick-btn, .btn-next, .btn-prev, .btn-submit').forEach(function(btn) {
     btn.style.touchAction = 'manipulation';
