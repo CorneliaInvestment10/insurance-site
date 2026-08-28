@@ -4935,12 +4935,25 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 .modal-overlay{display:none!important;pointer-events:none!important;}
 .modal-overlay.open{display:flex!important;pointer-events:auto!important;}
 @media(max-width:768px){
-  body > #a11yTab{top:auto!important;bottom:80px!important;transform:none!important;}
-  body > #a11yPanel{top:auto!important;bottom:140px!important;right:0!important;}
-  body > #interviewNowBtn{
+  body > #a11yTab{
+    top:auto!important;
     bottom:80px!important;
-    right:76px!important;
+    transform:none!important;
   }
+
+  body > #a11yPanel{
+    top:auto!important;
+    bottom:90px!important;
+    right:0!important;
+    max-height:calc(100vh - 110px)!important;
+    overflow-y:auto!important;
+  }
+
+  body > #interviewNowBtn{
+    bottom:10px!important;
+    right:0!important;
+  }
+}
 }
 }
 </style>
