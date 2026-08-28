@@ -1074,239 +1074,283 @@ body{font-size:16px !important;}
 </style>
 <style id="quote-final-floating-controls-fix">
 /* =========================================================
-   GET A QUOTE - FINAL MOBILE FLOATING CONTROL LAYOUT
+   GET A QUOTE - FINAL MOBILE CONTROL FIX
    ========================================================= */
 
-/* Accessibility tab stays independently centered on the right edge. */
-body > #a11yTab {
-  position: fixed !important;
-  right: 0 !important;
-  top: 50% !important;
-  bottom: auto !important;
-  transform: translateY(-50%) !important;
-  z-index: 2147483647 !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  touch-action: manipulation !important;
+/* Accessibility tab: fixed independently on the right. */
+body > #a11yTab{
+  position:fixed !important;
+  right:0 !important;
+  top:50% !important;
+  bottom:auto !important;
+  transform:translateY(-50%) !important;
+  z-index:2147483647 !important;
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
 }
 
-/* Accessibility panel opens beside the tab and is fully usable. */
-body > #a11yPanel {
-  position: fixed !important;
-  right: 30px !important;
-  top: 50% !important;
-  bottom: auto !important;
-  transform: translateY(-50%) !important;
-  z-index: 2147483646 !important;
-  width: 220px !important;
-  max-width: calc(100vw - 50px) !important;
-  max-height: calc(100vh - 28px) !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  box-sizing: border-box !important;
-  pointer-events: auto !important;
+/* Accessibility panel: large enough to show every option on mobile.
+   It is NOT positioned above the Interview/Ask buttons. */
+body > #a11yPanel{
+  position:fixed !important;
+  right:36px !important;
+  top:50% !important;
+  bottom:auto !important;
+  transform:translateY(-50%) !important;
+  z-index:2147483646 !important;
+  width:300px !important;
+  max-width:calc(100vw - 48px) !important;
+  max-height:calc(100vh - 32px) !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  box-sizing:border-box !important;
+  pointer-events:auto !important;
 }
 
-/* Interview Now occupies ONLY the bottom-right corner. */
-body > #interviewNowBtn {
-  position: fixed !important;
-  right: 0 !important;
-  left: auto !important;
-  top: auto !important;
-  bottom: 18px !important;
-  z-index: 2147483645 !important;
-  display: flex !important;
-  align-items: center !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
+/* Keep all accessibility controls clickable. */
+body > #a11yPanel .a11y-heading,
+body > #a11yPanel .a11y-row,
+body > #a11yPanel .a11y-row-btns,
+body > #a11yPanel .a11y-btn,
+body > #a11yPanel .a11y-reset{
+  pointer-events:auto !important;
 }
 
-/* Ask a Question occupies ONLY the bottom-left corner. */
-body > #chatBubble {
-  position: fixed !important;
-  left: 18px !important;
-  right: auto !important;
-  top: auto !important;
-  bottom: 18px !important;
-  z-index: 2147483644 !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
+body > #a11yPanel .a11y-btn,
+body > #a11yPanel .a11y-reset{
+  cursor:pointer !important;
+  touch-action:manipulation !important;
 }
 
-body > #chatBubble > a {
-  display: flex !important;
-  align-items: center !important;
-  gap: .55rem !important;
-  min-width: 205px !important;
-  padding: .62rem .95rem .62rem .72rem !important;
-  background: #1a1a18 !important;
-  border: 1px solid rgba(158,128,71,.55) !important;
-  border-radius: 30px !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,.2) !important;
-  text-decoration: none !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  touch-action: manipulation !important;
+/* Interview Now: bottom-right only. */
+body > #interviewNowBtn{
+  position:fixed !important;
+  right:0 !important;
+  left:auto !important;
+  top:auto !important;
+  bottom:18px !important;
+  z-index:2147483645 !important;
+  display:flex !important;
+  align-items:center !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
 }
 
-body > #chatBubble .chat-icon {
-  width: 38px !important;
-  height: 38px !important;
-  border-radius: 50% !important;
-  background: rgba(158,128,71,.12) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-shrink: 0 !important;
+body > #interviewNowBtn > a{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:.5rem !important;
+  min-width:205px !important;
+  min-height:58px !important;
+  padding:.75rem 1.1rem !important;
+  background:#2e7d52 !important;
+  color:#fff !important;
+  border-radius:6px 0 0 6px !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
 }
 
-body > #chatBubble .chat-copy {
-  display: flex !important;
-  flex-direction: column !important;
-  line-height: 1.2 !important;
+/* Ask a Question: bottom-left only, with a proper phone-sized button. */
+body > #chatBubble{
+  position:fixed !important;
+  left:18px !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:18px !important;
+  z-index:2147483644 !important;
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
 }
 
-body > #chatBubble .chat-copy strong {
-  color: #fff !important;
-  font-family: system-ui, sans-serif !important;
-  font-size: .86rem !important;
-  font-weight: 600 !important;
+body > #chatBubble > a{
+  display:flex !important;
+  align-items:center !important;
+  gap:.55rem !important;
+  width:205px !important;
+  min-width:205px !important;
+  min-height:58px !important;
+  padding:.62rem .95rem .62rem .72rem !important;
+  background:#1a1a18 !important;
+  border:1px solid rgba(158,128,71,.55) !important;
+  border-radius:30px !important;
+  box-shadow:0 4px 16px rgba(0,0,0,.2) !important;
+  text-decoration:none !important;
+  pointer-events:auto !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
 }
 
-body > #chatBubble .chat-copy small {
-  color: rgba(255,255,255,.45) !important;
-  font-family: system-ui, sans-serif !important;
-  font-size: .68rem !important;
-  margin-top: .18rem !important;
+body > #chatBubble .chat-icon{
+  width:38px !important;
+  height:38px !important;
+  border-radius:50% !important;
+  background:rgba(158,128,71,.12) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex-shrink:0 !important;
 }
 
-/* Make the existing accessibility controls comfortable and complete. */
-body > #a11yPanel .a11y-heading {
-  font-size: .85rem !important;
-  line-height: 1.25 !important;
+body > #chatBubble .chat-copy{
+  display:flex !important;
+  flex-direction:column !important;
+  line-height:1.2 !important;
 }
 
-body > #a11yPanel .a11y-row {
-  gap: .3rem !important;
-  margin-bottom: .7rem !important;
+body > #chatBubble .chat-copy strong{
+  color:#fff !important;
+  font-family:system-ui,sans-serif !important;
+  font-size:.86rem !important;
+  font-weight:600 !important;
+  white-space:nowrap !important;
 }
 
-body > #a11yPanel .a11y-row-btns {
-  gap: .3rem !important;
+body > #chatBubble .chat-copy small{
+  color:rgba(255,255,255,.45) !important;
+  font-family:system-ui,sans-serif !important;
+  font-size:.68rem !important;
+  margin-top:.18rem !important;
+  white-space:nowrap !important;
 }
 
-body > #a11yPanel .a11y-btn {
-  cursor: pointer !important;
-  touch-action: manipulation !important;
+/* Mobile: keep all three controls separated and usable. */
+@media(max-width:768px){
+
+  body > #a11yTab{
+    right:0 !important;
+    top:50% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) !important;
+  }
+
+  /* Compact accessibility panel on mobile. */
+  body > #a11yPanel{
+    left:auto !important;
+    right:38px !important;
+    top:50% !important;
+    bottom:auto !important;
+    width:260px !important;
+    max-width:calc(100vw - 48px) !important;
+    max-height:72vh !important;
+    transform:translateY(-50%) !important;
+    border-radius:9px !important;
+    padding:.72rem .72rem !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+  }
+
+  body > #a11yPanel.open{
+    display:flex !important;
+    flex-direction:column !important;
+  }
+
+  body > #a11yPanel .a11y-heading{
+    font-size:.72rem !important;
+    line-height:1.2 !important;
+    margin-bottom:.55rem !important;
+  }
+
+  body > #a11yPanel .a11y-row{
+    gap:.25rem !important;
+    margin-bottom:.48rem !important;
+  }
+
+  body > #a11yPanel .a11y-row-label{
+    font-size:.62rem !important;
+    line-height:1.2 !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:wrap !important;
+    gap:.22rem !important;
+  }
+
+  body > #a11yPanel .a11y-btn{
+    font-size:.62rem !important;
+    padding:.22rem .4rem !important;
+    min-height:29px !important;
+  }
+
+  body > #a11yPanel .a11y-reset{
+    font-size:.62rem !important;
+    min-height:31px !important;
+    padding:.28rem !important;
+    margin-top:.1rem !important;
+  }
+
+  /* Bottom controls stay at opposite corners. */
+  body > #chatBubble{
+    left:8px !important;
+    bottom:12px !important;
+  }
+
+  body > #chatBubble > a{
+    width:calc(48vw - 4px) !important;
+    min-width:0 !important;
+    min-height:56px !important;
+    padding:.52rem .65rem .52rem .58rem !important;
+  }
+
+  body > #chatBubble .chat-icon{
+    width:34px !important;
+    height:34px !important;
+  }
+
+  body > #chatBubble .chat-copy strong{
+    font-size:clamp(.66rem,2.8vw,.76rem) !important;
+  }
+
+  body > #chatBubble .chat-copy small{
+    font-size:clamp(.55rem,2.2vw,.62rem) !important;
+  }
+
+  body > #interviewNowBtn{
+    right:0 !important;
+    bottom:12px !important;
+  }
+
+  body > #interviewNowBtn > a{
+    width:calc(48vw - 4px) !important;
+    min-width:0 !important;
+    min-height:56px !important;
+    padding:.7rem .55rem !important;
+    font-size:clamp(.66rem,2.8vw,.76rem) !important;
+    border-radius:6px 0 0 6px !important;
+  }
 }
 
-/* Mobile/tablet: keep the three controls separated. */
-@media (max-width: 768px) {
-  body > #a11yTab {
-    right: 0 !important;
-    top: 50% !important;
-    bottom: auto !important;
-    transform: translateY(-50%) !important;
+/* Very small phones: preserve separation and readability. */
+@media(max-width:360px){
+  body > #chatBubble > a,
+  body > #interviewNowBtn > a{
+    width:calc(47vw - 4px) !important;
   }
 
-  body > #a11yPanel {
-    right: 8px !important;
-    top: 50% !important;
-    bottom: auto !important;
-    transform: translateY(-50%) !important;
-    width: min(300px, calc(100vw - 18px)) !important;
-    max-width: calc(100vw - 18px) !important;
-    max-height: calc(100vh - 28px) !important;
-    border-radius: 10px !important;
-    padding: .9rem !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
+  body > #chatBubble .chat-copy strong,
+  body > #interviewNowBtn > a{
+    letter-spacing:.07em !important;
   }
 
-  body > #a11yPanel.open {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  body > #interviewNowBtn {
-    right: 0 !important;
-    bottom: 12px !important;
-  }
-
-  body > #interviewNowBtn > a {
-    padding: .7rem .85rem !important;
-    font-size: .76rem !important;
-    border-radius: 6px 0 0 6px !important;
-  }
-
-  body > #chatBubble {
-    left: 10px !important;
-    bottom: 12px !important;
-  }
-
-  body > #chatBubble > a {
-    min-width: 0 !important;
-    padding: .52rem .72rem .52rem .58rem !important;
-  }
-
-  body > #chatBubble .chat-icon {
-    width: 34px !important;
-    height: 34px !important;
-  }
-
-  body > #chatBubble .chat-copy strong {
-    font-size: .74rem !important;
-  }
-
-  body > #chatBubble .chat-copy small {
-    font-size: .61rem !important;
-  }
-
-  body > #a11yPanel .a11y-side-title,
-  body > #a11yPanel .a11y-heading {
-    font-size: .8rem !important;
-  }
-
-  body > #a11yPanel .a11y-side-label,
-  body > #a11yPanel .a11y-row-label {
-    font-size: .67rem !important;
-  }
-
-  body > #a11yPanel .a11y-s-btn,
-  body > #a11yPanel .a11y-btn {
-    font-size: .73rem !important;
-    padding: .3rem .5rem !important;
-  }
-}
-
-@media (max-width: 420px) {
-  body > #chatBubble {
-    left: 7px !important;
-  }
-
-  body > #chatBubble .chat-copy strong {
-    font-size: .69rem !important;
-  }
-
-  body > #chatBubble .chat-copy small {
-    font-size: .57rem !important;
-  }
-
-  body > #interviewNowBtn > a {
-    padding: .66rem .7rem !important;
-    font-size: .69rem !important;
-  }
-
-  body > #a11yPanel {
-    right: 5px !important;
-    width: calc(100vw - 10px) !important;
-    max-width: calc(100vw - 10px) !important;
+  body > #a11yPanel{
+    left:auto !important;
+    right:35px !important;
+    width:235px !important;
+    max-width:calc(100vw - 42px) !important;
+    max-height:70vh !important;
+    padding:.65rem !important;
   }
 }
 </style>
