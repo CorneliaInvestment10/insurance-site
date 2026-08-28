@@ -2194,24 +2194,25 @@ document.addEventListener('DOMContentLoaded',function(){
     ham.style.cursor="pointer";
     ham.style.touchAction="manipulation";
 
-    ham.addEventListener("click",function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
+  ham.addEventListener("click",function(e){
 
-      var isOpen=mobileNav.classList.contains("open");
+  e.preventDefault();
+  e.stopPropagation();
 
-      if(isOpen){
-        mobileNav.classList.remove("open");
-        mobileNav.style.display="none";
-        ham.setAttribute("aria-expanded","false");
-        ham.setAttribute("aria-label","Open menu");
-      }else{
-        mobileNav.classList.add("open");
-        mobileNav.style.display="flex";
-        ham.setAttribute("aria-expanded","true");
-        ham.setAttribute("aria-label","Close menu");
-      }
-    },true);
+  var isOpen=mobileNav.classList.contains("open");
+
+  if(isOpen){
+    mobileNav.classList.remove("open");
+    mobileNav.style.display="none";
+    ham.setAttribute("aria-expanded","false");
+    ham.setAttribute("aria-label","Open menu");
+  }else{
+    mobileNav.classList.add("open");
+    mobileNav.style.display="flex";
+    ham.setAttribute("aria-expanded","true");
+    ham.setAttribute("aria-label","Close menu");
+  }
+},true);
 
     mobileNav.querySelectorAll("a").forEach(function(link){
       link.addEventListener("click",function(){
