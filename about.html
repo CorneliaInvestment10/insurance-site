@@ -838,7 +838,7 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   /* Fixed elements */
   #a11yTab { top:auto !important; bottom:80px !important; transform:none !important; z-index:9999 !important; }
   #a11yPanel { top:auto !important; bottom:140px !important; transform:none !important; right:0 !important; width:calc(100vw - 2rem) !important; max-width:260px !important; border-radius:10px !important; }
-  #interviewNowBtn { bottom:20px !important; }
+  #interviewNowBtn { bottom:140px !important; }
   #chatBubble { bottom:12px !important; left:12px !important; }
 
   /* Trust bar */
@@ -876,9 +876,9 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   footer{padding:2rem 4% !important;}
   .footer-top{grid-template-columns:1fr !important;gap:1.5rem !important;}
   .footer-bottom{flex-direction:column !important;gap:0.5rem !important;}
-  #interviewNowBtn{bottom:20px !important;}
+  #interviewNowBtn{bottom:140px !important;}
   #a11yTab{bottom:80px !important;top:auto !important;transform:none !important;}
-  #a11yPanel{bottom:130 !important;top:auto !important;transform:none !important;right:0 !important;width:calc(100vw - 2rem) !important;max-width:260px !important;border-radius:10px !important;}
+  #a11yPanel{bottom:130px !important;top:auto !important;transform:none !important;right:0 !important;width:calc(100vw - 2rem) !important;max-width:260px !important;border-radius:10px !important;}
   #chatBubble{bottom:24px !important;}
 }
 
@@ -893,6 +893,60 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
 
 @media(max-width:768px){}
+
+
+/* ===== FINAL MOBILE FIX: ACCESSIBILITY + PAGE SPACING ===== */
+@media (max-width: 768px) {
+  #a11yPanel {
+    top: 390px !important;
+    bottom: auto !important;
+    right: 8px !important;
+    width: 220px !important;
+    max-width: calc(100vw - 55px) !important;
+    max-height: calc(100vh - 430px) !important;
+    padding: 0.8rem 0.75rem !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  #a11yPanel.open {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.45rem !important;
+  }
+
+  #a11yPanel .a11y-heading {
+    font-size: 0.72rem !important;
+    padding-bottom: 0.45rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  #a11yPanel .a11y-row {
+    gap: 0.2rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  #a11yPanel .a11y-row-label {
+    font-size: 0.68rem !important;
+  }
+
+  #a11yPanel .a11y-btn {
+    font-size: 0.68rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  #a11yPanel .a11y-reset {
+    margin-top: 0.2rem !important;
+    padding: 0.3rem !important;
+    font-size: 0.68rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .page-top {
+    padding-top: 0 !important;
+  }
+}
 
 </style>
 <script type="application/ld+json">
@@ -1181,7 +1235,7 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
 @media(max-width:768px){
   #a11yTab{top:auto !important;bottom:90px !important;transform:none !important;}
-  #a11yPanel{top:70px !important;bottom:auto !important;transform:none !important;right:8px !important;width:230px !important;max-width:calc(100vw - 56px) !important;border-radius:10px !important;max-height:calc(100vh - 170px) !important;overflow-y:auto !important;}
+  #a11yPanel{top:auto !important;bottom:140px !important;transform:none !important;right:0 !important;width:calc(100vw - 2rem) !important;max-width:260px !important;border-radius:10px !important;max-height:50vh !important;}
   #interviewNowBtn{bottom:20px !important;}
   #chatBubble{bottom:24px !important;left:12px !important;}
 }
@@ -1196,6 +1250,25 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   #modal-doxy-note .interview-modal-body p{font-size:.93rem !important;line-height:1.7 !important;}
   #modal-doxy-note .interview-modal-action a{min-height:56px !important;font-size:.84rem !important;}
 }
+</style>
+
+
+<style id="final-mobile-override">
+@media (max-width:768px){
+  #a11yPanel{
+    top:390px !important;
+    bottom:auto !important;
+    right:8px !important;
+    width:220px !important;
+    max-width:calc(100vw - 55px) !important;
+    max-height:calc(100vh - 430px) !important;
+    padding:.8rem .75rem !important;
+    overflow-y:auto !important;
+    box-sizing:border-box !important;
+  }
+  #a11yPanel.open{display:flex !important;flex-direction:column !important;gap:.45rem !important;}
+}
+@media(max-width:400px){.page-top{padding-top:0 !important;}}
 </style>
 
 </head>
