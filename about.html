@@ -1128,7 +1128,53 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
 <div id="a11yPanel" role="dialog" aria-label="Accessibility Options" style="display:none;">
   <span class="a11y-heading">Accessibility Options</span>
-  <div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button></div></div>
+
+  <div class="a11y-row">
+    <span class="a11y-row-label">Text Size</span>
+    <div class="a11y-row-btns">
+      <button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button>
+      <button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button>
+      <button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button>
+    </div>
+  </div>
+
+  <div class="a11y-sep"></div>
+
+  <div class="a11y-row">
+    <span class="a11y-row-label">High Contrast</span>
+    <div class="a11y-row-btns">
+      <button class="a11y-btn" id="hc-btn" onclick="a11yToggle('hc-btn','hc-mode')">Enable</button>
+    </div>
+  </div>
+
+  <div class="a11y-sep"></div>
+
+  <div class="a11y-row">
+    <span class="a11y-row-label">Dyslexia Font</span>
+    <div class="a11y-row-btns">
+      <button class="a11y-btn" id="dy-btn" onclick="a11yToggle('dy-btn','dyslexia-font')">Enable</button>
+    </div>
+  </div>
+
+  <div class="a11y-sep"></div>
+
+  <div class="a11y-row">
+    <span class="a11y-row-label">Reduce Motion</span>
+    <div class="a11y-row-btns">
+      <button class="a11y-btn" id="rm-btn" onclick="a11yToggle('rm-btn','reduce-motion')">Enable</button>
+    </div>
+  </div>
+
+  <div class="a11y-sep"></div>
+
+  <div class="a11y-row">
+    <span class="a11y-row-label">Screen Reader</span>
+    <div class="a11y-row-btns">
+      <button class="a11y-btn" id="sr-btn" onclick="a11yToggle('sr-btn','sr-mode')">Enable</button>
+    </div>
+  </div>
+
+  <button class="a11y-reset" onclick="a11yReset()">Reset All</button>
 </div>
 <button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
 
