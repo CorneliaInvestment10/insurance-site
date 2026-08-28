@@ -2277,5 +2277,30 @@ document.addEventListener('DOMContentLoaded',function(){
 })();
 </script>
 
+
+<style id="quote-hide-unwanted-bottom-bar">
+/* Remove the extra injected bottom navigation/CTA bar on the Quote page.
+   Keep the intended Ask a Question, Interview Now, and Accessibility controls. */
+</style>
+<script id="quote-remove-extra-bottom-bar">
+(function(){
+  "use strict";
+  function removeExtraBar(){
+    document.querySelectorAll('body > *').forEach(function(el){
+      if(!el || el.id==='chatBubble' || el.id==='interviewNowBtn' || el.id==='a11yTab' || el.id==='a11yPanel') return;
+      var text=(el.innerText || el.textContent || '').replace(/\s+/g,' ').trim();
+      if(text.indexOf('Ask a Question')!==-1 && text.indexOf('Get a Quote')!==-1){
+        var cs=window.getComputedStyle(el);
+        if(cs.position==='fixed' || cs.position==='sticky' || el.getAttribute('style') && /fixed|sticky/i.test(el.getAttribute('style'))){
+          el.remove();
+        }
+      }
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',removeExtraBar);
+  else removeExtraBar();
+  new MutationObserver(removeExtraBar).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
