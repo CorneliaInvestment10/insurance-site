@@ -255,50 +255,24 @@ footer { background: var(--ink); padding: 4rem 6% 2.5rem; }
   margin-bottom: 0.45rem;
   transition: color 0.2s;
 }
-.rider-card-desc {
-  font-size: 0.86rem;
-  color: var(--text);
-  font-weight: 300;
-  line-height: 1.7;
-  transition: color 0.2s;
+/* ===== ACCESSIBILITY TAB + PANEL ===== */
+#a11yTab {
+  position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+  z-index: 9999; background: #1A1A18;
+  border: 1px solid rgba(158,128,71,0.45); border-right: none;
+  border-radius: 6px 0 0 6px; padding: 0.7rem 0.4rem;
+  cursor: pointer; writing-mode: vertical-rl;
+  font-family: var(--sans); font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold);
+  user-select: none; transition: background 0.2s;
+  box-shadow: -3px 0 12px rgba(0,0,0,0.3);
+  touch-action: manipulation;
 }
-
-
-/* Required client disclosures with individual checkboxes */
-.disclosure-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  margin-top: 0.5rem;
-}
-.disclosure-item {
-  background: var(--warm);
-  border: 1px solid var(--warm3);
-  border-radius: var(--r);
-  padding: 1.1rem 1.3rem;
-  transition: border-color 0.2s, background 0.2s;
-}
-.disclosure-item:has(.disclosure-check:checked) {
-  background: var(--white);
-  border-color: var(--gold);
-}
-.disclosure-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  cursor: pointer;
-  width: 100%;
-}
-.disclosure-check {
-  width: 17px;
-  height: 17px;
-  margin-top: 3px;
-  flex-shrink: 0;
-  accent-color: var(--gold);
-  cursor: pointer;
-}
-.disclosure-title {
-  font-family: var(--serif);
+...
+/* ===== ACCESSIBILITY MODES ===== */
+body.lg-text { font-size: 24px; }
+body.xl-text { font-size: 32px; }
+...
   font-size: 1rem;
   font-weight: 400;
   color: var(--ink);
