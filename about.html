@@ -1182,7 +1182,29 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
   <button class="a11y-reset" onclick="a11yReset()">Reset All</button>
 </div>
 <button id="a11yTab" onclick="a11yOpen()" aria-label="Open accessibility options" aria-expanded="false">Accessibility</button>
+<div class="modal-overlay" id="modal-doxy-note" role="dialog" aria-modal="true" aria-labelledby="modal-doxy-title" style="display:none;">
+  <div class="interview-modal-box">
+    <div class="interview-modal-header">
+      <div class="interview-modal-kicker">Before You Join</div>
+      <div class="interview-modal-title" id="modal-doxy-title">IMPORTANT NOTE ABOUT YOUR INTERVIEW SESSION</div>
+      <button type="button" class="interview-modal-close" aria-label="Close" onclick="closeModal('modal-doxy-note')">×</button>
+    </div>
 
+    <div class="interview-modal-body">
+      <h3>Before you join the waiting room</h3>
+
+      <p>Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
+
+      <p>You may also visit the <a href="https://www.coveredwithconditions.com/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect. Office hours are 9 a.m. to 7 p.m. EST, with a lunch break from 12 p.m. to 1 p.m. EST.</p>
+
+      <div class="interview-modal-action">
+        <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer">
+          I Understand - Join the Waiting Room
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="modal-overlay" style="display:none" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" onclick="closeModalOnOverlay(event,'modal-privacy')" style="display:none">
   <div class="modal-box">
     <div class="modal-header">
