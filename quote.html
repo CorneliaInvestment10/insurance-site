@@ -1071,7 +1071,247 @@ body{font-size:16px !important;}
     touch-action:manipulation!important;
   }
 }
-</style></head>
+</style>
+<style id="quote-final-floating-controls-fix">
+/* =========================================================
+   GET A QUOTE - FINAL MOBILE FLOATING CONTROL LAYOUT
+   ========================================================= */
+
+/* Accessibility tab stays independently centered on the right edge. */
+body > #a11yTab {
+  position: fixed !important;
+  right: 0 !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+}
+
+/* Accessibility panel opens beside the tab and is fully usable. */
+body > #a11yPanel {
+  position: fixed !important;
+  right: 30px !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483646 !important;
+  width: 220px !important;
+  max-width: calc(100vw - 50px) !important;
+  max-height: calc(100vh - 28px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+}
+
+/* Interview Now occupies ONLY the bottom-right corner. */
+body > #interviewNowBtn {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  bottom: 18px !important;
+  z-index: 2147483645 !important;
+  display: flex !important;
+  align-items: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Ask a Question occupies ONLY the bottom-left corner. */
+body > #chatBubble {
+  position: fixed !important;
+  left: 18px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 18px !important;
+  z-index: 2147483644 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+body > #chatBubble > a {
+  display: flex !important;
+  align-items: center !important;
+  gap: .55rem !important;
+  min-width: 205px !important;
+  padding: .62rem .95rem .62rem .72rem !important;
+  background: #1a1a18 !important;
+  border: 1px solid rgba(158,128,71,.55) !important;
+  border-radius: 30px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2) !important;
+  text-decoration: none !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+}
+
+body > #chatBubble .chat-icon {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(158,128,71,.12) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+body > #chatBubble .chat-copy {
+  display: flex !important;
+  flex-direction: column !important;
+  line-height: 1.2 !important;
+}
+
+body > #chatBubble .chat-copy strong {
+  color: #fff !important;
+  font-family: system-ui, sans-serif !important;
+  font-size: .86rem !important;
+  font-weight: 600 !important;
+}
+
+body > #chatBubble .chat-copy small {
+  color: rgba(255,255,255,.45) !important;
+  font-family: system-ui, sans-serif !important;
+  font-size: .68rem !important;
+  margin-top: .18rem !important;
+}
+
+/* Make the existing accessibility controls comfortable and complete. */
+body > #a11yPanel .a11y-heading {
+  font-size: .85rem !important;
+  line-height: 1.25 !important;
+}
+
+body > #a11yPanel .a11y-row {
+  gap: .3rem !important;
+  margin-bottom: .7rem !important;
+}
+
+body > #a11yPanel .a11y-row-btns {
+  gap: .3rem !important;
+}
+
+body > #a11yPanel .a11y-btn {
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+}
+
+/* Mobile/tablet: keep the three controls separated. */
+@media (max-width: 768px) {
+  body > #a11yTab {
+    right: 0 !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+  }
+
+  body > #a11yPanel {
+    right: 8px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: min(300px, calc(100vw - 18px)) !important;
+    max-width: calc(100vw - 18px) !important;
+    max-height: calc(100vh - 28px) !important;
+    border-radius: 10px !important;
+    padding: .9rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body > #a11yPanel.open {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  body > #interviewNowBtn {
+    right: 0 !important;
+    bottom: 12px !important;
+  }
+
+  body > #interviewNowBtn > a {
+    padding: .7rem .85rem !important;
+    font-size: .76rem !important;
+    border-radius: 6px 0 0 6px !important;
+  }
+
+  body > #chatBubble {
+    left: 10px !important;
+    bottom: 12px !important;
+  }
+
+  body > #chatBubble > a {
+    min-width: 0 !important;
+    padding: .52rem .72rem .52rem .58rem !important;
+  }
+
+  body > #chatBubble .chat-icon {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  body > #chatBubble .chat-copy strong {
+    font-size: .74rem !important;
+  }
+
+  body > #chatBubble .chat-copy small {
+    font-size: .61rem !important;
+  }
+
+  body > #a11yPanel .a11y-side-title,
+  body > #a11yPanel .a11y-heading {
+    font-size: .8rem !important;
+  }
+
+  body > #a11yPanel .a11y-side-label,
+  body > #a11yPanel .a11y-row-label {
+    font-size: .67rem !important;
+  }
+
+  body > #a11yPanel .a11y-s-btn,
+  body > #a11yPanel .a11y-btn {
+    font-size: .73rem !important;
+    padding: .3rem .5rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body > #chatBubble {
+    left: 7px !important;
+  }
+
+  body > #chatBubble .chat-copy strong {
+    font-size: .69rem !important;
+  }
+
+  body > #chatBubble .chat-copy small {
+    font-size: .57rem !important;
+  }
+
+  body > #interviewNowBtn > a {
+    padding: .66rem .7rem !important;
+    font-size: .69rem !important;
+  }
+
+  body > #a11yPanel {
+    right: 5px !important;
+    width: calc(100vw - 10px) !important;
+    max-width: calc(100vw - 10px) !important;
+  }
+}
+</style>
+
+</head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
@@ -1368,6 +1608,19 @@ function a11yReset(){document.body.classList.remove('lg-text','xl-text','hc-mode
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.style.display='none';m.classList.remove('open');document.body.style.overflow='';})}});
 </script>
 <script src="_shared.js"></script>
+<div id="chatBubble" aria-label="Ask a Question">
+  <a href="chat.html" aria-label="Ask a Question">
+    <span class="chat-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9e8047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </span>
+    <span class="chat-copy">
+      <strong>Ask a Question</strong>
+      <small>Private &amp; Anonymous</small>
+    </span>
+  </a>
+</div>
 <button aria-expanded="false" aria-label="Open accessibility options" id="a11yTab" onclick="a11yOpen()" title="Accessibility options" type="button">Accessibility</button>
 <div aria-hidden="true" aria-label="Accessibility Options" id="a11yPanel" role="dialog">
 <span class="a11y-heading">Accessibility Options</span>
@@ -1912,5 +2165,53 @@ document.addEventListener('DOMContentLoaded',function(){
     initQuoteMobileMenu();
   }
 })();
-</script></body>
+</script>
+<script id="quote-final-control-bindings">
+(function(){
+  "use strict";
+
+  function initQuoteControls(){
+    var ham=document.getElementById("ham");
+    var mobileNav=document.getElementById("mobileNav");
+    var a11y=document.getElementById("a11yTab");
+    var interview=document.querySelector("#interviewNowBtn > a");
+    var chat=document.querySelector("#chatBubble > a");
+
+    if(ham){
+      ham.type="button";
+      ham.style.pointerEvents="auto";
+      ham.style.cursor="pointer";
+      ham.style.touchAction="manipulation";
+      if(mobileNav) ham.setAttribute("aria-controls","mobileNav");
+    }
+
+    if(a11y){
+      a11y.type="button";
+      a11y.style.pointerEvents="auto";
+      a11y.style.cursor="pointer";
+      a11y.style.touchAction="manipulation";
+    }
+
+    if(interview){
+      interview.style.pointerEvents="auto";
+      interview.style.cursor="pointer";
+      interview.style.touchAction="manipulation";
+    }
+
+    if(chat){
+      chat.style.pointerEvents="auto";
+      chat.style.cursor="pointer";
+      chat.style.touchAction="manipulation";
+    }
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",initQuoteControls);
+  }else{
+    initQuoteControls();
+  }
+})();
+</script>
+
+</body>
 </html>
