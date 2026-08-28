@@ -1291,39 +1291,56 @@ body > #chatBubble .chat-copy small{
     margin-top:.1rem !important;
   }
 
-  /* Bottom controls stay at opposite corners. */
+  /* Bottom controls stay on separate lines, matching Myth Busted. */
   body > #chatBubble{
-    left:8px !important;
-    bottom:12px !important;
+    left:24px !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:24px !important;
+    width:auto !important;
+    z-index:2147483001 !important;
   }
 
   body > #chatBubble > a{
-    width:210px !important;
-    min-width:0 !important;
-    min-height:56px !important;
-    padding:.52rem .65rem .52rem .58rem !important;
+    width:232px !important;
+    min-width:232px !important;
+    height:72px !important;
+    min-height:72px !important;
+    padding:.65rem 1.1rem .65rem .85rem !important;
+    gap:.6rem !important;
+    border-radius:36px !important;
+    box-sizing:border-box !important;
   }
 
   body > #chatBubble .chat-icon{
-    width:34px !important;
-    height:34px !important;
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+  }
+
+  body > #chatBubble .chat-copy{
+    flex:1 !important;
+    min-width:0 !important;
   }
 
   body > #chatBubble .chat-copy strong{
-    font-size:clamp(.66rem,2.8vw,.76rem) !important;
+    font-size:.85rem !important;
+    font-weight:600 !important;
+    white-space:nowrap !important;
   }
 
   body > #chatBubble .chat-copy small{
-    font-size:clamp(.55rem,2.2vw,.62rem) !important;
+    font-size:.85rem !important;
+    white-space:nowrap !important;
   }
 
   body > #interviewNowBtn{
     right:0 !important;
-    bottom:12px !important;
+    bottom:140px !important;
   }
 
   body > #interviewNowBtn > a{
-    width:210px !important;
+    width:calc(48vw - 4px) !important;
     min-width:0 !important;
     min-height:56px !important;
     padding:.7rem .55rem !important;
@@ -1334,7 +1351,10 @@ body > #chatBubble .chat-copy small{
 
 /* Very small phones: preserve separation and readability. */
 @media(max-width:360px){
-  body > #chatBubble > a,
+  body > #chatBubble > a{
+    width:232px !important;
+    min-width:232px !important;
+  }
   body > #interviewNowBtn > a{
     width:210px !important;
   }
