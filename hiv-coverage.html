@@ -4412,7 +4412,191 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     min-height:36px!important;
   }
 }
-</style></head>
+</style>
+<style id="hiv-final-mobile-floating-spacing">
+/* FINAL MOBILE FLOATING CONTROL LAYOUT */
+@media (max-width: 768px) {
+
+  /* Chat: bottom-left */
+  body > #chatBubble {
+    position: fixed !important;
+    left: 12px !important;
+    right: auto !important;
+    bottom: 24px !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: 2147483000 !important;
+  }
+
+  /* Interview Now: clearly above Chat */
+  body > #interviewNowBtn {
+    position: fixed !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: 112px !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: 2147482990 !important;
+  }
+
+  /* Accessibility tab: clearly above Interview Now */
+  body > #a11yTab {
+    position: fixed !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: 205px !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: 2147483010 !important;
+  }
+
+  /* Accessibility panel sits above the floating controls when opened */
+  body > #a11yPanel {
+    position: fixed !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: 258px !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: 2147483020 !important;
+  }
+
+  /* Keep Interview Now as one horizontal button */
+  body > #interviewNowBtn > a {
+    display: flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+  }
+}
+</style>
+
+
+<style id="hiv-final-mobile-floating-spacing-lower">
+@media (max-width: 768px) {
+  /* Lower all three controls while keeping clear separation */
+  body > #chatBubble {
+    bottom: 12px !important;
+  }
+
+  body > #interviewNowBtn {
+    bottom: 72px !important;
+  }
+
+  body > #a11yTab {
+    bottom: 140px !important;
+  }
+
+  body > #a11yPanel {
+    bottom: 193px !important;
+  }
+}
+</style>
+
+
+<style id="hiv-final-mobile-floating-spacing-lower-again">
+@media (max-width: 768px) {
+  body > #chatBubble {
+    bottom: 6px !important;
+  }
+
+  body > #interviewNowBtn {
+    bottom: 66px !important;
+  }
+
+  body > #a11yTab {
+    bottom: 134px !important;
+  }
+
+  body > #a11yPanel {
+    bottom: 187px !important;
+  }
+}
+</style>
+
+
+<style id="hiv-final-mobile-floating-spacing-lower-more">
+@media (max-width: 768px) {
+  body > #chatBubble {
+    bottom: 0 !important;
+  }
+
+  body > #interviewNowBtn {
+    bottom: 58px !important;
+  }
+
+  body > #a11yTab {
+    bottom: 126px !important;
+  }
+
+  body > #a11yPanel {
+    bottom: 179px !important;
+  }
+}
+</style>
+
+
+<style id="hiv-final-mobile-floating-more-space">
+@media (max-width: 768px) {
+  /* Keep the controls low, with a little more breathing room */
+  body > #chatBubble {
+    bottom: 0 !important;
+  }
+
+  body > #interviewNowBtn {
+    bottom: 72px !important;
+  }
+
+  body > #a11yTab {
+    bottom: 154px !important;
+  }
+
+  body > #a11yPanel {
+    bottom: 207px !important;
+  }
+}
+</style>
+
+
+<style id="hiv-final-accessibility-lower-interview-lower">
+@media (max-width: 768px) {
+  /* Move Accessibility lower so Interview Now can also sit lower. */
+  body > #a11yTab {
+    bottom: 115px !important;
+    top: auto !important;
+    transform: none !important;
+  }
+
+  /* Move Interview Now lower, while keeping a clear gap above Chat. */
+  body > #interviewNowBtn {
+    bottom: 58px !important;
+    top: auto !important;
+  }
+
+  /* Keep Ask a Question at the very bottom. */
+  body > #chatBubble {
+    bottom: 0 !important;
+  }
+
+  /* Accessibility panel follows the lower Accessibility tab. */
+  body > #a11yPanel {
+    bottom: 168px !important;
+    top: auto !important;
+    transform: none !important;
+  }
+}
+</style>
+
+
+<style id="hiv-interview-lower-only">
+@media (max-width: 768px) {
+  /* ONLY move Interview Now lower. */
+  body > #interviewNowBtn {
+    bottom: 40px !important;
+  }
+}
+</style>
+
+</head>
 <div id="chatBubble" style="position:fixed;bottom:24px;left:24px;z-index:490;">
 <a href="chat.html" onmouseout="this.style.background='#1a1a18'" onmouseover="this.style.background='#9e8047'" style="display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-radius:30px;padding:0.65rem 1.1rem 0.65rem 0.85rem;text-decoration:none;">
 <div style="width:36px;height:36px;background:rgba(158,128,71,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg fill="none" height="18" stroke="#9e8047" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
