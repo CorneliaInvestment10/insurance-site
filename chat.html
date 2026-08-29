@@ -2837,5 +2837,114 @@ document.addEventListener('DOMContentLoaded',function(){
 })();
 </script>
 
+
+
+
+
+<style id="FINAL-CHAT-CONTROLS-OVERRIDE">
+/* FINAL MOBILE CONTROL POSITIONING
+   Interview Now sits clearly BELOW Accessibility and
+   remains separate from Ask a Question. */
+@media (max-width: 768px) {
+
+  /* Accessibility stays on the right, higher up. */
+  html body > #a11yTab {
+    position: fixed !important;
+    right: 0 !important;
+    left: auto !important;
+    top: 42% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    z-index: 2147483647 !important;
+  }
+
+  /* Interview Now is lower than Accessibility, but above
+     the bottom Ask a Question control. */
+  html body > #interviewNowBtn {
+    position: fixed !important;
+    right: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: 150px !important;
+    margin: 0 !important;
+    transform: none !important;
+    z-index: 2147483646 !important;
+    pointer-events: auto !important;
+  }
+
+  html body > #interviewNowBtn > a {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Ask a Question remains independently on the lower-left. */
+  html body > #chatBubble {
+    position: fixed !important;
+    left: 24px !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 20px !important;
+    margin: 0 !important;
+    transform: none !important;
+    z-index: 2147483645 !important;
+    pointer-events: auto !important;
+  }
+
+  html body > #chatBubble > a {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html body > #a11yTab {
+    top: 40% !important;
+  }
+
+  html body > #interviewNowBtn {
+    right: 0 !important;
+    left: auto !important;
+    bottom: 150px !important;
+  }
+
+  html body > #chatBubble {
+    left: 16px !important;
+    bottom: 20px !important;
+  }
+}
+</style>
+
+
+<style id="CHAT-FINAL-INTERVIEW-DOWN-RIGHT">
+/* FINAL CHAT PAGE POSITION ONLY
+   Do not alter Accessibility or Ask a Question. */
+@media (max-width: 768px) {
+  html body > #interviewNowBtn {
+    position: fixed !important;
+    right: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: 90px !important;
+    margin: 0 !important;
+    transform: none !important;
+    z-index: 2147483646 !important;
+    pointer-events: auto !important;
+  }
+
+  html body > #interviewNowBtn > a {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html body > #interviewNowBtn {
+    right: 0 !important;
+    left: auto !important;
+    bottom: 90px !important;
+  }
+}
+</style>
+
 </body>
 </html>
