@@ -4629,6 +4629,126 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 }
 </style>
 
+
+<style id="MOBILE-A11Y-HEADING-REPAIRED">
+@media screen and (max-width: 768px) {
+  html body #a11yPanel {
+    display: none;
+    position: fixed !important;
+    top: 125px !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 270px !important;
+    max-width: calc(100vw - 12px) !important;
+    height: 515px !important;
+    max-height: calc(100dvh - 145px) !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px 10px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    z-index: 2147483646 !important;
+  }
+
+  html body #a11yPanel.open {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+
+  html body #a11yPanel .a11y-heading {
+    position: static !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex: 0 0 30px !important;
+    height: 30px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 0 5px !important;
+    padding: 0 0 7px !important;
+    overflow: visible !important;
+    color: #9e8047 !important;
+    font-size: 12px !important;
+    line-height: 1.1 !important;
+    letter-spacing: .08em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+  }
+
+  html body #a11yPanel .a11y-row {
+    flex: 0 0 55px !important;
+    height: 55px !important;
+    min-height: 55px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    gap: 3px !important;
+  }
+
+  html body #a11yPanel .a11y-row-label {
+    flex: 0 0 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  html body #a11yPanel .a11y-row-btns {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    height: 29px !important;
+    min-height: 29px !important;
+  }
+
+  html body #a11yPanel .a11y-btn {
+    flex: 0 0 auto !important;
+    height: 29px !important;
+    min-height: 29px !important;
+    margin: 0 !important;
+    padding: 5px 9px !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  html body #a11yPanel .a11y-sep {
+    flex: 0 0 1px !important;
+    height: 1px !important;
+    min-height: 1px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body #a11yPanel .a11y-reset {
+    flex: 0 0 29px !important;
+    height: 29px !important;
+    min-height: 29px !important;
+    width: 100% !important;
+    margin: 4px 0 0 !important;
+    padding: 5px !important;
+    box-sizing: border-box !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+  }
+
+  html body #interviewNowBtn {
+    z-index: 2147483000 !important;
+  }
+
+  html body #a11yTab {
+    z-index: 2147483647 !important;
+  }
+}
+</style>
+
 </head>
 <div id="chatBubble" style="position:fixed;bottom:24px;left:24px;z-index:490;">
 <a href="chat.html" onmouseout="this.style.background='#1a1a18'" onmouseover="this.style.background='#9e8047'" style="display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-radius:30px;padding:0.65rem 1.1rem 0.65rem 0.85rem;text-decoration:none;">
@@ -6451,6 +6571,182 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 
   body > #a11yTab{
     z-index:2147483010 !important;
+  }
+}
+</style>
+
+
+<style id="FINAL-MOBILE-A11Y-CORRECTED">
+@media screen and (max-width:768px){
+
+  /* ===== ACCESSIBILITY PANEL ===== */
+  #a11yPanel{
+    position:fixed !important;
+    top:165px !important;
+    right:34px !important;
+    left:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+
+    width:270px !important;
+    max-width:calc(100vw - 44px) !important;
+    height:500px !important;
+    min-height:500px !important;
+    max-height:500px !important;
+
+    padding:12px 12px 10px !important;
+    margin:0 !important;
+    box-sizing:border-box !important;
+    overflow:hidden !important;
+
+    z-index:2147483646 !important;
+  }
+
+  #a11yPanel.open{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+    overflow:hidden !important;
+  }
+
+  /* Keep the heading fully inside the panel. */
+  #a11yPanel .a11y-heading{
+    flex:0 0 28px !important;
+    height:28px !important;
+    margin:0 0 5px !important;
+    padding:0 0 7px !important;
+    box-sizing:border-box !important;
+    font-size:12px !important;
+    line-height:1.05 !important;
+    white-space:nowrap !important;
+  }
+
+  #a11yPanel .a11y-row{
+    flex:0 0 56px !important;
+    height:56px !important;
+    min-height:56px !important;
+    margin:0 !important;
+    padding:0 !important;
+    gap:4px !important;
+    box-sizing:border-box !important;
+  }
+
+  #a11yPanel .a11y-row-label{
+    flex:0 0 17px !important;
+    height:17px !important;
+    margin:0 !important;
+    padding:0 !important;
+    font-size:11px !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+  }
+
+  #a11yPanel .a11y-row-btns{
+    flex:0 0 29px !important;
+    height:29px !important;
+    min-height:29px !important;
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    gap:5px !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  #a11yPanel .a11y-btn{
+    flex:none !important;
+    height:29px !important;
+    min-height:29px !important;
+    margin:0 !important;
+    padding:5px 9px !important;
+    font-size:11px !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    box-sizing:border-box !important;
+  }
+
+  #a11yPanel .a11y-sep{
+    flex:0 0 1px !important;
+    height:1px !important;
+    min-height:1px !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  #a11yPanel .a11y-reset{
+    flex:0 0 29px !important;
+    width:100% !important;
+    height:29px !important;
+    min-height:29px !important;
+    margin:4px 0 0 !important;
+    padding:5px !important;
+    box-sizing:border-box !important;
+    font-size:11px !important;
+    line-height:1 !important;
+  }
+
+  /* ===== INTERVIEW NOW MUST STAY BEHIND THE OPEN PANEL ===== */
+  #interviewNowBtn{
+    z-index:2147483000 !important;
+  }
+
+  #a11yTab{
+    z-index:2147483647 !important;
+  }
+}
+</style>
+
+
+<style id="FINAL-MOBILE-A11Y-TITLE-VISIBLE">
+@media screen and (max-width:768px){
+
+  #a11yPanel{
+    top:150px !important;
+    right:34px !important;
+    width:270px !important;
+    height:515px !important;
+    min-height:515px !important;
+    max-height:515px !important;
+    padding:16px 12px 10px !important;
+    box-sizing:border-box !important;
+    overflow:hidden !important;
+  }
+
+  #a11yPanel .a11y-heading{
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    flex:0 0 32px !important;
+    height:32px !important;
+    margin:0 0 5px !important;
+    padding:0 0 8px !important;
+    font-size:12px !important;
+    line-height:1.15 !important;
+    white-space:nowrap !important;
+    overflow:visible !important;
+  }
+
+  #a11yPanel .a11y-row{
+    flex:0 0 56px !important;
+    height:56px !important;
+    min-height:56px !important;
+  }
+
+  #a11yPanel .a11y-reset{
+    flex:0 0 29px !important;
+    height:29px !important;
+    min-height:29px !important;
+    margin-top:4px !important;
+  }
+
+  #interviewNowBtn{
+    z-index:2147483000 !important;
+  }
+
+  #a11yTab{
+    z-index:2147483647 !important;
   }
 }
 </style>
