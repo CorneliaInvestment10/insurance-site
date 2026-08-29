@@ -2915,33 +2915,236 @@ document.addEventListener('DOMContentLoaded',function(){
 </style>
 
 
-<style id="CHAT-FINAL-INTERVIEW-DOWN-RIGHT">
-/* FINAL CHAT PAGE POSITION ONLY
-   Do not alter Accessibility or Ask a Question. */
-@media (max-width: 768px) {
-  html body > #interviewNowBtn {
-    position: fixed !important;
-    right: 0 !important;
-    left: auto !important;
-    top: auto !important;
-    bottom: 90px !important;
-    margin: 0 !important;
-    transform: none !important;
-    z-index: 2147483646 !important;
-    pointer-events: auto !important;
+
+
+
+<style id="CHAT-FINAL-CONTROLS-LAYERING-FIX">
+/* =========================================================
+   FINAL MOBILE CONTROL LAYERING
+   - Interview Now stays behind open accessibility panel/modal.
+   - Accessibility panel has enough height to show all controls.
+   - Ask a Question remains lower-left.
+   - No changes to hamburger/menu behavior.
+   ========================================================= */
+
+#modal-doxy-note{
+  z-index:2147483647 !important;
+}
+
+#a11yTab{
+  z-index:2147483646 !important;
+}
+
+#a11yPanel{
+  z-index:2147483645 !important;
+  max-height:calc(100vh - 110px) !important;
+  overflow-y:auto !important;
+  box-sizing:border-box !important;
+}
+
+#interviewNowBtn{
+  z-index:2147483000 !important;
+  pointer-events:auto !important;
+}
+
+#chatBubble{
+  z-index:2147482999 !important;
+  pointer-events:auto !important;
+}
+
+#interviewNowBtn > a,
+#chatBubble > a{
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+}
+
+@media (max-width:768px){
+  /* Interview: right edge, lower position, never above accessibility UI. */
+  html body > #interviewNowBtn{
+    position:fixed !important;
+    right:0 !important;
+    left:auto !important;
+    top:auto !important;
+    bottom:90px !important;
+    margin:0 !important;
+    transform:none !important;
+    z-index:2147483000 !important;
   }
 
-  html body > #interviewNowBtn > a {
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
+  /* Ask a Question: independent lower-left position. */
+  html body > #chatBubble{
+    position:fixed !important;
+    left:16px !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:20px !important;
+    margin:0 !important;
+    transform:none !important;
+    z-index:2147482999 !important;
+  }
+
+  /* Accessibility tab stays on the right and above the launch buttons. */
+  html body > #a11yTab{
+    z-index:2147483646 !important;
+  }
+
+  /* Accessibility panel: enough vertical room for every option. */
+  html body > #a11yPanel{
+    position:fixed !important;
+    right:34px !important;
+    left:auto !important;
+    top:50% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) !important;
+    width:min(330px, calc(100vw - 50px)) !important;
+    max-width:none !important;
+    max-height:calc(100vh - 110px) !important;
+    overflow-y:auto !important;
+    z-index:2147483645 !important;
+    box-sizing:border-box !important;
+    -webkit-overflow-scrolling:touch !important;
+  }
+
+  /* When the accessibility panel is open, it visually sits above Interview Now. */
+  html body > #a11yPanel.open{
+    display:flex !important;
+  }
+
+  /* When the interview modal is open, it sits above every floating control. */
+  html body > #modal-doxy-note,
+  html body > #modal-doxy-note.open{
+    z-index:2147483647 !important;
   }
 }
 
-@media (max-width: 420px) {
-  html body > #interviewNowBtn {
-    right: 0 !important;
-    left: auto !important;
-    bottom: 90px !important;
+@media (max-width:420px){
+  html body > #interviewNowBtn{
+    right:0 !important;
+    bottom:90px !important;
+  }
+
+  html body > #chatBubble{
+    left:16px !important;
+    bottom:20px !important;
+  }
+
+  html body > #a11yPanel{
+    right:34px !important;
+    width:calc(100vw - 50px) !important;
+    max-height:calc(100vh - 100px) !important;
+  }
+}
+</style>
+
+
+
+
+
+<style id="CHAT-A11Y-LAST-OPTION-FULL-MOBILE">
+/* ===== FINAL ACCESSIBILITY PANEL =====
+   Keep the previous narrow width.
+   Increase vertical space only so the complete menu is visible on phones,
+   from "Accessibility Options" through "Reset All".
+*/
+html body > #a11yPanel{
+  width:220px !important;
+  max-width:220px !important;
+  height:auto !important;
+  max-height:calc(100vh - 40px) !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  box-sizing:border-box !important;
+  z-index:2147483645 !important;
+  -webkit-overflow-scrolling:touch !important;
+}
+
+html body > #a11yPanel.open{
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+html body > #a11yTab{
+  z-index:2147483646 !important;
+}
+
+/* Interview Now remains behind the Accessibility panel. */
+html body > #interviewNowBtn{
+  z-index:2147483000 !important;
+}
+
+/* Mobile: keep the panel narrow and vertically centered. */
+@media (max-width:768px){
+  html body > #a11yPanel{
+    width:220px !important;
+    max-width:220px !important;
+    height:auto !important;
+    max-height:calc(100vh - 40px) !important;
+    right:34px !important;
+    left:auto !important;
+    top:50% !important;
+    bottom:auto !important;
+    transform:translateY(-50%) !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+  }
+
+  /* The normal mobile spacing is compact enough to keep
+     the full header-to-last-option list visible. */
+  html body > #a11yPanel .a11y-heading{
+    flex-shrink:0 !important;
+  }
+
+  html body > #a11yPanel .a11y-row,
+  html body > #a11yPanel .a11y-sep,
+  html body > #a11yPanel .a11y-reset{
+    flex-shrink:0 !important;
+  }
+
+  html body > #interviewNowBtn{
+    z-index:2147483000 !important;
+  }
+}
+
+/* Short mobile screens: tighten vertical spacing rather than making
+   the panel wider or hiding the final options. */
+@media (max-width:768px) and (max-height:700px){
+  html body > #a11yPanel{
+    padding:0.85rem 0.9rem !important;
+    max-height:calc(100vh - 24px) !important;
+  }
+
+  html body > #a11yPanel .a11y-heading{
+    padding-bottom:0.45rem !important;
+    margin-bottom:0.55rem !important;
+  }
+
+  html body > #a11yPanel .a11y-row{
+    gap:0.2rem !important;
+    margin-bottom:0.5rem !important;
+  }
+
+  html body > #a11yPanel .a11y-sep{
+    margin:0.15rem 0 !important;
+  }
+
+  html body > #a11yPanel .a11y-btn{
+    padding:0.24rem 0.55rem !important;
+  }
+
+  html body > #a11yPanel .a11y-reset{
+    margin-top:0.35rem !important;
+    padding:0.34rem !important;
+  }
+}
+
+/* Very short phones: allow a tiny amount of scrolling only as a
+   last-resort safety measure, never widening the panel. */
+@media (max-width:420px) and (max-height:560px){
+  html body > #a11yPanel{
+    width:220px !important;
+    max-width:220px !important;
+    max-height:calc(100vh - 16px) !important;
+    right:34px !important;
   }
 }
 </style>
