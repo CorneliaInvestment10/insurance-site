@@ -8492,8 +8492,7 @@ body > footer{
   #a11yPanel{
     width:calc(100vw - 2rem)!important;
     max-width:260px!important;
-    max-height:none!important;
-    overflow:visible!important;
+    max-height:60vh!important;
     overflow-y:auto!important;
     right:0!important;
     bottom:132px!important;
@@ -8530,18 +8529,21 @@ body > footer{
   }
 
   body > #a11yPanel{
-    position: fixed !important;
-    right: 30px !important;
-    top: 50% !important;
-    bottom: auto !important;
-    transform: translateY(-50%) !important;
-    z-index: 2147483499 !important;
-    width: 260px !important;
-    max-width: calc(100vw - 60px) !important;
-    max-height: min(80vh, 520px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-}
+    right:0 !important;
+    top:auto !important;
+    bottom:calc(180px + 90px) !important;
+    transform:none !important;
+    width:calc(100vw - 2rem) !important;
+    max-width:260px !important;
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+    padding:0.8rem 0.8rem !important;
+    gap:0.45rem !important;
+    z-index:10000 !important;
+    border-radius:10px 0 0 10px !important;
+    box-sizing:border-box !important;
+  }
 
   body > #a11yPanel .a11y-row{
     gap:0.25rem !important;
@@ -8586,30 +8588,34 @@ body > footer{
 </style>
 <style id="diabetes-mobile-a11y-position-final">
 @media (max-width:768px){
-  /* Keep the tab in the lower black section. */
+  /* MOBILE FINAL: keep the complete Accessibility panel inside the page viewport. */
   body > #a11yTab{
+    position:fixed !important;
     right:0 !important;
     top:auto !important;
     bottom:180px !important;
     transform:none !important;
-    z-index:10001 !important;
+    z-index:2147483001 !important;
   }
 
-  /* Panel sits above the tab and is compact enough to show the complete list. */
-  body > #a11yPanel{
+  body > #a11yPanel,
+  body > #a11yPanel.open{
+    position:fixed !important;
     right:0 !important;
-    top:auto !important;
-    bottom:320px !important;
+    top:72px !important;
+    bottom:auto !important;
     transform:none !important;
     width:calc(100vw - 2rem) !important;
     max-width:260px !important;
     height:auto !important;
-    max-height:calc(100vh - 350px) !important;
-    overflow:hidden !important;
+    max-height:calc(100vh - 84px) !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
     box-sizing:border-box !important;
     padding:.65rem .7rem !important;
     gap:.28rem !important;
-    z-index:10000 !important;
+    z-index:2147483000 !important;
+    border-radius:10px 0 0 10px !important;
   }
 
   body > #a11yPanel .a11y-heading{
@@ -8620,6 +8626,7 @@ body > footer{
   }
   body > #a11yPanel .a11y-row{
     gap:.16rem !important;
+    margin-bottom:.45rem !important;
   }
   body > #a11yPanel .a11y-row-label{
     font-size:.68rem !important;
@@ -8639,11 +8646,30 @@ body > footer{
     margin-top:.05rem !important;
   }
 
-  /* Interview remains lower-right, separated from Accessibility. */
+  /* Interview Now stays underneath/behind the open Accessibility panel. */
   body > #interviewNowBtn{
+    position:fixed !important;
     right:0 !important;
     bottom:70px !important;
-    z-index:9997 !important;
+    z-index:2147482990 !important;
+  }
+
+  body:has(> #a11yPanel.open) > #interviewNowBtn{
+    z-index:1 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+
+  body:has(> #a11yPanel.open) > #a11yPanel{
+    z-index:2147483000 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+  }
+
+  body:has(> #a11yPanel.open) > #a11yTab{
+    z-index:2147483001 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
   }
 }
 </style>
