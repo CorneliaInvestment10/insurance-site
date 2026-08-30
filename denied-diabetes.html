@@ -8509,40 +8509,142 @@ body > footer{
   }
 }
 </style>
-<style id="diabetes-mobile-a11y-open-down-final">
-/* FINAL MOBILE ACCESSIBILITY POSITION
-   Panel opens downward from the Accessibility tab.
-   Interview Now stays underneath/behind it. */
+<style id="diabetes-mobile-a11y-final-stable">
+/* FINAL MOBILE POSITION: no stacking.
+   Accessibility tab stays above Interview Now.
+   Accessibility panel opens upward and shows the complete option list. */
 @media (max-width:768px){
+  body > #interviewNowBtn{
+    right:0 !important;
+    bottom:70px !important;
+    z-index:9997 !important;
+  }
+
   body > #a11yTab{
     right:0 !important;
-    top:40vh !important;
-    bottom:auto !important;
+    top:auto !important;
+    bottom:180px !important;
     transform:none !important;
-    z-index:9999 !important;
+    z-index:10001 !important;
   }
 
   body > #a11yPanel{
     right:0 !important;
-    top:40vh !important;
-    bottom:auto !important;
+    top:auto !important;
+    bottom:calc(180px + 90px) !important;
     transform:none !important;
     width:calc(100vw - 2rem) !important;
     max-width:260px !important;
-    max-height:calc(60vh - 12px) !important;
-    overflow-y:auto !important;
-    z-index:9998 !important;
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+    padding:0.8rem 0.8rem !important;
+    gap:0.45rem !important;
+    z-index:10000 !important;
     border-radius:10px 0 0 10px !important;
+    box-sizing:border-box !important;
+  }
+
+  body > #a11yPanel .a11y-row{
+    gap:0.25rem !important;
+  }
+
+  body > #a11yPanel .a11y-row-label{
+    font-size:0.72rem !important;
+    line-height:1.15 !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns{
+    gap:0.25rem !important;
+  }
+
+  body > #a11yPanel .a11y-btn{
+    padding:0.42rem 0.65rem !important;
+    font-size:0.78rem !important;
+    line-height:1.1 !important;
+  }
+
+  body > #a11yPanel .a11y-sep{
+    margin:0.05rem 0 !important;
+  }
+
+  body > #a11yPanel .a11y-heading{
+    font-size:0.8rem !important;
+    line-height:1.15 !important;
+    margin-bottom:0.1rem !important;
+  }
+
+  body > #a11yPanel .a11y-reset{
+    padding:0.42rem !important;
+    font-size:0.72rem !important;
+    line-height:1.1 !important;
   }
 
   body > #a11yPanel.open{
     display:flex !important;
     flex-direction:column !important;
   }
+}
+</style>
+<style id="diabetes-mobile-a11y-position-final">
+@media (max-width:768px){
+  /* Keep the tab in the lower black section. */
+  body > #a11yTab{
+    right:0 !important;
+    top:auto !important;
+    bottom:180px !important;
+    transform:none !important;
+    z-index:10001 !important;
+  }
 
+  /* Panel sits above the tab and is compact enough to show the complete list. */
+  body > #a11yPanel{
+    right:0 !important;
+    top:auto !important;
+    bottom:320px !important;
+    transform:none !important;
+    width:calc(100vw - 2rem) !important;
+    max-width:260px !important;
+    height:auto !important;
+    max-height:calc(100vh - 350px) !important;
+    overflow:hidden !important;
+    box-sizing:border-box !important;
+    padding:.65rem .7rem !important;
+    gap:.28rem !important;
+    z-index:10000 !important;
+  }
+
+  body > #a11yPanel .a11y-heading{
+    display:block !important;
+    font-size:.78rem !important;
+    line-height:1.1 !important;
+    margin:0 0 .18rem !important;
+  }
+  body > #a11yPanel .a11y-row{
+    gap:.16rem !important;
+  }
+  body > #a11yPanel .a11y-row-label{
+    font-size:.68rem !important;
+    line-height:1.05 !important;
+  }
+  body > #a11yPanel .a11y-row-btns{gap:.18rem !important;}
+  body > #a11yPanel .a11y-btn{
+    padding:.30rem .52rem !important;
+    font-size:.70rem !important;
+    line-height:1 !important;
+  }
+  body > #a11yPanel .a11y-sep{margin:.02rem 0 !important;}
+  body > #a11yPanel .a11y-reset{
+    padding:.32rem !important;
+    font-size:.68rem !important;
+    line-height:1 !important;
+    margin-top:.05rem !important;
+  }
+
+  /* Interview remains lower-right, separated from Accessibility. */
   body > #interviewNowBtn{
     right:0 !important;
-    bottom:12px !important;
+    bottom:70px !important;
     z-index:9997 !important;
   }
 }
@@ -9261,3 +9363,4 @@ document.addEventListener('DOMContentLoaded',function(){
 })();
 </script></body>
 </html>
+
