@@ -1373,6 +1373,7 @@ body > #chatBubble .chat-copy small{
     padding:.65rem !important;
   }
 }
+.page-hero .hero-note { color: var(--gold) !important; }
 </style>
 
 
@@ -1660,7 +1661,7 @@ html body > #chatBubble {
     left: 24px !important;
     right: auto !important;
     top: auto !important;
-    bottom: 24px !important;
+    bottom: 10px !important;
   }
 }
 
@@ -1842,6 +1843,78 @@ html body > #chatBubble {
   }
 }
 </style>
+
+<style id="quote-accessibility-final-layer-fix">
+/* QUOTE PAGE: Accessibility must sit above Interview Now when opened. */
+#a11yPanel{
+  z-index:10001 !important;
+}
+#a11yTab{
+  z-index:10002 !important;
+}
+#interviewNowBtn{
+  z-index:9997 !important;
+}
+
+/* Mobile: keep the three floating controls separated and let
+   the Accessibility panel completely cover the Interview button. */
+@media (max-width:768px){
+  body > #a11yPanel{
+    z-index:10001 !important;
+  }
+  body > #a11yTab{
+    z-index:10002 !important;
+  }
+  body > #interviewNowBtn{
+    z-index:9997 !important;
+  }
+}
+</style>
+
+
+<style id="quote-interview-modal-layer-fix">
+/* Interview Now launcher stays behind any open modal. */
+html body > #interviewNowBtn { z-index: 8000 !important; }
+html body > .modal-overlay.open { z-index: 2147483600 !important; }
+html body > .modal-overlay.open .interview-modal-box { z-index: 2147483601 !important; }
+</style>
+
+<style id="quote-a11y-open-layer-final">
+/* FINAL: when Accessibility is open, its panel is above BOTH floating controls. */
+html body > #a11yPanel,
+html body > #a11yPanel.open {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  isolation: isolate !important;
+}
+
+html body > #a11yTab {
+  z-index: 2147483644 !important;
+}
+
+html body > #interviewNowBtn {
+  z-index: 2147483643 !important;
+}
+
+/* Explicit open-state layering, including mobile. */
+html body > #a11yPanel.open ~ #interviewNowBtn,
+html body > #a11yPanel.open ~ #a11yTab {
+  z-index: 2147483643 !important;
+}
+
+@media (max-width: 768px) {
+  html body > #a11yPanel.open {
+    z-index: 2147483647 !important;
+  }
+  html body > #a11yTab {
+    z-index: 2147483644 !important;
+  }
+  html body > #interviewNowBtn {
+    z-index: 2147483643 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <nav class="navbar">
@@ -2564,6 +2637,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
     document.body.style.overflow='hidden';
     var close=m.querySelector('.modal-close');
     if(close) setTimeout(function(){ try{close.focus();}catch(e){} },50);
+    /* Keep BOTH floating launchers behind the interview modal while it is open.
+       Interview Now remains above Ask a Question, but both stay below the modal. */
+    var interview=byId('interviewNowBtn');
+    var chat=byId('chatBubble');
+    if(interview) interview.style.setProperty('z-index','8000','important');
+    if(chat) chat.style.setProperty('z-index','7999','important');
+    m.style.setProperty('z-index','2147483646','important');
     return false;
   };
   window.closeModal = function(id){
@@ -2572,14 +2652,32 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
     m.style.display='none';
     m.classList.remove('open');
     document.body.style.overflow='';
+    /* Restore normal launcher layering after the interview modal closes. */
+    var interview=byId('interviewNowBtn');
+    var chat=byId('chatBubble');
+    if(interview) interview.style.removeProperty('z-index');
+    if(chat) chat.style.removeProperty('z-index');
   };
   window.closeModalOnOverlay = function(e,id){ if(e.target===e.currentTarget) window.closeModal(id); };
   window.a11yOpen = function(){
-    var p=byId('a11yPanel'), t=byId('a11yTab');
+    var p=byId('a11yPanel'), t=byId('a11yTab'), interview=byId('interviewNowBtn');
     if(!p||!t) return;
     var open=p.classList.toggle('open');
     p.setAttribute('aria-hidden',open?'false':'true');
     t.setAttribute('aria-expanded',open?'true':'false');
+
+    /* When Accessibility is open, force the panel above BOTH floating controls.
+       Use inline !important so later CSS/inline positioning cannot put Interview Now
+       or the Accessibility tab back on top of the panel. */
+    if(open){
+      p.style.setProperty('z-index','2147483647','important');
+      t.style.setProperty('z-index','2147483644','important');
+      if(interview) interview.style.setProperty('z-index','2147483643','important');
+    }else{
+      p.style.removeProperty('z-index');
+      t.style.removeProperty('z-index');
+      if(interview) interview.style.removeProperty('z-index');
+    }
   };
   window.a11yText = function(val){
     var b=document.body; b.classList.remove('lg-text','xl-text');
@@ -2649,5 +2747,16 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
+
+<style id="quote-final-requested-adjustments">
+/* Requested mobile spacing + Doxy.me notice color */
+.page-hero .hero-note { color: var(--gold) !important; }
+@media (max-width: 768px) {
+  html body > #chatBubble {
+    bottom: 10px !important;
+  }
+}
+</style>
 </body>
 </html>
+  
