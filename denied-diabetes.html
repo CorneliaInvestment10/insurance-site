@@ -8508,7 +8508,46 @@ body > footer{
     z-index:9999!important;
   }
 }
-</style></head>
+</style>
+<style id="diabetes-mobile-a11y-open-down-final">
+/* FINAL MOBILE ACCESSIBILITY POSITION
+   Panel opens downward from the Accessibility tab.
+   Interview Now stays underneath/behind it. */
+@media (max-width:768px){
+  body > #a11yTab{
+    right:0 !important;
+    top:40vh !important;
+    bottom:auto !important;
+    transform:none !important;
+    z-index:9999 !important;
+  }
+
+  body > #a11yPanel{
+    right:0 !important;
+    top:40vh !important;
+    bottom:auto !important;
+    transform:none !important;
+    width:calc(100vw - 2rem) !important;
+    max-width:260px !important;
+    max-height:calc(60vh - 12px) !important;
+    overflow-y:auto !important;
+    z-index:9998 !important;
+    border-radius:10px 0 0 10px !important;
+  }
+
+  body > #a11yPanel.open{
+    display:flex !important;
+    flex-direction:column !important;
+  }
+
+  body > #interviewNowBtn{
+    right:0 !important;
+    bottom:12px !important;
+    z-index:9997 !important;
+  }
+}
+</style>
+</head>
 <div id="chatBubble" style="position:fixed;bottom:24px;left:24px;z-index:490;">
 <a href="chat.html" onmouseout="this.style.background='#1a1a18'" onmouseover="this.style.background='#9e8047'" style="display:flex;align-items:center;gap:0.6rem;background:#1a1a18;border:1px solid rgba(158,128,71,0.5);border-radius:30px;padding:0.65rem 1.1rem 0.65rem 0.85rem;text-decoration:none;">
 <div style="width:36px;height:36px;background:rgba(158,128,71,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg fill="none" height="18" stroke="#9e8047" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
