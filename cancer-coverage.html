@@ -4469,7 +4469,251 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
     min-height:36px!important;
   }
 }
-</style></head>
+</style>
+<style id="cancer-mobile-controls-unstack-final">
+/* FINAL CANCER MOBILE CONTROL LAYOUT
+   Keep Interview Now and Accessibility clearly separated vertically.
+   Desktop/tablet positioning remains unchanged. */
+@media (max-width:768px){
+  body > #interviewNowBtn{
+    position:fixed !important;
+    right:0 !important;
+    bottom:80px !important;
+    top:auto !important;
+    transform:none !important;
+    z-index:9997 !important;
+  }
+
+  body > #a11yTab{
+    position:fixed !important;
+    right:0 !important;
+    bottom:190px !important;
+    top:auto !important;
+    transform:none !important;
+    z-index:9999 !important;
+  }
+
+  body > #a11yPanel{
+    position:fixed !important;
+    right:0 !important;
+    bottom:150px !important;
+    top:auto !important;
+    transform:none !important;
+    z-index:9998 !important;
+    width:calc(100vw - 2rem) !important;
+    max-width:260px !important;
+    height:auto !important;
+    max-height:calc(100dvh - 170px) !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+  }
+}
+</style>
+
+<style id="cancer-mobile-a11y-all-options-final">
+/* FINAL MOBILE ACCESSIBILITY PANEL
+   Keep the Accessibility tab where it is and make the entire
+   options list visible on mobile without an internal cutoff. */
+@media (max-width:768px){
+  body > #a11yPanel{
+    position:fixed !important;
+    right:0 !important;
+    top:72px !important;
+    bottom:auto !important;
+    transform:none !important;
+    width:calc(100vw - 2rem) !important;
+    max-width:260px !important;
+    height:auto !important;
+    max-height:calc(100vh - 245px) !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    box-sizing:border-box !important;
+    z-index:9998 !important;
+  }
+
+  body > #a11yPanel.open{
+    display:flex !important;
+    flex-direction:column !important;
+  }
+}
+</style>
+
+
+<style id="cancer-mobile-a11y-final-position-and-full-list">
+/* FINAL MOBILE A11Y FIX:
+   Start the panel directly below the mobile header and give the full
+   options list its natural height. No 50vh/viewport-height cutoff. */
+@media (max-width:768px){
+  body > #a11yPanel{
+    position:fixed !important;
+    top:150px !important;
+    bottom:auto !important;
+    right:0 !important;
+    left:auto !important;
+    transform:none !important;
+
+    width:calc(100vw - 2rem) !important;
+    max-width:300px !important;
+
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    overflow:visible !important;
+    box-sizing:border-box !important;
+
+    padding:0.8rem 0.8rem !important;
+    gap:0.45rem !important;
+
+    z-index:10000 !important;
+  }
+
+  body > #a11yPanel .a11y-row{
+    gap:0.25rem !important;
+    margin:0 !important;
+    padding:0.35rem 0 !important;
+  }
+
+  body > #a11yPanel .a11y-row-label{
+    font-size:0.72rem !important;
+    line-height:1.15 !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns{
+    gap:0.25rem !important;
+  }
+
+  body > #a11yPanel .a11y-btn{
+    padding:0.42rem 0.62rem !important;
+    font-size:0.78rem !important;
+    line-height:1.1 !important;
+  }
+}
+</style>
+
+
+<style id="cancer-mobile-a11y-slimmer-shorter-final">
+@media (max-width:768px){
+  body > #a11yPanel{
+    top:150px !important;
+    right:0 !important;
+    width:235px !important;
+    max-width:235px !important;
+    height:auto !important;
+    max-height:none !important;
+    padding:0.65rem 0.65rem !important;
+    gap:0.25rem !important;
+    border-radius:8px 0 0 8px !important;
+    box-sizing:border-box !important;
+  }
+
+  body > #a11yPanel .a11y-row{
+    gap:0.15rem !important;
+    padding:0.22rem 0 !important;
+    margin:0 !important;
+  }
+
+  body > #a11yPanel .a11y-row-label{
+    font-size:0.62rem !important;
+    line-height:1.05 !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns{
+    gap:0.15rem !important;
+  }
+
+  body > #a11yPanel .a11y-btn{
+    padding:0.30rem 0.48rem !important;
+    font-size:0.68rem !important;
+    line-height:1 !important;
+  }
+
+  body > #a11yPanel h2,
+  body > #a11yPanel h3{
+    margin:0 0 0.35rem 0 !important;
+    font-size:0.78rem !important;
+    line-height:1.05 !important;
+  }
+
+  body > #a11yPanel hr{
+    margin:0.25rem 0 !important;
+  }
+}
+</style>
+
+
+<style id="cancer-mobile-a11y-compact-full-final">
+@media (max-width:768px){
+  body > #a11yPanel{
+    position:fixed !important;
+    top:150px !important;
+    bottom:auto !important;
+    right:0 !important;
+    left:auto !important;
+    transform:none !important;
+    width:220px !important;
+    max-width:220px !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    overflow:visible !important;
+    padding:0.5rem 0.55rem !important;
+    gap:0.12rem !important;
+    box-sizing:border-box !important;
+    border-radius:7px 0 0 7px !important;
+    z-index:10000 !important;
+  }
+
+  body > #a11yPanel .a11y-heading{
+    font-size:0.68rem !important;
+    letter-spacing:0.12em !important;
+    padding-bottom:0.35rem !important;
+    margin-bottom:0.25rem !important;
+    line-height:1 !important;
+  }
+
+  body > #a11yPanel .a11y-row{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:0.08rem !important;
+    margin:0 !important;
+    padding:0.12rem 0 !important;
+  }
+
+  body > #a11yPanel .a11y-row-label{
+    font-size:0.56rem !important;
+    line-height:1 !important;
+    letter-spacing:0.08em !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns{
+    display:flex !important;
+    gap:0.12rem !important;
+    flex-wrap:nowrap !important;
+  }
+
+  body > #a11yPanel .a11y-btn{
+    padding:0.24rem 0.4rem !important;
+    min-height:0 !important;
+    font-size:0.62rem !important;
+    line-height:1 !important;
+    border-radius:3px !important;
+  }
+
+  body > #a11yPanel .a11y-sep{
+    height:1px !important;
+    margin:0.05rem 0 !important;
+  }
+
+  body > #a11yPanel .a11y-reset{
+    margin-top:0.15rem !important;
+    padding:0.28rem 0.4rem !important;
+    font-size:0.62rem !important;
+    line-height:1 !important;
+  }
+}
+</style>
+
+</head>
 <body>
 <nav class="navbar">
 <div class="nav-brand">
