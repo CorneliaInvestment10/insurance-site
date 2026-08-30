@@ -4713,6 +4713,222 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
 }
 </style>
 
+
+
+<style id="accessibility-header-position-fix">
+/* Desktop: keep the accessibility controls below the header, not over it. */
+@media (min-width: 769px) {
+  body > #a11yPanel {
+    top: 92px !important;
+    bottom: auto !important;
+  }
+
+  body > #a11yTab {
+    top: 92px !important;
+    bottom: auto !important;
+  }
+}
+
+/* Mobile: preserve the corrected compact panel and keep it below the header. */
+@media (max-width: 768px) {
+  body > #a11yPanel {
+    top: 118px !important;
+    bottom: auto !important;
+  }
+
+  body > #a11yTab {
+    top: 118px !important;
+    bottom: auto !important;
+  }
+}
+</style>
+
+
+<style id="a11y-mobile-breathing-room">
+@media (max-width: 768px) {
+  body > #a11yPanel {
+    padding: 0.95rem 0.8rem 1rem !important;
+    gap: 0.55rem !important;
+  }
+
+  body > #a11yPanel .a11y-row {
+    gap: 0.35rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  body > #a11yPanel .a11y-row-label {
+    line-height: 1.2 !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns {
+    gap: 0.3rem !important;
+  }
+}
+</style>
+
+
+<style id="a11y-slightly-shorter">
+@media (max-width: 768px) {
+  body > #a11yPanel {
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+    gap: 0.30rem !important;
+  }
+  body > #a11yPanel .a11y-row {
+    gap: 0.18rem !important;
+    padding-top: 0.32rem !important;
+    padding-bottom: 0.32rem !important;
+  }
+}
+</style>
+
+
+
+
+<style id="cancer-mobile-clean-final-fix">
+@media (max-width:768px){
+  /* Compact mobile accessibility panel: all options fit without scrolling. */
+  body > #a11yPanel{
+    position:fixed !important;
+    right:0 !important;
+    bottom:82px !important;
+    top:auto !important;
+    transform:none !important;
+    width:235px !important;
+    max-width:calc(100vw - 12px) !important;
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+    box-sizing:border-box !important;
+    z-index:10000 !important;
+    padding:0.65rem 0.7rem !important;
+    gap:0 !important;
+  }
+
+  body > #a11yPanel.open{
+    display:flex !important;
+    flex-direction:column !important;
+  }
+
+  /* Tighten every row just enough to reveal Screen Reader + Reset All. */
+  body > #a11yPanel .a11y-heading{
+    font-size:0.78rem !important;
+    margin-bottom:0.35rem !important;
+  }
+
+  body > #a11yPanel .a11y-row{
+    gap:0.25rem !important;
+    padding:0.25rem 0 !important;
+  }
+
+  body > #a11yPanel .a11y-row-label{
+    font-size:0.68rem !important;
+    line-height:1.05 !important;
+  }
+
+  body > #a11yPanel .a11y-row-btns{
+    gap:0.25rem !important;
+  }
+
+  body > #a11yPanel .a11y-btn{
+    font-size:0.66rem !important;
+    padding:0.28rem 0.48rem !important;
+    line-height:1 !important;
+  }
+
+  body > #a11yPanel .a11y-sep{
+    margin:0 !important;
+  }
+
+  body > #a11yPanel .a11y-reset{
+    margin-top:0.3rem !important;
+    padding:0.3rem !important;
+    font-size:0.68rem !important;
+    line-height:1 !important;
+  }
+
+  /* Keep the hamburger fully clickable. */
+  body .hamburger,
+  body #ham{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:5px !important;
+    position:relative !important;
+    z-index:11001 !important;
+    pointer-events:auto !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+
+  body .hamburger span,
+  body #ham span{
+    display:block !important;
+    width:22px !important;
+    height:2px !important;
+  }
+
+  body .mobile-nav,
+  body #mobileNav{
+    position:fixed !important;
+    top:64px !important;
+    left:0 !important;
+    right:0 !important;
+    z-index:11000 !important;
+    pointer-events:auto !important;
+  }
+
+  body .mobile-nav.open,
+  body #mobileNav.open{
+    display:flex !important;
+  }
+}
+</style>
+
+
+<style id="cancer-chat-bubble-final">
+  #chatBubble{
+    position:fixed !important;
+    left:26px !important;
+    bottom:24px !important;
+    z-index:9996 !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:0.7rem !important;
+    min-height:58px !important;
+    padding:0.75rem 1.15rem !important;
+    background:#1a1a18 !important;
+    color:#fff !important;
+    border:1px solid rgba(158,128,71,0.55) !important;
+    border-radius:34px !important;
+    box-shadow:0 3px 12px rgba(0,0,0,0.22) !important;
+    text-decoration:none !important;
+    font-family:system-ui,sans-serif !important;
+    font-size:0.9rem !important;
+    font-weight:600 !important;
+    letter-spacing:0.04em !important;
+    white-space:nowrap !important;
+    box-sizing:border-box !important;
+  }
+  #chatBubble svg{
+    width:23px !important;
+    height:23px !important;
+    flex:0 0 auto !important;
+    stroke:#9e8047 !important;
+  }
+  #chatBubble:hover{
+    border-color:#9e8047 !important;
+  }
+  @media(max-width:768px){
+    #chatBubble{
+      left:26px !important;
+      bottom:24px !important;
+      min-height:58px !important;
+      padding:0.7rem 1.05rem !important;
+      font-size:0.9rem !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 <nav class="navbar">
@@ -5531,5 +5747,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
     }
   });
 })();
-</script></body>
+</script>
+<a id="chatBubble" href="chat.html" aria-label="Ask a Question">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H8l-4 3v-5.2A7.5 7.5 0 0 1 4.5 5.5 7.5 7.5 0 0 1 12 3h.5A7.5 7.5 0 0 1 20 10.5z"></path>
+  </svg>
+  <span>Ask a Question</span>
+</a>
+
+</body>
 </html>
