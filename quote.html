@@ -1835,10 +1835,10 @@ html body > #chatBubble {
 @media (max-width: 420px) {
   /* Keep the same three-level arrangement on smaller phones. */
   html body > #interviewNowBtn {
-    bottom: 72px !important;
+    bottom: 65px !important;
   }
   html body > #chatBubble {
-    bottom: 20px !important;
+    bottom: 5px !important;
     left: 16px !important;
   }
 }
@@ -2660,7 +2660,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
   };
   window.closeModalOnOverlay = function(e,id){ if(e.target===e.currentTarget) window.closeModal(id); };
   window.a11yOpen = function(){
-    var p=byId('a11yPanel'), t=byId('a11yTab'), interview=byId('interviewNowBtn');
+    var p=byId('a11yPanel'), t=byId('a11yTab'), interview=byId('interviewNowBtn'), chat=byId('chatBubble');
     if(!p||!t) return;
     var open=p.classList.toggle('open');
     p.setAttribute('aria-hidden',open?'false':'true');
@@ -2673,10 +2673,12 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
       p.style.setProperty('z-index','2147483647','important');
       t.style.setProperty('z-index','2147483644','important');
       if(interview) interview.style.setProperty('z-index','2147483643','important');
+      if(chat) chat.style.setProperty('z-index','2147483642','important');
     }else{
       p.style.removeProperty('z-index');
       t.style.removeProperty('z-index');
       if(interview) interview.style.removeProperty('z-index');
+      if(chat) chat.style.removeProperty('z-index');
     }
   };
   window.a11yText = function(val){
@@ -2752,11 +2754,22 @@ document.addEventListener('DOMContentLoaded',function(){
 /* Requested mobile spacing + Doxy.me notice color */
 .page-hero .hero-note { color: var(--gold) !important; }
 @media (max-width: 768px) {
+  /* Keep the two lower controls separated on phones, with Interview Now lower. */
+  html body > #interviewNowBtn {
+    bottom: 65px !important;
+  }
   html body > #chatBubble {
-    bottom: 10px !important;
+    bottom: 5px !important;
   }
 }
 </style>
+
+<style id="quote-a11y-chat-layer-fix">
+/* When Accessibility opens: panel > Accessibility tab > Interview Now > Ask a Question. */
+html body > #a11yPanel.open { z-index: 2147483647 !important; }
+html body > #a11yTab { z-index: 2147483644 !important; }
+html body > #interviewNowBtn { z-index: 2147483643 !important; }
+html body > #chatBubble { z-index: 2147483642 !important; }
+</style>
 </body>
 </html>
-  
