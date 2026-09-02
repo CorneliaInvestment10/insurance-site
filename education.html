@@ -6363,6 +6363,7 @@ body > #chatBubble .chat-copy small {
         e.stopPropagation();
         var open=mobileNav.classList.contains("open");
         mobileNav.classList.toggle("open",!open);
+        ham.classList.toggle("open",!open);
         mobileNav.style.display=open?"none":"flex";
         ham.setAttribute("aria-expanded",open?"false":"true");
         ham.setAttribute("aria-label",open?"Open menu":"Close menu");
