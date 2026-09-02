@@ -67,7 +67,7 @@ button { font-family: var(--sans); cursor: pointer; }
 
 /* ── HERO ── */
 .hero { min-height: 94vh; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
-.hero-left { background: var(--ink); padding: 8rem 8% 10rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-left { background: var(--ink); padding: 8rem 8% 6rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
 .hero-left::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(158,128,71,0.10) 0%, transparent 70%); pointer-events: none; }
 .hero-ey { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
 .hero-ey-line { width: 36px; height: 1px; background: var(--gold); }
@@ -773,7 +773,7 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
   /* Hero sections */
   .hero { grid-template-columns:1fr !important; min-height:auto !important; }
-  .hero-left { padding:2.5rem 4% 7rem !important; }
+  .hero-left { padding:2.5rem 4% 7rem !important; justify-content:center !important; }
   .hero-right { display:none !important; }
   .hero h1 { font-size:2.2rem !important; }
   .phc-title { font-size:1.7rem !important; }
