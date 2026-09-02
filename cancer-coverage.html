@@ -5754,6 +5754,19 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
   </svg>
   <span>Ask a Question</span>
 </a>
-
+<style id="accessibility-lower-desktop-fix">
+@media (min-width: 769px) {
+  body > #a11yTab {
+    top: 420px !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+  body > #a11yPanel {
+    top: 420px !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+}
+</style>
 </body>
 </html>
