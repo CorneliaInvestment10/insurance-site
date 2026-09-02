@@ -1454,12 +1454,14 @@ body > #chatBubble .chat-copy small{
 
     function closeMenu(){
       nav.classList.remove("open");
+      ham.classList.remove("open");
       ham.setAttribute("aria-expanded","false");
       ham.setAttribute("aria-label","Open menu");
     }
 
     function openMenu(){
       nav.classList.add("open");
+      ham.classList.remove("open");
       ham.setAttribute("aria-expanded","true");
       ham.setAttribute("aria-label","Close menu");
     }
