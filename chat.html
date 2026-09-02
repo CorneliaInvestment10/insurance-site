@@ -3149,5 +3149,16 @@ html body > #interviewNowBtn{
 }
 </style>
 
+<script id="chat-hamburger-toggle">
+function toggleChatMobileNav(){
+  var nav = document.getElementById('mobileNav');
+  var ham = document.getElementById('chatHam');
+  if(!nav || !ham) return;
+  var open = nav.classList.contains('open');
+  nav.classList.toggle('open', !open);
+  ham.classList.toggle('open', !open);
+}
+</script>
+  
 </body>
 </html>
