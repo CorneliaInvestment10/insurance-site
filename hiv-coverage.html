@@ -5679,11 +5679,13 @@ body > footer{display:block!important;visibility:visible!important;opacity:1!imp
       if(open){
         mobileNav.classList.remove("open");
         mobileNav.style.display="none";
+        ham.classList.remove("open");
         ham.setAttribute("aria-expanded","false");
         ham.setAttribute("aria-label","Open menu");
       }else{
         mobileNav.classList.add("open");
         mobileNav.style.display="flex";
+        ham.classList.add("open");
         ham.setAttribute("aria-expanded","true");
         ham.setAttribute("aria-label","Close menu");
       }
