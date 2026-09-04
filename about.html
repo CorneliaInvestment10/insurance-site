@@ -1566,6 +1566,32 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
     letter-spacing: 0.08em !important;
   }
 }
+/* Keep floating controls behind legal disclosure modals */
+html body:has(.modal-overlay.open) > #a11yTab{
+  z-index:8000 !important;
+}
+
+html body:has(.modal-overlay.open) > #a11yPanel{
+  z-index:7999 !important;
+}
+
+html body:has(.modal-overlay.open) > #interviewNowBtn{
+  z-index:7998 !important;
+}
+
+html body:has(.modal-overlay.open) > #chatBubble{
+  z-index:7997 !important;
+}
+
+html body > .modal-overlay.open{
+  z-index:2147483600 !important;
+}
+
+html body > .modal-overlay.open .modal-box,
+html body > .modal-overlay.open .interview-modal-box{
+  position:relative !important;
+  z-index:2147483601 !important;
+}
 </style>
 
 </head>
@@ -1775,7 +1801,7 @@ label, .field label { font-size: 15px !important; font-weight: 500; }
 
       <p>Please be advised that on many occasions sitting in the waiting room may take some time. You are welcome to join at any time and your agent will connect with you as soon as possible.</p>
 
-      <p>You may also visit the <a href="https://www.coveredwithconditions.com/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect. Office hours are 9 a.m. to 7 p.m. EST, with a lunch break from 12 p.m. to 1 p.m. EST.</p>
+      <p>You may also visit the <a href="https://coveredwithconditions.com/quote.html">Get a Quote</a> page to submit your contact information. Your agent will send your Doxy.me appointment link directly to your preferred contact method at your scheduled time, or as soon as available if you select the Send Now option on the form. This may be a faster way to connect. Office hours are 9 a.m. to 7 p.m. EST, with a lunch break from 12 p.m. to 1 p.m. EST.</p>
 
       <div class="interview-modal-action">
         <a href="https://doxy.me/coveredwithconditions" target="_blank" rel="noopener noreferrer">
