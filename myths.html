@@ -5591,8 +5591,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
   btn.setAttribute('aria-expanded',open?'false':'true');
   return false;
 })(this);
-return false;" style="position:fixed!important;right:0!important;z-index:2147483647!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;cursor:pointer!important" type="button">Accessibility</button>
-<div aria-hidden="true" aria-label="Accessibility Options" id="a11yPanel" role="dialog" style="z-index:2147483646!important;pointer-events:auto!important">
+return false;" style="position:fixed!important;right:0!important;z-index:9999!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;cursor:pointer!important" type="button">Accessibility</button>
+<div aria-hidden="true" aria-label="Accessibility Options" id="a11yPanel" role="dialog" style="z-index:9998!important;pointer-events:auto!important">
 <span class="a11y-heading">Accessibility Options</span>
 <div class="a11y-row"><span class="a11y-row-label">Text Size</span><div class="a11y-row-btns"><button class="a11y-btn active" id="ts-normal" onclick="a11yText('normal')">Normal</button><button class="a11y-btn" id="ts-large" onclick="a11yText('large')">Large</button><button class="a11y-btn" id="ts-xl" onclick="a11yText('xl')">X-Large</button></div></div>
 <div class="a11y-sep"></div>
@@ -5621,11 +5621,6 @@ return false;" style="position:fixed!important;right:0!important;z-index:2147483
 <a href="https://doxy.me/coveredwithconditions" onclick="closeModal('modal-doxy-note')" rel="noopener noreferrer" style="display:block;background:#1a1a18;color:#fff;font-family:system-ui;font-size:0.9rem;font-weight:500;padding:0.9rem 1.5rem;border-radius:4px;text-decoration:none;text-align:center;" target="_blank">I Understand - Join the Waiting Room</a>
 </div>
 </div>
-</div>
-<div class="eb-actions">
-<a class="eb-btn eb-primary" href="chat.html">Ask a Question</a>
-<a class="eb-btn eb-secondary" href="quote.html">Get a Quote</a>
-<button aria-label="Close" class="eb-close" onclick="dismissBar()">×</button>
 </div>
 </body>
 </html>
