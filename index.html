@@ -1300,6 +1300,32 @@ html body > .modal-overlay.open .interview-modal-box{
     bottom:5px !important;
   }
 }
+/* Keep floating controls behind legal disclosure modals */
+html body:has(.modal-overlay.open) > #a11yTab{
+  z-index:8000 !important;
+}
+
+html body:has(.modal-overlay.open) > #a11yPanel{
+  z-index:7999 !important;
+}
+
+html body:has(.modal-overlay.open) > #interviewNowBtn{
+  z-index:7998 !important;
+}
+
+html body:has(.modal-overlay.open) > #chatBubble{
+  z-index:7997 !important;
+}
+
+html body > .modal-overlay.open{
+  z-index:2147483600 !important;
+}
+
+html body > .modal-overlay.open .modal-box{
+  position:relative !important;
+  z-index:2147483601 !important;
+}
+
 </style>
 
 </head>
