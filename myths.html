@@ -4900,37 +4900,61 @@ body > #a11yPanel.open{
   z-index:2147483646!important;
   pointer-events:auto!important;
 }
-/* ===== FINAL FOOTER DISCLOSURE MODAL LAYER FIX ===== */
-body:has(.modal-overlay.open) #a11yTab{z-index:1!important;pointer-events:none!important;}
-body:has(.modal-overlay.open) #a11yPanel{z-index:1!important;pointer-events:none!important;}
-body:has(.modal-overlay.open) #interviewNowBtn{z-index:1!important;pointer-events:none!important;}
-body:has(.modal-overlay.open) #chatBubble{z-index:1!important;pointer-events:none!important;}
+/* ===== FINAL FOOTER DISCLOSURE MODAL FIX ===== */
 
-body:has(.modal-overlay.open) .modal-overlay.open{
+html body:has(.modal-overlay.open) #a11yTab{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+html body:has(.modal-overlay.open) #a11yPanel{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+html body:has(.modal-overlay.open) #interviewNowBtn{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+html body:has(.modal-overlay.open) #chatBubble{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+html body > .modal-overlay.open{
+  display:flex!important;
+  position:fixed!important;
+  inset:0!important;
   z-index:2147483647!important;
   pointer-events:auto!important;
 }
 
-body:has(.modal-overlay.open) .modal-overlay.open .modal-box{
+html body > .modal-overlay.open .modal-box{
   position:relative!important;
   z-index:2147483647!important;
   pointer-events:auto!important;
 }
 
-body:has(#modal-doxy-note.open) #a11yTab,
-body:has(#modal-doxy-note.open) #a11yPanel,
-body:has(#modal-doxy-note.open) #interviewNowBtn,
-body:has(#modal-doxy-note.open) #chatBubble{
-  z-index:1!important;
+html body:has(#modal-doxy-note.open) #a11yTab,
+html body:has(#modal-doxy-note.open) #a11yPanel,
+html body:has(#modal-doxy-note.open) #interviewNowBtn,
+html body:has(#modal-doxy-note.open) #chatBubble{
+  display:none!important;
+  visibility:hidden!important;
   pointer-events:none!important;
 }
 
-body > #modal-doxy-note.open{
+html body > #modal-doxy-note.open{
   z-index:2147483647!important;
   pointer-events:auto!important;
 }
 
-body > #modal-doxy-note.open .interview-modal-box{
+html body > #modal-doxy-note.open .interview-modal-box{
   position:relative!important;
   z-index:2147483647!important;
   pointer-events:auto!important;
