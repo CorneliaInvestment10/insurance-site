@@ -3175,6 +3175,44 @@ function toggleChatMobileNav(){
   ham.classList.toggle('open', !open);
 }
 </script>
-  
+<style id="chat-final-footer-disclosure-layer-fix">
+/* FINAL CHAT FOOTER DISCLOSURE LAYER FIX */
+
+html body > .modal-overlay.open{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:2147483647 !important;
+  display:flex !important;
+  pointer-events:auto !important;
+}
+
+html body > .modal-overlay.open .modal-box{
+  position:relative !important;
+  z-index:2147483647 !important;
+  pointer-events:auto !important;
+}
+
+/* When a footer disclosure is open, put ALL floating controls behind it. */
+html body:has(.modal-overlay.open) > #a11yTab{
+  z-index:9999 !important;
+  pointer-events:none !important;
+}
+
+html body:has(.modal-overlay.open) > #a11yPanel{
+  z-index:9998 !important;
+  pointer-events:none !important;
+}
+
+html body:has(.modal-overlay.open) > #interviewNowBtn{
+  z-index:9997 !important;
+  pointer-events:none !important;
+}
+
+html body:has(.modal-overlay.open) > #chatBubble{
+  z-index:9996 !important;
+  pointer-events:none !important;
+}
+</style>  
+
 </body>
 </html>
