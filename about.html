@@ -2165,22 +2165,38 @@ html body > .modal-overlay.open .interview-modal-box{
   }
 
   window.openModal = function (id) {
-    var modal = byId(id);
-    if (!modal) return false;
+  var modal = byId(id);
+  if (!modal) return false;
 
-    modal.style.display = 'flex';
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+  modal.style.display = 'flex';
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 
-    var close = modal.querySelector('.interview-modal-close, .modal-close');
-    if (close) {
-      setTimeout(function () {
-        try { close.focus(); } catch (e) {}
-      }, 50);
+  /* Reset disclosure to the top on mobile only */
+  if (window.innerWidth <= 768) {
+    var box = modal.querySelector('.modal-box');
+    if (box) {
+      box.scrollTop = 0;
+      requestAnimationFrame(function () {
+        box.scrollTop = 0;
+        setTimeout(function () {
+          box.scrollTop = 0;
+        }, 50);
+      });
     }
-    return false;
-  };
+    modal.scrollTop = 0;
+  }
+
+  var close = modal.querySelector('.interview-modal-close, .modal-close');
+  if (close) {
+    setTimeout(function () {
+      try { close.focus(); } catch (e) {}
+    }, 50);
+  }
+
+  return false;
+};
 
   window.closeModal = function (id) {
     var modal = byId(id);
