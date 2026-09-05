@@ -6268,13 +6268,29 @@ html body > #modal-doxy-note.open .interview-modal-box{
     }
   }
 
-  function openModal(id){
-    var m=document.getElementById(id);
-    if(!m)return;
-    m.classList.add("open");
-    m.style.display="flex";
-    m.style.pointerEvents="auto";
-    document.body.style.overflow="hidden";
+ function openModal(id){
+  var m=document.getElementById(id);
+  if(!m)return;
+  m.classList.add("open");
+  m.style.display="flex";
+  m.style.pointerEvents="auto";
+  document.body.style.overflow="hidden";
+
+  /* Reset disclosure to the top on mobile only */
+  if(window.innerWidth<=768){
+    var box=m.querySelector(".modal-box");
+    if(box){
+      box.scrollTop=0;
+      requestAnimationFrame(function(){
+        box.scrollTop=0;
+        setTimeout(function(){
+          box.scrollTop=0;
+        },50);
+      });
+    }
+    m.scrollTop=0;
+  }
+}
   }
 
   function closeModal(id){
