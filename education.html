@@ -6347,24 +6347,33 @@ html body > #modal-doxy-note.open .interview-modal-box{
       if(m)showTab(m[1],active);
     }
 
-    document.querySelectorAll(".edu-tab").forEach(function(tab){
+ document.querySelectorAll(".edu-tab").forEach(function(tab){
   tab.type="button";
+
   tab.addEventListener("click",function(e){
     e.preventDefault();
+    e.stopPropagation();
+
     var m=(tab.getAttribute("onclick")||"").match(/showTab\(['"]([^'"]+)['"]/);
+
     if(m){
-      showTab(m[1],tab);
-      var panel=document.getElementById("panel-"+m[1]);
-      if(panel){
-        setTimeout(function(){
-          window.scrollTo({
-            top:Math.max(0,window.scrollY+panel.getBoundingClientRect().top-80),
-            behavior:"smooth"
+      var id=m[1];
+
+      showTab(id,tab);
+
+      setTimeout(function(){
+        var panel=document.getElementById("panel-"+id);
+
+        if(panel){
+          panel.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
           });
-        },50);
-      }
+        }
+      },150);
     }
   });
+});
 });
 
     document.querySelectorAll(".topic-card").forEach(function(card){
