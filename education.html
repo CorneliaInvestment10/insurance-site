@@ -6274,9 +6274,9 @@ html body > #modal-doxy-note.open .interview-modal-box{
     m.classList.add("open");
     m.style.display="flex";
     m.style.pointerEvents="auto";
-    document.body.style.overflow="hidden";var box=m.querySelector(".modal-box");if(box){requestAnimationFrame(function(){box.scrollTo(0,0);box.scrollTop=0;setTimeout(function(){box.scrollTo(0,0);box.scrollTop=0;},100);});}m.scrollTop=0;  }
-  }
-  function closeModal(id){
+    document.body.style.overflow="hidden";
+   var box=m.querySelector(".modal-box");if(box){setTimeout(function(){box.scrollTop=0;},50);}m.scrollTop=0;
+ function closeModal(id){
     var m=document.getElementById(id);
     if(!m)return;
     m.classList.remove("open");
