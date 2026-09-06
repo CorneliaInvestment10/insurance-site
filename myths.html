@@ -4905,7 +4905,19 @@ html body:has(#a11yPanel.open) #interviewNowBtn{
   opacity:0.12!important;
   pointer-events:none!important;
 }
+@media(max-width:768px){
+  #interviewNowBtn{
+    width:auto!important;
+    max-width:165px!important;
+  }
 
+  #interviewNowBtn > a{
+    width:auto!important;
+    max-width:165px!important;
+    padding:0.65rem 0.8rem!important;
+    font-size:0.72rem!important;
+  }
+}
 /* ===== FINAL FOOTER DISCLOSURE MODAL FIX ===== */
 
 html body:has(.modal-overlay.open) #a11yTab{
