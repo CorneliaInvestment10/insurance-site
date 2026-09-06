@@ -4900,6 +4900,16 @@ body > #a11yPanel.open{
   z-index:2147483646!important;
   pointer-events:auto!important;
 }
+@media(max-width:640px){
+  #modal-doxy-note .interview-modal-box{
+    max-height:calc(100vh - 80px)!important;
+    overflow-y:auto!important;
+  }
+
+  #modal-doxy-note .interview-modal-body{
+    padding-bottom:30px!important;
+  }
+}
 /* Fade Interview Now behind Accessibility when panel is open */
 html body:has(#a11yPanel.open) #interviewNowBtn{
   opacity:0.12!important;
