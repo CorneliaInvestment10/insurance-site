@@ -4900,6 +4900,16 @@ body > #a11yPanel.open{
   z-index:2147483646!important;
   pointer-events:auto!important;
 }
+/* Keep Interview Now behind Accessibility when open */
+body > #a11yPanel.open{
+  z-index:2147483647!important;
+}
+
+html body:has(#a11yPanel.open) > #interviewNowBtn{
+  opacity:0.12!important;
+  pointer-events:none!important;
+  z-index:2147483000!important;
+}
 /* ===== FINAL FOOTER DISCLOSURE MODAL FIX ===== */
 
 html body:has(.modal-overlay.open) #a11yTab{
