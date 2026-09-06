@@ -4900,6 +4900,12 @@ body > #a11yPanel.open{
   z-index:2147483646!important;
   pointer-events:auto!important;
 }
+/* Fade Interview Now behind Accessibility when panel is open */
+html body:has(#a11yPanel.open) #interviewNowBtn{
+  opacity:0.12!important;
+  pointer-events:none!important;
+}
+
 /* ===== FINAL FOOTER DISCLOSURE MODAL FIX ===== */
 
 html body:has(.modal-overlay.open) #a11yTab{
