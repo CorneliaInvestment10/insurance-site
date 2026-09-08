@@ -5507,7 +5507,8 @@ html body > #a11yPanel.open{
     if(form)form.style.display='none';
     if(success)success.classList.add('active');
     if(confEl)confEl.textContent=confNum;
-
+    if(typeof dataLayer !== 'undefined'){dataLayer.push({'event':'hiv_form_submitted'});}
+    
     window.scrollTo({top:0,behavior:'smooth'});
     return false;
   };
